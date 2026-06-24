@@ -1,0 +1,1350 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="theme-color" content="#F5EFE3" />
+<title>du Liban — Alta cocina libanesa en La Moraleja, Madrid</title>
+<meta name="description" content="du Liban. Alta cocina libanesa en La Moraleja, Madrid. Recetas familiares de Beirut, mezze, brasa y postres. Reservas online." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Allura&display=swap" rel="stylesheet">
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700&display=swap" rel="stylesheet">
+
+<!-- Favicon: olive sprig in cedar -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><circle cx='32' cy='32' r='32' fill='%23F5EFE3'/><path d='M14 50 C 22 40, 30 30, 50 16' stroke='%232F4A3E' stroke-width='2' fill='none' stroke-linecap='round'/><g fill='%232F4A3E'><ellipse cx='44' cy='22' rx='5' ry='2' transform='rotate(35 44 22)'/><ellipse cx='36' cy='30' rx='5' ry='2' transform='rotate(30 36 30)'/><ellipse cx='28' cy='38' rx='5' ry='2' transform='rotate(25 28 38)'/></g><circle cx='40' cy='26' r='1.5' fill='%23BFA15A'/></svg>">
+
+<!-- Open Graph / Twitter -->
+<meta property="og:type" content="restaurant.restaurant">
+<meta property="og:title" content="du Liban — Alta cocina libanesa en La Moraleja">
+<meta property="og:description" content="Recetas familiares de Beirut servidas en La Moraleja desde 2003. Mezze, brasa, postres con agua de azahar.">
+<meta property="og:locale" content="es_ES">
+<meta property="og:image" content="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1600&q=80">
+<meta name="twitter:card" content="summary_large_image">
+
+<!-- JSON-LD: Restaurant schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Restaurant",
+  "name": "du Liban",
+  "image": "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1600&q=80",
+  "servesCuisine": "Lebanese",
+  "priceRange": "€€€",
+  "telephone": "+34916250072",
+  "email": "reservas@dulibanrestaurants.com",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "C. de la Estafeta, 2, Local 4/5",
+    "addressLocality": "Alcobendas",
+    "addressRegion": "Madrid",
+    "postalCode": "28109",
+    "addressCountry": "ES"
+  },
+  "openingHoursSpecification": [
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Tuesday","Wednesday","Thursday","Friday","Saturday"], "opens": "13:00", "closes": "16:00" },
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Tuesday","Wednesday","Thursday","Friday","Saturday"], "opens": "20:00", "closes": "00:00" },
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": "Sunday", "opens": "13:00", "closes": "17:00" }
+  ]
+}
+</script>
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          cream: '#F5EFE3',
+          sand: '#EADFCB',
+          cedar: '#2F4A3E',
+          'cedar-deep': '#1F3329',
+          teal: '#5FAFA8',
+          'teal-ink': '#3D8B86',
+          gold: '#BFA15A',
+          'gold-soft': '#D9C490',
+          terracotta: '#B4533C',
+          'terracotta-deep': '#8E3E2C',
+          ink: '#1A1A17',
+          'ink-soft': '#4A463E',
+        },
+        fontFamily: {
+          display: ['"Cormorant Garamond"', 'serif'],
+          script: ['"Allura"', 'cursive'],
+          sans: ['Satoshi', 'system-ui', 'sans-serif'],
+        },
+        letterSpacing: {
+          'tightest': '-0.04em',
+          'wider-2': '0.18em',
+          'widest-2': '0.32em',
+        },
+      },
+    },
+  };
+</script>
+<style>
+  :root {
+    color-scheme: light;
+    --cream: #F5EFE3;
+    --sand: #EADFCB;
+    --cedar: #2F4A3E;
+    --gold: #BFA15A;
+    --terracotta: #B4533C;
+    --teal: #5FAFA8;
+  }
+  html { scroll-behavior: smooth; }
+  body { background: var(--cream); color: #1A1A17; font-family: 'Satoshi', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+  body.has-custom-cursor { cursor: none; }
+  body.has-custom-cursor a, body.has-custom-cursor button { cursor: none; }
+
+  /* ── Paper-grain overlay (the "expensive" texture) ───────────────────────── */
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.18  0 0 0 0 0.29  0 0 0 0 0.24  0 0 0 0.32 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.45'/></svg>");
+    mix-blend-mode: multiply;
+    opacity: .35;
+  }
+
+  /* ── Elevated section background: layered warm gradient ─────────────────── */
+  .bg-elevated {
+    background:
+      radial-gradient(900px 700px at 8% 0%,   rgba(95,175,168,0.07), transparent 60%),
+      radial-gradient(1000px 800px at 92% 100%, rgba(180,83,60,0.06), transparent 65%),
+      linear-gradient(180deg, #F5EFE3 0%, #EBE0CB 100%);
+  }
+  .bg-elevated-deep {
+    background:
+      radial-gradient(900px 600px at 50% 10%, rgba(95,175,168,0.10), transparent 60%),
+      radial-gradient(700px 500px at 10% 95%, rgba(191,161,90,0.10), transparent 65%),
+      linear-gradient(180deg, #F1E9D5 0%, #E6D8BB 100%);
+  }
+  .bg-cedar-elevated {
+    background:
+      radial-gradient(800px 700px at 80% 10%, rgba(191,161,90,0.12), transparent 60%),
+      radial-gradient(700px 600px at 10% 90%, rgba(95,175,168,0.10), transparent 65%),
+      linear-gradient(180deg, #2F4A3E 0%, #1F3329 100%);
+  }
+
+  /* Faded ornamental olive corner watermark */
+  .corner-olive {
+    position: absolute; pointer-events: none; opacity: .06;
+    width: 380px; max-width: 60vw;
+  }
+
+  /* Editorial section-number rail */
+  .sec-mark {
+    position: absolute; left: 24px; top: 28px;
+    font-family: 'Satoshi', sans-serif;
+    font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: rgba(47,74,62,.5);
+    display: flex; align-items: center; gap: 10px;
+    z-index: 2;
+  }
+  .sec-mark::after { content: ''; display: block; width: 28px; height: 1px; background: currentColor; opacity: .6; }
+  .sec-mark--light { color: rgba(245,239,227,.55); }
+  @media (max-width: 900px) { .sec-mark { left: 20px; top: 20px; } }
+
+  /* Selection */
+  ::selection { background: #2F4A3E; color: #F5EFE3; }
+
+  /* Custom hairlines */
+  .hairline { height: 1px; background: linear-gradient(90deg, transparent, #BFA15A66 20%, #BFA15A66 80%, transparent); }
+  .hairline-soft { height: 1px; background: linear-gradient(90deg, transparent, #2F4A3E33 20%, #2F4A3E33 80%, transparent); }
+
+  /* Gold ornament divider (matches the menu PDF) */
+  .ornament { display: inline-flex; align-items: center; gap: 12px; color: #BFA15A; }
+  .ornament::before, .ornament::after { content: ''; display: block; width: 40px; height: 1px; background: #BFA15A; opacity: .6; }
+
+  /* Hero giant wordmark */
+  .display-hero {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    letter-spacing: -0.04em;
+    line-height: 0.84;
+  }
+  .display-script {
+    font-family: 'Allura', cursive;
+    color: #5FAFA8;
+    letter-spacing: -0.01em;
+    line-height: 0.9;
+  }
+
+  /* Scroll-reveal */
+  .reveal { opacity: 0; transform: translateY(28px); transition: opacity .9s cubic-bezier(.2,.7,.2,1), transform .9s cubic-bezier(.2,.7,.2,1); }
+  .reveal.in { opacity: 1; transform: none; }
+  .reveal.delay-1 { transition-delay: .08s; }
+  .reveal.delay-2 { transition-delay: .16s; }
+  .reveal.delay-3 { transition-delay: .24s; }
+  .reveal.delay-4 { transition-delay: .32s; }
+  .reveal.delay-5 { transition-delay: .40s; }
+
+  /* Image reveal: subtle mask + scale */
+  .img-reveal { opacity: 0; transform: scale(1.04); transition: opacity 1.1s ease, transform 1.4s cubic-bezier(.2,.7,.2,1); }
+  .img-reveal.in { opacity: 1; transform: scale(1); }
+
+  /* Marquee for kitchen subtitles */
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+  .marquee-track { display: inline-flex; gap: 3rem; padding-right: 3rem; animation: marquee 38s linear infinite; will-change: transform; }
+
+  /* Preloader */
+  #preloader {
+    position: fixed; inset: 0; z-index: 100;
+    background: #F5EFE3;
+    display: flex; align-items: center; justify-content: center;
+    transition: opacity .9s ease, visibility .9s ease;
+  }
+  #preloader.gone { opacity: 0; visibility: hidden; pointer-events: none; }
+  .pre-script {
+    font-family: 'Allura', cursive;
+    color: #5FAFA8;
+    font-size: clamp(72px, 12vw, 180px);
+    line-height: 1;
+  }
+  .pre-script path {
+    fill: none;
+    stroke: #5FAFA8;
+    stroke-width: 1.4;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  /* Handwriting stroke draw */
+  .draw-on-view path {
+    stroke-dasharray: var(--len, 2000);
+    stroke-dashoffset: var(--len, 2000);
+  }
+  .draw-on-view.in path {
+    transition: stroke-dashoffset 2.6s cubic-bezier(.5,.05,.3,1);
+    stroke-dashoffset: 0;
+  }
+
+  /* ── Menu accordion: spacious, contained, reference-matched ──────────── */
+  .menu-block { margin-bottom: 14px; }
+  .menu-block:last-of-type { margin-bottom: 0; }
+
+  .menu-row {
+    position: relative; cursor: pointer; width: 100%; text-align: left;
+    display: grid;
+    grid-template-columns: 56px 1fr 56px;
+    align-items: center; gap: 14px;
+    padding: 24px 22px;
+    border-top: 1px solid rgba(47,74,62,.15);
+    transition: border-color .4s ease;
+  }
+  @media (min-width: 768px) {
+    .menu-row { padding: 38px 36px; grid-template-columns: 80px 1fr 80px; gap: 24px; }
+  }
+  .menu-block:last-of-type .menu-row { border-bottom: 1px solid rgba(47,74,62,.15); }
+
+  .menu-row .row-bar {
+    position: absolute; inset: 6px 0;
+    background: var(--cedar);
+    border-radius: 10px;
+    transform-origin: center;
+    transform: scaleX(0);
+    transition: transform .6s cubic-bezier(.5,.05,.2,1);
+    z-index: 0;
+  }
+  .menu-row:hover .row-bar,
+  .menu-row[aria-expanded="true"] .row-bar { transform: scaleX(1); }
+  .menu-row:hover { border-top-color: transparent; }
+  .menu-row[aria-expanded="true"] { border-top-color: transparent; }
+  .menu-row:hover + .menu-block .menu-row,
+  .menu-row[aria-expanded="true"] + .menu-block .menu-row { border-top-color: transparent; }
+
+  .menu-row > * { position: relative; z-index: 1; }
+
+  .row-count {
+    font-family: 'Satoshi', sans-serif;
+    font-size: 13px; letter-spacing: .04em;
+    color: rgba(47,74,62,.55); font-feature-settings: 'tnum';
+    transition: color .35s ease;
+  }
+  .row-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    font-size: 28px; line-height: 1; letter-spacing: .04em;
+    text-transform: uppercase;
+    color: var(--cedar);
+    text-align: center;
+    transition: color .35s ease, letter-spacing .5s ease;
+  }
+  @media (min-width: 768px) { .row-text { font-size: 40px; letter-spacing: .06em; } }
+  .row-arrow { color: rgba(47,74,62,.55); justify-self: end; transition: color .35s ease, transform .4s ease; }
+
+  .menu-row:hover .row-text,
+  .menu-row[aria-expanded="true"] .row-text { color: var(--cream); letter-spacing: .07em; }
+  .menu-row:hover .row-count,
+  .menu-row[aria-expanded="true"] .row-count { color: var(--gold); }
+  .menu-row:hover .row-arrow,
+  .menu-row[aria-expanded="true"] .row-arrow { color: var(--gold); transform: rotate(90deg); }
+  .menu-row[aria-expanded="true"] .row-arrow { transform: rotate(45deg); }
+
+  /* Thumbs flank the centered title symmetrically when active */
+  .row-thumb {
+    position: absolute; top: 50%; left: 50%;
+    width: 108px; height: 76px; border-radius: 8px; object-fit: cover;
+    z-index: 2; opacity: 0; pointer-events: none;
+    box-shadow: 0 14px 36px rgba(0,0,0,0.38);
+    transition: opacity .45s ease, transform .7s cubic-bezier(.5,.05,.2,1);
+  }
+  .thumb-l { transform: translate(-160%, -50%) rotate(-5deg); }
+  .thumb-r { transform: translate(60%, -50%)   rotate(4deg);  }
+  .menu-row:hover .thumb-l,
+  .menu-row[aria-expanded="true"] .thumb-l { opacity: 1; transform: translate(-240%, -50%) rotate(-5deg); }
+  .menu-row:hover .thumb-r,
+  .menu-row[aria-expanded="true"] .thumb-r { opacity: 1; transform: translate(140%, -50%) rotate(4deg); }
+  @media (max-width: 900px) { .row-thumb { display: none; } }
+
+  /* Detail: open animation + breathing room */
+  .menu-detail { display: none; padding: 0 22px; }
+  @media (min-width: 768px) { .menu-detail { padding: 0 36px; } }
+  .menu-detail.open { display: block; animation: detailOpen .55s cubic-bezier(.2,.7,.2,1); }
+  @keyframes detailOpen { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: none; } }
+
+  /* Olive branch float */
+  @keyframes sway {
+    0%,100% { transform: rotate(var(--rot, 0deg)) translateY(0); }
+    50%     { transform: rotate(calc(var(--rot, 0deg) + 2deg)) translateY(-6px); }
+  }
+  .sway { animation: sway 9s ease-in-out infinite; transform-origin: top right; }
+
+  /* Gallery hover */
+  .tile { position: relative; overflow: hidden; }
+  .tile img { transition: transform 1.4s cubic-bezier(.2,.7,.2,1), filter .6s ease; }
+  .tile:hover img { transform: scale(1.06); filter: brightness(1.04); }
+
+  /* Footer wordmark image-fill */
+  .word-fill {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    letter-spacing: -0.045em;
+    line-height: 0.85;
+    background-image: url('https://images.unsplash.com/photo-1547573854-74d2a71d0826?auto=format&fit=crop&w=2200&q=80');
+    background-size: cover;
+    background-position: center 40%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* Reservations CTA pulse-glow on focus */
+  .btn-reserve { position: relative; overflow: hidden; }
+  .btn-reserve::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(120deg, transparent 30%, rgba(245,239,227,.55) 50%, transparent 70%);
+    transform: translateX(-110%);
+    transition: transform .8s ease;
+  }
+  .btn-reserve:hover::after { transform: translateX(110%); }
+
+  /* Marquee text color tweaks */
+  .marquee-word { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: clamp(48px, 7vw, 110px); line-height: 1; color: #2F4A3E; letter-spacing: -0.02em; }
+  .marquee-dot { width: 10px; height: 10px; border-radius: 999px; background: #BFA15A; flex: none; align-self: center; }
+
+  /* Hours grid */
+  .hours-row { display: grid; grid-template-columns: 1fr auto; gap: 1rem; padding: .85rem 0; border-bottom: 1px solid rgba(47,74,62,.16); font-feature-settings: 'tnum'; }
+  .hours-row:last-child { border-bottom: 0; }
+
+  /* Focus rings */
+  :focus-visible { outline: 2px solid #B4533C; outline-offset: 3px; border-radius: 2px; }
+
+  /* ── Unified image grade (makes Unsplash feel commissioned) ─────────────── */
+  .tile img, .img-reveal { filter: saturate(.88) contrast(1.06) brightness(.98) sepia(.05); }
+
+  /* ── Word-by-word mask reveal (handcrafted headline motion) ─────────────── */
+  .word-reveal .word {
+    display: inline-block; overflow: hidden; vertical-align: bottom;
+    padding-right: .22em;
+  }
+  .word-reveal .word > span {
+    display: inline-block;
+    transform: translateY(110%);
+    transition: transform 1.1s cubic-bezier(.22,.7,.2,1);
+    will-change: transform;
+  }
+  .word-reveal.in .word > span { transform: translateY(0); }
+  /* stagger via inline transition-delay set by JS */
+
+  /* ── Custom cursor ──────────────────────────────────────────────────────── */
+  #cursor-dot, #cursor-ring {
+    position: fixed; top: 0; left: 0; pointer-events: none; z-index: 90;
+    border-radius: 999px; transition: transform .14s ease-out, width .25s ease, height .25s ease, background-color .25s ease, opacity .25s;
+    mix-blend-mode: difference;
+  }
+  #cursor-dot { width: 6px; height: 6px; background: #F5EFE3; transform: translate(-3px, -3px); }
+  #cursor-ring { width: 36px; height: 36px; border: 1px solid #F5EFE3; transform: translate(-18px, -18px); transition: transform .28s cubic-bezier(.2,.7,.2,1), width .25s ease, height .25s ease, opacity .25s; }
+  body.cursor-hover #cursor-ring { width: 56px; height: 56px; transform: translate(-28px, -28px); }
+  body.cursor-press #cursor-ring { width: 28px; height: 28px; transform: translate(-14px, -14px); }
+  @media (hover: none), (pointer: coarse) { #cursor-dot, #cursor-ring { display: none; } }
+
+  /* ── Magnetic CTA: anchored via inline transform from JS ────────────────── */
+  .magnetic { transition: transform .35s cubic-bezier(.2,.7,.2,1); will-change: transform; }
+
+  /* ── Tilt cards ─────────────────────────────────────────────────────────── */
+  .tilt { transform-style: preserve-3d; transition: transform .6s cubic-bezier(.2,.7,.2,1); }
+  .tilt > * { transform: translateZ(0); }
+
+  /* ── Dish row hover: dotted leader fills, name italicizes left-to-right ── */
+  .dish { position: relative; }
+  .dish .dish-name { transition: letter-spacing .4s ease, color .3s ease; }
+  .dish:hover .dish-name { letter-spacing: .03em; color: var(--terracotta); }
+  .dish .dish-dots { background-image: radial-gradient(circle, rgba(47,74,62,.42) 1px, transparent 1.4px); background-size: 6px 2px; background-repeat: repeat-x; background-position: left center; border: 0; height: 1px; transition: background-image .3s ease; }
+  .dish:hover .dish-dots { background-image: radial-gradient(circle, var(--terracotta) 1.1px, transparent 1.6px); }
+  .dish .dish-price { transition: color .3s ease, transform .3s ease; }
+  .dish:hover .dish-price { color: var(--terracotta); transform: translateX(-2px); }
+
+  /* ── Editorial section pad to give the rail room ────────────────────────── */
+  .sec { position: relative; }
+
+  /* Headline serif italic feels chosen */
+  .display-hero em, .font-display em { font-style: italic; font-weight: 400; }
+
+  /* Reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; scroll-behavior: auto !important; }
+    .reveal, .img-reveal { opacity: 1 !important; transform: none !important; }
+    .marquee-track { animation: none !important; }
+    .sway { animation: none !important; }
+  }
+</style>
+</head>
+<body class="font-sans text-ink">
+
+<!-- Custom cursor -->
+<div id="cursor-ring" aria-hidden="true"></div>
+<div id="cursor-dot" aria-hidden="true"></div>
+
+<!-- ─────────────────────────  PRELOADER  ───────────────────────── -->
+<div id="preloader" aria-hidden="true">
+  <div class="text-center">
+    <svg viewBox="0 0 600 200" width="320" height="auto" class="pre-script draw-on-view" aria-hidden="true" id="preWord">
+      <!-- Stylized 'du Liban' handwritten path -->
+      <path d="M 50 130
+               C 50 90, 90 70, 110 90
+               C 130 110, 110 140, 90 140
+               C 70 140, 70 110, 90 100
+               M 130 80 L 130 145
+               C 130 155, 145 160, 158 145
+               C 168 132, 162 110, 150 110
+               M 220 60
+               C 200 70, 195 110, 215 130
+               C 235 150, 270 140, 275 110
+               M 305 80 L 305 150
+               M 305 105 C 320 90, 345 100, 345 130 C 345 150, 320 155, 305 145
+               M 380 80 L 380 145
+               M 380 105 C 395 90, 420 100, 420 130 C 420 150, 395 155, 380 145
+               M 440 60 L 440 145
+               M 475 110 C 475 95, 500 95, 510 110 C 520 125, 510 150, 490 150 C 470 150, 460 130, 475 110 Z
+               M 540 80 L 540 145
+               M 540 110 C 555 95, 580 100, 580 130 L 580 145"
+            />
+    </svg>
+    <p class="font-sans tracking-widest-2 text-xs text-cedar/60 mt-6">L E B A N E S E   C U I S I N E</p>
+  </div>
+</div>
+
+<!-- ─────────────────────────  NAV  ───────────────────────── -->
+<header class="fixed top-0 left-0 right-0 z-40">
+  <div class="max-w-[1400px] mx-auto px-5 md:px-10 pt-5">
+    <nav class="backdrop-blur-md bg-cream/75 border border-cedar/10 rounded-full px-4 md:px-6 py-3 flex items-center justify-between shadow-[0_4px_24px_-12px_rgba(31,51,41,0.25)]">
+      <a href="#top" class="flex items-center gap-2 group" aria-label="du Liban — inicio">
+        <span class="font-script text-teal text-3xl leading-none -mt-1">du Liban</span>
+      </a>
+
+      <ul class="hidden lg:flex items-center gap-8 text-[13px] tracking-wider-2 uppercase text-cedar/85">
+        <li><a class="hover:text-terracotta transition-colors duration-200" href="#concepto">Concepto</a></li>
+        <li><a class="hover:text-terracotta transition-colors duration-200" href="#carta">Carta</a></li>
+        <li><a class="hover:text-terracotta transition-colors duration-200" href="#chef">Cocina</a></li>
+        <li><a class="hover:text-terracotta transition-colors duration-200" href="#eventos">Eventos privados</a></li>
+        <li><a class="hover:text-terracotta transition-colors duration-200" href="#visitanos">Visítanos</a></li>
+      </ul>
+
+      <div class="flex items-center gap-2">
+        <a href="tel:+34916250072" class="hidden md:inline-flex items-center gap-2 text-[12px] tracking-wider-2 uppercase text-cedar/70 hover:text-cedar transition-colors px-2" aria-label="Llamar al restaurante">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          916 25 00 72
+        </a>
+        <a href="https://restauranteduliban.es/reservations/" target="_blank" rel="noopener" data-magnetic data-cursor="cta" class="btn-reserve magnetic inline-flex items-center gap-2 bg-terracotta hover:bg-terracotta-deep text-cream text-[12px] md:text-[13px] tracking-wider-2 uppercase px-4 md:px-5 py-2.5 rounded-full transition-colors duration-200 cursor-pointer">
+          Reservar
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+        </a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<!-- ─────────────────────────  HERO  ───────────────────────── -->
+<section id="top" class="relative pt-36 md:pt-40 pb-12 md:pb-20 overflow-hidden">
+  <!-- Olive branch ornament, top-right -->
+  <svg class="absolute top-24 -right-4 md:right-6 w-40 md:w-72 sway opacity-90 pointer-events-none" style="--rot:-8deg" viewBox="0 0 220 220" fill="none" aria-hidden="true">
+    <g stroke="#2F4A3E" stroke-width="1.2" stroke-linecap="round" fill="none">
+      <path d="M195 18 C 160 50, 130 90, 95 145 C 78 172, 60 192, 38 205" />
+      <g fill="#2F4A3E" stroke="none" opacity=".95">
+        <ellipse cx="178" cy="40" rx="13" ry="5" transform="rotate(35 178 40)"/>
+        <ellipse cx="160" cy="62" rx="14" ry="5" transform="rotate(30 160 62)"/>
+        <ellipse cx="140" cy="88" rx="15" ry="5.5" transform="rotate(25 140 88)"/>
+        <ellipse cx="120" cy="116" rx="14" ry="5" transform="rotate(20 120 116)"/>
+        <ellipse cx="100" cy="142" rx="13" ry="5" transform="rotate(15 100 142)"/>
+        <ellipse cx="78" cy="170" rx="12" ry="4.5" transform="rotate(10 78 170)"/>
+        <ellipse cx="58" cy="192" rx="11" ry="4" transform="rotate(5 58 192)"/>
+      </g>
+      <g fill="#BFA15A" stroke="none">
+        <circle cx="158" cy="50" r="3"/>
+        <circle cx="118" cy="100" r="2.8"/>
+        <circle cx="92" cy="155" r="2.6"/>
+      </g>
+    </g>
+  </svg>
+
+  <div class="max-w-[1400px] mx-auto px-5 md:px-10">
+    <!-- Eyebrow -->
+    <div class="reveal flex items-center justify-between mb-8 md:mb-14">
+      <span class="ornament text-[10px] md:text-[11px] tracking-widest-2 uppercase">Madrid · La Moraleja</span>
+      <span class="hidden md:inline-block text-[11px] tracking-widest-2 uppercase text-cedar/55">Est. 2003</span>
+    </div>
+
+    <!-- Big wordmark -->
+    <h1 class="display-hero text-cedar uppercase">
+      <span class="hidden md:block reveal delay-1 word-reveal text-[18vw] md:text-[14vw] lg:text-[200px]">du&nbsp;Liban</span>
+      <!-- Mobile-designed hero: script wordmark dominant, all-caps small -->
+      <span class="block md:hidden">
+        <span class="reveal block font-script text-teal text-[28vw] leading-[0.8] -ml-1 normal-case">du Liban</span>
+        <span class="reveal delay-1 block mt-3 text-[10vw] tracking-tightest leading-none">Cocina Libanesa</span>
+      </span>
+    </h1>
+
+    <!-- Sub row -->
+    <div class="mt-8 md:mt-12 grid md:grid-cols-12 gap-6 md:gap-10">
+      <div class="reveal delay-2 md:col-span-5">
+        <p class="font-display italic text-2xl md:text-3xl text-cedar leading-snug">
+          Recetas que cruzaron el Mediterráneo desde Beirut, servidas en el corazón de La Moraleja.
+        </p>
+      </div>
+      <div class="reveal delay-3 md:col-span-4 md:col-start-8 text-cedar/75 text-[15px] leading-relaxed">
+        <p>Una mesa familiar abierta a Madrid desde 2003: mezze al fuego de horno, brasas, postres con agua de azahar y la hospitalidad libanesa de toda la vida.</p>
+      </div>
+    </div>
+
+    <!-- Scroll hint -->
+    <div class="reveal delay-4 mt-12 md:mt-16 flex items-center gap-6 text-[11px] tracking-widest-2 uppercase text-cedar/55">
+      <span>Desliza</span>
+      <span class="block w-16 h-px bg-cedar/30"></span>
+      <span>Carta · Concepto · Eventos</span>
+    </div>
+  </div>
+
+  <!-- Cinematic interior image -->
+  <div class="reveal delay-5 mt-12 md:mt-20 max-w-[1400px] mx-auto px-5 md:px-10">
+    <div class="relative overflow-hidden rounded-sm">
+      <img
+        src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=2400&q=80"
+        alt="Comedor del restaurante du Liban con luz cálida y mesas vestidas"
+        class="img-reveal w-full h-[58vh] md:h-[78vh] object-cover"
+        loading="eager"
+        fetchpriority="high"
+      />
+      <div class="absolute inset-0 bg-gradient-to-t from-cedar-deep/40 via-transparent to-transparent pointer-events-none"></div>
+      <!-- Floating caption -->
+      <figcaption class="absolute bottom-5 left-5 md:bottom-8 md:left-8 text-cream text-[11px] tracking-widest-2 uppercase">
+        <span class="bg-cedar-deep/55 backdrop-blur-sm px-3 py-1.5 rounded-full">Plaza de la Moraleja, Alcobendas</span>
+      </figcaption>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────────────────────  MARQUEE  ───────────────────────── -->
+<section class="py-8 md:py-12 overflow-hidden border-y border-cedar/10 bg-sand/40">
+  <div class="marquee-track whitespace-nowrap">
+    <span class="marquee-word">Mezze</span><span class="marquee-dot"></span>
+    <span class="marquee-word">Tabbouleh</span><span class="marquee-dot"></span>
+    <span class="marquee-word">Kabab</span><span class="marquee-dot"></span>
+    <span class="marquee-word">Mashewi</span><span class="marquee-dot"></span>
+    <span class="marquee-word">Knefeh</span><span class="marquee-dot"></span>
+    <span class="marquee-word">Hummus</span><span class="marquee-dot"></span>
+    <span class="marquee-word">Manoucheh</span><span class="marquee-dot"></span>
+    <span class="marquee-word">Mezze</span><span class="marquee-dot"></span>
+    <span class="marquee-word">Tabbouleh</span><span class="marquee-dot"></span>
+    <span class="marquee-word">Kabab</span><span class="marquee-dot"></span>
+    <span class="marquee-word">Mashewi</span><span class="marquee-dot"></span>
+    <span class="marquee-word">Knefeh</span><span class="marquee-dot"></span>
+    <span class="marquee-word">Hummus</span><span class="marquee-dot"></span>
+    <span class="marquee-word">Manoucheh</span><span class="marquee-dot"></span>
+  </div>
+</section>
+
+<!-- ─────────────────────────  CONCEPTO  ───────────────────────── -->
+<section id="concepto" class="sec py-24 md:py-40 relative overflow-hidden">
+  <span class="sec-mark">01 · Concepto</span>
+  <svg class="corner-olive bottom-0 right-0" viewBox="0 0 380 380" aria-hidden="true">
+    <g stroke="#2F4A3E" stroke-width="1" fill="none" stroke-linecap="round">
+      <path d="M360 20 C 280 100, 200 180, 120 280 C 90 320, 60 350, 30 370"/>
+      <g fill="#2F4A3E" stroke="none">
+        <ellipse cx="320" cy="60"  rx="22" ry="8" transform="rotate(35 320 60)"/>
+        <ellipse cx="280" cy="110" rx="24" ry="9" transform="rotate(30 280 110)"/>
+        <ellipse cx="240" cy="160" rx="25" ry="9" transform="rotate(25 240 160)"/>
+        <ellipse cx="200" cy="210" rx="24" ry="8" transform="rotate(20 200 210)"/>
+        <ellipse cx="160" cy="260" rx="22" ry="8" transform="rotate(15 160 260)"/>
+        <ellipse cx="120" cy="300" rx="20" ry="7" transform="rotate(10 120 300)"/>
+      </g>
+    </g>
+  </svg>
+
+  <div class="max-w-[1100px] mx-auto px-5 md:px-10 text-center relative z-10">
+    <p class="reveal ornament text-[11px] tracking-widest-2 uppercase mb-8">Concepto</p>
+    <h2 class="reveal delay-1 word-reveal font-display text-cedar text-4xl md:text-6xl lg:text-7xl leading-[1.05] tracking-tightest">
+      Tres generaciones de cocina libanesa,<br class="hidden md:block"/>
+      una sola <em class="font-display italic">mesa</em>.
+    </h2>
+    <p class="reveal delay-2 mt-8 max-w-2xl mx-auto text-cedar/75 text-[16px] leading-relaxed">
+      Du Liban nace de una familia que aprendió a cocinar antes que a escribir. Lo que servimos cada noche es esa
+      memoria: el mezze que se comparte sin prisa, la brasa que se enciende al atardecer, los dulces con agua de
+      azahar que cierran la sobremesa. En La Moraleja desde 2003.
+    </p>
+  </div>
+
+  <div class="max-w-[1400px] mx-auto px-5 md:px-10 mt-16 md:mt-24 grid md:grid-cols-2 gap-6 md:gap-10">
+    <figure class="reveal tile aspect-[4/5] overflow-hidden rounded-sm bg-sand">
+      <img src="https://images.unsplash.com/photo-1606755456206-b25206cde27e?auto=format&fit=crop&w=1400&q=80"
+           alt="Mezze libanés sobre tablero de mármol con pan recién horneado"
+           class="img-reveal w-full h-full object-cover" loading="lazy"/>
+    </figure>
+    <figure class="reveal delay-2 tile aspect-[4/5] overflow-hidden rounded-sm bg-sand md:mt-20">
+      <img src="https://images.unsplash.com/photo-1599043513900-ed6fe01d3833?auto=format&fit=crop&w=1400&q=80"
+           alt="Detalle de plato libanés con granada y aceite de oliva"
+           class="img-reveal w-full h-full object-cover" loading="lazy"/>
+    </figure>
+  </div>
+
+  <!-- Side narrative -->
+  <div class="max-w-[1400px] mx-auto px-5 md:px-10 mt-20 md:mt-28 grid md:grid-cols-12 gap-10">
+    <div class="reveal md:col-span-5">
+      <p class="font-display italic text-cedar text-3xl md:text-4xl leading-tight">
+        "En cada mezze hay una historia familiar.
+        Cocinamos como en casa de la abuela en Beirut: con tiempo, con manos y con memoria."
+      </p>
+    </div>
+    <div class="reveal delay-1 md:col-span-6 md:col-start-7 text-cedar/75 text-[15px] leading-relaxed space-y-4">
+      <p>
+        El horno de leña, el mortero de piedra y la parrilla son los tres pilares de nuestra cocina. De ellos salen
+        los manoucheh recién horneados, el tabbouleh picado a cuchillo, el cordero al carbón y los kebabs especiados
+        a mano.
+      </p>
+      <p>
+        Trabajamos producto del día: hierbas frescas, cordero lechal, pescado de lonja y verduras de temporada.
+        Las salsas, los encurtidos y los dulces se elaboran cada mañana en nuestra cocina.
+      </p>
+      <p class="pt-2">
+        <a href="#carta" class="inline-flex items-center gap-2 text-cedar font-medium border-b border-cedar/40 hover:border-terracotta hover:text-terracotta transition-colors duration-200 pb-0.5">
+          Descubrir la carta
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+        </a>
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────────────────────  CARTA / MENU  ───────────────────────── -->
+<section id="carta" class="sec py-24 md:py-40 bg-elevated border-y border-cedar/10 relative overflow-hidden">
+  <span class="sec-mark">02 · La carta</span>
+  <svg class="corner-olive top-0 left-0" style="transform: scaleX(-1) scaleY(-1)" viewBox="0 0 380 380" aria-hidden="true">
+    <g stroke="#2F4A3E" stroke-width="1" fill="none" stroke-linecap="round">
+      <path d="M360 20 C 280 100, 200 180, 120 280 C 90 320, 60 350, 30 370"/>
+      <g fill="#2F4A3E" stroke="none">
+        <ellipse cx="320" cy="60" rx="22" ry="8" transform="rotate(35 320 60)"/>
+        <ellipse cx="280" cy="110" rx="24" ry="9" transform="rotate(30 280 110)"/>
+        <ellipse cx="240" cy="160" rx="25" ry="9" transform="rotate(25 240 160)"/>
+        <ellipse cx="200" cy="210" rx="24" ry="8" transform="rotate(20 200 210)"/>
+      </g>
+    </g>
+  </svg>
+  <div class="max-w-[1400px] mx-auto px-5 md:px-10 relative z-10">
+    <div class="grid md:grid-cols-12 gap-8 md:gap-16 mb-14 md:mb-20">
+      <div class="md:col-span-5 reveal">
+        <p class="ornament text-[11px] tracking-widest-2 uppercase mb-6">La carta</p>
+        <h2 class="word-reveal font-display text-cedar text-4xl md:text-6xl leading-[1.02] tracking-tightest">
+          De la <em class="italic">brasa</em> a la mesa,<br/>
+          de Beirut a Madrid.
+        </h2>
+      </div>
+      <div class="md:col-span-6 md:col-start-7 reveal delay-1 text-cedar/75 text-[15px] leading-relaxed self-end">
+        <p>Una selección viva, escrita en cinco actos. Empezamos por el horno y el mezze frío, pasamos al mezze caliente, llegamos a la brasa y cerramos con los dulces de toda la vida. Todos los precios incluyen IVA.</p>
+      </div>
+    </div>
+
+    <!-- Accordion -->
+    <div id="menuAccordion" class="reveal delay-2">
+
+      <!-- DEL HORNO -->
+      <div class="menu-block">
+        <button class="menu-row" aria-expanded="false" aria-controls="m-horno">
+          <span class="row-bar"></span>
+          <span class="row-count">(04)</span>
+          <span class="row-text">Del Horno</span>
+          <span class="row-arrow" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </span>
+          <img class="row-thumb thumb-l" alt="" aria-hidden="true" src="https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=400&q=80">
+          <img class="row-thumb thumb-r" alt="" aria-hidden="true" src="https://images.unsplash.com/photo-1565299585323-38d6b0865b47?auto=format&fit=crop&w=400&q=80">
+        </button>
+        <div id="m-horno" class="menu-detail pb-10 md:pb-14">
+          <ul class="grid md:grid-cols-2 gap-x-12 gap-y-6">
+            <li class="dish">
+              <div class="dish-head"><span class="dish-name">Kafta bil Jebneh</span><span class="dish-dots"></span><span class="dish-price">15&nbsp;€</span></div>
+              <p class="dish-desc">Masa al horno, kafta (carne especiada), mezcla de quesos, mayonesa y pepinillos.</p>
+            </li>
+            <li class="dish">
+              <div class="dish-head"><span class="dish-name">Lahme bi Aajin</span><span class="dish-dots"></span><span class="dish-price">13&nbsp;€</span></div>
+              <p class="dish-desc">Masa al horno con mezcla de carne, piñones y limón.</p>
+            </li>
+            <li class="dish">
+              <div class="dish-head"><span class="dish-name">Manoucheh Jebneh</span><span class="dish-dots"></span><span class="dish-price">12&nbsp;€</span></div>
+              <p class="dish-desc">Masa al horno con mezcla de quesos y sésamo blanco y negro.</p>
+            </li>
+            <li class="dish">
+              <div class="dish-head"><span class="dish-name">Zaatar &amp; Labneh Manoucheh</span><span class="dish-dots"></span><span class="dish-price">12&nbsp;€</span></div>
+              <p class="dish-desc">Masa al horno con zaatar, labneh, menta, aceitunas y tomates cherry.</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- MEZZE FRÍO -->
+      <div class="menu-block">
+        <button class="menu-row" aria-expanded="false" aria-controls="m-frio">
+          <span class="row-bar"></span>
+          <span class="row-count">(11)</span>
+          <span class="row-text">Mezze Frío</span>
+          <span class="row-arrow" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </span>
+          <img class="row-thumb thumb-l" alt="" aria-hidden="true" src="https://images.unsplash.com/photo-1540914124281-342587941389?auto=format&fit=crop&w=400&q=80">
+          <img class="row-thumb thumb-r" alt="" aria-hidden="true" src="https://images.unsplash.com/photo-1546833999-b9f581a1996d?auto=format&fit=crop&w=400&q=80">
+        </button>
+        <div id="m-frio" class="menu-detail pb-10 md:pb-14">
+          <ul class="grid md:grid-cols-2 gap-x-12 gap-y-6">
+            <li class="dish"><div class="dish-head"><span class="dish-name">Fattoush</span><span class="dish-dots"></span><span class="dish-price">14&nbsp;€</span></div><p class="dish-desc">Hojas verdes, tomate, cebolla tierna, pepino, rábano, pan frito, melaza de granada y sumac.</p></li>
+            <li class="dish"><div class="dish-head"><span class="dish-name">Tabbouleh</span><span class="dish-dots"></span><span class="dish-price">13&nbsp;€</span></div><p class="dish-desc">Perejil, tomate, bulgur, cebolla, limón y aceite de oliva.</p></li>
+            <li class="dish"><div class="dish-head"><span class="dish-name">Salata al Jarjir</span><span class="dish-dots"></span><span class="dish-price">12&nbsp;€</span></div><p class="dish-desc">Rúcula, tomillo, cebolla, sumac y salsa de mostaza al limón.</p></li>
+            <li class="dish"><div class="dish-head"><span class="dish-name">Salata al Rubyan</span><span class="dish-dots"></span><span class="dish-price">18&nbsp;€</span></div><p class="dish-desc">Langostinos, tomates cherry, albahaca y piñones.</p></li>
+            <li class="dish"><div class="dish-head"><span class="dish-name">Hummus</span><span class="dish-dots"></span><span class="dish-price">13&nbsp;€</span></div><p class="dish-desc">Garbanzos cocidos, pasta tahini y aceite de oliva.</p></li>
+            <li class="dish"><div class="dish-head"><span class="dish-name">Hummus bil Pesto</span><span class="dish-dots"></span><span class="dish-price">16&nbsp;€</span></div><p class="dish-desc">Garbanzos cocidos, pasta tahini y pesto de pistacho.</p></li>
+            <li class="dish"><div class="dish-head"><span class="dish-name">Moutabal</span><span class="dish-dots"></span><span class="dish-price">12&nbsp;€</span></div><p class="dish-desc">Berenjena asada, tahini, aceite de oliva y semillas de granada.</p></li>
+            <li class="dish"><div class="dish-head"><span class="dish-name">Warak Enab</span><span class="dish-dots"></span><span class="dish-price">14&nbsp;€</span></div><p class="dish-desc">Hojas de parra rellenas con arroz y carne picada.</p></li>
+            <li class="dish"><div class="dish-head"><span class="dish-name">Muhammara</span><span class="dish-dots"></span><span class="dish-price">14&nbsp;€</span></div><p class="dish-desc">Pimiento rojo, cebolla, tomate, tahini, pan rallado, comino, melaza de granada, aceite de oliva y nueces.</p></li>
+            <li class="dish"><div class="dish-head"><span class="dish-name">Ariche bel Zaatar</span><span class="dish-dots"></span><span class="dish-price">15&nbsp;€</span></div><p class="dish-desc">Queso ariche, cebolla, tomate, pimiento verde, sumac, aceite de oliva y especias aromáticas.</p></li>
+            <li class="dish"><div class="dish-head"><span class="dish-name">Quinoa ma al Shamandar</span><span class="dish-dots"></span><span class="dish-price">14&nbsp;€</span></div><p class="dish-desc">Remolacha, quinoa, tahini, nueces, tomillo, albahaca y aceite de oliva.</p></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- MEZZE CALIENTE -->
+      <div class="menu-block">
+        <button class="menu-row" aria-expanded="false" aria-controls="m-caliente">
+          <span class="row-bar"></span>
+          <span class="row-count">(13)</span>
+          <span class="row-text">Mezze Caliente</span>
+          <span class="row-arrow" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </span>
+          <img class="row-thumb thumb-l" alt="" aria-hidden="true" src="https://images.unsplash.com/photo-1561651823-34feb02250e4?auto=format&fit=crop&w=400&q=80">
+          <img class="row-thumb thumb-r" alt="" aria-hidden="true" src="https://images.unsplash.com/photo-1625944230945-1b7dd3b949ab?auto=format&fit=crop&w=400&q=80">
+        </button>
+        <div id="m-caliente" class="menu-detail pb-10 md:pb-14">
+          <ul class="grid md:grid-cols-2 gap-x-12 gap-y-6">
+            <li class="dish"><div class="dish-head"><span class="dish-name">Hummus Lahme</span><span class="dish-dots"></span><span class="dish-price">17&nbsp;€</span></div><p class="dish-desc">Hummus con mezcla de carne y piñones.</p></li>
+            <li class="dish"><div class="dish-head"><span class="dish-name">Rass Assfour</span><span class="dish-dots"></span><span class="dish-price">22&nbsp;€</span></div><p class="dish-desc">Trozos de carne salteados con ajo, mantequilla, piñones, limón o salsa de granada.</p></li>
+            <li class="dish"><div class="dish-head"><span class="dish-name">Fatteh al Rubyan</span><span class="dish-dots"></span><span class="dish-price">22&nbsp;€</span></div><p class="dish-desc">Pan frito, langostinos, yogur, ajo, cilantro, berenjena frita y piñones.</p></li>
+            <li class="dish"><div class="dish-head"><span class="dish-name">Fatteh Djaj</span><span class="dish-dots"></span><span class="dish-price">20&nbsp;€</span></div><p class="dish-desc">Arroz con canela, yogur, pollo a la parrilla, ajo, berenjena frita, piñones y cilantro.</p></li>
+            <li class="dish"><div class="dish-head"><span class="dish-name">Hallumi</span><span class="dish-dots"></span><span class="dish-price">17&nbsp;€</span></div><p class="dish-desc">Halloumi empanizado, mermelada de higo, semillas de granada y espinaca baby.</p></li>
+            <li class="dish"><div class="dish-head"><span class="dish-name">Kebbeh Sajyeh</span><span class="dish-dots"></span><span class="dish-price">13&nbsp;€</span></div><p class="dish-desc">Masa de kibbeh rellena de carne y nueces (4 piezas).</p></li>
+            <li class="dish"><div class="dish-head"><span class="dish-name">Hummus Falafel</span><span class="dish-dots"></span><span class="dish-price">16&nbsp;€</span></div><p class="dish-desc">Falafel con hummus y aceite de oliva.</p></li>
+            <li class="dish"><div class="dish-head"><span class="dish-name">Batata Meklieh</span><span class="dish-dots"></span><span class="dish-price">10&nbsp;€</span></div><p class="dish-desc">Patatas fritas.</p></li>
+            <li class="dish"><div class="dish-head"><span class="dish-name">Batata Harrah</span><span class="dish-dots"></span><span class="dish-price">13&nbsp;€</span></div><p class="dish-desc">Cubos de patata con cilantro, pasta de chile y ajo.</p></li>
+            <li class="dish"><div class="dish-head"><span class="dish-name">Jawaneh Dajaj</span><span class="dish-dots"></span><span class="dish-price">17&nbsp;€</span></div><p class="dish-desc">Alitas a la parrilla salteadas con ajo, limón y cilantro.</p></li>
+            <li class="dish"><div class="dish-head"><span class="dish-name">Soujok</span><span class="dish-dots"></span><span class="dish-price">18&nbsp;€</span></div><p class="dish-desc">Salchicha soujok con cebolla, pimiento, tomate, limón y comino.</p></li>
+            <li class="dish"><div class="dish-head"><span class="dish-name">Rakakt Jebneh</span><span class="dish-dots"></span><span class="dish-price">13&nbsp;€</span></div><p class="dish-desc">4 rollos de queso rellenos a la parrilla.</p></li>
+            <li class="dish"><div class="dish-head"><span class="dish-name">Okhtobut bil Thoum</span><span class="dish-dots"></span><span class="dish-price">25&nbsp;€</span></div><p class="dish-desc">Pulpo sellado con ajo, limón y cilantro.</p></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- MASHEWEH -->
+      <div class="menu-block">
+        <button class="menu-row" aria-expanded="false" aria-controls="m-mash">
+          <span class="row-bar"></span>
+          <span class="row-count">(09)</span>
+          <span class="row-text">Masheweh · A la brasa</span>
+          <span class="row-arrow" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </span>
+          <img class="row-thumb thumb-l" alt="" aria-hidden="true" src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=400&q=80">
+          <img class="row-thumb thumb-r" alt="" aria-hidden="true" src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=400&q=80">
+        </button>
+        <div id="m-mash" class="menu-detail pb-10 md:pb-14">
+          <ul class="grid md:grid-cols-2 gap-x-12 gap-y-6">
+            <li class="dish"><div class="dish-head"><span class="dish-name">Taouk</span><span class="dish-dots"></span><span class="dish-price">23&nbsp;€</span></div><p class="dish-desc">Cubos de pollo Taouk a la parrilla, pepinillos y pasta de ajo.</p></li>
+            <li class="dish"><div class="dish-head"><span class="dish-name">Farrouj</span><span class="dish-dots"></span><span class="dish-price">26&nbsp;€</span></div><p class="dish-desc">Pollo deshuesado a la parrilla con pepinillos y ajo.</p></li>
+            <li class="dish"><div class="dish-head"><span class="dish-name">Lahmeh Mshwieh</span><span class="dish-dots"></span><span class="dish-price">32&nbsp;€</span></div><p class="dish-desc">Cubos de carne a la parrilla con grasa, cebolla asada, tomate y chile.</p></li>
+            <li class="dish"><div class="dish-head"><span class="dish-name">Kabab</span><span class="dish-dots"></span><span class="dish-price">23&nbsp;€</span></div><p class="dish-desc">Kabab a la parrilla con cebolla asada, tomate, chile y biwaz.</p></li>
+            <li class="dish"><div class="dish-head"><span class="dish-name">Mawzet Kharouf</span><span class="dish-dots"></span><span class="dish-price">35&nbsp;€</span></div><p class="dish-desc">Jarrete de cordero con arroz especiado y frutos secos.</p></li>
+            <li class="dish"><div class="dish-head"><span class="dish-name">Shawarma Lehme</span><span class="dish-dots"></span><span class="dish-price">26&nbsp;€</span></div><p class="dish-desc">Shawarma de res, tomate, biwaz, salsa tarator y pepinillos.</p></li>
+            <li class="dish"><div class="dish-head"><span class="dish-name">Freekeh Djaj</span><span class="dish-dots"></span><span class="dish-price">27&nbsp;€</span></div><p class="dish-desc">Freekeh cocido con carne, cebolla y especias, cubierto con pollo, frutos secos y salsa gravy.</p></li>
+            <li class="dish"><div class="dish-head"><span class="dish-name">Okhtobut Mashwi</span><span class="dish-dots"></span><span class="dish-price">26&nbsp;€</span></div><p class="dish-desc">Pulpo a la parrilla servido con salsa de hierbas, limón y aceite picante.</p></li>
+            <li class="dish"><div class="dish-head"><span class="dish-name">Samak Mashwi</span><span class="dish-dots"></span><span class="dish-price">58&nbsp;€</span></div><p class="dish-desc">Lubina a la parrilla servida con salsa tarator y limón.</p></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- POSTRES -->
+      <div class="menu-block">
+        <button class="menu-row" aria-expanded="false" aria-controls="m-postres">
+          <span class="row-bar"></span>
+          <span class="row-count">(05)</span>
+          <span class="row-text">Postres</span>
+          <span class="row-arrow" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </span>
+          <img class="row-thumb thumb-l" alt="" aria-hidden="true" src="https://images.unsplash.com/photo-1551024506-0bccd828d307?auto=format&fit=crop&w=400&q=80">
+          <img class="row-thumb thumb-r" alt="" aria-hidden="true" src="https://images.unsplash.com/photo-1568827999250-3f6afff96e66?auto=format&fit=crop&w=400&q=80">
+        </button>
+        <div id="m-postres" class="menu-detail pb-10 md:pb-14">
+          <ul class="grid md:grid-cols-2 gap-x-12 gap-y-6">
+            <li class="dish"><div class="dish-head"><span class="dish-name">Em Ali</span><span class="dish-dots"></span><span class="dish-price">15&nbsp;€</span></div><p class="dish-desc">Milhojas bañada en salsa especial Em Ali, cubierta con pistacho, nata, almendra y nuez.</p></li>
+            <li class="dish"><div class="dish-head"><span class="dish-name">Mafroukit Ashta</span><span class="dish-dots"></span><span class="dish-price">14&nbsp;€</span></div><p class="dish-desc">Mafrouki de pistacho relleno con crema de leche y sirope de azúcar.</p></li>
+            <li class="dish"><div class="dish-head"><span class="dish-name">Aish el Saraya</span><span class="dish-dots"></span><span class="dish-price">12&nbsp;€</span></div><p class="dish-desc">Masa Aish el Saraya con mezcla de crema de leche y frutos secos.</p></li>
+            <li class="dish"><div class="dish-head"><span class="dish-name">Knefeh</span><span class="dish-dots"></span><span class="dish-price">14&nbsp;€</span></div><p class="dish-desc">Masa de knefeh rellena de queso libanés, sirope de azúcar y pistacho.</p></li>
+            <li class="dish"><div class="dish-head"><span class="dish-name">Mhalabieh</span><span class="dish-dots"></span><span class="dish-price">11&nbsp;€</span></div><p class="dish-desc">Postre de leche servido con salsa ghazel y caramelo.</p></li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Allergens note -->
+    <p class="reveal mt-10 text-center text-[12px] tracking-wider-2 uppercase text-cedar/55">
+      ¿Alergias o intolerancias? Consulte con nuestro equipo · Todos los precios incluyen IVA
+    </p>
+  </div>
+</section>
+
+<style>
+  .dish { padding-top: 0; }
+  .dish-head { display: grid; grid-template-columns: auto 1fr auto; align-items: baseline; gap: .6rem; }
+  .dish-name { font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 19px; color: #1F3329; letter-spacing: .01em; }
+  .dish-price { font-feature-settings: 'tnum'; color: #2F4A3E; font-weight: 500; font-size: 15px; }
+  .dish-dots { border-bottom: 1px dotted #2F4A3E66; transform: translateY(-4px); }
+  .dish-desc { font-size: 13.5px; line-height: 1.55; color: rgba(47,74,62,.72); margin-top: 4px; max-width: 52ch; font-style: italic; }
+</style>
+
+<!-- ─────────────────────────  CHEF QUOTE + GALLERY  ───────────────────────── -->
+<section id="chef" class="sec py-24 md:py-40 relative overflow-hidden">
+  <span class="sec-mark">03 · La cocina</span>
+  <!-- Olive ornament -->
+  <svg class="absolute top-10 left-0 w-32 md:w-56 opacity-80 pointer-events-none sway" style="--rot:165deg" viewBox="0 0 220 220" fill="none" aria-hidden="true">
+    <g stroke="#2F4A3E" stroke-width="1.2" stroke-linecap="round" fill="none">
+      <path d="M195 18 C 160 50, 130 90, 95 145 C 78 172, 60 192, 38 205" />
+      <g fill="#2F4A3E" stroke="none" opacity=".9">
+        <ellipse cx="178" cy="40" rx="13" ry="5" transform="rotate(35 178 40)"/>
+        <ellipse cx="160" cy="62" rx="14" ry="5" transform="rotate(30 160 62)"/>
+        <ellipse cx="140" cy="88" rx="15" ry="5.5" transform="rotate(25 140 88)"/>
+        <ellipse cx="120" cy="116" rx="14" ry="5" transform="rotate(20 120 116)"/>
+        <ellipse cx="100" cy="142" rx="13" ry="5" transform="rotate(15 100 142)"/>
+        <ellipse cx="78" cy="170" rx="12" ry="4.5" transform="rotate(10 78 170)"/>
+      </g>
+    </g>
+  </svg>
+
+  <div class="max-w-[1400px] mx-auto px-5 md:px-10">
+    <div class="grid md:grid-cols-12 gap-10 md:gap-16 items-end mb-14 md:mb-20">
+      <div class="md:col-span-5 reveal">
+        <p class="ornament text-[11px] tracking-widest-2 uppercase mb-6">La cocina</p>
+        <h2 class="word-reveal font-display text-cedar text-4xl md:text-6xl leading-[1.04] tracking-tightest">
+          La hospitalidad libanesa, plato a plato.
+        </h2>
+      </div>
+      <div class="md:col-span-6 md:col-start-7 reveal delay-1">
+        <blockquote class="font-display italic text-cedar text-2xl md:text-3xl leading-snug">
+          "En Líbano se come para celebrar, para recordar y para querernos. Aquí hacemos lo mismo, todas las noches, con producto de Madrid y manos de Beirut."
+        </blockquote>
+        <div class="mt-6 flex items-center gap-4">
+          <div class="w-12 h-12 rounded-full bg-cedar/15 grid place-items-center text-cedar font-display text-xl">M</div>
+          <div>
+            <p class="font-display text-cedar text-lg">El equipo de cocina</p>
+            <p class="text-[12px] tracking-wider-2 uppercase text-cedar/55">du Liban · Madrid</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Gallery: editorial 5-tile on desktop · horizontal snap on mobile -->
+    <div class="md:hidden -mx-5">
+      <div class="flex gap-3 overflow-x-auto px-5 snap-x snap-mandatory pb-2" style="scrollbar-width: none;">
+        <figure class="tile snap-center shrink-0 w-[78vw] aspect-[4/5] overflow-hidden rounded-sm">
+          <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1400&q=80" alt="Mesa servida con velas y vajilla cálida" class="img-reveal w-full h-full object-cover" loading="lazy"/>
+        </figure>
+        <figure class="tile snap-center shrink-0 w-[78vw] aspect-[4/5] overflow-hidden rounded-sm">
+          <img src="https://images.unsplash.com/photo-1574484284002-952d92456975?auto=format&fit=crop&w=1100&q=80" alt="Carne a la brasa libanesa con cebolla y limón" class="img-reveal w-full h-full object-cover" loading="lazy"/>
+        </figure>
+        <figure class="tile snap-center shrink-0 w-[78vw] aspect-[4/5] overflow-hidden rounded-sm">
+          <img src="https://images.unsplash.com/photo-1631515243348-2c1b1f99ad57?auto=format&fit=crop&w=1100&q=80" alt="Postre libanés con pistacho y agua de azahar" class="img-reveal w-full h-full object-cover" loading="lazy"/>
+        </figure>
+        <figure class="tile snap-center shrink-0 w-[78vw] aspect-[4/5] overflow-hidden rounded-sm">
+          <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1600&q=80" alt="Comedor del restaurante con luz cálida" class="img-reveal w-full h-full object-cover" loading="lazy"/>
+        </figure>
+      </div>
+      <p class="px-5 mt-3 text-[11px] tracking-widest-2 uppercase text-cedar/55">Desliza para ver más</p>
+    </div>
+
+    <div class="hidden md:grid grid-cols-12 gap-5">
+      <figure class="tile col-span-5 aspect-[4/5] overflow-hidden rounded-sm reveal">
+        <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1400&q=80"
+             alt="Mesa servida con velas y vajilla cálida" class="img-reveal w-full h-full object-cover" loading="lazy"/>
+      </figure>
+      <div class="col-span-7 grid grid-cols-2 gap-5">
+        <figure class="tile aspect-square overflow-hidden rounded-sm reveal delay-1">
+          <img src="https://images.unsplash.com/photo-1574484284002-952d92456975?auto=format&fit=crop&w=900&q=80"
+               alt="Carne a la brasa libanesa con cebolla y limón" class="img-reveal w-full h-full object-cover" loading="lazy"/>
+        </figure>
+        <figure class="tile aspect-square overflow-hidden rounded-sm reveal delay-2">
+          <img src="https://images.unsplash.com/photo-1631515243348-2c1b1f99ad57?auto=format&fit=crop&w=900&q=80"
+               alt="Postre libanés con pistacho y agua de azahar" class="img-reveal w-full h-full object-cover" loading="lazy"/>
+        </figure>
+        <figure class="tile aspect-square overflow-hidden rounded-sm col-span-2 reveal delay-3">
+          <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1600&q=80"
+               alt="Comedor del restaurante con luz cálida" class="img-reveal w-full h-full object-cover" loading="lazy"/>
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────────────────────  SCRIPT OVERLAY · BEIRUT EN MADRID  ───────────────────────── -->
+<section class="sec py-24 md:py-36 bg-cedar-elevated text-cream relative overflow-hidden">
+  <span class="sec-mark sec-mark--light">— Pausa</span>
+  <div class="absolute inset-0 pointer-events-none opacity-[0.08]" aria-hidden="true">
+    <div class="absolute -top-10 left-1/2 -translate-x-1/2 whitespace-nowrap font-script text-gold leading-none" style="font-size: clamp(180px, 30vw, 520px);">Beirut · Madrid</div>
+  </div>
+
+  <div class="max-w-[1100px] mx-auto px-5 md:px-10 relative z-10">
+    <p class="reveal text-center text-[11px] tracking-widest-2 uppercase text-gold/90 mb-8">Cuando vienes a du Liban</p>
+    <h2 class="reveal delay-1 font-display text-cream text-center text-4xl md:text-6xl lg:text-7xl leading-[1.04] tracking-tightest">
+      <span>El primer plato</span>
+      <span class="font-script text-gold-soft block text-6xl md:text-8xl my-2">tarda en llegar.</span>
+      <span>El último también.</span>
+    </h2>
+    <p class="reveal delay-2 mt-10 text-center max-w-2xl mx-auto text-cream/75 text-[15px] leading-relaxed">
+      Comer libanés es comer despacio. Mezze para compartir, vino, conversación. Reserva con tiempo y deja que la
+      mesa se llene de a poco — como en Beirut.
+    </p>
+    <div class="reveal delay-3 mt-10 flex flex-wrap items-center justify-center gap-3">
+      <a href="https://restauranteduliban.es/reservations/" target="_blank" rel="noopener" data-magnetic data-cursor="cta" class="btn-reserve magnetic inline-flex items-center gap-2 bg-terracotta hover:bg-terracotta-deep text-cream text-[12px] tracking-wider-2 uppercase px-6 py-3 rounded-full transition-colors duration-200 cursor-pointer">
+        Reservar mesa
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+      </a>
+      <a href="tel:+34916250072" class="inline-flex items-center gap-2 border border-cream/30 hover:border-gold-soft text-cream text-[12px] tracking-wider-2 uppercase px-6 py-3 rounded-full transition-colors duration-200 cursor-pointer">
+        Llamar al 916 25 00 72
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────────────────────  EVENTOS PRIVADOS  ───────────────────────── -->
+<section id="eventos" class="sec py-24 md:py-36 relative overflow-hidden">
+  <span class="sec-mark">04 · Eventos privados</span>
+  <svg class="corner-olive bottom-0 right-0" viewBox="0 0 380 380" aria-hidden="true">
+    <g stroke="#2F4A3E" stroke-width="1" fill="none" stroke-linecap="round">
+      <path d="M360 20 C 280 100, 200 180, 120 280 C 90 320, 60 350, 30 370"/>
+      <g fill="#2F4A3E" stroke="none">
+        <ellipse cx="320" cy="60" rx="22" ry="8" transform="rotate(35 320 60)"/>
+        <ellipse cx="280" cy="110" rx="24" ry="9" transform="rotate(30 280 110)"/>
+        <ellipse cx="240" cy="160" rx="25" ry="9" transform="rotate(25 240 160)"/>
+        <ellipse cx="200" cy="210" rx="24" ry="8" transform="rotate(20 200 210)"/>
+        <ellipse cx="160" cy="260" rx="22" ry="8" transform="rotate(15 160 260)"/>
+      </g>
+    </g>
+  </svg>
+  <div class="max-w-[1400px] mx-auto px-5 md:px-10 grid md:grid-cols-12 gap-10 md:gap-16 items-center relative z-10">
+    <div class="md:col-span-6 reveal">
+      <figure class="tile aspect-[5/6] overflow-hidden rounded-sm">
+        <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=1400&q=80"
+             alt="Mesa larga vestida para evento privado en du Liban"
+             class="img-reveal w-full h-full object-cover" loading="lazy"/>
+      </figure>
+    </div>
+    <div class="md:col-span-6 reveal delay-1">
+      <p class="ornament text-[11px] tracking-widest-2 uppercase mb-6">Eventos privados &amp; catering</p>
+      <h2 class="word-reveal font-display text-cedar text-4xl md:text-5xl leading-[1.05] tracking-tightest mb-6">
+        Una cena en casa. Una boda. Una recepción de embajada.
+      </h2>
+      <p class="text-cedar/75 text-[15px] leading-relaxed mb-6">
+        Diseñamos menús a medida para reuniones íntimas, celebraciones familiares, eventos corporativos y catering
+        en La Moraleja y resto de Madrid. Mezze para 12 o banquetes para 200, con nuestro equipo y nuestro horno.
+      </p>
+      <ul class="text-cedar/85 text-[14px] grid grid-cols-2 gap-y-3 gap-x-6 mb-8">
+        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-gold"></span> Salones privados</li>
+        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-gold"></span> Catering a domicilio</li>
+        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-gold"></span> Cócteles &amp; shisha</li>
+        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-gold"></span> Menús kosher / halal</li>
+        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-gold"></span> Servicio de protocolo</li>
+        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-gold"></span> Música en directo</li>
+      </ul>
+      <a href="mailto:reservas@dulibanrestaurants.com?subject=Evento%20privado%20-%20du%20Liban" class="inline-flex items-center gap-2 text-cedar font-medium border-b border-cedar/40 hover:border-terracotta hover:text-terracotta transition-colors duration-200 pb-0.5">
+        Solicitar propuesta de evento
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────────────────────  VISÍTANOS  ───────────────────────── -->
+<section id="visitanos" class="sec py-24 md:py-36 bg-elevated-deep border-y border-cedar/10 relative overflow-hidden">
+  <span class="sec-mark">05 · Visítanos</span>
+  <svg class="corner-olive top-0 right-0" style="transform: scaleX(-1)" viewBox="0 0 380 380" aria-hidden="true">
+    <g stroke="#2F4A3E" stroke-width="1" fill="none" stroke-linecap="round">
+      <path d="M360 20 C 280 100, 200 180, 120 280 C 90 320, 60 350, 30 370"/>
+      <g fill="#2F4A3E" stroke="none">
+        <ellipse cx="320" cy="60" rx="22" ry="8" transform="rotate(35 320 60)"/>
+        <ellipse cx="280" cy="110" rx="24" ry="9" transform="rotate(30 280 110)"/>
+        <ellipse cx="240" cy="160" rx="25" ry="9" transform="rotate(25 240 160)"/>
+      </g>
+    </g>
+  </svg>
+  <div class="max-w-[1400px] mx-auto px-5 md:px-10 grid md:grid-cols-12 gap-12 md:gap-16 relative z-10">
+    <div class="md:col-span-5 reveal">
+      <p class="ornament text-[11px] tracking-widest-2 uppercase mb-6">Visítanos</p>
+      <h2 class="word-reveal font-display text-cedar text-4xl md:text-5xl leading-[1.05] tracking-tightest mb-8">
+        En la Plaza de La Moraleja, detrás de los olivos.
+      </h2>
+
+      <address class="not-italic">
+        <p class="font-display text-cedar text-2xl leading-snug mb-1">Plaza de la Moraleja</p>
+        <p class="text-cedar/80">C. de la Estafeta, 2 · Local 4/5</p>
+        <p class="text-cedar/80">28109 Alcobendas · Madrid</p>
+      </address>
+
+      <div class="mt-8 hairline-soft"></div>
+
+      <div class="mt-8">
+        <p class="text-[11px] tracking-widest-2 uppercase text-cedar/55 mb-3">Horario</p>
+        <div class="hours-row"><span>Martes – Sábado</span><span class="text-cedar">13:00 – 16:00 · 20:00 – 00:00</span></div>
+        <div class="hours-row"><span>Domingo</span><span class="text-cedar">13:00 – 17:00</span></div>
+        <div class="hours-row"><span>Lunes</span><span class="text-cedar/55">Cerrado</span></div>
+      </div>
+
+      <div class="mt-8 hairline-soft"></div>
+
+      <div class="mt-8 grid sm:grid-cols-2 gap-6 text-[14px]">
+        <div>
+          <p class="text-[11px] tracking-widest-2 uppercase text-cedar/55 mb-2">Reservas</p>
+          <a href="tel:+34916250072" class="text-cedar hover:text-terracotta transition-colors duration-200 block">+34 916 25 00 72</a>
+          <a href="mailto:reservas@dulibanrestaurants.com" class="text-cedar hover:text-terracotta transition-colors duration-200 block">reservas@dulibanrestaurants.com</a>
+        </div>
+        <div>
+          <p class="text-[11px] tracking-widest-2 uppercase text-cedar/55 mb-2">Síguenos</p>
+          <a href="https://www.instagram.com/dulibanrestaurant/" target="_blank" rel="noopener" class="text-cedar hover:text-terracotta transition-colors duration-200 block">Instagram</a>
+          <a href="https://www.google.com/maps/search/?api=1&query=Du+Liban+La+Moraleja+Alcobendas" target="_blank" rel="noopener" class="text-cedar hover:text-terracotta transition-colors duration-200 block">Cómo llegar</a>
+        </div>
+      </div>
+
+      <div class="mt-10">
+        <a href="https://restauranteduliban.es/reservations/" target="_blank" rel="noopener" data-magnetic data-cursor="cta" class="btn-reserve magnetic inline-flex items-center gap-2 bg-terracotta hover:bg-terracotta-deep text-cream text-[12px] tracking-wider-2 uppercase px-6 py-3 rounded-full transition-colors duration-200 cursor-pointer">
+          Reservar online
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Map -->
+    <div class="md:col-span-7 reveal delay-1">
+      <div class="aspect-[4/5] md:aspect-[5/6] w-full overflow-hidden rounded-sm border border-cedar/10 bg-cream">
+        <iframe
+          title="Mapa de du Liban en La Moraleja, Alcobendas"
+          src="https://www.google.com/maps?q=Plaza%20de%20la%20Moraleja%2C%20C.%20de%20la%20Estafeta%202%2C%2028109%20Alcobendas&output=embed"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          class="w-full h-full"
+          style="border:0; filter: sepia(.15) saturate(.9) hue-rotate(-5deg);"
+          allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────────────────────  FOOTER  ───────────────────────── -->
+<footer class="bg-cedar-deep text-cream/85 pt-20 pb-8 relative overflow-hidden">
+  <div class="max-w-[1400px] mx-auto px-5 md:px-10">
+    <div class="grid md:grid-cols-12 gap-10">
+      <div class="md:col-span-5">
+        <p class="font-script text-gold-soft text-5xl mb-3 leading-none">du Liban</p>
+        <p class="text-[11px] tracking-widest-2 uppercase text-cream/55">Lebanese cuisine · Madrid</p>
+        <p class="mt-8 text-cream/65 text-[14px] leading-relaxed max-w-md">
+          Recetas familiares, horno de leña, mezze y brasa libanesa.
+          En La Moraleja desde 2003.
+        </p>
+      </div>
+
+      <div class="md:col-span-3">
+        <p class="text-[11px] tracking-widest-2 uppercase text-gold-soft/90 mb-4">Navegar</p>
+        <ul class="space-y-2 text-[14px]">
+          <li><a href="#concepto" class="text-cream/80 hover:text-cream transition-colors duration-200">Concepto</a></li>
+          <li><a href="#carta" class="text-cream/80 hover:text-cream transition-colors duration-200">Carta</a></li>
+          <li><a href="#chef" class="text-cream/80 hover:text-cream transition-colors duration-200">La cocina</a></li>
+          <li><a href="#eventos" class="text-cream/80 hover:text-cream transition-colors duration-200">Eventos privados</a></li>
+          <li><a href="#visitanos" class="text-cream/80 hover:text-cream transition-colors duration-200">Visítanos</a></li>
+        </ul>
+      </div>
+
+      <div class="md:col-span-4">
+        <p class="text-[11px] tracking-widest-2 uppercase text-gold-soft/90 mb-4">Contacto</p>
+        <ul class="space-y-2 text-[14px]">
+          <li><a href="tel:+34916250072" class="text-cream/80 hover:text-cream transition-colors duration-200">+34 916 25 00 72</a></li>
+          <li><a href="mailto:reservas@dulibanrestaurants.com" class="text-cream/80 hover:text-cream transition-colors duration-200">reservas@dulibanrestaurants.com</a></li>
+          <li class="text-cream/80">Plaza de la Moraleja, C. de la Estafeta 2 · Alcobendas</li>
+        </ul>
+        <p class="text-[11px] tracking-widest-2 uppercase text-gold-soft/90 mt-8 mb-4">Síguenos</p>
+        <div class="flex items-center gap-3">
+          <a href="https://www.instagram.com/dulibanrestaurant/" target="_blank" rel="noopener" aria-label="Instagram"
+             class="inline-flex w-10 h-10 items-center justify-center rounded-full border border-cream/20 hover:border-gold-soft hover:text-gold-soft transition-colors duration-200">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+          <a href="https://wa.me/34916250072" target="_blank" rel="noopener" aria-label="WhatsApp"
+             class="inline-flex w-10 h-10 items-center justify-center rounded-full border border-cream/20 hover:border-gold-soft hover:text-gold-soft transition-colors duration-200">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+          </a>
+          <a href="tel:+34916250072" aria-label="Llamar"
+             class="inline-flex w-10 h-10 items-center justify-center rounded-full border border-cream/20 hover:border-gold-soft hover:text-gold-soft transition-colors duration-200">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Massive wordmark with food-image fill -->
+    <div class="mt-20 md:mt-28 select-none">
+      <div class="word-fill text-[20vw] md:text-[22vw] leading-[0.85]" aria-hidden="true">du&nbsp;Liban</div>
+    </div>
+
+    <div class="mt-10 pt-6 border-t border-cream/10 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 text-[12px] text-cream/55">
+      <p>© <span id="year">2026</span> du Liban — Lebanese Cuisine. Todos los derechos reservados.</p>
+      <div class="flex items-center gap-5">
+        <a href="#" class="hover:text-cream transition-colors duration-200">Aviso legal</a>
+        <a href="#" class="hover:text-cream transition-colors duration-200">Privacidad</a>
+        <a href="#" class="hover:text-cream transition-colors duration-200">Cookies</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ─────────────────────────  SCRIPTS  ───────────────────────── -->
+<script>
+  // Year
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Preloader exit
+  window.addEventListener('load', () => {
+    const pre = document.getElementById('preloader');
+    if (!pre) return;
+    const t = setTimeout(() => pre.classList.add('gone'), 1100);
+    pre.addEventListener('click', () => { clearTimeout(t); pre.classList.add('gone'); });
+  });
+
+  // Compute path lengths for draw-on-view
+  document.querySelectorAll('.draw-on-view').forEach(svg => {
+    svg.querySelectorAll('path').forEach(p => {
+      try {
+        const len = p.getTotalLength();
+        p.style.setProperty('--len', len);
+        p.style.strokeDasharray = len;
+        p.style.strokeDashoffset = len;
+      } catch (e) {}
+    });
+  });
+
+  // Kick the preloader handwriting draw immediately
+  requestAnimationFrame(() => {
+    const pw = document.getElementById('preWord');
+    if (pw) pw.classList.add('in');
+  });
+
+  // IntersectionObserver reveals
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+
+  document.querySelectorAll('.reveal, .img-reveal, .draw-on-view, .word-reveal').forEach(el => {
+    if (reduce) { el.classList.add('in'); }
+    else { io.observe(el); }
+  });
+
+  // Menu accordion
+  document.querySelectorAll('#menuAccordion .menu-row').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const expanded = btn.getAttribute('aria-expanded') === 'true';
+      const id = btn.getAttribute('aria-controls');
+      const detail = document.getElementById(id);
+
+      // Close others (single-open pattern)
+      document.querySelectorAll('#menuAccordion .menu-row').forEach(b => {
+        if (b !== btn) {
+          b.setAttribute('aria-expanded', 'false');
+          const d = document.getElementById(b.getAttribute('aria-controls'));
+          if (d) d.classList.remove('open');
+        }
+      });
+
+      btn.setAttribute('aria-expanded', String(!expanded));
+      if (detail) detail.classList.toggle('open', !expanded);
+    });
+  });
+
+  // Open first menu block by default on desktop only
+  setTimeout(() => {
+    const first = document.querySelector('#menuAccordion .menu-row');
+    if (first && !reduce && window.innerWidth >= 900) first.click();
+  }, 1600);
+
+  // Smooth-scroll offset for sticky nav (anchor click)
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', (e) => {
+      const id = a.getAttribute('href');
+      if (id.length > 1) {
+        const target = document.querySelector(id);
+        if (target) {
+          e.preventDefault();
+          const y = target.getBoundingClientRect().top + window.scrollY - 80;
+          window.scrollTo({ top: y, behavior: reduce ? 'auto' : 'smooth' });
+        }
+      }
+    });
+  });
+
+  /* ── Word-by-word mask reveal ────────────────────────────────────────── */
+  document.querySelectorAll('.word-reveal').forEach(el => {
+    // Walk text nodes and wrap each whitespace-separated word
+    const wrap = (node) => {
+      if (node.nodeType === Node.TEXT_NODE) {
+        const frag = document.createDocumentFragment();
+        node.nodeValue.split(/(\s+)/).forEach(token => {
+          if (!token) return;
+          if (/^\s+$/.test(token)) {
+            frag.appendChild(document.createTextNode(token));
+          } else {
+            const w = document.createElement('span');
+            w.className = 'word';
+            const inner = document.createElement('span');
+            inner.textContent = token;
+            w.appendChild(inner);
+            frag.appendChild(w);
+          }
+        });
+        node.parentNode.replaceChild(frag, node);
+      } else if (node.nodeType === Node.ELEMENT_NODE && node.tagName !== 'BR' && !node.classList.contains('word')) {
+        Array.from(node.childNodes).forEach(wrap);
+      }
+    };
+    Array.from(el.childNodes).forEach(wrap);
+    // Stagger
+    el.querySelectorAll('.word > span').forEach((s, i) => {
+      s.style.transitionDelay = (i * 60) + 'ms';
+    });
+  });
+
+  /* ── Custom cursor (desktop) ─────────────────────────────────────────── */
+  const dot = document.getElementById('cursor-dot');
+  const ring = document.getElementById('cursor-ring');
+  const hasFinePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+  if (hasFinePointer && !reduce && dot && ring) {
+    document.body.classList.add('has-custom-cursor');
+    let mx = window.innerWidth / 2, my = window.innerHeight / 2;
+    let rx = mx, ry = my;
+    document.addEventListener('mousemove', (e) => { mx = e.clientX; my = e.clientY; });
+    const tick = () => {
+      rx += (mx - rx) * 0.18;
+      ry += (my - ry) * 0.18;
+      dot.style.transform = `translate(${mx - 3}px, ${my - 3}px)`;
+      ring.style.transform = `translate(${rx - 18}px, ${ry - 18}px)`;
+      requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+
+    // Expand on interactive
+    const interactiveSel = 'a, button, [data-cursor], .menu-row, .tile';
+    document.querySelectorAll(interactiveSel).forEach(el => {
+      el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
+      el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
+    });
+    document.addEventListener('mousedown', () => document.body.classList.add('cursor-press'));
+    document.addEventListener('mouseup',   () => document.body.classList.remove('cursor-press'));
+    document.addEventListener('mouseleave', () => { dot.style.opacity = '0'; ring.style.opacity = '0'; });
+    document.addEventListener('mouseenter', () => { dot.style.opacity = '1'; ring.style.opacity = '1'; });
+  } else {
+    if (dot) dot.style.display = 'none';
+    if (ring) ring.style.display = 'none';
+  }
+
+  /* ── Magnetic CTA ────────────────────────────────────────────────────── */
+  if (hasFinePointer && !reduce) {
+    document.querySelectorAll('[data-magnetic]').forEach(el => {
+      const strength = 18;
+      el.addEventListener('mousemove', (e) => {
+        const r = el.getBoundingClientRect();
+        const x = e.clientX - (r.left + r.width / 2);
+        const y = e.clientY - (r.top + r.height / 2);
+        el.style.transform = `translate(${(x / r.width) * strength}px, ${(y / r.height) * strength}px)`;
+      });
+      el.addEventListener('mouseleave', () => { el.style.transform = ''; });
+    });
+  }
+
+  /* ── Photo tilt on hover ─────────────────────────────────────────────── */
+  if (hasFinePointer && !reduce) {
+    document.querySelectorAll('.tile').forEach(el => {
+      el.classList.add('tilt');
+      const max = 5;
+      el.addEventListener('mousemove', (e) => {
+        const r = el.getBoundingClientRect();
+        const px = (e.clientX - r.left) / r.width - 0.5;
+        const py = (e.clientY - r.top) / r.height - 0.5;
+        el.style.transform = `perspective(900px) rotateX(${-py * max}deg) rotateY(${px * max}deg)`;
+      });
+      el.addEventListener('mouseleave', () => { el.style.transform = ''; });
+    });
+  }
+
+  /* ── Footer wordmark gentle parallax ─────────────────────────────────── */
+  if (!reduce) {
+    const wordFill = document.querySelector('.word-fill');
+    if (wordFill) {
+      const onScroll = () => {
+        const r = wordFill.getBoundingClientRect();
+        const vh = window.innerHeight;
+        if (r.top < vh && r.bottom > 0) {
+          const p = (vh - r.top) / (vh + r.height);
+          wordFill.style.backgroundPositionY = `${30 + p * 40}%`;
+          wordFill.style.transform = `translateY(${(0.5 - p) * 18}px)`;
+        }
+      };
+      document.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+    }
+  }
+</script>
+
+</body>
+</html>
