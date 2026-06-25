@@ -64,6 +64,7 @@
           'teal-ink': '#3D8B86',
           gold: '#BFA15A',
           'gold-soft': '#D9C490',
+          'gold-deep': '#8B6F2E',
           terracotta: '#B4533C',
           'terracotta-deep': '#8E3E2C',
           ink: '#1A1A17',
@@ -287,26 +288,47 @@
   .menu-row[aria-expanded="true"] .row-arrow { color: var(--gold); transform: rotate(90deg); }
   .menu-row[aria-expanded="true"] .row-arrow { transform: rotate(45deg); }
 
-  /* Thumbs flank the centered title symmetrically when active */
+  /* Thumbs flank the centered title symmetrically when active.
+     Fixed-distance-from-center math (not percent-of-self): guarantees no
+     overlap with the title at any viewport width or title length. */
   .row-thumb {
-    position: absolute; top: 50%; left: 50%;
-    width: 108px; height: 76px; border-radius: 8px; object-fit: cover;
+    position: absolute; top: 50%;
+    width: 104px; height: 74px; border-radius: 8px; object-fit: cover;
     z-index: 2; opacity: 0; pointer-events: none;
     box-shadow: 0 14px 36px rgba(0,0,0,0.38);
     transition: opacity .45s ease, transform .7s cubic-bezier(.5,.05,.2,1);
   }
-  .thumb-l { transform: translate(-160%, -50%) rotate(-5deg); }
-  .thumb-r { transform: translate(60%, -50%)   rotate(4deg);  }
+  /* thumb-l: right edge sits ~310px left of row-center (clears longest title) */
+  .thumb-l { right: calc(50% + 310px); transform: translate(40px, -50%) rotate(-5deg); }
+  /* thumb-r: left edge sits ~310px right of row-center */
+  .thumb-r { left:  calc(50% + 310px); transform: translate(-40px, -50%) rotate(4deg); }
   .menu-row:hover .thumb-l,
-  .menu-row[aria-expanded="true"] .thumb-l { opacity: 1; transform: translate(-240%, -50%) rotate(-5deg); }
+  .menu-row[aria-expanded="true"] .thumb-l { opacity: 1; transform: translate(0, -50%) rotate(-5deg); }
   .menu-row:hover .thumb-r,
-  .menu-row[aria-expanded="true"] .thumb-r { opacity: 1; transform: translate(140%, -50%) rotate(4deg); }
+  .menu-row[aria-expanded="true"] .thumb-r { opacity: 1; transform: translate(0, -50%) rotate(4deg); }
+  /* On narrower desktop (< 1100px) push thumbs in & shrink to keep clearance */
+  @media (max-width: 1100px) {
+    .thumb-l { right: calc(50% + 270px); }
+    .thumb-r { left:  calc(50% + 270px); }
+    .row-thumb { width: 92px; height: 64px; }
+  }
   @media (max-width: 900px) { .row-thumb { display: none; } }
 
-  /* Detail: open animation + breathing room */
-  .menu-detail { display: none; padding: 0 22px; }
-  @media (min-width: 768px) { .menu-detail { padding: 0 36px; } }
-  .menu-detail.open { display: block; animation: detailOpen .55s cubic-bezier(.2,.7,.2,1); }
+  /* Detail: sand card that visually extends from the cedar bar above */
+  .menu-detail { display: none; padding: 0; }
+  .menu-detail.open {
+    display: block;
+    animation: detailOpen .55s cubic-bezier(.2,.7,.2,1);
+    margin: -10px 0 0 0;
+    padding: 36px 22px 32px;
+    background:
+      linear-gradient(180deg, rgba(214,196,160,0.28) 0%, rgba(214,196,160,0.10) 100%);
+    border-radius: 0 0 10px 10px;
+    box-shadow: inset 0 1px 0 rgba(143,118,68,0.10);
+  }
+  @media (min-width: 768px) {
+    .menu-detail.open { padding: 44px 44px 40px; }
+  }
   @keyframes detailOpen { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: none; } }
 
   /* Olive branch float */
@@ -407,6 +429,92 @@
 
   /* Headline serif italic feels chosen */
   .display-hero em, .font-display em { font-style: italic; font-weight: 400; }
+
+  /* ── Dish-preview popup ─────────────────────────────────────────────── */
+  .dish-name { cursor: pointer; }
+  #dish-popup {
+    position: fixed; left: 0; top: 0; z-index: 80;
+    pointer-events: none;
+    opacity: 0;
+    transform: translateY(8px) scale(.97);
+    transform-origin: top left;
+    transition: opacity .22s ease, transform .35s cubic-bezier(.2,.7,.2,1);
+    will-change: transform, opacity, left, top;
+  }
+  #dish-popup.open { opacity: 1; transform: translateY(0) scale(1); pointer-events: auto; }
+
+  .dp-card {
+    width: 380px;
+    padding: 18px 18px 20px;
+    background: var(--cream);
+    border-radius: 10px;
+    box-shadow:
+      0 28px 64px -16px rgba(31,51,41,0.55),
+      0 10px 28px -10px rgba(31,51,41,0.30),
+      0 0 0 1px rgba(143,118,68,0.10);
+    position: relative;
+  }
+  .dp-card::before {
+    content: '';
+    position: absolute; inset: 5px;
+    border: 1px solid rgba(191,161,90,0.18);
+    border-radius: 7px;
+    pointer-events: none;
+  }
+  .dp-eyebrow {
+    font-size: 10px; letter-spacing: .22em; text-transform: uppercase;
+    color: rgba(47,74,62,0.55);
+    display: flex; align-items: center; gap: 8px;
+    margin-bottom: 6px; padding: 2px 4px 0;
+  }
+  .dp-eyebrow::before { content: ''; width: 14px; height: 1px; background: rgba(191,161,90,0.65); }
+  .dp-header {
+    display: grid; grid-template-columns: 1fr auto;
+    align-items: baseline; gap: 14px;
+    padding: 0 4px 14px;
+    border-bottom: 1px solid rgba(47,74,62,0.14);
+    margin-bottom: 14px;
+  }
+  .dp-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600; font-size: 20px; line-height: 1.15;
+    color: var(--cedar-deep);
+    letter-spacing: .01em;
+  }
+  .dp-price {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600; font-size: 17px;
+    color: #8B6F2E; font-feature-settings: 'tnum';
+    letter-spacing: .02em;
+  }
+  .dp-photos { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; padding: 0 4px; }
+  .dp-photo {
+    aspect-ratio: 4 / 5;
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 8px 22px rgba(31,51,41,0.30);
+    background: rgba(47,74,62,0.06);
+  }
+  .dp-photo:first-child { transform: rotate(-1.4deg); }
+  .dp-photo:last-child  { transform: rotate( 1.4deg); }
+  .dp-photo img { width: 100%; height: 100%; object-fit: cover; filter: saturate(.92) contrast(1.05) sepia(.05); display: block; }
+  .dp-desc {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 14.5px; line-height: 1.55;
+    color: rgba(47,74,62,0.82);
+    padding: 14px 4px 0;
+    margin-top: 14px;
+    border-top: 1px solid rgba(47,74,62,0.10);
+  }
+  .dp-desc:empty { display: none; }
+
+  @media (max-width: 640px) {
+    .dp-card { width: 300px; padding: 14px; }
+    .dp-name { font-size: 18px; }
+    .dp-desc { font-size: 13.5px; }
+    #dish-popup { transform-origin: center bottom; }
+  }
 
   /* Reduced motion */
   @media (prefers-reduced-motion: reduce) {
@@ -667,24 +775,81 @@
     </g>
   </svg>
   <div class="max-w-[1400px] mx-auto px-5 md:px-10 relative z-10">
-    <div class="grid md:grid-cols-12 gap-8 md:gap-16 mb-14 md:mb-20">
-      <div class="md:col-span-5 reveal">
+    <!-- Upper-right editorial chrome: "Carta vigente" tag -->
+    <div class="reveal absolute top-6 right-5 md:top-10 md:right-10 z-10 hidden sm:flex items-center gap-3 text-[10px] tracking-widest-2 uppercase text-cedar/55">
+      <span class="block w-8 h-px bg-cedar/30"></span>
+      <span>Carta de verano</span>
+      <span class="font-display italic text-cedar/70 text-[15px] leading-none normal-case tracking-normal">vigente · 2026</span>
+    </div>
+
+    <div class="grid md:grid-cols-12 gap-10 md:gap-12 mb-16 md:mb-24 items-end">
+      <!-- Headline column -->
+      <div class="md:col-span-6 reveal">
         <p class="ornament text-[11px] tracking-widest-2 uppercase mb-6">La carta</p>
         <h2 class="word-reveal font-display text-cedar text-4xl md:text-6xl leading-[1.02] tracking-tightest">
           De la <em class="italic">brasa</em> a la mesa,<br/>
           de Beirut a Madrid.
         </h2>
       </div>
-      <div class="md:col-span-6 md:col-start-7 reveal delay-1 text-cedar/75 text-[15px] leading-relaxed self-end">
+
+      <!-- Editorial table of contents (desktop only) -->
+      <aside class="md:col-span-2 reveal delay-1 hidden md:block self-end" aria-label="Cinco actos de la carta">
+        <p class="text-[10px] tracking-widest-2 uppercase text-cedar/45 mb-4 flex items-center gap-2">
+          <span class="block w-4 h-px bg-cedar/30"></span> 5 actos
+        </p>
+        <ol class="font-display text-cedar/85 text-[15px] leading-[1.9] tabular-nums">
+          <li class="grid grid-cols-[28px_1fr] items-baseline">
+            <span class="text-[11px] tracking-widest-2 text-cedar/40">I</span>
+            <a href="#carta" class="hover:text-terracotta transition-colors">Del Horno</a>
+          </li>
+          <li class="grid grid-cols-[28px_1fr] items-baseline">
+            <span class="text-[11px] tracking-widest-2 text-cedar/40">II</span>
+            <a href="#carta" class="hover:text-terracotta transition-colors">Mezze Frío</a>
+          </li>
+          <li class="grid grid-cols-[28px_1fr] items-baseline">
+            <span class="text-[11px] tracking-widest-2 text-cedar/40">III</span>
+            <a href="#carta" class="hover:text-terracotta transition-colors">Mezze Caliente</a>
+          </li>
+          <li class="grid grid-cols-[28px_1fr] items-baseline">
+            <span class="text-[11px] tracking-widest-2 text-cedar/40">IV</span>
+            <a href="#carta" class="hover:text-terracotta transition-colors">Masheweh</a>
+          </li>
+          <li class="grid grid-cols-[28px_1fr] items-baseline">
+            <span class="text-[11px] tracking-widest-2 text-cedar/40">V</span>
+            <a href="#carta" class="hover:text-terracotta transition-colors">Postres</a>
+          </li>
+        </ol>
+      </aside>
+
+      <!-- Description column -->
+      <div class="md:col-span-4 reveal delay-2 text-cedar/75 text-[15px] leading-relaxed self-end">
         <p>Una selección viva, escrita en cinco actos. Empezamos por el horno y el mezze frío, pasamos al mezze caliente, llegamos a la brasa y cerramos con los dulces de toda la vida. Todos los precios incluyen IVA.</p>
       </div>
     </div>
+
+    <!-- Cinematic break: anchors the section in color before the long list -->
+    <figure class="reveal relative mb-14 md:mb-20 -mx-5 md:mx-0 overflow-hidden md:rounded-sm">
+      <div class="tile aspect-[16/6] md:aspect-[16/5]">
+        <img src="https://images.unsplash.com/photo-1604382354936-07c5d9983bd3?auto=format&fit=crop&w=2400&q=80"
+             alt="Horno de leña encendido con masa horneándose"
+             class="img-reveal w-full h-full object-cover" loading="lazy"/>
+      </div>
+      <div class="absolute inset-0 bg-gradient-to-r from-cedar-deep/65 via-cedar-deep/15 to-transparent pointer-events-none"></div>
+      <figcaption class="absolute bottom-5 left-5 md:bottom-10 md:left-10 max-w-md text-cream">
+        <p class="text-[10px] tracking-widest-2 uppercase text-gold-soft/90 mb-2 flex items-center gap-3">
+          <span class="block w-6 h-px bg-gold-soft/60"></span> Del horno
+        </p>
+        <p class="font-display italic text-2xl md:text-4xl leading-tight">
+          "El horno se enciende a las cinco y no se apaga hasta el último manoucheh."
+        </p>
+      </figcaption>
+    </figure>
 
     <!-- Accordion -->
     <div id="menuAccordion" class="reveal delay-2">
 
       <!-- DEL HORNO -->
-      <div class="menu-block">
+      <div class="menu-block" data-cat="horno">
         <button class="menu-row" aria-expanded="false" aria-controls="m-horno">
           <span class="row-bar"></span>
           <span class="row-count">(04)</span>
@@ -718,7 +883,7 @@
       </div>
 
       <!-- MEZZE FRÍO -->
-      <div class="menu-block">
+      <div class="menu-block" data-cat="frio">
         <button class="menu-row" aria-expanded="false" aria-controls="m-frio">
           <span class="row-bar"></span>
           <span class="row-count">(11)</span>
@@ -747,7 +912,7 @@
       </div>
 
       <!-- MEZZE CALIENTE -->
-      <div class="menu-block">
+      <div class="menu-block" data-cat="caliente">
         <button class="menu-row" aria-expanded="false" aria-controls="m-caliente">
           <span class="row-bar"></span>
           <span class="row-count">(13)</span>
@@ -778,7 +943,7 @@
       </div>
 
       <!-- MASHEWEH -->
-      <div class="menu-block">
+      <div class="menu-block" data-cat="mash">
         <button class="menu-row" aria-expanded="false" aria-controls="m-mash">
           <span class="row-bar"></span>
           <span class="row-count">(09)</span>
@@ -805,7 +970,7 @@
       </div>
 
       <!-- POSTRES -->
-      <div class="menu-block">
+      <div class="menu-block" data-cat="postres">
         <button class="menu-row" aria-expanded="false" aria-controls="m-postres">
           <span class="row-bar"></span>
           <span class="row-count">(05)</span>
@@ -840,8 +1005,14 @@
   .dish { padding-top: 0; }
   .dish-head { display: grid; grid-template-columns: auto 1fr auto; align-items: baseline; gap: .6rem; }
   .dish-name { font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 19px; color: #1F3329; letter-spacing: .01em; }
-  .dish-price { font-feature-settings: 'tnum'; color: #2F4A3E; font-weight: 500; font-size: 15px; }
-  .dish-dots { border-bottom: 1px dotted #2F4A3E66; transform: translateY(-4px); }
+  .dish-price {
+    font-family: 'Cormorant Garamond', serif;
+    font-feature-settings: 'tnum';
+    color: #8B6F2E;
+    font-weight: 600;
+    font-size: 17px;
+    letter-spacing: .02em;
+  }
   .dish-desc { font-size: 13.5px; line-height: 1.55; color: rgba(47,74,62,.72); margin-top: 4px; max-width: 52ch; font-style: italic; }
 </style>
 
@@ -1326,6 +1497,202 @@
       el.addEventListener('mouseleave', () => { el.style.transform = ''; });
     });
   }
+
+  /* ── Dish-preview popup (hover desktop, tap mobile) ──────────────────── */
+  (() => {
+    const DISH_PHOTOS = {
+      // Mezze frío
+      'hummus':       ['1556910103-1c02745aae4d', '1571197119282-7c3a40fde32f'],
+      'tabbouleh':    ['1505253758473-96b7015fcd40', '1551183053-bf91a1d81141'],
+      'fattoush':     ['1546069901-ba9599a7e63c',   '1505253758473-96b7015fcd40'],
+      'moutabal':     ['1546833999-b9f581a1996d',   '1606755456206-b25206cde27e'],
+      'warak':        ['1631515243348-2c1b1f99ad57', '1606755456206-b25206cde27e'],
+      'muhammara':    ['1599043513900-ed6fe01d3833', '1571197119282-7c3a40fde32f'],
+      'quinoa':       ['1505253758473-96b7015fcd40', '1546069901-ba9599a7e63c'],
+      'jarjir':       ['1505253758473-96b7015fcd40', '1551183053-bf91a1d81141'],
+      'rubyan':       ['1561651823-34feb02250e4',   '1574484284002-952d92456975'],
+      // Del horno
+      'manoucheh':    ['1601050690597-df0568f70950', '1565299585323-38d6b0865b47'],
+      'kafta':        ['1604382354936-07c5d9983bd3', '1601050690597-df0568f70950'],
+      'lahme-bi':     ['1565299585323-38d6b0865b47', '1604382354936-07c5d9983bd3'],
+      'zaatar':       ['1601050690597-df0568f70950', '1567620905732-2d1ec7ab7445'],
+      // Mezze caliente
+      'falafel':      ['1593978301851-40c1849d47d4', '1601050690597-df0568f70950'],
+      'kebbeh':       ['1574484284002-952d92456975', '1544025162-d76694265947'],
+      'hallumi':      ['1571197119282-7c3a40fde32f', '1599043513900-ed6fe01d3833'],
+      'fatteh':       ['1546833999-b9f581a1996d',   '1606755456206-b25206cde27e'],
+      'batata':       ['1568827999250-3f6afff96e66', '1567620905732-2d1ec7ab7445'],
+      'jawaneh':      ['1555939594-58d7cb561ad1',   '1544025162-d76694265947'],
+      'soujok':       ['1574484284002-952d92456975', '1544025162-d76694265947'],
+      'rakakt':       ['1565299585323-38d6b0865b47', '1604382354936-07c5d9983bd3'],
+      'rass':         ['1574484284002-952d92456975', '1544025162-d76694265947'],
+      'okhtobut':     ['1561651823-34feb02250e4',   '1574484284002-952d92456975'],
+      // Masheweh
+      'taouk':        ['1555939594-58d7cb561ad1',   '1544025162-d76694265947'],
+      'farrouj':      ['1555939594-58d7cb561ad1',   '1574484284002-952d92456975'],
+      'lahmeh':       ['1544025162-d76694265947',   '1574484284002-952d92456975'],
+      'kabab':        ['1544025162-d76694265947',   '1555939594-58d7cb561ad1'],
+      'mawzet':       ['1574484284002-952d92456975', '1544025162-d76694265947'],
+      'shawarma':     ['1574484284002-952d92456975', '1555939594-58d7cb561ad1'],
+      'freekeh':      ['1546833999-b9f581a1996d',   '1574484284002-952d92456975'],
+      'samak':        ['1561651823-34feb02250e4',   '1574484284002-952d92456975'],
+      // Postres
+      'em-ali':       ['1568827999250-3f6afff96e66', '1551024506-0bccd828d307'],
+      'mafroukit':    ['1631515243348-2c1b1f99ad57', '1568827999250-3f6afff96e66'],
+      'aish':         ['1551024506-0bccd828d307',   '1568827999250-3f6afff96e66'],
+      'knefeh':       ['1568827999250-3f6afff96e66', '1551024506-0bccd828d307'],
+      'mhalabieh':    ['1551024506-0bccd828d307',   '1631515243348-2c1b1f99ad57'],
+    };
+
+    const CAT_FALLBACK = {
+      horno:    ['1604382354936-07c5d9983bd3', '1601050690597-df0568f70950'],
+      frio:     ['1540914124281-342587941389', '1546833999-b9f581a1996d'],
+      caliente: ['1606755456206-b25206cde27e', '1571197119282-7c3a40fde32f'],
+      mash:     ['1544025162-d76694265947',   '1555939594-58d7cb561ad1'],
+      postres:  ['1551024506-0bccd828d307',   '1568827999250-3f6afff96e66'],
+    };
+
+    const CAT_LABEL = {
+      horno: 'Del horno', frio: 'Mezze frío', caliente: 'Mezze caliente',
+      mash: 'A la brasa', postres: 'Postres',
+    };
+
+    function slugify(s) {
+      return s.toLowerCase()
+        .normalize('NFD').replace(/[̀-ͯ]/g, '')
+        .replace(/[^a-z0-9]+/g, '-')
+        .replace(/^-|-$/g, '');
+    }
+
+    function getPhotos(name, cat) {
+      const s = slugify(name);
+      if (DISH_PHOTOS[s]) return DISH_PHOTOS[s];
+      // Substring fallback (e.g. "hummus-lahme" → matches "hummus")
+      for (const key in DISH_PHOTOS) {
+        if (s.includes(key)) return DISH_PHOTOS[key];
+      }
+      return CAT_FALLBACK[cat] || ['1540914124281-342587941389', '1546833999-b9f581a1996d'];
+    }
+
+    const popup = document.createElement('div');
+    popup.id = 'dish-popup';
+    popup.innerHTML = `
+      <div class="dp-card" role="dialog" aria-label="Vista previa del plato">
+        <p class="dp-eyebrow"></p>
+        <div class="dp-header">
+          <span class="dp-name"></span>
+          <span class="dp-price"></span>
+        </div>
+        <div class="dp-photos">
+          <div class="dp-photo"><img alt="" loading="lazy" decoding="async"/></div>
+          <div class="dp-photo"><img alt="" loading="lazy" decoding="async"/></div>
+        </div>
+        <p class="dp-desc"></p>
+      </div>`;
+    document.body.appendChild(popup);
+
+    const elName    = popup.querySelector('.dp-name');
+    const elPrice   = popup.querySelector('.dp-price');
+    const elEyebrow = popup.querySelector('.dp-eyebrow');
+    const elDesc    = popup.querySelector('.dp-desc');
+    const imgs      = popup.querySelectorAll('.dp-photo img');
+
+    const PAD = 14;
+    const CARD_W = window.innerWidth < 640 ? 300 : 380;
+    let activeDish = null;
+
+    function positionPopup(dish) {
+      const r = dish.getBoundingClientRect();
+      const cardW = popup.offsetWidth || CARD_W;
+      const cardH = popup.offsetHeight || 360;
+      const vw = window.innerWidth;
+      const vh = window.innerHeight;
+
+      // Prefer side with more space; fall back to whichever fits
+      let left;
+      const spaceRight = vw - r.right - PAD;
+      const spaceLeft  = r.left - PAD;
+      if (spaceRight >= cardW)      left = r.right + PAD;
+      else if (spaceLeft >= cardW)  left = r.left - cardW - PAD;
+      else                          left = Math.max(PAD, Math.min(vw - cardW - PAD, r.left));
+
+      let top = r.top + r.height / 2 - cardH / 2;
+      if (top < PAD)              top = PAD;
+      if (top + cardH > vh - PAD) top = vh - cardH - PAD;
+
+      popup.style.left = left + 'px';
+      popup.style.top  = top + 'px';
+    }
+
+    function showPopup(dish) {
+      if (activeDish === dish && popup.classList.contains('open')) return;
+      activeDish = dish;
+      const nameEl  = dish.querySelector('.dish-name');
+      const priceEl = dish.querySelector('.dish-price');
+      const descEl  = dish.querySelector('.dish-desc');
+      const cat     = dish.closest('.menu-block')?.dataset.cat || '';
+      const name    = nameEl ? nameEl.textContent.trim() : '';
+      const price   = priceEl ? priceEl.textContent.trim() : '';
+      const desc    = descEl ? descEl.textContent.trim() : '';
+      const [p1, p2] = getPhotos(name, cat);
+
+      elName.textContent    = name;
+      elPrice.textContent   = price;
+      elEyebrow.textContent = CAT_LABEL[cat] || '';
+      elDesc.textContent    = desc;
+      imgs[0].alt = `${name} — vista 1`;
+      imgs[1].alt = `${name} — vista 2`;
+      imgs[0].src = `https://images.unsplash.com/photo-${p1}?auto=format&fit=crop&w=520&q=80`;
+      imgs[1].src = `https://images.unsplash.com/photo-${p2}?auto=format&fit=crop&w=520&q=80`;
+      imgs.forEach(im => { im.onerror = () => im.style.opacity = '0'; im.style.opacity = '1'; });
+
+      popup.classList.add('open');
+      requestAnimationFrame(() => positionPopup(dish));
+    }
+
+    function hidePopup() {
+      popup.classList.remove('open');
+      activeDish = null;
+    }
+
+    const hasFinePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+    let hoverTimer = null;
+
+    document.querySelectorAll('.dish').forEach(dish => {
+      const name = dish.querySelector('.dish-name');
+      if (!name) return;
+
+      if (hasFinePointer) {
+        dish.addEventListener('mouseenter', () => {
+          clearTimeout(hoverTimer);
+          hoverTimer = setTimeout(() => showPopup(dish), 90);
+        });
+        dish.addEventListener('mouseleave', () => {
+          clearTimeout(hoverTimer);
+          hoverTimer = setTimeout(() => { if (activeDish === dish) hidePopup(); }, 120);
+        });
+      }
+
+      name.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (activeDish === dish && popup.classList.contains('open')) hidePopup();
+        else showPopup(dish);
+      });
+    });
+
+    // Keep popup alive while cursor is over it
+    popup.addEventListener('mouseenter', () => clearTimeout(hoverTimer));
+    popup.addEventListener('mouseleave', () => hidePopup());
+
+    document.addEventListener('click', (e) => {
+      if (popup.contains(e.target)) return;
+      if (e.target.closest('.dish')) return;
+      hidePopup();
+    });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') hidePopup(); });
+    window.addEventListener('scroll',  () => hidePopup(), { passive: true });
+    window.addEventListener('resize',  () => hidePopup());
+  })();
 
   /* ── Footer wordmark gentle parallax ─────────────────────────────────── */
   if (!reduce) {

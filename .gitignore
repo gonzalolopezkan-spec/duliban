@@ -1,0 +1,19 @@
+# Agent / editor
+.claude/
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Build / deps (none yet — placeholders if we add a build step)
+node_modules/
+dist/
+.cache/
+.parcel-cache/
+
+# Env
+.env
+.env.local
