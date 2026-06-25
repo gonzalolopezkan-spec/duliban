@@ -516,6 +516,188 @@
     #dish-popup { transform-origin: center bottom; }
   }
 
+  /* ── Scroll-expand video hero ────────────────────────────────────────── */
+  .scroll-expand-hero {
+    position: relative;
+    height: 220vh;
+    background: #1F3329;
+  }
+  .seh-sticky {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    background: #1F3329;
+  }
+  .seh-bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    filter: brightness(.42) saturate(.78) contrast(1.05);
+    z-index: 0;
+  }
+  .seh-bg::after {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(90% 70% at 50% 50%, transparent 0%, rgba(15,28,22,0.55) 100%),
+      linear-gradient(180deg, rgba(15,28,22,0.30) 0%, rgba(15,28,22,0.60) 100%);
+  }
+  .seh-video-wrap {
+    position: absolute;
+    top: 50%; left: 50%;
+    width: 560px; height: 380px;
+    max-width: 80vw; max-height: 65vh;
+    transform: translate(-50%, -50%);
+    border-radius: 22px;
+    overflow: hidden;
+    z-index: 2;
+    box-shadow:
+      0 36px 90px -20px rgba(0,0,0,.70),
+      0 0 0 1px rgba(191,161,90,0.18);
+    will-change: width, height, border-radius;
+    transition: box-shadow .8s ease;
+  }
+  .seh-video {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+    background: #1F3329;
+  }
+  .seh-video-tint {
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(31,51,41,0.05) 0%, rgba(31,51,41,0.18) 100%);
+    pointer-events: none;
+  }
+
+  .seh-text {
+    position: absolute;
+    z-index: 3;
+    pointer-events: none;
+    white-space: nowrap;
+    will-change: transform, opacity;
+  }
+  .seh-text--tl { top: 14%;    left: 5%;  text-align: left;  }
+  .seh-text--tr { top: 14%;    right: 5%; text-align: right; }
+  .seh-text--bl { bottom: 14%; left: 5%;  text-align: left;  }
+  .seh-text--br { bottom: 14%; right: 5%; text-align: right; }
+
+  .seh-text-script {
+    font-family: 'Allura', cursive;
+    color: #D9C490;
+    font-size: clamp(72px, 11vw, 168px);
+    line-height: .85;
+    letter-spacing: -0.01em;
+    text-shadow: 0 6px 30px rgba(0,0,0,.45);
+  }
+  .seh-text-display {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-style: italic;
+    color: #F5EFE3;
+    font-size: clamp(32px, 5vw, 78px);
+    letter-spacing: -0.02em;
+    line-height: 1;
+    text-shadow: 0 4px 24px rgba(0,0,0,.55);
+  }
+  .seh-text-display em {
+    font-family: 'Allura', cursive;
+    color: #BFA15A;
+    font-style: normal;
+    font-size: 1.05em;
+    letter-spacing: 0;
+    padding: 0 .04em;
+  }
+  .seh-text-caps {
+    font-family: 'Satoshi', system-ui, sans-serif;
+    font-weight: 500;
+    color: #D9C490;
+    font-size: clamp(13px, 1.3vw, 18px);
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+  }
+  .seh-text-est {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 400;
+    color: #F5EFE3;
+    font-size: clamp(22px, 2.6vw, 38px);
+    letter-spacing: 0.02em;
+    text-shadow: 0 4px 20px rgba(0,0,0,.55);
+  }
+  .seh-text-est b {
+    font-family: 'Satoshi', sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    color: #BFA15A;
+    font-size: .7em;
+    letter-spacing: .28em;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .seh-scroll-hint {
+    position: absolute;
+    bottom: 26px; left: 50%;
+    transform: translateX(-50%);
+    color: #F5EFE3;
+    opacity: .7;
+    font-family: 'Satoshi', sans-serif;
+    font-size: 10px; letter-spacing: .32em; text-transform: uppercase;
+    display: flex; flex-direction: column; align-items: center; gap: 10px;
+    z-index: 4;
+    pointer-events: none;
+    animation: sehHintBob 2.4s ease-in-out infinite;
+  }
+  .seh-scroll-hint svg { opacity: .6; }
+  @keyframes sehHintBob {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50%      { transform: translateX(-50%) translateY(6px); }
+  }
+
+  /* Reduced motion: collapse to a static, full-bleed hero */
+  @media (prefers-reduced-motion: reduce) {
+    .scroll-expand-hero { height: 100vh; }
+    .seh-sticky { position: relative; }
+    .seh-video-wrap { width: 100% !important; height: 100% !important; max-width: none; max-height: none; border-radius: 0 !important; }
+    .seh-text { transform: none !important; opacity: 1 !important; }
+    .seh-scroll-hint { display: none; }
+  }
+
+  /* Mobile: no scroll-jacking. Stacked layout. */
+  @media (max-width: 767px) {
+    .scroll-expand-hero { height: auto; background: var(--cream); }
+    .seh-sticky { position: relative; height: auto; padding: 110px 20px 40px; background: var(--cream); display: flex; flex-direction: column; gap: 22px; }
+    .seh-bg { display: none; }
+    .seh-video-wrap {
+      position: relative;
+      top: auto; left: auto; transform: none;
+      width: 100%; height: 60vh;
+      max-width: none; max-height: none;
+      border-radius: 12px;
+      box-shadow: 0 18px 50px -16px rgba(31,51,41,.5);
+    }
+    .seh-video-tint { background: linear-gradient(180deg, transparent 70%, rgba(31,51,41,0.30) 100%); }
+    .seh-text {
+      position: relative;
+      top: auto; bottom: auto; left: auto; right: auto;
+      transform: none !important; opacity: 1 !important;
+      text-align: center;
+    }
+    .seh-text-script { color: var(--teal); font-size: 22vw; line-height: .85; text-shadow: none; }
+    .seh-text-display { color: var(--cedar); font-size: 6.5vw; text-shadow: none; }
+    .seh-text-display em { color: var(--gold); }
+    .seh-text-caps { color: var(--cedar); opacity: .7; font-size: 11px; }
+    .seh-text-est { color: var(--cedar); font-size: 5vw; text-shadow: none; }
+    .seh-text-est b { color: var(--gold); }
+    .seh-scroll-hint { display: none; }
+    /* Hairline separator between video and the location/est row */
+    .seh-text--bl { margin-top: 4px; padding-top: 18px; border-top: 1px solid rgba(47,74,62,.15); }
+  }
+
   /* Reduced motion */
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; scroll-behavior: auto !important; }
@@ -560,10 +742,48 @@
   </div>
 </div>
 
-<!-- ─────────────────────────  NAV  ───────────────────────── -->
-<header class="fixed top-0 left-0 right-0 z-40">
+<!-- ─────────────────────────  HERO (scroll-expand video)  ───────────────────────── -->
+<section id="top" class="scroll-expand-hero" data-seh aria-label="du Liban — alta cocina libanesa en La Moraleja">
+  <div class="seh-sticky">
+    <!-- Static background photo (dimmed) -->
+    <div class="seh-bg" style="background-image: url('design-inspiration/real-fotos/cena-elegante-de-noche-1.jpeg')" aria-hidden="true"></div>
+
+    <!-- Text blocks: absolutely positioned on desktop (TL/TR/BL/BR corners);
+         stack in this source order on mobile -->
+    <h1 class="seh-text seh-text--tl seh-text-script"  data-seh-text data-dir="left">du Liban</h1>
+    <p  class="seh-text seh-text--tr seh-text-display" data-seh-text data-dir="right">Cocina <em>libanesa</em></p>
+
+    <!-- Video that grows on scroll -->
+    <div class="seh-video-wrap" data-seh-video>
+      <video
+        class="seh-video"
+        src="assets/hero-mezze.mp4"
+        poster="design-inspiration/real-fotos/mesa-comida-lujo-abundante.jpeg"
+        autoplay loop muted playsinline preload="auto"
+        disablepictureinpicture disableremoteplayback
+        aria-label="Mesa de mezze libanés servida en du Liban"
+      ></video>
+      <div class="seh-video-tint" aria-hidden="true"></div>
+    </div>
+
+    <p class="seh-text seh-text--bl seh-text-caps" data-seh-text data-dir="left">La Moraleja · Madrid</p>
+    <p class="seh-text seh-text--br seh-text-est"  data-seh-text data-dir="right"><b>Est.</b>2003</p>
+
+    <!-- Scroll hint -->
+    <div class="seh-scroll-hint" aria-hidden="true">
+      <span>Desliza</span>
+      <svg width="14" height="22" viewBox="0 0 14 22" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="1" y="1" width="12" height="20" rx="6"/>
+        <line x1="7" y1="6" x2="7" y2="10"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────────────────────  NAV (sticky after hero)  ───────────────────────── -->
+<header class="sticky top-0 z-40">
   <div class="max-w-[1400px] mx-auto px-5 md:px-10 pt-5">
-    <nav class="backdrop-blur-md bg-cream/75 border border-cedar/10 rounded-full px-4 md:px-6 py-3 flex items-center justify-between shadow-[0_4px_24px_-12px_rgba(31,51,41,0.25)]">
+    <nav class="backdrop-blur-md bg-cream/85 border border-cedar/10 rounded-full px-4 md:px-6 py-3 flex items-center justify-between shadow-[0_4px_24px_-12px_rgba(31,51,41,0.25)]">
       <a href="#top" class="flex items-center gap-2 group" aria-label="du Liban — inicio">
         <span class="font-script text-teal text-3xl leading-none -mt-1">du Liban</span>
       </a>
@@ -589,85 +809,6 @@
     </nav>
   </div>
 </header>
-
-<!-- ─────────────────────────  HERO  ───────────────────────── -->
-<section id="top" class="relative pt-36 md:pt-40 pb-12 md:pb-20 overflow-hidden">
-  <!-- Olive branch ornament, top-right -->
-  <svg class="absolute top-24 -right-4 md:right-6 w-40 md:w-72 sway opacity-90 pointer-events-none" style="--rot:-8deg" viewBox="0 0 220 220" fill="none" aria-hidden="true">
-    <g stroke="#2F4A3E" stroke-width="1.2" stroke-linecap="round" fill="none">
-      <path d="M195 18 C 160 50, 130 90, 95 145 C 78 172, 60 192, 38 205" />
-      <g fill="#2F4A3E" stroke="none" opacity=".95">
-        <ellipse cx="178" cy="40" rx="13" ry="5" transform="rotate(35 178 40)"/>
-        <ellipse cx="160" cy="62" rx="14" ry="5" transform="rotate(30 160 62)"/>
-        <ellipse cx="140" cy="88" rx="15" ry="5.5" transform="rotate(25 140 88)"/>
-        <ellipse cx="120" cy="116" rx="14" ry="5" transform="rotate(20 120 116)"/>
-        <ellipse cx="100" cy="142" rx="13" ry="5" transform="rotate(15 100 142)"/>
-        <ellipse cx="78" cy="170" rx="12" ry="4.5" transform="rotate(10 78 170)"/>
-        <ellipse cx="58" cy="192" rx="11" ry="4" transform="rotate(5 58 192)"/>
-      </g>
-      <g fill="#BFA15A" stroke="none">
-        <circle cx="158" cy="50" r="3"/>
-        <circle cx="118" cy="100" r="2.8"/>
-        <circle cx="92" cy="155" r="2.6"/>
-      </g>
-    </g>
-  </svg>
-
-  <div class="max-w-[1400px] mx-auto px-5 md:px-10">
-    <!-- Eyebrow -->
-    <div class="reveal flex items-center justify-between mb-8 md:mb-14">
-      <span class="ornament text-[10px] md:text-[11px] tracking-widest-2 uppercase">Madrid · La Moraleja</span>
-      <span class="hidden md:inline-block text-[11px] tracking-widest-2 uppercase text-cedar/55">Est. 2003</span>
-    </div>
-
-    <!-- Big wordmark -->
-    <h1 class="display-hero text-cedar uppercase">
-      <span class="hidden md:block reveal delay-1 word-reveal text-[18vw] md:text-[14vw] lg:text-[200px]">du&nbsp;Liban</span>
-      <!-- Mobile-designed hero: script wordmark dominant, all-caps small -->
-      <span class="block md:hidden">
-        <span class="reveal block font-script text-teal text-[28vw] leading-[0.8] -ml-1 normal-case">du Liban</span>
-        <span class="reveal delay-1 block mt-3 text-[10vw] tracking-tightest leading-none">Cocina Libanesa</span>
-      </span>
-    </h1>
-
-    <!-- Sub row -->
-    <div class="mt-8 md:mt-12 grid md:grid-cols-12 gap-6 md:gap-10">
-      <div class="reveal delay-2 md:col-span-5">
-        <p class="font-display italic text-2xl md:text-3xl text-cedar leading-snug">
-          Recetas que cruzaron el Mediterráneo desde Beirut, servidas en el corazón de La Moraleja.
-        </p>
-      </div>
-      <div class="reveal delay-3 md:col-span-4 md:col-start-8 text-cedar/75 text-[15px] leading-relaxed">
-        <p>Una mesa familiar abierta a Madrid desde 2003: mezze al fuego de horno, brasas, postres con agua de azahar y la hospitalidad libanesa de toda la vida.</p>
-      </div>
-    </div>
-
-    <!-- Scroll hint -->
-    <div class="reveal delay-4 mt-12 md:mt-16 flex items-center gap-6 text-[11px] tracking-widest-2 uppercase text-cedar/55">
-      <span>Desliza</span>
-      <span class="block w-16 h-px bg-cedar/30"></span>
-      <span>Carta · Concepto · Eventos</span>
-    </div>
-  </div>
-
-  <!-- Cinematic interior image -->
-  <div class="reveal delay-5 mt-12 md:mt-20 max-w-[1400px] mx-auto px-5 md:px-10">
-    <div class="relative overflow-hidden rounded-sm">
-      <img
-        src="design-inspiration/real-fotos/interior-del-restaurante-1.jpeg"
-        alt="Comedor del restaurante du Liban con luz cálida y mesas vestidas"
-        class="img-reveal w-full h-[58vh] md:h-[78vh] object-cover"
-        loading="eager"
-        fetchpriority="high"
-      />
-      <div class="absolute inset-0 bg-gradient-to-t from-cedar-deep/40 via-transparent to-transparent pointer-events-none"></div>
-      <!-- Floating caption -->
-      <figcaption class="absolute bottom-5 left-5 md:bottom-8 md:left-8 text-cream text-[11px] tracking-widest-2 uppercase">
-        <span class="bg-cedar-deep/55 backdrop-blur-sm px-3 py-1.5 rounded-full">Plaza de la Moraleja, Alcobendas</span>
-      </figcaption>
-    </div>
-  </div>
-</section>
 
 <!-- ─────────────────────────  MARQUEE  ───────────────────────── -->
 <section class="py-8 md:py-12 overflow-hidden border-y border-cedar/10 bg-sand/40">
@@ -1403,6 +1544,85 @@
       }
     });
   });
+
+  /* ── Scroll-expand hero: video grows + corner texts fly outward ──────── */
+  (() => {
+    const hero  = document.querySelector('[data-seh]');
+    if (!hero) return;
+    const video = hero.querySelector('[data-seh-video]');
+    const texts = hero.querySelectorAll('[data-seh-text]');
+    if (!video) return;
+    const hint = hero.querySelector('.seh-scroll-hint');
+
+    const MQ_MOBILE = window.matchMedia('(max-width: 767px)');
+    const MQ_REDUCE = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+    let vw = 0, vh = 0, startW = 0, startH = 0, ticking = false, active = false;
+
+    function calcStart() {
+      vw = window.innerWidth;
+      vh = window.innerHeight;
+      // Initial preview size — bigger on wide screens, never exceeds viewport caps
+      startW = Math.max(360, Math.min(620, vw * 0.42));
+      startH = Math.max(240, Math.min(420, vh * 0.55));
+      // Clear the CSS max-width/height clamps so JS can size to full viewport
+      video.style.maxWidth  = 'none';
+      video.style.maxHeight = 'none';
+    }
+    function update() {
+      ticking = false;
+      if (!active) return;
+      const rect  = hero.getBoundingClientRect();
+      const range = hero.offsetHeight - vh;
+      let p = -rect.top / range;
+      if (p < 0) p = 0; else if (p > 1) p = 1;
+
+      // Ease the expansion slightly — feels less mechanical
+      const e = p < 0.5 ? 2 * p * p : 1 - Math.pow(-2 * p + 2, 2) / 2;
+
+      const w = startW + (vw - startW) * e;
+      const h = startH + (vh - startH) * e;
+      video.style.width  = w + 'px';
+      video.style.height = h + 'px';
+      video.style.borderRadius = (22 * (1 - e)) + 'px';
+
+      const tx = e * 115; // vw units off-screen
+      const textOp = Math.max(0, 1 - p * 1.25).toFixed(3);
+      texts.forEach(el => {
+        const dir = el.dataset.dir === 'right' ? 1 : -1;
+        el.style.transform = `translateX(${dir * tx}vw)`;
+        el.style.opacity = textOp;
+      });
+
+      // Scroll hint fades earlier than texts so the final video is clean
+      if (hint) hint.style.opacity = Math.max(0, 1 - p * 1.8).toFixed(3);
+    }
+    function onScroll() {
+      if (active && !ticking) { requestAnimationFrame(update); ticking = true; }
+    }
+    function clearInline() {
+      video.style.cssText = '';
+      texts.forEach(t => { t.style.transform = ''; t.style.opacity = ''; });
+      if (hint) hint.style.opacity = '';
+    }
+    function evaluate() {
+      const shouldActivate = !MQ_MOBILE.matches && !MQ_REDUCE.matches;
+      if (shouldActivate) {
+        active = true;
+        calcStart();
+        update();
+      } else if (active) {
+        active = false;
+        clearInline();
+      }
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', evaluate);
+    if (MQ_MOBILE.addEventListener) MQ_MOBILE.addEventListener('change', evaluate);
+    if (MQ_REDUCE.addEventListener) MQ_REDUCE.addEventListener('change', evaluate);
+    evaluate();
+  })();
 
   /* ── Word-by-word mask reveal ────────────────────────────────────────── */
   document.querySelectorAll('.word-reveal').forEach(el => {
