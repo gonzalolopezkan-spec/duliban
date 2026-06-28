@@ -408,9 +408,6 @@
   body.cursor-press #cursor-ring { width: 28px; height: 28px; transform: translate(-14px, -14px); }
   @media (hover: none), (pointer: coarse) { #cursor-dot, #cursor-ring { display: none; } }
 
-  /* ── Magnetic CTA: anchored via inline transform from JS ────────────────── */
-  .magnetic { transition: transform .35s cubic-bezier(.2,.7,.2,1); will-change: transform; }
-
   /* ── Tilt cards ─────────────────────────────────────────────────────────── */
   .tilt { transform-style: preserve-3d; transition: transform .6s cubic-bezier(.2,.7,.2,1); }
   .tilt > * { transform: translateZ(0); }
@@ -801,7 +798,7 @@
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
           916 25 00 72
         </a>
-        <a href="https://restauranteduliban.es/reservations/" target="_blank" rel="noopener" data-magnetic data-cursor="cta" class="btn-reserve magnetic inline-flex items-center gap-2 bg-terracotta hover:bg-terracotta-deep text-cream text-[12px] md:text-[13px] tracking-wider-2 uppercase px-4 md:px-5 py-2.5 rounded-full transition-colors duration-200 cursor-pointer">
+        <a href="https://wa.me/34690206459?text=Hola%2C%20me%20gustar%C3%ADa%20reservar%20mesa%20en%20du%20Liban." target="_blank" rel="noopener" data-cursor="cta" class="btn-reserve inline-flex items-center gap-2 bg-terracotta hover:bg-terracotta-deep text-cream text-[12px] md:text-[13px] tracking-wider-2 uppercase px-4 md:px-5 py-2.5 rounded-full transition-colors duration-200 cursor-pointer" aria-label="Reservar por WhatsApp">
           Reservar
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
         </a>
@@ -1258,7 +1255,7 @@
       mesa se llene de a poco — como en Beirut.
     </p>
     <div class="reveal delay-3 mt-10 flex flex-wrap items-center justify-center gap-3">
-      <a href="https://restauranteduliban.es/reservations/" target="_blank" rel="noopener" data-magnetic data-cursor="cta" class="btn-reserve magnetic inline-flex items-center gap-2 bg-terracotta hover:bg-terracotta-deep text-cream text-[12px] tracking-wider-2 uppercase px-6 py-3 rounded-full transition-colors duration-200 cursor-pointer">
+      <a href="https://wa.me/34690206459?text=Hola%2C%20me%20gustar%C3%ADa%20reservar%20mesa%20en%20du%20Liban." target="_blank" rel="noopener" data-cursor="cta" class="btn-reserve inline-flex items-center gap-2 bg-terracotta hover:bg-terracotta-deep text-cream text-[12px] tracking-wider-2 uppercase px-6 py-3 rounded-full transition-colors duration-200 cursor-pointer" aria-label="Reservar mesa por WhatsApp">
         Reservar mesa
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
       </a>
@@ -1368,8 +1365,8 @@
       </div>
 
       <div class="mt-10">
-        <a href="https://restauranteduliban.es/reservations/" target="_blank" rel="noopener" data-magnetic data-cursor="cta" class="btn-reserve magnetic inline-flex items-center gap-2 bg-terracotta hover:bg-terracotta-deep text-cream text-[12px] tracking-wider-2 uppercase px-6 py-3 rounded-full transition-colors duration-200 cursor-pointer">
-          Reservar online
+        <a href="https://wa.me/34690206459?text=Hola%2C%20me%20gustar%C3%ADa%20reservar%20mesa%20en%20du%20Liban." target="_blank" rel="noopener" data-cursor="cta" class="btn-reserve inline-flex items-center gap-2 bg-terracotta hover:bg-terracotta-deep text-cream text-[12px] tracking-wider-2 uppercase px-6 py-3 rounded-full transition-colors duration-200 cursor-pointer" aria-label="Reservar por WhatsApp">
+          Reservar por WhatsApp
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
         </a>
       </div>
@@ -1687,20 +1684,6 @@
   } else {
     if (dot) dot.style.display = 'none';
     if (ring) ring.style.display = 'none';
-  }
-
-  /* ── Magnetic CTA ────────────────────────────────────────────────────── */
-  if (hasFinePointer && !reduce) {
-    document.querySelectorAll('[data-magnetic]').forEach(el => {
-      const strength = 18;
-      el.addEventListener('mousemove', (e) => {
-        const r = el.getBoundingClientRect();
-        const x = e.clientX - (r.left + r.width / 2);
-        const y = e.clientY - (r.top + r.height / 2);
-        el.style.transform = `translate(${(x / r.width) * strength}px, ${(y / r.height) * strength}px)`;
-      });
-      el.addEventListener('mouseleave', () => { el.style.transform = ''; });
-    });
   }
 
   /* ── Photo tilt on hover ─────────────────────────────────────────────── */
