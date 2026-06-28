@@ -1194,44 +1194,905 @@
       </div>
     </div>
 
-    <!-- Gallery: editorial 5-tile on desktop · horizontal snap on mobile -->
-    <div class="md:hidden -mx-5">
-      <div class="flex gap-3 overflow-x-auto px-5 snap-x snap-mandatory pb-2" style="scrollbar-width: none;">
-        <figure class="tile snap-center shrink-0 w-[78vw] aspect-[4/5] overflow-hidden rounded-sm">
-          <img src="design-inspiration/real-fotos/cena-elegante-de-noche-1.jpeg" alt="Cena elegante de noche en du Liban" class="img-reveal w-full h-full object-cover" loading="lazy"/>
-        </figure>
-        <figure class="tile snap-center shrink-0 w-[78vw] aspect-[4/5] overflow-hidden rounded-sm">
-          <img src="design-inspiration/real-fotos/cocinando-pescado-parrilla.jpeg" alt="Pescado a la parrilla en la cocina abierta" class="img-reveal w-full h-full object-cover" loading="lazy"/>
-        </figure>
-        <figure class="tile snap-center shrink-0 w-[78vw] aspect-[4/5] overflow-hidden rounded-sm">
-          <img src="design-inspiration/real-fotos/primer-plano-aero-postre-3.jpeg" alt="Postre libanés con pistacho visto desde arriba" class="img-reveal w-full h-full object-cover" loading="lazy"/>
-        </figure>
-        <figure class="tile snap-center shrink-0 w-[78vw] aspect-[4/5] overflow-hidden rounded-sm">
-          <img src="design-inspiration/real-fotos/interior-del-restaurante-2.jpeg" alt="Comedor del restaurante du Liban con luz cálida" class="img-reveal w-full h-full object-cover" loading="lazy"/>
-        </figure>
-      </div>
-      <p class="px-5 mt-3 text-[11px] tracking-widest-2 uppercase text-cedar/55">Desliza para ver más</p>
-    </div>
+  </div>
+</section>
 
-    <div class="hidden md:grid grid-cols-12 gap-5">
-      <figure class="tile col-span-5 aspect-[4/5] overflow-hidden rounded-sm reveal">
-        <img src="design-inspiration/real-fotos/cena-elegante-de-noche-1.jpeg"
-             alt="Mesa servida con velas y vajilla cálida" class="img-reveal w-full h-full object-cover" loading="lazy"/>
-      </figure>
-      <div class="col-span-7 grid grid-cols-2 gap-5">
-        <figure class="tile aspect-square overflow-hidden rounded-sm reveal delay-1">
-          <img src="design-inspiration/real-fotos/cocinando-pescado-parrilla.jpeg"
-               alt="Carne a la brasa libanesa con cebolla y limón" class="img-reveal w-full h-full object-cover" loading="lazy"/>
-        </figure>
-        <figure class="tile aspect-square overflow-hidden rounded-sm reveal delay-2">
-          <img src="design-inspiration/real-fotos/primer-plano-aero-postre-3.jpeg"
-               alt="Postre libanés con pistacho y agua de azahar" class="img-reveal w-full h-full object-cover" loading="lazy"/>
-        </figure>
-        <figure class="tile aspect-square overflow-hidden rounded-sm col-span-2 reveal delay-3">
-          <img src="design-inspiration/real-fotos/interior-del-restaurante-2.jpeg"
-               alt="Comedor del restaurante con luz cálida" class="img-reveal w-full h-full object-cover" loading="lazy"/>
-        </figure>
+<!-- ─────────────────────────  ZOOM PARALLAX → SCROLL X CARRUSEL · LA COCINA  ───────────────────────── -->
+<style>
+  .zp-host { background: var(--cream); }
+  /* Combined track: 700vh holds (parallax 280vh) + (cross-fade 48vh) + (carousel 272vh) above 100vh sticky */
+  .zpx-track { position: relative; height: 700vh; }
+  .zpx-stage {
+    position: sticky; top: 0; height: 100vh;
+    overflow: hidden;
+    background: var(--cream);
+  }
+
+  /* ── Layer 1 · Zoom Parallax ──────────────────────────────────────────── */
+  .zp-layer {
+    position: absolute; inset: 0;
+    z-index: 1;
+    will-change: opacity;
+  }
+  .zp-img {
+    position: absolute; top: 0; left: 0;
+    width: 100%; height: 100%;
+    display: flex; align-items: center; justify-content: center;
+    transform: scale(var(--s, 1));
+    transform-origin: center center;
+    will-change: transform;
+    margin: 0;
+  }
+  .zp-img > .zp-frame {
+    position: relative;
+    height: 25vh; width: 25vw;
+    overflow: hidden;
+    border-radius: 2px;
+    box-shadow: 0 18px 50px -20px rgba(31,51,41,.35);
+  }
+  .zp-img > .zp-frame > img {
+    width: 100%; height: 100%;
+    object-fit: cover; display: block;
+    image-rendering: -webkit-optimize-contrast;
+  }
+  .zp-img-1 > .zp-frame { top: -30vh;  left:  5vw;    height: 30vh; width: 35vw; }
+  .zp-img-2 > .zp-frame { top: -10vh;  left: -25vw;   height: 45vh; width: 20vw; }
+  .zp-img-3 > .zp-frame {              left:  27.5vw; height: 25vh; width: 25vw; }
+  .zp-img-4 > .zp-frame { top:  27.5vh; left:  5vw;    height: 25vh; width: 20vw; }
+  .zp-img-5 > .zp-frame { top:  27.5vh; left: -22.5vw; height: 25vh; width: 30vw; }
+  .zp-img-6 > .zp-frame { top:  22.5vh; left:  25vw;   height: 15vh; width: 15vw; }
+
+  /* ── Bridge: zp-img-0 wears the carousel-card outfit ─────────────────────
+     The centered slot in phase 1 is rendered as the exact same card as the
+     first slide in phase 2 — same size, crop, caption. Combined with
+     data-zp-scale="1" (no scaling), the source photo is never upscaled past
+     its native resolution AND the cross-fade between phases is invisible. */
+  .zp-img-0 > .xc-card {
+    /* Inherits all .xc-card styling. Hover transforms stay disabled in phase 1
+       because .zp-layer has pointer-events: none. */
+  }
+
+  .zp-vignette {
+    position: absolute; inset: 0; pointer-events: none;
+    background: radial-gradient(ellipse at center, transparent 55%, rgba(245,239,227,.35) 100%);
+    z-index: 2;
+  }
+
+  /* ── Layer 2 · Scroll X Carousel ──────────────────────────────────────────
+     Absolute-positioned header / viewport / progress so the card row centers
+     at exactly 50vh — same vertical anchor as zp-img-0 in phase 1. */
+  .xc-layer {
+    position: absolute; inset: 0;
+    z-index: 2;
+    opacity: 0;
+    pointer-events: none;
+    will-change: opacity;
+  }
+  .xc-layer.is-active { pointer-events: auto; }
+
+  .xc-head {
+    position: absolute;
+    top: clamp(40px, 6vh, 70px);
+    left: 0; right: 0;
+    padding: 0 6vw;
+    text-align: center;
+    z-index: 5;
+    pointer-events: none;
+  }
+  .xc-head-eyebrow {
+    font-size: 11px; letter-spacing: .22em;
+    text-transform: uppercase;
+    color: var(--gold-deep);
+    margin-bottom: 8px;
+  }
+  .xc-head-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(22px, 2.6vw, 36px);
+    color: var(--cedar);
+    font-weight: 400;
+    font-style: italic;
+    line-height: 1.18;
+    letter-spacing: -0.012em;
+  }
+
+  .xc-viewport {
+    position: absolute; inset: 0;
+    display: flex; align-items: center;
+  }
+  .xc-wrap {
+    display: flex;
+    gap: 22px;
+    padding: 8px 4vw;
+    height: clamp(320px, 56vh, 460px);
+    align-items: center;
+    will-change: transform;
+  }
+  .xc-wrap > * { flex-shrink: 0; }
+
+  .xc-card {
+    position: relative;
+    width: clamp(240px, 22vw, 320px);
+    height: clamp(320px, 56vh, 460px);
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 28px 60px -32px rgba(31,51,41,.5), 0 8px 22px -14px rgba(31,51,41,.25);
+    background: var(--sand);
+  }
+  .xc-card > img {
+    width: 100%; height: 100%;
+    object-fit: cover; display: block;
+    transition: transform 700ms cubic-bezier(.2,.7,.2,1);
+  }
+  .xc-card:hover > img { transform: scale(1.06); }
+
+  /* Default caption (visible without hover) — subtle eyebrow + title at bottom */
+  .xc-caption {
+    position: absolute; left: 0; right: 0; bottom: 0;
+    padding: 38% 16px 14px;
+    background: linear-gradient(to top, rgba(31,51,41,.78) 0%, rgba(31,51,41,.35) 55%, transparent 100%);
+    color: var(--cream);
+    pointer-events: none;
+    transition: opacity 360ms ease;
+  }
+  .xc-card:hover .xc-caption { opacity: 0; }
+  .xc-caption-eyebrow {
+    font-size: 9.5px; letter-spacing: .22em; text-transform: uppercase;
+    color: var(--gold-soft); margin-bottom: 4px;
+    display: block;
+  }
+  .xc-caption-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px; line-height: 1.2;
+    color: var(--cream); font-weight: 500;
+  }
+
+  /* Hover reveal — full overlay with tags + description */
+  .xc-reveal {
+    position: absolute; inset: auto 14px 14px;
+    padding: 18px 18px 16px;
+    background: rgba(31, 51, 41, 0.78);
+    backdrop-filter: blur(18px) saturate(140%);
+    -webkit-backdrop-filter: blur(18px) saturate(140%);
+    border-radius: 4px;
+    color: var(--cream);
+    opacity: 0;
+    transform: translateY(120%);
+    transition: opacity 460ms ease, transform 520ms cubic-bezier(.2,.7,.2,1);
+  }
+  .xc-card:hover .xc-reveal {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .xc-reveal-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
+  .xc-tag {
+    display: inline-block;
+    padding: 3px 9px 4px;
+    border-radius: 999px;
+    background: rgba(245,239,227,0.12);
+    color: var(--gold-soft);
+    font-size: 10px;
+    letter-spacing: .14em; text-transform: uppercase;
+    border: 1px solid rgba(217,196,144,0.22);
+  }
+  .xc-reveal-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 19px; line-height: 1.18;
+    color: var(--cream); font-weight: 500;
+    margin: 4px 0 8px;
+  }
+  .xc-reveal-desc {
+    font-size: 12.5px; line-height: 1.55;
+    color: rgba(245,239,227,0.84);
+  }
+
+  /* Edge gradients framing the carousel */
+  .xc-edge {
+    position: absolute; top: 0; bottom: 0; width: 12vw;
+    z-index: 4; pointer-events: none;
+  }
+  .xc-edge-l { left: 0; background: linear-gradient(90deg, var(--cream) 30%, transparent); }
+  .xc-edge-r { right: 0; background: linear-gradient(270deg, var(--cream) 30%, transparent); }
+
+  /* Progress bar */
+  .xc-progress {
+    position: absolute;
+    bottom: clamp(22px, 3.5vh, 44px);
+    left: 4vw; right: 4vw;
+    height: 2px;
+    background: rgba(47,74,62,0.10);
+    border-radius: 999px;
+    overflow: hidden;
+    z-index: 5;
+    pointer-events: none;
+  }
+  .xc-progress > div {
+    height: 100%;
+    background: var(--gold);
+    width: 100%;
+    transform-origin: left center;
+    transform: scaleX(0);
+    will-change: transform;
+  }
+
+  /* Mobile / tablet / reduced motion ─ static parallax grid + native horizontal scroll for carousel */
+  @media (max-width: 1023px), (prefers-reduced-motion: reduce) {
+    .zpx-track { height: auto; }
+    .zpx-stage {
+      position: static; height: auto; overflow: visible;
+      display: block; padding: 0;
+    }
+    .zp-layer {
+      position: relative; inset: auto;
+      opacity: 1 !important;
+      padding: 0 20px;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
+    }
+    .zp-img {
+      position: relative;
+      display: block;
+      width: 100% !important; height: auto !important;
+      transform: none !important;
+    }
+    .zp-img > .zp-frame {
+      top: 0 !important; left: 0 !important;
+      width: 100% !important; height: auto !important;
+      aspect-ratio: 4 / 3;
+      box-shadow: 0 10px 28px -14px rgba(31,51,41,.30);
+    }
+    .zp-img-0 { grid-column: 1 / -1; }
+    .zp-img-0 > .zp-frame { aspect-ratio: 16 / 9; }
+    .zp-vignette { display: none; }
+
+    .xc-layer {
+      position: relative; inset: auto;
+      opacity: 1 !important;
+      pointer-events: auto;
+      height: auto;
+      padding: 56px 0 28px;
+      gap: 18px;
+    }
+    .xc-viewport { flex: none; }
+    .xc-wrap {
+      transform: none !important;
+      overflow-x: auto; overflow-y: hidden;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      padding: 8px 20px 20px;
+      height: auto;
+      align-items: stretch;
+      scrollbar-width: none;
+    }
+    .xc-wrap::-webkit-scrollbar { display: none; }
+    .xc-card {
+      scroll-snap-align: start;
+      width: 75vw;
+      height: auto;
+      aspect-ratio: 4 / 5;
+    }
+    .xc-edge { display: none; }
+    .xc-progress { display: none; }
+    .xc-reveal {
+      opacity: 1;
+      transform: translateY(0);
+      background: rgba(31,51,41,.82);
+    }
+    .xc-caption { display: none; }
+  }
+</style>
+
+<section id="chef-gallery" class="zp-host" aria-label="Galería: la hospitalidad libanesa, plato a plato">
+  <div class="zpx-track" data-zpx>
+    <div class="zpx-stage">
+
+      <!-- ──── LAYER 1 · ZOOM PARALLAX ───────────────────────────────────
+           zp-img-0 (center) IS the carousel's first card — same card markup,
+           no scaling — so the cross-fade between phases is visually invisible
+           and the chef image is never displayed past its native resolution. -->
+      <div class="zp-layer" data-zp-layer>
+        <div class="zp-img zp-img-0" data-zp-scale="1">
+          <article class="xc-card xc-card-bridge">
+            <img src="design-inspiration/real-fotos/primer-plano-del-chef.jpeg" alt="Chef de du Liban concentrado en el emplatado" loading="eager"/>
+            <div class="xc-caption">
+              <span class="xc-caption-eyebrow">01 · El chef</span>
+              <p class="xc-caption-title">Mohammad · tres generaciones</p>
+            </div>
+          </article>
+        </div>
+        <div class="zp-img zp-img-1" data-zp-scale="3.5">
+          <div class="zp-frame">
+            <img src="design-inspiration/real-fotos/cocinando-horno.jpeg" alt="Pan libanés saliendo del horno" loading="lazy"/>
+          </div>
+        </div>
+        <div class="zp-img zp-img-2" data-zp-scale="4">
+          <div class="zp-frame">
+            <img src="design-inspiration/real-fotos/cocinando-pescado-parrilla.jpeg" alt="Pescado a la brasa en la cocina abierta" loading="lazy"/>
+          </div>
+        </div>
+        <div class="zp-img zp-img-3" data-zp-scale="3.5">
+          <div class="zp-frame">
+            <img src="design-inspiration/real-fotos/terraza-bar-noche-1.jpeg" alt="Terraza del restaurante de noche" loading="lazy"/>
+          </div>
+        </div>
+        <div class="zp-img zp-img-4" data-zp-scale="4">
+          <div class="zp-frame">
+            <img src="design-inspiration/real-fotos/montando-platos-3.jpeg" alt="Montaje de plato libanés en cocina" loading="lazy"/>
+          </div>
+        </div>
+        <div class="zp-img zp-img-5" data-zp-scale="5">
+          <div class="zp-frame">
+            <img src="design-inspiration/real-fotos/primer-plano-aero-postre-1.jpeg" alt="Postre libanés visto desde arriba" loading="lazy"/>
+          </div>
+        </div>
+        <div class="zp-img zp-img-6" data-zp-scale="6">
+          <div class="zp-frame">
+            <img src="design-inspiration/real-fotos/interior-del-restaurante-2.jpeg" alt="Comedor del restaurante du Liban con luz cálida" loading="lazy"/>
+          </div>
+        </div>
+        <div class="zp-vignette" aria-hidden="true"></div>
       </div>
+
+      <!-- ──── LAYER 2 · SCROLL X CARRUSEL ─────────────────────────────── -->
+      <div class="xc-layer" data-xc-layer aria-label="Recorrido por du Liban">
+        <div class="xc-head">
+          <p class="xc-head-eyebrow">Cocina · Sala · Servicio</p>
+          <h3 class="xc-head-title">La hospitalidad libanesa, plato a plato.</h3>
+        </div>
+        <div class="xc-viewport">
+          <div class="xc-wrap" data-xc-wrap>
+
+            <!-- 01 · El chef -->
+            <article class="xc-card">
+              <img src="design-inspiration/real-fotos/primer-plano-del-chef.jpeg" alt="Chef de du Liban concentrado en el emplatado" loading="lazy"/>
+              <div class="xc-caption">
+                <span class="xc-caption-eyebrow">01 · El chef</span>
+                <p class="xc-caption-title">Mohammad · tres generaciones</p>
+              </div>
+              <div class="xc-reveal">
+                <div class="xc-reveal-tags"><span class="xc-tag">Chef</span><span class="xc-tag">Tradición</span></div>
+                <p class="xc-reveal-title">Mohammad, jefe de cocina</p>
+                <p class="xc-reveal-desc">Aprendió en la cocina de su abuela en Beirut, los domingos, antes de cumplir diez años. En du Liban cocina las recetas familiares que cruzaron tres generaciones — sin atajos, con el horno encendido a las ocho.</p>
+              </div>
+            </article>
+
+            <!-- 02 · El horno -->
+            <article class="xc-card">
+              <img src="design-inspiration/real-fotos/cocinando-horno.jpeg" alt="Manakish recién hechos sobre piedra de horno" loading="lazy"/>
+              <div class="xc-caption">
+                <span class="xc-caption-eyebrow">02 · El horno</span>
+                <p class="xc-caption-title">Manakish de zaatar</p>
+              </div>
+              <div class="xc-reveal">
+                <div class="xc-reveal-tags"><span class="xc-tag">Horno</span><span class="xc-tag">Vegetariano</span></div>
+                <p class="xc-reveal-title">Manakish de zaatar</p>
+                <p class="xc-reveal-desc">Masa fermentada 24 horas, cubierta con zaatar — tomillo silvestre, sumac y sésamo — y un hilo de aceite. Al horno hasta que la corteza dora y el aroma llena la sala.</p>
+              </div>
+            </article>
+
+            <!-- 03 · La brasa -->
+            <article class="xc-card">
+              <img src="design-inspiration/real-fotos/cocinando-pescado-parrilla.jpeg" alt="Pescado abierto sobre la parrilla de carbón" loading="lazy"/>
+              <div class="xc-caption">
+                <span class="xc-caption-eyebrow">03 · La brasa</span>
+                <p class="xc-caption-title">Samak mashwi</p>
+              </div>
+              <div class="xc-reveal">
+                <div class="xc-reveal-tags"><span class="xc-tag">Brasa</span><span class="xc-tag">Pescado</span></div>
+                <p class="xc-reveal-title">Samak Mashwi · pescado a la brasa</p>
+                <p class="xc-reveal-desc">Lubina entera marinada con ajo, limón y comino, abierta sobre carbón vegetal. El humo perfuma la piel y la carne se queda blanca, jugosa, con costra dorada.</p>
+              </div>
+            </article>
+
+            <!-- 04 · Condimentos -->
+            <article class="xc-card">
+              <img src="design-inspiration/real-fotos/condimentos.jpeg" alt="Especias libanesas dispuestas en cuencos" loading="lazy"/>
+              <div class="xc-caption">
+                <span class="xc-caption-eyebrow">04 · La despensa</span>
+                <p class="xc-caption-title">Las siete especias</p>
+              </div>
+              <div class="xc-reveal">
+                <div class="xc-reveal-tags"><span class="xc-tag">Despensa</span><span class="xc-tag">Especias</span></div>
+                <p class="xc-reveal-title">El alma del mezze</p>
+                <p class="xc-reveal-desc">Zaatar, sumac, tahini, melaza de granada, comino, cardamomo y pimienta blanca. Sin estas siete especias, ningún plato libanés tiene nombre propio.</p>
+              </div>
+            </article>
+
+            <!-- 05 · Montaje 1 -->
+            <article class="xc-card">
+              <img src="design-inspiration/real-fotos/montando-platos-1.jpeg" alt="Hummus terminándose con pesto y aceite" loading="lazy"/>
+              <div class="xc-caption">
+                <span class="xc-caption-eyebrow">05 · Mezze frío</span>
+                <p class="xc-caption-title">Hummus bil Pesto</p>
+              </div>
+              <div class="xc-reveal">
+                <div class="xc-reveal-tags"><span class="xc-tag">Mezze frío</span><span class="xc-tag">Garbanzo</span></div>
+                <p class="xc-reveal-title">Hummus bil Pesto</p>
+                <p class="xc-reveal-desc">Hummus clásico de garbanzo y tahini, terminado con un pesto verde de albahaca, piñones y ajo. Aceite de oliva en hilo y pan de pita caliente para mojar.</p>
+              </div>
+            </article>
+
+            <!-- 06 · Montaje 2 -->
+            <article class="xc-card">
+              <img src="design-inspiration/real-fotos/montando-platos-2.jpeg" alt="Berenjena ahumada con yogur y granada" loading="lazy"/>
+              <div class="xc-caption">
+                <span class="xc-caption-eyebrow">06 · Mezze frío</span>
+                <p class="xc-caption-title">Moutabal</p>
+              </div>
+              <div class="xc-reveal">
+                <div class="xc-reveal-tags"><span class="xc-tag">Mezze frío</span><span class="xc-tag">Berenjena</span></div>
+                <p class="xc-reveal-title">Moutabal · berenjena ahumada</p>
+                <p class="xc-reveal-desc">Berenjena ahumada a fuego abierto, batida con tahini, ajo, zumo de limón y yogur. Cremoso, profundo, con granos de granada y aceite encima.</p>
+              </div>
+            </article>
+
+            <!-- 07 · Montaje 3 -->
+            <article class="xc-card">
+              <img src="design-inspiration/real-fotos/montando-platos-3.jpeg" alt="Detalle del emplatado libanés" loading="lazy"/>
+              <div class="xc-caption">
+                <span class="xc-caption-eyebrow">07 · El detalle</span>
+                <p class="xc-caption-title">El último gesto</p>
+              </div>
+              <div class="xc-reveal">
+                <div class="xc-reveal-tags"><span class="xc-tag">Cocina</span><span class="xc-tag">Detalle</span></div>
+                <p class="xc-reveal-title">El último gesto</p>
+                <p class="xc-reveal-desc">Cada plato sale de cocina dos veces: una con la receta, otra con los detalles — la flor de granada, la hoja de cilantro, el hilo final de aceite.</p>
+              </div>
+            </article>
+
+            <!-- 08 · Montaje 4 -->
+            <article class="xc-card">
+              <img src="design-inspiration/real-fotos/montando-platos-4.jpeg" alt="Albóndigas de kebbeh recién fritas" loading="lazy"/>
+              <div class="xc-caption">
+                <span class="xc-caption-eyebrow">08 · Mezze caliente</span>
+                <p class="xc-caption-title">Kebbeh Sajyeh</p>
+              </div>
+              <div class="xc-reveal">
+                <div class="xc-reveal-tags"><span class="xc-tag">Mezze caliente</span><span class="xc-tag">Cordero</span></div>
+                <p class="xc-reveal-title">Kebbeh Sajyeh</p>
+                <p class="xc-reveal-desc">Cordero picado a cuchillo con bulgur fino y siete especias. Bolitas rellenas de piñones y cebolla caramelizada, fritas al momento y servidas con yogur de menta.</p>
+              </div>
+            </article>
+
+            <!-- 09 · Montaje 5 -->
+            <article class="xc-card">
+              <img src="design-inspiration/real-fotos/montando-platos-5.jpeg" alt="Fatteh con langostinos y yogur" loading="lazy"/>
+              <div class="xc-caption">
+                <span class="xc-caption-eyebrow">09 · Mezze caliente</span>
+                <p class="xc-caption-title">Fatteh al Rubyan</p>
+              </div>
+              <div class="xc-reveal">
+                <div class="xc-reveal-tags"><span class="xc-tag">Mezze caliente</span><span class="xc-tag">Marisco</span></div>
+                <p class="xc-reveal-title">Fatteh al Rubyan</p>
+                <p class="xc-reveal-desc">Pan crujiente, langostinos salteados con ajo y cilantro, yogur batido con tahini y piñones tostados. Capa sobre capa — se come con cuchara.</p>
+              </div>
+            </article>
+
+            <!-- 10 · Primer plano diagonal 1 -->
+            <article class="xc-card">
+              <img src="design-inspiration/real-fotos/primer-plano-diagonal-plato-1.jpeg" alt="Lahme bi Aajin recién hecho" loading="lazy"/>
+              <div class="xc-caption">
+                <span class="xc-caption-eyebrow">10 · Horno</span>
+                <p class="xc-caption-title">Lahme bi Aajin</p>
+              </div>
+              <div class="xc-reveal">
+                <div class="xc-reveal-tags"><span class="xc-tag">Horno</span><span class="xc-tag">Cordero</span></div>
+                <p class="xc-reveal-title">Lahme bi Aajin</p>
+                <p class="xc-reveal-desc">Masa fina cubierta con cordero picado, tomate concassé, cebolla y siete especias. La pizza beirutí — al horno hasta que las puntas crujen, y un cuarto de limón al lado.</p>
+              </div>
+            </article>
+
+            <!-- 11 · Primer plano diagonal 2 -->
+            <article class="xc-card">
+              <img src="design-inspiration/real-fotos/primer-plano-diagonal-plato-2.jpeg" alt="Manakish con labneh y aceitunas" loading="lazy"/>
+              <div class="xc-caption">
+                <span class="xc-caption-eyebrow">11 · Horno</span>
+                <p class="xc-caption-title">Zaatar &amp; Labneh</p>
+              </div>
+              <div class="xc-reveal">
+                <div class="xc-reveal-tags"><span class="xc-tag">Horno</span><span class="xc-tag">Vegetariano</span></div>
+                <p class="xc-reveal-title">Zaatar &amp; Labneh</p>
+                <p class="xc-reveal-desc">Manakish de zaatar con labneh casero — yogur colado tres días — y aceitunas negras de Líbano. El desayuno de toda la costa, servido hasta medianoche.</p>
+              </div>
+            </article>
+
+            <!-- 12 · Primer plano diagonal 3 -->
+            <article class="xc-card">
+              <img src="design-inspiration/real-fotos/primer-plano-diagonal-plato-3.jpeg" alt="Fattoush con verduras y pan crujiente" loading="lazy"/>
+              <div class="xc-caption">
+                <span class="xc-caption-eyebrow">12 · Mezze frío</span>
+                <p class="xc-caption-title">Fattoush</p>
+              </div>
+              <div class="xc-reveal">
+                <div class="xc-reveal-tags"><span class="xc-tag">Ensalada</span><span class="xc-tag">Mezze frío</span></div>
+                <p class="xc-reveal-title">Fattoush</p>
+                <p class="xc-reveal-desc">Tomate, pepino, rábano, rúcula y menta, aliñados con melaza de granada y aceite. Cuadraditos de pan de pita tostado para crujido — la ensalada que abre la mesa.</p>
+              </div>
+            </article>
+
+            <!-- 13 · Primer plano diagonal 4 -->
+            <article class="xc-card">
+              <img src="design-inspiration/real-fotos/primer-plano-diagonal-plato-4.jpeg" alt="Hummus caliente con cordero y piñones" loading="lazy"/>
+              <div class="xc-caption">
+                <span class="xc-caption-eyebrow">13 · Mezze caliente</span>
+                <p class="xc-caption-title">Hummus Lahme</p>
+              </div>
+              <div class="xc-reveal">
+                <div class="xc-reveal-tags"><span class="xc-tag">Mezze caliente</span><span class="xc-tag">Cordero</span></div>
+                <p class="xc-reveal-title">Hummus Lahme</p>
+                <p class="xc-reveal-desc">Hummus caliente coronado con cordero salteado en mantequilla clarificada y piñones dorados. El contraste entre la crema del garbanzo y el calor de la carne.</p>
+              </div>
+            </article>
+
+            <!-- 14 · Primer plano diagonal 5 -->
+            <article class="xc-card">
+              <img src="design-inspiration/real-fotos/primer-plano-diagonal-plato-5.jpeg" alt="Kabab de cordero recién hecho" loading="lazy"/>
+              <div class="xc-caption">
+                <span class="xc-caption-eyebrow">14 · Brasa</span>
+                <p class="xc-caption-title">Kabab</p>
+              </div>
+              <div class="xc-reveal">
+                <div class="xc-reveal-tags"><span class="xc-tag">Brasa</span><span class="xc-tag">Cordero</span></div>
+                <p class="xc-reveal-title">Kabab</p>
+                <p class="xc-reveal-desc">Pinchos de cordero picado a cuchillo con perejil y cebolla, sobre carbón vegetal. Acompañados de tomate asado, cebolla con sumac y pan caliente para envolver.</p>
+              </div>
+            </article>
+
+            <!-- 15 · Primer plano diagonal 6 -->
+            <article class="xc-card">
+              <img src="design-inspiration/real-fotos/primer-plano-diagonal-plato-6.jpeg" alt="Jarrete de cordero con su jugo" loading="lazy"/>
+              <div class="xc-caption">
+                <span class="xc-caption-eyebrow">15 · Brasa</span>
+                <p class="xc-caption-title">Mawzet Kharouf</p>
+              </div>
+              <div class="xc-reveal">
+                <div class="xc-reveal-tags"><span class="xc-tag">Cordero lento</span><span class="xc-tag">Brasa</span></div>
+                <p class="xc-reveal-title">Mawzet Kharouf</p>
+                <p class="xc-reveal-desc">Jarrete de cordero cocinado seis horas con cebolla, tomate, canela y comino. Carne que se separa con la cuchara y caldo concentrado debajo, con freekeh ahumado.</p>
+              </div>
+            </article>
+
+            <!-- 16 · Postre 1 -->
+            <article class="xc-card">
+              <img src="design-inspiration/real-fotos/primer-plano-aero-postre-1.jpeg" alt="Postre libanés visto desde arriba" loading="lazy"/>
+              <div class="xc-caption">
+                <span class="xc-caption-eyebrow">16 · Postre</span>
+                <p class="xc-caption-title">Knefeh</p>
+              </div>
+              <div class="xc-reveal">
+                <div class="xc-reveal-tags"><span class="xc-tag">Postre</span><span class="xc-tag">Caliente</span></div>
+                <p class="xc-reveal-title">Knefeh</p>
+                <p class="xc-reveal-desc">Cabello de ángel relleno de queso fresco, horneado hasta dorar y bañado en almíbar de azahar. Se sirve caliente, con un café cardamomo al lado.</p>
+              </div>
+            </article>
+
+            <!-- 17 · Postre 2 -->
+            <article class="xc-card">
+              <img src="design-inspiration/real-fotos/primer-plano-aero-postre-2.jpeg" alt="Mafroukit con ashta y pistacho" loading="lazy"/>
+              <div class="xc-caption">
+                <span class="xc-caption-eyebrow">17 · Postre</span>
+                <p class="xc-caption-title">Mafroukit Ashta</p>
+              </div>
+              <div class="xc-reveal">
+                <div class="xc-reveal-tags"><span class="xc-tag">Postre</span><span class="xc-tag">Pistacho</span></div>
+                <p class="xc-reveal-title">Mafroukit Ashta</p>
+                <p class="xc-reveal-desc">Sémola dorada con miel, mantequilla y agua de azahar. Encima, ashta — la nata reducida libanesa — y un puñado de pistachos enteros del Bekaa.</p>
+              </div>
+            </article>
+
+            <!-- 18 · Postre 3 -->
+            <article class="xc-card">
+              <img src="design-inspiration/real-fotos/primer-plano-aero-postre-3.jpeg" alt="Em Ali con frutos secos" loading="lazy"/>
+              <div class="xc-caption">
+                <span class="xc-caption-eyebrow">18 · Postre</span>
+                <p class="xc-caption-title">Em Ali</p>
+              </div>
+              <div class="xc-reveal">
+                <div class="xc-reveal-tags"><span class="xc-tag">Postre</span><span class="xc-tag">Frutos secos</span></div>
+                <p class="xc-reveal-title">Em Ali</p>
+                <p class="xc-reveal-desc">El pudding de hojaldre tradicional: capas finas, leche caliente perfumada con cardamomo, almendras, pistachos y coco rallado por encima — recién horneado.</p>
+              </div>
+            </article>
+
+            <!-- 19 · Coctel 1 -->
+            <article class="xc-card">
+              <img src="design-inspiration/real-fotos/primer-plano-montando-cocktail-1.jpeg" alt="Cóctel con melaza de granada" loading="lazy"/>
+              <div class="xc-caption">
+                <span class="xc-caption-eyebrow">19 · Bar</span>
+                <p class="xc-caption-title">Granada &amp; Mezcal</p>
+              </div>
+              <div class="xc-reveal">
+                <div class="xc-reveal-tags"><span class="xc-tag">Bar</span><span class="xc-tag">Coctelería</span></div>
+                <p class="xc-reveal-title">Granada &amp; Mezcal</p>
+                <p class="xc-reveal-desc">Mezcal con melaza de granada y zumo de lima. Inspirado en el grenadine — granada y azúcar reducidos a fuego lento como en los pueblos del sur.</p>
+              </div>
+            </article>
+
+            <!-- 20 · Coctel 2 -->
+            <article class="xc-card">
+              <img src="design-inspiration/real-fotos/primer-plano-montando-cocktail-2.jpeg" alt="Arak sour servido en copa" loading="lazy"/>
+              <div class="xc-caption">
+                <span class="xc-caption-eyebrow">20 · Bar</span>
+                <p class="xc-caption-title">Arak Sour</p>
+              </div>
+              <div class="xc-reveal">
+                <div class="xc-reveal-tags"><span class="xc-tag">Bar</span><span class="xc-tag">Arak</span></div>
+                <p class="xc-reveal-title">Arak Sour</p>
+                <p class="xc-reveal-desc">Arak — el anisado libanés — con zumo de limón fresco, jarabe de azahar y clara batida. Servido en copa fría con piel de naranja.</p>
+              </div>
+            </article>
+
+            <!-- 21 · Probando 1 -->
+            <article class="xc-card">
+              <img src="design-inspiration/real-fotos/plano-aereo-probando-comida.jpeg" alt="Manos compartiendo platos desde arriba" loading="lazy"/>
+              <div class="xc-caption">
+                <span class="xc-caption-eyebrow">21 · Mesa</span>
+                <p class="xc-caption-title">Compartir es libanés</p>
+              </div>
+              <div class="xc-reveal">
+                <div class="xc-reveal-tags"><span class="xc-tag">Cultura</span><span class="xc-tag">Mezze</span></div>
+                <p class="xc-reveal-title">Compartir es libanés</p>
+                <p class="xc-reveal-desc">La mesa libanesa nunca es de uno solo. Los mezze llegan al centro y todos cogen del mismo plato — eso es lo que hace que la comida sepa a hogar.</p>
+              </div>
+            </article>
+
+            <!-- 22 · Probando 2 -->
+            <article class="xc-card">
+              <img src="design-inspiration/real-fotos/plano-diagonal-probando-comida.jpeg" alt="Pan, hummus y menta en el primer bocado" loading="lazy"/>
+              <div class="xc-caption">
+                <span class="xc-caption-eyebrow">22 · Mesa</span>
+                <p class="xc-caption-title">El primer bocado</p>
+              </div>
+              <div class="xc-reveal">
+                <div class="xc-reveal-tags"><span class="xc-tag">Ritual</span><span class="xc-tag">Mezze</span></div>
+                <p class="xc-reveal-title">El primer bocado</p>
+                <p class="xc-reveal-desc">El pan caliente recién salido del horno, el hummus en el centro, una hoja de menta. Así empieza siempre — el ritual antes del ritual.</p>
+              </div>
+            </article>
+
+            <!-- 23 · Mesa abundante -->
+            <article class="xc-card">
+              <img src="design-inspiration/real-fotos/mesa-comida-lujo-abundante.jpeg" alt="Mesa libanesa completa con mezze" loading="lazy"/>
+              <div class="xc-caption">
+                <span class="xc-caption-eyebrow">23 · Mesa</span>
+                <p class="xc-caption-title">Una mesa libanesa</p>
+              </div>
+              <div class="xc-reveal">
+                <div class="xc-reveal-tags"><span class="xc-tag">Mesa</span><span class="xc-tag">Sobremesa</span></div>
+                <p class="xc-reveal-title">Una mesa libanesa</p>
+                <p class="xc-reveal-desc">Veinte mezze, el horno y la brasa, vino del Bekaa, agua de azahar al final. Para cuatro, para ocho, para los que vengan a unirse.</p>
+              </div>
+            </article>
+
+            <!-- 24 · Comiendo abundante -->
+            <article class="xc-card">
+              <img src="design-inspiration/real-fotos/comiendo-abundante-mesa-lujo.jpeg" alt="Comensales compartiendo cena libanesa" loading="lazy"/>
+              <div class="xc-caption">
+                <span class="xc-caption-eyebrow">24 · Sala</span>
+                <p class="xc-caption-title">Cenar despacio</p>
+              </div>
+              <div class="xc-reveal">
+                <div class="xc-reveal-tags"><span class="xc-tag">Sala</span><span class="xc-tag">Ritual</span></div>
+                <p class="xc-reveal-title">Cenar despacio</p>
+                <p class="xc-reveal-desc">En Beirut nadie come en una hora. Aquí tampoco — reserva con tiempo y deja que la mesa se llene de a poco, como cuando es en casa.</p>
+              </div>
+            </article>
+
+            <!-- 25 · Bebiendo abundante -->
+            <article class="xc-card">
+              <img src="design-inspiration/real-fotos/bebiendo-abundante-mesa-lujo.jpeg" alt="Copas servidas en la mesa" loading="lazy"/>
+              <div class="xc-caption">
+                <span class="xc-caption-eyebrow">25 · Bar</span>
+                <p class="xc-caption-title">Vinos del Bekaa</p>
+              </div>
+              <div class="xc-reveal">
+                <div class="xc-reveal-tags"><span class="xc-tag">Bar</span><span class="xc-tag">Vino</span></div>
+                <p class="xc-reveal-title">Vinos del Bekaa</p>
+                <p class="xc-reveal-desc">Carta libanesa de viñedos a mil metros — Château Musar, Ksara, Domaine des Tourelles — junto a referencias de la Ribera, Rueda y la Borgoña.</p>
+              </div>
+            </article>
+
+            <!-- 26 · Detalles 1 -->
+            <article class="xc-card">
+              <img src="design-inspiration/real-fotos/detalles-bonitos-decoración-1.jpeg" alt="Detalle de la decoración de la sala" loading="lazy"/>
+              <div class="xc-caption">
+                <span class="xc-caption-eyebrow">26 · Detalle</span>
+                <p class="xc-caption-title">Detalles de Beirut</p>
+              </div>
+              <div class="xc-reveal">
+                <div class="xc-reveal-tags"><span class="xc-tag">Sala</span><span class="xc-tag">Decoración</span></div>
+                <p class="xc-reveal-title">Detalles de Beirut</p>
+                <p class="xc-reveal-desc">Tapicería bordada a mano, lámparas de latón, mosaicos de mármol. Cada objeto de la sala viene de algún rincón del Líbano — del zoco o de la casa familiar.</p>
+              </div>
+            </article>
+
+            <!-- 27 · Detalles 2 -->
+            <article class="xc-card">
+              <img src="design-inspiration/real-fotos/detalles-bonitos-decoración-2.jpeg" alt="Vajilla y cristalería de la mesa" loading="lazy"/>
+              <div class="xc-caption">
+                <span class="xc-caption-eyebrow">27 · Detalle</span>
+                <p class="xc-caption-title">Hospitalidad en mesa</p>
+              </div>
+              <div class="xc-reveal">
+                <div class="xc-reveal-tags"><span class="xc-tag">Sala</span><span class="xc-tag">Mesa</span></div>
+                <p class="xc-reveal-title">Hospitalidad en mesa</p>
+                <p class="xc-reveal-desc">Vajilla pintada, cubertería con peso, copas finas. La forma en que se sirve también es parte del plato — el detalle se ve antes que el sabor.</p>
+              </div>
+            </article>
+
+            <!-- 28 · Detalles 3 -->
+            <article class="xc-card">
+              <img src="design-inspiration/real-fotos/detalles-bonitos-decoración-3.jpeg" alt="Textura de madera y cobre en la sala" loading="lazy"/>
+              <div class="xc-caption">
+                <span class="xc-caption-eyebrow">28 · Detalle</span>
+                <p class="xc-caption-title">La textura de la casa</p>
+              </div>
+              <div class="xc-reveal">
+                <div class="xc-reveal-tags"><span class="xc-tag">Sala</span><span class="xc-tag">Diseño</span></div>
+                <p class="xc-reveal-title">La textura de la casa</p>
+                <p class="xc-reveal-desc">Madera oscura, cobre martillado, telas naturales. Una sala que se siente con las manos antes que con los ojos — pensada para no tener prisa.</p>
+              </div>
+            </article>
+
+            <!-- 29 · Lujo revisando menú -->
+            <article class="xc-card">
+              <img src="design-inspiration/real-fotos/lujo-revisando-el-menu.jpeg" alt="Comensal revisando la carta" loading="lazy"/>
+              <div class="xc-caption">
+                <span class="xc-caption-eyebrow">29 · La carta</span>
+                <p class="xc-caption-title">Elegir la mesa</p>
+              </div>
+              <div class="xc-reveal">
+                <div class="xc-reveal-tags"><span class="xc-tag">Carta</span><span class="xc-tag">Ritual</span></div>
+                <p class="xc-reveal-title">Elegir la mesa</p>
+                <p class="xc-reveal-desc">Cinco actos: del horno, mezze frío, mezze caliente, brasa y postres. Pedir a la libanesa no es pedir poco — y siempre sobra para llevarse a casa.</p>
+              </div>
+            </article>
+
+            <!-- 30 · Servicio en mesa 1 -->
+            <article class="xc-card">
+              <img src="design-inspiration/real-fotos/camarero-sirviendo-mesa-1.jpeg" alt="Camarero sirviendo en la sala" loading="lazy"/>
+              <div class="xc-caption">
+                <span class="xc-caption-eyebrow">30 · Servicio</span>
+                <p class="xc-caption-title">Servicio en sala</p>
+              </div>
+              <div class="xc-reveal">
+                <div class="xc-reveal-tags"><span class="xc-tag">Servicio</span><span class="xc-tag">Sala</span></div>
+                <p class="xc-reveal-title">Servicio en sala</p>
+                <p class="xc-reveal-desc">El maître presenta cada plato, explica la receta y la procedencia del ingrediente. La sobremesa empieza antes del primer bocado.</p>
+              </div>
+            </article>
+
+            <!-- 31 · Servicio en mesa 2 -->
+            <article class="xc-card">
+              <img src="design-inspiration/real-fotos/camarero-sirviendo-mesa-2.jpeg" alt="Plato terminado en la mesa" loading="lazy"/>
+              <div class="xc-caption">
+                <span class="xc-caption-eyebrow">31 · Servicio</span>
+                <p class="xc-caption-title">Compartir la mesa</p>
+              </div>
+              <div class="xc-reveal">
+                <div class="xc-reveal-tags"><span class="xc-tag">Servicio</span><span class="xc-tag">Mezze</span></div>
+                <p class="xc-reveal-title">Compartir la mesa</p>
+                <p class="xc-reveal-desc">Los platos se colocan al centro, las manos se cruzan, el pan pasa. Comer libanés es un gesto colectivo — la mesa entera comparte el mismo bocado.</p>
+              </div>
+            </article>
+
+            <!-- 32 · Servicio del pescado -->
+            <article class="xc-card">
+              <img src="design-inspiration/real-fotos/camarero-sirviendo-pescado.jpeg" alt="Camarero trinchando pescado en mesa" loading="lazy"/>
+              <div class="xc-caption">
+                <span class="xc-caption-eyebrow">32 · Servicio</span>
+                <p class="xc-caption-title">El pescado a la sala</p>
+              </div>
+              <div class="xc-reveal">
+                <div class="xc-reveal-tags"><span class="xc-tag">Servicio</span><span class="xc-tag">Brasa</span></div>
+                <p class="xc-reveal-title">El pescado a la sala</p>
+                <p class="xc-reveal-desc">El samak mashwi se trae entero desde la cocina y se trincha delante del comensal. El humo de la brasa todavía acompaña la cabeza, los lomos y la cola.</p>
+              </div>
+            </article>
+
+            <!-- 33 · Amigas atardecer -->
+            <article class="xc-card">
+              <img src="design-inspiration/real-fotos/amigas-al-atardecer.jpeg" alt="Brindis al atardecer en la terraza" loading="lazy"/>
+              <div class="xc-caption">
+                <span class="xc-caption-eyebrow">33 · Terraza</span>
+                <p class="xc-caption-title">La hora dorada</p>
+              </div>
+              <div class="xc-reveal">
+                <div class="xc-reveal-tags"><span class="xc-tag">Terraza</span><span class="xc-tag">Aperitivo</span></div>
+                <p class="xc-reveal-title">La hora dorada</p>
+                <p class="xc-reveal-desc">Las terrazas de La Moraleja al atardecer. Empieza el aperitivo, llegan los amigos, baja el sol — y la noche aún ni siquiera ha empezado.</p>
+              </div>
+            </article>
+
+            <!-- 34 · Cena de noche 1 -->
+            <article class="xc-card">
+              <img src="design-inspiration/real-fotos/cena-elegante-de-noche-1.jpeg" alt="Mesa preparada para la cena" loading="lazy"/>
+              <div class="xc-caption">
+                <span class="xc-caption-eyebrow">34 · Sala</span>
+                <p class="xc-caption-title">Cena de noche</p>
+              </div>
+              <div class="xc-reveal">
+                <div class="xc-reveal-tags"><span class="xc-tag">Sala</span><span class="xc-tag">Noche</span></div>
+                <p class="xc-reveal-title">Cena de noche</p>
+                <p class="xc-reveal-desc">Luz cálida, mantel blanco, copa servida. La mesa preparada para una velada larga — la cocina abre a las ocho y no cierra hasta medianoche.</p>
+              </div>
+            </article>
+
+            <!-- 35 · Cena de noche 2 -->
+            <article class="xc-card">
+              <img src="design-inspiration/real-fotos/cena-elegante-de-noche-2.jpeg" alt="Sobremesa en la sala" loading="lazy"/>
+              <div class="xc-caption">
+                <span class="xc-caption-eyebrow">35 · Sala</span>
+                <p class="xc-caption-title">Sobremesa libanesa</p>
+              </div>
+              <div class="xc-reveal">
+                <div class="xc-reveal-tags"><span class="xc-tag">Sala</span><span class="xc-tag">Sobremesa</span></div>
+                <p class="xc-reveal-title">Sobremesa libanesa</p>
+                <p class="xc-reveal-desc">El café cardamomo, el dulce, la conversación. La cena termina cuando alguien decide irse — y casi nunca nadie tiene prisa.</p>
+              </div>
+            </article>
+
+            <!-- 36 · Interior 1 -->
+            <article class="xc-card">
+              <img src="design-inspiration/real-fotos/interior-del-restaurante-1.jpeg" alt="Comedor del restaurante" loading="lazy"/>
+              <div class="xc-caption">
+                <span class="xc-caption-eyebrow">36 · Comedor</span>
+                <p class="xc-caption-title">El comedor</p>
+              </div>
+              <div class="xc-reveal">
+                <div class="xc-reveal-tags"><span class="xc-tag">Sala</span><span class="xc-tag">Comedor</span></div>
+                <p class="xc-reveal-title">El comedor</p>
+                <p class="xc-reveal-desc">Cincuenta cubiertos en una sala que conserva los detalles de las casas de la costa libanesa — luz baja, maderas oscuras, mosaico al fondo, lámparas de latón.</p>
+              </div>
+            </article>
+
+            <!-- 37 · Interior 2 -->
+            <article class="xc-card">
+              <img src="design-inspiration/real-fotos/interior-del-restaurante-2.jpeg" alt="Sala iluminada en cálido" loading="lazy"/>
+              <div class="xc-caption">
+                <span class="xc-caption-eyebrow">37 · Comedor</span>
+                <p class="xc-caption-title">La hospitalidad libanesa</p>
+              </div>
+              <div class="xc-reveal">
+                <div class="xc-reveal-tags"><span class="xc-tag">Sala</span><span class="xc-tag">Hospitalidad</span></div>
+                <p class="xc-reveal-title">La hospitalidad libanesa</p>
+                <p class="xc-reveal-desc">La sala diseñada para que nadie tenga prisa. Cada mesa tiene su propio rincón — y cada rincón un pedazo de Beirut en madera o en cobre.</p>
+              </div>
+            </article>
+
+            <!-- 38 · Terraza noche 1 -->
+            <article class="xc-card">
+              <img src="design-inspiration/real-fotos/terraza-bar-noche-1.jpeg" alt="Terraza con barra abierta de noche" loading="lazy"/>
+              <div class="xc-caption">
+                <span class="xc-caption-eyebrow">38 · Terraza</span>
+                <p class="xc-caption-title">Terraza de noche</p>
+              </div>
+              <div class="xc-reveal">
+                <div class="xc-reveal-tags"><span class="xc-tag">Terraza</span><span class="xc-tag">Bar</span></div>
+                <p class="xc-reveal-title">Terraza de noche</p>
+                <p class="xc-reveal-desc">La barra abierta al exterior, cócteles libaneses, vinos del Bekaa y mezze ligeros — todo hasta cierre, todas las noches de la semana menos los lunes.</p>
+              </div>
+            </article>
+
+            <!-- 39 · Terraza noche 2 -->
+            <article class="xc-card">
+              <img src="design-inspiration/real-fotos/terraza-bar-noche-2.jpeg" alt="La plaza de La Moraleja de noche" loading="lazy"/>
+              <div class="xc-caption">
+                <span class="xc-caption-eyebrow">39 · La plaza</span>
+                <p class="xc-caption-title">La Moraleja</p>
+              </div>
+              <div class="xc-reveal">
+                <div class="xc-reveal-tags"><span class="xc-tag">Terraza</span><span class="xc-tag">La Moraleja</span></div>
+                <p class="xc-reveal-title">La plaza de La Moraleja</p>
+                <p class="xc-reveal-desc">Veintitrés años en la misma plaza. La terraza llena cada noche, el horno encendido a las ocho — y el barrio sabiendo que esta es la casa libanesa de Madrid.</p>
+              </div>
+            </article>
+
+          </div>
+        </div>
+        <div class="xc-progress" aria-hidden="true"><div data-xc-bar></div></div>
+        <div class="xc-edge xc-edge-l" aria-hidden="true"></div>
+        <div class="xc-edge xc-edge-r" aria-hidden="true"></div>
+      </div>
+
     </div>
   </div>
 </section>
@@ -1617,6 +2478,116 @@
     window.addEventListener('scroll', onScroll, { passive: true });
     window.addEventListener('resize', evaluate);
     if (MQ_MOBILE.addEventListener) MQ_MOBILE.addEventListener('change', evaluate);
+    if (MQ_REDUCE.addEventListener) MQ_REDUCE.addEventListener('change', evaluate);
+    evaluate();
+  })();
+
+  /* ── Zoom Parallax → Scroll X Carousel · combined sticky timeline ────── */
+  (() => {
+    const track = document.querySelector('[data-zpx]');
+    if (!track) return;
+    const parallaxLayer = track.querySelector('[data-zp-layer]');
+    const carouselLayer = track.querySelector('[data-xc-layer]');
+    const wrap = track.querySelector('[data-xc-wrap]');
+    const bar = track.querySelector('[data-xc-bar]');
+    const imgs = Array.from(track.querySelectorAll('.zp-img'));
+    if (!parallaxLayer || !carouselLayer || !wrap || !bar || !imgs.length) return;
+
+    const MQ_DESKTOP = window.matchMedia('(min-width: 1024px)');
+    const MQ_REDUCE  = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+    // Phase boundaries on total scroll progress (0..1):
+    //   parallax   : 0      → P_END (zoom scales 1 → max)
+    //   transition : P_END  → T_END (opacity cross-fade between layers)
+    //   carousel   : T_END  → 1     (translateX wrap + scaleX progress bar)
+    const P_END = 0.47;
+    const T_END = 0.55;
+    // Extra slack after the carousel "ends" to keep it stuck a few px while the
+    // user keeps scrolling — protects against snapping on touchpads.
+    const RIGHT_PAD_PX = 80;
+
+    const targets = imgs.map(el => ({ el, max: parseFloat(el.dataset.zpScale) || 4 }));
+
+    let active = false, ticking = false, inView = false;
+
+    function update() {
+      ticking = false;
+      if (!active) return;
+      const rect = track.getBoundingClientRect();
+      const range = track.offsetHeight - window.innerHeight;
+      if (range <= 0) return;
+      let p = -rect.top / range;
+      if (p < 0) p = 0; else if (p > 1) p = 1;
+
+      // 1) Parallax scales (only meaningful while p ≤ P_END, but clamp anyway)
+      const pP = Math.min(1, p / P_END);
+      const eP = 1 - Math.pow(1 - pP, 1.6);
+      targets.forEach(({ el, max }) => {
+        const s = 1 + (max - 1) * eP;
+        el.style.setProperty('--s', s.toFixed(3));
+      });
+
+      // 2) Cross-fade between parallax and carousel
+      let pOp = 1, cOp = 0;
+      if (p < P_END) { pOp = 1; cOp = 0; }
+      else if (p < T_END) {
+        const t = (p - P_END) / (T_END - P_END);
+        const eT = t * t * (3 - 2 * t); // smoothstep
+        pOp = 1 - eT;
+        cOp = eT;
+      } else { pOp = 0; cOp = 1; }
+      parallaxLayer.style.opacity = pOp.toFixed(3);
+      carouselLayer.style.opacity = cOp.toFixed(3);
+      carouselLayer.classList.toggle('is-active', p >= (P_END + T_END) / 2);
+
+      // 3) Horizontal scroll of the carousel.
+      //    Start position: first card centered in the viewport (matches the
+      //    chef-card slot in zp-img-0 so the cross-fade is invisible). Then
+      //    slide left until the last card sits at the right edge.
+      let pC = 0;
+      if (p > T_END) pC = (p - T_END) / (1 - T_END);
+      const wrapW = wrap.scrollWidth;
+      const viewW = track.offsetWidth;
+      const firstCard = wrap.firstElementChild;
+      const wrapPad   = parseFloat(getComputedStyle(wrap).paddingLeft) || 0;
+      const cardW     = firstCard ? firstCard.offsetWidth : 0;
+      const startX    = Math.max(0, (viewW - cardW) / 2 - wrapPad);
+      const endX      = -Math.max(0, wrapW - viewW + RIGHT_PAD_PX);
+      const x = startX + pC * (endX - startX);
+      wrap.style.transform = `translate3d(${x.toFixed(1)}px,0,0)`;
+      bar.style.transform  = `scaleX(${pC.toFixed(3)})`;
+    }
+
+    function onScroll() {
+      if (!inView || !active || ticking) return;
+      ticking = true;
+      requestAnimationFrame(update);
+    }
+
+    function clearInline() {
+      targets.forEach(({ el }) => el.style.removeProperty('--s'));
+      parallaxLayer.style.opacity = '';
+      carouselLayer.style.opacity = '';
+      carouselLayer.classList.remove('is-active');
+      wrap.style.transform = '';
+      bar.style.transform  = '';
+    }
+
+    function evaluate() {
+      const shouldActivate = MQ_DESKTOP.matches && !MQ_REDUCE.matches;
+      if (shouldActivate && !active) { active = true; update(); }
+      else if (!shouldActivate && active) { active = false; clearInline(); }
+    }
+
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { inView = e.isIntersecting; });
+      if (inView && active) requestAnimationFrame(update);
+    }, { rootMargin: '50% 0px 50% 0px' });
+    io.observe(track);
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', () => { if (active) update(); });
+    if (MQ_DESKTOP.addEventListener) MQ_DESKTOP.addEventListener('change', evaluate);
     if (MQ_REDUCE.addEventListener) MQ_REDUCE.addEventListener('change', evaluate);
     evaluate();
   })();
