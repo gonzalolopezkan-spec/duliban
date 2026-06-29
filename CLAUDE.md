@@ -14,11 +14,11 @@ Single-page website para du Liban, un restaurante de alta cocina libanesa establ
 ## Tech stack
 
 - HTML estático en un solo archivo `index.html` (~1700 líneas)
-- Tailwind CSS vía Play CDN (`https://cdn.tailwindcss.com`)
+- Tailwind CSS **compilado a CSS estático** vía Tailwind CLI (`npm run build:css` → `dist/styles.css`, ~18KB min / ~3KB gzip). Config en `tailwind.config.js`, entrada en `src/input.css`. Ya **no** se usa el Play CDN (era render-blocking y compilaba en el navegador).
 - Google Fonts: Cormorant Garamond, Allura
 - Fontshare: Satoshi (cuerpo)
 - Vanilla JS para interacciones — **sin librerías externas**
-- Sin build step (pendiente migrar Tailwind a CLI para producción)
+- El HTML sigue siendo estático: tras `build:css` el sitio se sirve sin runtime. Reconstruir el CSS tras tocar clases Tailwind en `index.html`.
 
 ## Sistema de diseño (NO cambiar sin discutirlo)
 
@@ -31,10 +31,10 @@ Single-page website para du Liban, un restaurante de alta cocina libanesa establ
 | `cedar` | `#2F4A3E` | Texto principal, fondos secciones oscuras |
 | `cedar-deep` | `#1F3329` | Headers de platos, footer |
 | `teal` | `#5FAFA8` | Wordmark script "du Liban" (viene de la PDF) |
-| `gold` (`saffron`) | `#BFA15A` | Ornamentos, eyebrows |
-| `gold-deep` (`burnished`) | `#8B6F2E` | Precios en la carta (pasa WCAG AA en cream) |
+| `gold` (`saffron`) | `#BFA15A` | Ornamentos y líneas decorativas (NO texto — falla AA) |
+| `gold-deep` (`burnished`) | `#7C6226` | Precios y texto de eyebrows (`.ornament`) — ≥4.5:1 AA en cream |
 | `gold-soft` | `#D9C490` | Acentos sobre fondos oscuros |
-| `terracotta` | `#B4533C` | CTAs "Reservar" |
+| `terracotta` | `#A64A33` | CTAs "Reservar" (texto crema ≥4.5:1 AA) |
 | `terracotta-deep` | `#8E3E2C` | CTA hover |
 | `ink` | `#1A1A17` | Texto neutro |
 
@@ -147,11 +147,12 @@ https://github.com/gonzalolopezkan-spec/duliban — `main` branch
 
 ## Tareas pendientes conocidas (por impacto)
 
-1. **Cambiar placeholders Unsplash por fotos reales** de `design-inspiration/real-fotos/`. Es la mejora visible #1 — pasaría imagery score de 6/10 a 9+/10.
-2. **Migrar Tailwind del CDN a build step** (Tailwind CLI → CSS estático, ~80KB menos).
-3. **Optimizar imágenes reales:** `.jpeg` → `.webp`, generar `srcset` para responsive.
+1. ~~**Cambiar placeholders Unsplash por fotos reales**~~ — **HECHO**. Toda la imaginería son fotos reales del restaurante (`design-inspiration/real-fotos/`).
+2. ~~**Migrar Tailwind del CDN a build step**~~ — **HECHO**. `npm run build:css` compila a `dist/styles.css`.
+3. **Optimizar imágenes reales:** `.jpeg` → `.webp`, generar `srcset` para responsive. *(Pendiente — necesita `sharp` u otra herramienta; el build step ya eliminó el mayor problema de carga.)*
 4. **Confirmar handle real de Instagram** (`@dulibanrestaurant` es suposición).
 5. **Pulir microcopy** del story / chef bio — el copy actual es provisional.
+6. **Completar datos legales reales** (razón social / CIF) en las secciones `#aviso-legal` / `#privacidad` / `#cookies` del footer — ahora llevan un placeholder `[razón social y CIF a completar por el titular]`.
 
 ## Reglas de trabajo
 

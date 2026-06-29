@@ -50,40 +50,9 @@
 }
 </script>
 
-<script src="https://cdn.tailwindcss.com"></script>
-<script>
-  tailwind.config = {
-    theme: {
-      extend: {
-        colors: {
-          cream: '#F5EFE3',
-          sand: '#EADFCB',
-          cedar: '#2F4A3E',
-          'cedar-deep': '#1F3329',
-          teal: '#5FAFA8',
-          'teal-ink': '#3D8B86',
-          gold: '#BFA15A',
-          'gold-soft': '#D9C490',
-          'gold-deep': '#8B6F2E',
-          terracotta: '#B4533C',
-          'terracotta-deep': '#8E3E2C',
-          ink: '#1A1A17',
-          'ink-soft': '#4A463E',
-        },
-        fontFamily: {
-          display: ['"Cormorant Garamond"', 'serif'],
-          script: ['"Allura"', 'cursive'],
-          sans: ['Satoshi', 'system-ui', 'sans-serif'],
-        },
-        letterSpacing: {
-          'tightest': '-0.04em',
-          'wider-2': '0.18em',
-          'widest-2': '0.32em',
-        },
-      },
-    },
-  };
-</script>
+<!-- Tailwind: precompiled static CSS (built from src/input.css via `npm run build:css`).
+     Replaces the render-blocking Play CDN that JIT-compiled in the browser. -->
+<link rel="stylesheet" href="dist/styles.css">
 <style>
   :root {
     color-scheme: light;
@@ -91,7 +60,9 @@
     --sand: #EADFCB;
     --cedar: #2F4A3E;
     --gold: #BFA15A;
-    --terracotta: #B4533C;
+    --gold-deep: #7C6226;
+    --terracotta: #A64A33;
+    --cedar-deep: #1F3329;
     --teal: #5FAFA8;
   }
   html { scroll-behavior: smooth; }
@@ -141,7 +112,7 @@
     position: absolute; left: 24px; top: 28px;
     font-family: 'Satoshi', sans-serif;
     font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
-    color: rgba(47,74,62,.5);
+    color: rgba(47,74,62,.8);
     display: flex; align-items: center; gap: 10px;
     z-index: 2;
   }
@@ -157,7 +128,7 @@
   .hairline-soft { height: 1px; background: linear-gradient(90deg, transparent, #2F4A3E33 20%, #2F4A3E33 80%, transparent); }
 
   /* Gold ornament divider (matches the menu PDF) */
-  .ornament { display: inline-flex; align-items: center; gap: 12px; color: #BFA15A; }
+  .ornament { display: inline-flex; align-items: center; gap: 12px; color: #7C6226; }
   .ornament::before, .ornament::after { content: ''; display: block; width: 40px; height: 1px; background: #BFA15A; opacity: .6; }
 
   /* Hero giant wordmark */
@@ -265,7 +236,7 @@
   .row-count {
     font-family: 'Satoshi', sans-serif;
     font-size: 13px; letter-spacing: .04em;
-    color: rgba(47,74,62,.55); font-feature-settings: 'tnum';
+    color: rgba(47,74,62,.8); font-feature-settings: 'tnum';
     transition: color .35s ease;
   }
   .row-text {
@@ -278,7 +249,7 @@
     transition: color .35s ease, letter-spacing .5s ease;
   }
   @media (min-width: 768px) { .row-text { font-size: 40px; letter-spacing: .06em; } }
-  .row-arrow { color: rgba(47,74,62,.55); justify-self: end; transition: color .35s ease, transform .4s ease; }
+  .row-arrow { color: rgba(47,74,62,.8); justify-self: end; transition: color .35s ease, transform .4s ease; }
 
   .menu-row:hover .row-text,
   .menu-row[aria-expanded="true"] .row-text { color: var(--cream); letter-spacing: .07em; }
@@ -377,9 +348,39 @@
   .hours-row:last-child { border-bottom: 0; }
 
   /* Focus rings */
-  :focus-visible { outline: 2px solid #B4533C; outline-offset: 3px; border-radius: 2px; }
+  :focus-visible { outline: 2px solid #A64A33; outline-offset: 3px; border-radius: 2px; }
 
-  /* ── Unified image grade (makes Unsplash feel commissioned) ─────────────── */
+  /* Skip-to-content link — visible only on keyboard focus */
+  .skip-link {
+    position: fixed; top: 8px; left: 8px; z-index: 200;
+    transform: translateY(-160%);
+    transition: transform .2s ease;
+    background: var(--cedar); color: var(--cream);
+    padding: 10px 18px; border-radius: 8px;
+    font-family: 'Satoshi', system-ui, sans-serif;
+    font-size: 13px; letter-spacing: .04em;
+    box-shadow: 0 8px 24px -8px rgba(31,51,41,.5);
+  }
+  .skip-link:focus { transform: translateY(0); }
+
+  /* Legal docs — hidden until linked (:target), no JS needed */
+  .legal-doc { display: none; }
+  .legal-doc:target {
+    display: block;
+    margin-top: 28px;
+    padding: 22px 24px;
+    background: rgba(245,239,227,0.05);
+    border: 1px solid rgba(245,239,227,0.12);
+    border-radius: 10px;
+    font-size: 13px; line-height: 1.7; color: rgba(245,239,227,0.82);
+    max-width: 760px;
+    scroll-margin-top: 90px;
+  }
+  .legal-doc h3 { font-family: 'Cormorant Garamond', serif; font-size: 21px; color: #D9C490; margin-bottom: 8px; }
+  .legal-doc p + p { margin-top: 10px; }
+  .legal-doc a { color: #D9C490; text-decoration: underline; }
+
+  /* ── Unified image grade (one cohesive film look across every photo) ───── */
   .tile img, .img-reveal { filter: saturate(.88) contrast(1.06) brightness(.98) sepia(.05); }
 
   /* ── Word-by-word mask reveal (handcrafted headline motion) ─────────────── */
@@ -460,7 +461,7 @@
   }
   .dp-eyebrow {
     font-size: 10px; letter-spacing: .22em; text-transform: uppercase;
-    color: rgba(47,74,62,0.55);
+    color: rgba(47,74,62,0.8);
     display: flex; align-items: center; gap: 8px;
     margin-bottom: 6px; padding: 2px 4px 0;
   }
@@ -481,7 +482,7 @@
   .dp-price {
     font-family: 'Cormorant Garamond', serif;
     font-weight: 600; font-size: 17px;
-    color: #8B6F2E; font-feature-settings: 'tnum';
+    color: #7C6226; font-feature-settings: 'tnum';
     letter-spacing: .02em;
   }
   .dp-photos { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; padding: 0 4px; }
@@ -706,6 +707,8 @@
 </head>
 <body class="font-sans text-ink">
 
+<a href="#contenido" class="skip-link">Saltar al contenido</a>
+
 <!-- Custom cursor -->
 <div id="cursor-ring" aria-hidden="true"></div>
 <div id="cursor-dot" aria-hidden="true"></div>
@@ -735,7 +738,7 @@
                M 540 110 C 555 95, 580 100, 580 130 L 580 145"
             />
     </svg>
-    <p class="font-sans tracking-widest-2 text-xs text-cedar/60 mt-6">L E B A N E S E   C U I S I N E</p>
+    <p class="font-sans tracking-widest-2 text-xs text-cedar/80 mt-6">L E B A N E S E   C U I S I N E</p>
   </div>
 </div>
 
@@ -794,7 +797,7 @@
       </ul>
 
       <div class="flex items-center gap-2">
-        <a href="tel:+34916250072" class="hidden md:inline-flex items-center gap-2 text-[12px] tracking-wider-2 uppercase text-cedar/70 hover:text-cedar transition-colors px-2" aria-label="Llamar al restaurante">
+        <a href="tel:+34916250072" class="hidden md:inline-flex items-center gap-2 text-[12px] tracking-wider-2 uppercase text-cedar/80 hover:text-cedar transition-colors px-2" aria-label="Llamar al restaurante">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
           916 25 00 72
         </a>
@@ -806,6 +809,8 @@
     </nav>
   </div>
 </header>
+
+<main id="contenido">
 
 <!-- ─────────────────────────  MARQUEE  ───────────────────────── -->
 <section class="py-10 md:py-14 overflow-hidden border-y border-cedar/10 bg-sand/40">
@@ -850,7 +855,7 @@
       Tres generaciones de cocina libanesa,<br class="hidden md:block"/>
       una sola <em class="font-display italic">mesa</em>.
     </h2>
-    <p class="reveal delay-2 mt-8 max-w-2xl mx-auto text-cedar/75 text-[16px] leading-relaxed">
+    <p class="reveal delay-2 mt-8 max-w-2xl mx-auto text-cedar/80 text-[16px] leading-relaxed">
       Du Liban nace de una familia que aprendió a cocinar antes que a escribir. Lo que servimos cada noche es esa
       memoria: el mezze que se comparte sin prisa, la brasa que se enciende al atardecer, los dulces con agua de
       azahar que cierran la sobremesa. En La Moraleja desde 2003.
@@ -878,7 +883,7 @@
         Cocinamos como en casa de la abuela en Beirut: con tiempo, con manos y con memoria."
       </p>
     </div>
-    <div class="reveal delay-1 md:col-span-6 md:col-start-7 text-cedar/75 text-[15px] leading-relaxed space-y-4">
+    <div class="reveal delay-1 md:col-span-6 md:col-start-7 text-cedar/80 text-[15px] leading-relaxed space-y-4">
       <p>
         El horno de leña, el mortero de piedra y la parrilla son los tres pilares de nuestra cocina. De ellos salen
         los manoucheh recién horneados, el tabbouleh picado a cuchillo, el cordero al carbón y los kebabs especiados
@@ -914,10 +919,10 @@
   </svg>
   <div class="max-w-[1400px] mx-auto px-5 md:px-10 relative z-10">
     <!-- Upper-right editorial chrome: "Carta vigente" tag -->
-    <div class="reveal absolute top-6 right-5 md:top-10 md:right-10 z-10 hidden sm:flex items-center gap-3 text-[10px] tracking-widest-2 uppercase text-cedar/55">
+    <div class="reveal absolute top-6 right-5 md:top-10 md:right-10 z-10 hidden sm:flex items-center gap-3 text-[10px] tracking-widest-2 uppercase text-cedar/80">
       <span class="block w-8 h-px bg-cedar/30"></span>
       <span>Carta de verano</span>
-      <span class="font-display italic text-cedar/70 text-[15px] leading-none normal-case tracking-normal">vigente · 2026</span>
+      <span class="font-display italic text-cedar/80 text-[15px] leading-none normal-case tracking-normal">vigente · 2026</span>
     </div>
 
     <div class="grid md:grid-cols-12 gap-10 md:gap-12 mb-16 md:mb-24 items-end">
@@ -932,35 +937,35 @@
 
       <!-- Editorial table of contents (desktop only) -->
       <aside class="md:col-span-2 reveal delay-1 hidden md:block self-end" aria-label="Cinco actos de la carta">
-        <p class="text-[10px] tracking-widest-2 uppercase text-cedar/45 mb-4 flex items-center gap-2">
+        <p class="text-[10px] tracking-widest-2 uppercase text-cedar/80 mb-4 flex items-center gap-2">
           <span class="block w-4 h-px bg-cedar/30"></span> 5 actos
         </p>
         <ol class="font-display text-cedar/85 text-[15px] leading-[1.9] tabular-nums">
           <li class="grid grid-cols-[28px_1fr] items-baseline">
-            <span class="text-[11px] tracking-widest-2 text-cedar/40">I</span>
+            <span class="text-[11px] tracking-widest-2 text-cedar/80">I</span>
             <a href="#carta" class="hover:text-terracotta transition-colors">Del Horno</a>
           </li>
           <li class="grid grid-cols-[28px_1fr] items-baseline">
-            <span class="text-[11px] tracking-widest-2 text-cedar/40">II</span>
+            <span class="text-[11px] tracking-widest-2 text-cedar/80">II</span>
             <a href="#carta" class="hover:text-terracotta transition-colors">Mezze Frío</a>
           </li>
           <li class="grid grid-cols-[28px_1fr] items-baseline">
-            <span class="text-[11px] tracking-widest-2 text-cedar/40">III</span>
+            <span class="text-[11px] tracking-widest-2 text-cedar/80">III</span>
             <a href="#carta" class="hover:text-terracotta transition-colors">Mezze Caliente</a>
           </li>
           <li class="grid grid-cols-[28px_1fr] items-baseline">
-            <span class="text-[11px] tracking-widest-2 text-cedar/40">IV</span>
+            <span class="text-[11px] tracking-widest-2 text-cedar/80">IV</span>
             <a href="#carta" class="hover:text-terracotta transition-colors">Masheweh</a>
           </li>
           <li class="grid grid-cols-[28px_1fr] items-baseline">
-            <span class="text-[11px] tracking-widest-2 text-cedar/40">V</span>
+            <span class="text-[11px] tracking-widest-2 text-cedar/80">V</span>
             <a href="#carta" class="hover:text-terracotta transition-colors">Postres</a>
           </li>
         </ol>
       </aside>
 
       <!-- Description column -->
-      <div class="md:col-span-4 reveal delay-2 text-cedar/75 text-[15px] leading-relaxed self-end">
+      <div class="md:col-span-4 reveal delay-2 text-cedar/80 text-[15px] leading-relaxed self-end">
         <p>Una selección viva, escrita en cinco actos. Empezamos por el horno y el mezze frío, pasamos al mezze caliente, llegamos a la brasa y cerramos con los dulces de toda la vida. Todos los precios incluyen IVA.</p>
       </div>
     </div>
@@ -1133,7 +1138,7 @@
     </div>
 
     <!-- Allergens note -->
-    <p class="reveal mt-10 text-center text-[12px] tracking-wider-2 uppercase text-cedar/55">
+    <p class="reveal mt-10 text-center text-[12px] tracking-wider-2 uppercase text-cedar/80">
       ¿Alergias o intolerancias? Consulte con nuestro equipo · Todos los precios incluyen IVA
     </p>
   </div>
@@ -1146,12 +1151,12 @@
   .dish-price {
     font-family: 'Cormorant Garamond', serif;
     font-feature-settings: 'tnum';
-    color: #8B6F2E;
+    color: #7C6226;
     font-weight: 600;
     font-size: 17px;
     letter-spacing: .02em;
   }
-  .dish-desc { font-size: 13.5px; line-height: 1.55; color: rgba(47,74,62,.72); margin-top: 4px; max-width: 52ch; font-style: italic; }
+  .dish-desc { font-size: 13.5px; line-height: 1.55; color: rgba(47,74,62,.85); margin-top: 4px; max-width: 52ch; font-style: italic; }
 </style>
 
 <!-- ─────────────────────────  CHEF QUOTE + GALLERY  ───────────────────────── -->
@@ -1185,10 +1190,12 @@
           "En Líbano se come para celebrar, para recordar y para querernos. Aquí hacemos lo mismo, todas las noches, con producto de Madrid y manos de Beirut."
         </blockquote>
         <div class="mt-6 flex items-center gap-4">
-          <div class="w-12 h-12 rounded-full bg-cedar/15 grid place-items-center text-cedar font-display text-xl">M</div>
+          <div class="w-12 h-12 rounded-full overflow-hidden bg-cedar/15 shrink-0">
+            <img src="design-inspiration/real-fotos/primer-plano-del-chef.jpeg" alt="Retrato del jefe de cocina de du Liban" class="w-full h-full object-cover" loading="lazy" width="48" height="48"/>
+          </div>
           <div>
             <p class="font-display text-cedar text-lg">El equipo de cocina</p>
-            <p class="text-[12px] tracking-wider-2 uppercase text-cedar/55">du Liban · Madrid</p>
+            <p class="text-[12px] tracking-wider-2 uppercase text-cedar/80">du Liban · Madrid</p>
           </div>
         </div>
       </div>
@@ -1367,6 +1374,10 @@
     opacity: 1;
     transform: translateY(0);
   }
+  /* Keyboard: focusing a card reveals its detail panel (all viewports) */
+  .xc-card:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+  .xc-card:focus-within .xc-reveal { opacity: 1; transform: translateY(0); }
+  .xc-card:focus-within .xc-caption { opacity: 0; }
   .xc-reveal-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
   .xc-tag {
     display: inline-block;
@@ -1600,7 +1611,7 @@
 
             <!-- 05 · Montaje 1 -->
             <article class="xc-card">
-              <img src="design-inspiration/real-fotos/montando-plato-de-ZAATAR%20%26%20LABNEH%20MANOUCHEH-1.jpeg" alt="Hummus terminándose con pesto y aceite" loading="lazy"/>
+              <img src="design-inspiration/real-fotos/primer-plano-aero-HUMMUS%20BIL%20PESTO.jpeg" alt="Hummus bil pesto con pesto de pistacho, visto desde arriba" loading="lazy"/>
               <div class="xc-caption">
                 <span class="xc-caption-eyebrow">05 · Mezze frío</span>
                 <p class="xc-caption-title">Hummus bil Pesto</p>
@@ -1614,7 +1625,7 @@
 
             <!-- 06 · Montaje 2 -->
             <article class="xc-card">
-              <img src="design-inspiration/real-fotos/montando-plato-de-ZAATAR%20%26%20LABNEH%20MANOUCHEH-2.jpeg" alt="Berenjena ahumada con yogur y granada" loading="lazy"/>
+              <img src="design-inspiration/real-fotos/montando-plato-de-ZAATAR%20%26%20LABNEH%20MANOUCHEH-2.jpeg" alt="Mezze libanés recién emplatado en cocina" loading="lazy"/>
               <div class="xc-caption">
                 <span class="xc-caption-eyebrow">06 · Mezze frío</span>
                 <p class="xc-caption-title">Moutabal</p>
@@ -1642,7 +1653,7 @@
 
             <!-- 08 · Montaje 4 -->
             <article class="xc-card">
-              <img src="design-inspiration/real-fotos/montando-plato-de-MHALABIEH%20%E2%80%94%20postre%20de%20leche.jpeg" alt="Albóndigas de kebbeh recién fritas" loading="lazy"/>
+              <img src="design-inspiration/real-fotos/primer-plano-diagonal-plato-1.jpeg" alt="Masa fina con carne especiada recién horneada" loading="lazy"/>
               <div class="xc-caption">
                 <span class="xc-caption-eyebrow">08 · Mezze caliente</span>
                 <p class="xc-caption-title">Kebbeh Sajyeh</p>
@@ -1656,7 +1667,7 @@
 
             <!-- 09 · Montaje 5 -->
             <article class="xc-card">
-              <img src="design-inspiration/real-fotos/montando-plato-de-%20ZAATAR%20%26%20LABNEH%20MANOUCHEH.jpeg" alt="Fatteh con langostinos y yogur" loading="lazy"/>
+              <img src="design-inspiration/real-fotos/montando-plato-de-%20ZAATAR%20%26%20LABNEH%20MANOUCHEH.jpeg" alt="Mezze caliente recién montado en cocina" loading="lazy"/>
               <div class="xc-caption">
                 <span class="xc-caption-eyebrow">09 · Mezze caliente</span>
                 <p class="xc-caption-title">Fatteh al Rubyan</p>
@@ -1698,7 +1709,7 @@
 
             <!-- 12 · Primer plano diagonal 3 -->
             <article class="xc-card">
-              <img src="design-inspiration/real-fotos/primer-plano-diagonal-MUHAMMARA.jpeg" alt="Fattoush con verduras y pan crujiente" loading="lazy"/>
+              <img src="design-inspiration/real-fotos/primer-plano-diagonal-plato-2.jpeg" alt="Ensalada libanesa con verduras frescas y pan de pita" loading="lazy"/>
               <div class="xc-caption">
                 <span class="xc-caption-eyebrow">12 · Mezze frío</span>
                 <p class="xc-caption-title">Fattoush</p>
@@ -1712,7 +1723,7 @@
 
             <!-- 13 · Primer plano diagonal 4 -->
             <article class="xc-card">
-              <img src="design-inspiration/real-fotos/primer-plano-diagonal-OKHTOBUT%20MASHWI.jpeg" alt="Hummus caliente con cordero y piñones" loading="lazy"/>
+              <img src="design-inspiration/real-fotos/primer-plano-aero-HUMMUS.jpeg" alt="Hummus cremoso de garbanzo, visto desde arriba" loading="lazy"/>
               <div class="xc-caption">
                 <span class="xc-caption-eyebrow">13 · Mezze caliente</span>
                 <p class="xc-caption-title">Hummus Lahme</p>
@@ -2157,7 +2168,7 @@
       <h2 class="word-reveal font-display text-cedar text-4xl md:text-5xl leading-[1.05] tracking-tightest mb-6">
         Una cena en casa. Una boda. Una recepción de embajada.
       </h2>
-      <p class="text-cedar/75 text-[15px] leading-relaxed mb-6">
+      <p class="text-cedar/80 text-[15px] leading-relaxed mb-6">
         Diseñamos menús a medida para reuniones íntimas, celebraciones familiares, eventos corporativos y catering
         en La Moraleja y resto de Madrid. Mezze para 12 o banquetes para 200, con nuestro equipo y nuestro horno.
       </p>
@@ -2206,22 +2217,22 @@
       <div class="mt-8 hairline-soft"></div>
 
       <div class="mt-8">
-        <p class="text-[11px] tracking-widest-2 uppercase text-cedar/55 mb-3">Horario</p>
+        <p class="text-[11px] tracking-widest-2 uppercase text-cedar/80 mb-3">Horario</p>
         <div class="hours-row"><span>Martes – Sábado</span><span class="text-cedar">13:00 – 16:00 · 20:00 – 00:00</span></div>
         <div class="hours-row"><span>Domingo</span><span class="text-cedar">13:00 – 17:00</span></div>
-        <div class="hours-row"><span>Lunes</span><span class="text-cedar/55">Cerrado</span></div>
+        <div class="hours-row"><span>Lunes</span><span class="text-cedar/80">Cerrado</span></div>
       </div>
 
       <div class="mt-8 hairline-soft"></div>
 
       <div class="mt-8 grid sm:grid-cols-2 gap-6 text-[14px]">
         <div>
-          <p class="text-[11px] tracking-widest-2 uppercase text-cedar/55 mb-2">Reservas</p>
+          <p class="text-[11px] tracking-widest-2 uppercase text-cedar/80 mb-2">Reservas</p>
           <a href="tel:+34916250072" class="text-cedar hover:text-terracotta transition-colors duration-200 block">+34 916 25 00 72</a>
           <a href="mailto:reservas@dulibanrestaurants.com" class="text-cedar hover:text-terracotta transition-colors duration-200 block">reservas@dulibanrestaurants.com</a>
         </div>
         <div>
-          <p class="text-[11px] tracking-widest-2 uppercase text-cedar/55 mb-2">Síguenos</p>
+          <p class="text-[11px] tracking-widest-2 uppercase text-cedar/80 mb-2">Síguenos</p>
           <a href="https://www.instagram.com/dulibanrestaurant/" target="_blank" rel="noopener" class="text-cedar hover:text-terracotta transition-colors duration-200 block">Instagram</a>
           <a href="https://www.google.com/maps/search/?api=1&query=Du+Liban+La+Moraleja+Alcobendas" target="_blank" rel="noopener" class="text-cedar hover:text-terracotta transition-colors duration-200 block">Cómo llegar</a>
         </div>
@@ -2250,6 +2261,8 @@
     </div>
   </div>
 </section>
+
+</main>
 
 <!-- ─────────────────────────  FOOTER  ───────────────────────── -->
 <footer class="bg-cedar-deep text-cream/85 pt-20 pb-8 relative overflow-hidden">
@@ -2305,12 +2318,31 @@
       <div class="word-fill text-[20vw] md:text-[22vw] leading-[0.85]" aria-hidden="true">du&nbsp;Liban</div>
     </div>
 
+    <!-- Legal (revealed on :target from the links below) -->
+    <section id="aviso-legal" class="legal-doc" aria-label="Aviso legal">
+      <h3>Aviso legal</h3>
+      <p>Titular: du Liban — [razón social y CIF a completar por el titular]. Domicilio: Plaza de la Moraleja, C. de la Estafeta 2, Local 4/5, 28109 Alcobendas (Madrid). Contacto: +34&nbsp;916&nbsp;25&nbsp;00&nbsp;72 · reservas@dulibanrestaurants.com.</p>
+      <p>Este sitio web tiene carácter informativo sobre el restaurante du Liban, su carta y sus servicios. El acceso y uso del sitio implican la aceptación de este aviso.</p>
+      <p><a href="#contenido">Cerrar</a></p>
+    </section>
+    <section id="privacidad" class="legal-doc" aria-label="Política de privacidad">
+      <h3>Privacidad</h3>
+      <p>Responsable: du Liban (datos de contacto en el aviso legal). Finalidad: gestionar las reservas y consultas que el cliente envía por teléfono, correo electrónico o WhatsApp. Legitimación: consentimiento del interesado.</p>
+      <p>No se ceden datos a terceros salvo obligación legal. Puede ejercer sus derechos de acceso, rectificación, supresión, oposición, limitación y portabilidad escribiendo a reservas@dulibanrestaurants.com.</p>
+      <p><a href="#contenido">Cerrar</a></p>
+    </section>
+    <section id="cookies" class="legal-doc" aria-label="Política de cookies">
+      <h3>Cookies</h3>
+      <p>Este sitio no utiliza cookies propias de seguimiento ni de publicidad. El mapa incrustado de Google Maps puede instalar cookies de terceros de Google al cargarse; puede consultar su política en las páginas de Google.</p>
+      <p><a href="#contenido">Cerrar</a></p>
+    </section>
+
     <div class="mt-10 pt-6 border-t border-cream/10 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 text-[12px] text-cream/55">
       <p>© <span id="year">2026</span> du Liban — Lebanese Cuisine. Todos los derechos reservados.</p>
       <div class="flex items-center gap-5">
-        <a href="#" class="hover:text-cream transition-colors duration-200">Aviso legal</a>
-        <a href="#" class="hover:text-cream transition-colors duration-200">Privacidad</a>
-        <a href="#" class="hover:text-cream transition-colors duration-200">Cookies</a>
+        <a href="#aviso-legal" class="hover:text-cream transition-colors duration-200">Aviso legal</a>
+        <a href="#privacidad" class="hover:text-cream transition-colors duration-200">Privacidad</a>
+        <a href="#cookies" class="hover:text-cream transition-colors duration-200">Cookies</a>
       </div>
     </div>
   </div>
@@ -2594,6 +2626,9 @@
     evaluate();
   })();
 
+  /* Gallery cards: keyboard-focusable so the carousel is operable, not only hoverable */
+  document.querySelectorAll('.xc-card').forEach(card => { card.tabIndex = 0; });
+
   /* ── Word-by-word mask reveal ────────────────────────────────────────── */
   document.querySelectorAll('.word-reveal').forEach(el => {
     // Walk text nodes and wrap each whitespace-separated word
@@ -2674,59 +2709,77 @@
     });
   }
 
+  /* ── Magnetic CTAs — the "Reservar" buttons drift toward the cursor ───── */
+  if (hasFinePointer && !reduce) {
+    document.querySelectorAll('[data-magnetic], [data-cursor="cta"]').forEach(btn => {
+      const strength = 0.32;
+      btn.style.transition = 'transform .25s cubic-bezier(.2,.7,.2,1), background-color .2s ease, border-color .2s ease';
+      btn.addEventListener('mousemove', (e) => {
+        const r = btn.getBoundingClientRect();
+        const dx = e.clientX - (r.left + r.width / 2);
+        const dy = e.clientY - (r.top + r.height / 2);
+        btn.style.transform = `translate(${dx * strength}px, ${dy * strength}px)`;
+      });
+      btn.addEventListener('mouseleave', () => { btn.style.transform = ''; });
+    });
+  }
+
   /* ── Dish-preview popup (hover desktop, tap mobile) ──────────────────── */
   (() => {
     const PHOTO_BASE = 'design-inspiration/real-fotos/';
 
     const DISH_PHOTOS = {
       // Del horno
-      'kafta':        ['primer-plano-diagonal-plato-1.jpeg', 'montando-plato-de-ZAATAR%20%26%20LABNEH%20MANOUCHEH-1.jpeg'],
-      'lahme-bi':     ['cocinando-horno-ZAATAR%20%26%20LABNEH%20MANOUCHEH%20%E2%80%94%20masa%20al%20horno%20con%20zaatar.jpeg', 'primer-plano-diagonal-plato-1.jpeg'],
-      'manoucheh':    ['cocinando-horno-ZAATAR%20%26%20LABNEH%20MANOUCHEH%20%E2%80%94%20masa%20al%20horno%20con%20zaatar.jpeg', 'montando-plato-de-ZAATAR%20%26%20LABNEH%20MANOUCHEH-1.jpeg'],
-      'zaatar':       ['primer-plano-diagonal-plato-2.jpeg', 'cocinando-horno-ZAATAR%20%26%20LABNEH%20MANOUCHEH%20%E2%80%94%20masa%20al%20horno%20con%20zaatar.jpeg'],
-      // Mezze frío
-      'hummus':       ['primer-plano-diagonal-plato-2.jpeg', 'complementos-bonitos-Labneh%20%20Muhammara%20%20Moutabal%20%20tomate.jpeg'],
-      'tabbouleh':    ['primer-plano-diagonal-MUHAMMARA.jpeg', 'montando-plato-de-ZAATAR%20%26%20LABNEH%20MANOUCHEH-2.jpeg'],
-      'fattoush':     ['primer-plano-diagonal-plato-2.jpeg', 'complementos-bonitos-Labneh%20%20Muhammara%20%20Moutabal%20%20tomate.jpeg'],
-      'jarjir':       ['primer-plano-diagonal-MUHAMMARA.jpeg', 'montando-plato-de-ZAATAR%20%26%20LABNEH%20MANOUCHEH-2.jpeg'],
-      'rubyan':       ['primer-plano-diagonal-OKHTOBUT%20MASHWI.jpeg', 'camarero-sirviendo-SAMAK%20MASHWI%20%E2%80%94%20lubina%20a%20la%20parrilla.jpeg'],
-      'moutabal':     ['primer-plano-diagonal-plato-2.jpeg', 'complementos-bonitos-Labneh%20%20Muhammara%20%20Moutabal%20%20tomate.jpeg'],
-      'muhammara':    ['primer-plano-diagonal-MUHAMMARA.jpeg', 'complementos-bonitos-Labneh%20%20Muhammara%20%20Moutabal%20%20tomate.jpeg'],
-      'warak':        ['primer-plano-diagonal-OKHTOBUT%20MASHWI.jpeg', 'montando-plato-de-ZAATAR%20%26%20LABNEH%20MANOUCHEH-2.jpeg'],
-      'quinoa':       ['primer-plano-diagonal-MUHAMMARA.jpeg', 'montando-plato-de-ZAATAR%20%26%20LABNEH%20MANOUCHEH-2.jpeg'],
+      'kafta':            ['primer-plano-diagonal-plato-1.jpeg', 'montando-plato-de-ZAATAR%20%26%20LABNEH%20MANOUCHEH-1.jpeg'],
+      'lahme-bi':         ['primer-plano-diagonal-plato-1.jpeg', 'cocinando-horno-ZAATAR%20%26%20LABNEH%20MANOUCHEH%20%E2%80%94%20masa%20al%20horno%20con%20zaatar.jpeg'],
+      'manoucheh':        ['cocinando-horno-ZAATAR%20%26%20LABNEH%20MANOUCHEH%20%E2%80%94%20masa%20al%20horno%20con%20zaatar.jpeg', 'primer-plano-diagonal-ZAATAR%20%26%20LABNEH%20MANOUCHEH.jpeg'],
+      'zaatar':           ['primer-plano-diagonal-ZAATAR%20%26%20LABNEH%20MANOUCHEH.jpeg', 'cocinando-horno-ZAATAR%20%26%20LABNEH%20MANOUCHEH%20%E2%80%94%20masa%20al%20horno%20con%20zaatar.jpeg'],
+      // Mezze frío  (dish-exact hummus photos now used; no more generic stand-ins)
+      'hummus-bil-pesto': ['primer-plano-aero-HUMMUS%20BIL%20PESTO.jpeg', 'primer-plano-aero-HUMMUS.jpeg'],
+      'hummus':           ['primer-plano-aero-HUMMUS.jpeg', 'complementos-bonitos-Labneh%20%20Muhammara%20%20Moutabal%20%20tomate.jpeg'],
+      'tabbouleh':        ['primer-plano-diagonal-plato-2.jpeg', 'complementos-bonitos-Labneh%20%20Muhammara%20%20Moutabal%20%20tomate.jpeg'],
+      'fattoush':         ['primer-plano-diagonal-plato-2.jpeg', 'complementos-bonitos-Labneh%20%20Muhammara%20%20Moutabal%20%20tomate.jpeg'],
+      'jarjir':           ['primer-plano-diagonal-plato-2.jpeg', 'complementos-bonitos-Labneh%20%20Muhammara%20%20Moutabal%20%20tomate.jpeg'],
+      'rubyan':           ['primer-plano-diagonal-OKHTOBUT%20MASHWI.jpeg', 'camarero-sirviendo-SAMAK%20MASHWI%20%E2%80%94%20lubina%20a%20la%20parrilla.jpeg'],
+      'moutabal':         ['complementos-bonitos-Labneh%20%20Muhammara%20%20Moutabal%20%20tomate.jpeg', 'primer-plano-diagonal-MUHAMMARA.jpeg'],
+      'muhammara':        ['primer-plano-diagonal-MUHAMMARA.jpeg', 'complementos-bonitos-Labneh%20%20Muhammara%20%20Moutabal%20%20tomate.jpeg'],
+      'warak':            ['complementos-bonitos-Labneh%20%20Muhammara%20%20Moutabal%20%20tomate.jpeg', 'primer-plano-diagonal-plato-2.jpeg'],
+      'ariche':           ['complementos-bonitos-Labneh%20%20Muhammara%20%20Moutabal%20%20tomate.jpeg', 'primer-plano-diagonal-plato-2.jpeg'],
+      'quinoa':           ['complementos-bonitos-Labneh%20%20Muhammara%20%20Moutabal%20%20tomate.jpeg', 'primer-plano-diagonal-MUHAMMARA.jpeg'],
       // Mezze caliente
-      'kebbeh':       ['primer-plano-diagonal-OKHTOBUT%20MASHWI.jpeg', 'montando-plato-de-AISH%20EL%20SARAYA.jpeg'],
-      'hallumi':      ['primer-plano-diagonal-OKHTOBUT%20MASHWI.jpeg', 'montando-plato-de-AISH%20EL%20SARAYA.jpeg'],
-      'fatteh':       ['primer-plano-diagonal-MUHAMMARA.jpeg', 'montando-plato-de-MHALABIEH%20%E2%80%94%20postre%20de%20leche.jpeg'],
-      'falafel':      ['primer-plano-diagonal-plato-2.jpeg', 'complementos-bonitos-Labneh%20%20Muhammara%20%20Moutabal%20%20tomate.jpeg'],
-      'batata':       ['primer-plano-diagonal-OKHTOBUT%20MASHWI.jpeg', 'montando-plato-de-ZAATAR%20%26%20LABNEH%20MANOUCHEH-2.jpeg'],
-      'jawaneh':      ['primer-plano-diagonal-plato-5.jpeg', 'montando-plato-de-MHALABIEH%20%E2%80%94%20postre%20de%20leche.jpeg'],
-      'soujok':       ['primer-plano-diagonal-plato-5.jpeg', 'cocinando-SAMAK%20MASHWI.jpeg'],
-      'rakakt':       ['primer-plano-diagonal-OKHTOBUT%20MASHWI.jpeg', 'montando-plato-de-ZAATAR%20%26%20LABNEH%20MANOUCHEH-1.jpeg'],
-      'rass':         ['primer-plano-diagonal-plato-5.jpeg', 'cocinando-SAMAK%20MASHWI.jpeg'],
-      'okhtobut':     ['camarero-sirviendo-SAMAK%20MASHWI%20%E2%80%94%20lubina%20a%20la%20parrilla.jpeg', 'cocinando-SAMAK%20MASHWI.jpeg'],
-      // Masheweh · a la brasa
-      'taouk':        ['cocinando-SAMAK%20MASHWI.jpeg', 'primer-plano-diagonal-plato-5.jpeg'],
-      'farrouj':      ['cocinando-SAMAK%20MASHWI.jpeg', 'montando-plato-de-MHALABIEH%20%E2%80%94%20postre%20de%20leche.jpeg'],
-      'lahmeh':       ['cocinando-SAMAK%20MASHWI.jpeg', 'primer-plano-diagonal-plato-5.jpeg'],
-      'kabab':        ['cocinando-SAMAK%20MASHWI.jpeg', 'primer-plano-diagonal-plato-5.jpeg'],
-      'mawzet':       ['cocinando-SAMAK%20MASHWI.jpeg', 'primer-plano-diagonal-ZAATAR%20%26%20LABNEH%20MANOUCHEH.jpeg'],
-      'shawarma':     ['cocinando-SAMAK%20MASHWI.jpeg', 'primer-plano-diagonal-plato-5.jpeg'],
-      'freekeh':      ['cocinando-SAMAK%20MASHWI.jpeg', 'montando-plato-de-MHALABIEH%20%E2%80%94%20postre%20de%20leche.jpeg'],
-      'samak':        ['camarero-sirviendo-SAMAK%20MASHWI%20%E2%80%94%20lubina%20a%20la%20parrilla.jpeg', 'cocinando-SAMAK%20MASHWI.jpeg'],
+      'hummus-lahme':     ['primer-plano-aero-HUMMUS.jpeg', 'primer-plano-diagonal-plato-1.jpeg'],
+      'kebbeh':           ['primer-plano-diagonal-plato-1.jpeg', 'primer-plano-diagonal-plato-5.jpeg'],
+      'hallumi':          ['complementos-bonitos-Labneh%20%20Muhammara%20%20Moutabal%20%20tomate.jpeg', 'primer-plano-diagonal-plato-2.jpeg'],
+      'fatteh':           ['primer-plano-diagonal-OKHTOBUT%20MASHWI.jpeg', 'complementos-bonitos-Labneh%20%20Muhammara%20%20Moutabal%20%20tomate.jpeg'],
+      'falafel':          ['primer-plano-diagonal-plato-2.jpeg', 'complementos-bonitos-Labneh%20%20Muhammara%20%20Moutabal%20%20tomate.jpeg'],
+      'batata':           ['primer-plano-diagonal-plato-2.jpeg', 'primer-plano-diagonal-MUHAMMARA.jpeg'],
+      'jawaneh':          ['primer-plano-diagonal-plato-5.jpeg', 'primer-plano-diagonal-plato-1.jpeg'],
+      'soujok':           ['primer-plano-diagonal-plato-5.jpeg', 'primer-plano-diagonal-MUHAMMARA.jpeg'],
+      'rakakt':           ['montando-plato-de-ZAATAR%20%26%20LABNEH%20MANOUCHEH-1.jpeg', 'complementos-bonitos-Labneh%20%20Muhammara%20%20Moutabal%20%20tomate.jpeg'],
+      'rass':             ['primer-plano-diagonal-plato-5.jpeg', 'primer-plano-diagonal-plato-1.jpeg'],
+      'okhtobut':         ['primer-plano-diagonal-OKHTOBUT%20MASHWI.jpeg', 'plano-diagonal-probando-OKHTOBUT%20MASHWI%20%E2%80%94%20pulpo%20a%20la%20parrilla.jpeg'],
+      // Masheweh · a la brasa  (grilled-meat plates, no longer the whole-fish photo)
+      'taouk':            ['primer-plano-diagonal-plato-5.jpeg', 'primer-plano-diagonal-plato-1.jpeg'],
+      'farrouj':          ['primer-plano-diagonal-plato-5.jpeg', 'primer-plano-diagonal-plato-1.jpeg'],
+      'lahmeh':           ['primer-plano-diagonal-plato-5.jpeg', 'primer-plano-diagonal-plato-1.jpeg'],
+      'kabab':            ['primer-plano-diagonal-plato-5.jpeg', 'primer-plano-diagonal-plato-1.jpeg'],
+      'mawzet':           ['primer-plano-diagonal-plato-1.jpeg', 'primer-plano-diagonal-plato-5.jpeg'],
+      'shawarma':         ['primer-plano-diagonal-plato-5.jpeg', 'primer-plano-diagonal-plato-1.jpeg'],
+      'freekeh':          ['primer-plano-diagonal-plato-5.jpeg', 'primer-plano-diagonal-plato-1.jpeg'],
+      'samak':            ['camarero-sirviendo-SAMAK%20MASHWI%20%E2%80%94%20lubina%20a%20la%20parrilla.jpeg', 'cocinando-SAMAK%20MASHWI.jpeg'],
       // Postres
-      'em-ali':       ['primer-plano-aero-postre-AISH%20EL%20SARAYA.jpeg', 'montando-plato-de-MHALABIEH%20%E2%80%94%20postre%20de%20leche.jpeg'],
-      'mafroukit':    ['montando-plato-de-MHALABIEH%20%E2%80%94%20postre%20de%20leche.jpeg', 'montando-plato-de-AISH%20EL%20SARAYA.jpeg'],
-      'aish':         ['montando-plato-de-AISH%20EL%20SARAYA.jpeg', 'primer-plano-aero-postre-AISH%20EL%20SARAYA.jpeg'],
-      'knefeh':       ['primer-plano-aero-postre-AISH%20EL%20SARAYA.jpeg', 'montando-plato-de-AISH%20EL%20SARAYA.jpeg'],
-      'mhalabieh':    ['montando-plato-de-MHALABIEH%20%E2%80%94%20postre%20de%20leche.jpeg', 'montando-plato-de-AISH%20EL%20SARAYA.jpeg'],
+      'em-ali':           ['primer-plano-aero-postre-AISH%20EL%20SARAYA.jpeg', 'montando-plato-de-MHALABIEH%20%E2%80%94%20postre%20de%20leche.jpeg'],
+      'mafroukit':        ['montando-plato-de-MHALABIEH%20%E2%80%94%20postre%20de%20leche.jpeg', 'montando-plato-de-AISH%20EL%20SARAYA.jpeg'],
+      'aish':             ['montando-plato-de-AISH%20EL%20SARAYA.jpeg', 'primer-plano-aero-postre-AISH%20EL%20SARAYA.jpeg'],
+      'knefeh':           ['primer-plano-aero-postre-AISH%20EL%20SARAYA.jpeg', 'montando-plato-de-AISH%20EL%20SARAYA.jpeg'],
+      'mhalabieh':        ['montando-plato-de-MHALABIEH%20%E2%80%94%20postre%20de%20leche.jpeg', 'montando-plato-de-AISH%20EL%20SARAYA.jpeg'],
     };
 
     const CAT_FALLBACK = {
       horno:    ['cocinando-horno-ZAATAR%20%26%20LABNEH%20MANOUCHEH%20%E2%80%94%20masa%20al%20horno%20con%20zaatar.jpeg',              'primer-plano-diagonal-plato-1.jpeg'],
       frio:     ['primer-plano-diagonal-plato-2.jpeg', 'complementos-bonitos-Labneh%20%20Muhammara%20%20Moutabal%20%20tomate.jpeg'],
       caliente: ['primer-plano-diagonal-MUHAMMARA.jpeg', 'primer-plano-diagonal-OKHTOBUT%20MASHWI.jpeg'],
-      mash:     ['cocinando-SAMAK%20MASHWI.jpeg',   'primer-plano-diagonal-plato-5.jpeg'],
+      mash:     ['primer-plano-diagonal-plato-5.jpeg',   'primer-plano-diagonal-plato-1.jpeg'],
       postres:  ['primer-plano-aero-postre-AISH%20EL%20SARAYA.jpeg',   'montando-plato-de-AISH%20EL%20SARAYA.jpeg'],
     };
 
@@ -2749,7 +2802,7 @@
       for (const key in DISH_PHOTOS) {
         if (s.includes(key)) return DISH_PHOTOS[key];
       }
-      return CAT_FALLBACK[cat] || ['1540914124281-342587941389', '1546833999-b9f581a1996d'];
+      return CAT_FALLBACK[cat] || ['interior-del-restaurante-1.jpeg', 'mesa-comida-lujo-abundante.jpeg'];
     }
 
     const popup = document.createElement('div');
@@ -2767,6 +2820,7 @@
         </div>
         <p class="dp-desc"></p>
       </div>`;
+    popup.setAttribute('aria-hidden', 'true');
     document.body.appendChild(popup);
 
     const elName    = popup.querySelector('.dp-name');
@@ -2825,11 +2879,13 @@
       imgs.forEach(im => { im.onerror = () => im.style.opacity = '0'; im.style.opacity = '1'; });
 
       popup.classList.add('open');
+      popup.setAttribute('aria-hidden', 'false');
       requestAnimationFrame(() => positionPopup(dish));
     }
 
     function hidePopup() {
       popup.classList.remove('open');
+      popup.setAttribute('aria-hidden', 'true');
       activeDish = null;
     }
 
@@ -2839,6 +2895,19 @@
     document.querySelectorAll('.dish').forEach(dish => {
       const name = dish.querySelector('.dish-name');
       if (!name) return;
+
+      // Keyboard operability: the dish name acts as a button that toggles the
+      // photo preview (the textual description is also rendered statically below).
+      name.tabIndex = 0;
+      name.setAttribute('role', 'button');
+      name.setAttribute('aria-haspopup', 'dialog');
+      name.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          if (activeDish === dish && popup.classList.contains('open')) hidePopup();
+          else showPopup(dish);
+        }
+      });
 
       if (hasFinePointer) {
         dish.addEventListener('mouseenter', () => {
@@ -2872,11 +2941,13 @@
     window.addEventListener('resize',  () => hidePopup());
   })();
 
-  /* ── Footer wordmark gentle parallax ─────────────────────────────────── */
+  /* ── Footer wordmark gentle parallax (rAF-throttled — no read/write thrash) ── */
   if (!reduce) {
     const wordFill = document.querySelector('.word-fill');
     if (wordFill) {
-      const onScroll = () => {
+      let ticking = false;
+      const apply = () => {
+        ticking = false;
         const r = wordFill.getBoundingClientRect();
         const vh = window.innerHeight;
         if (r.top < vh && r.bottom > 0) {
@@ -2885,8 +2956,9 @@
           wordFill.style.transform = `translateY(${(0.5 - p) * 18}px)`;
         }
       };
+      const onScroll = () => { if (!ticking) { ticking = true; requestAnimationFrame(apply); } };
       document.addEventListener('scroll', onScroll, { passive: true });
-      onScroll();
+      apply();
     }
   }
 </script>

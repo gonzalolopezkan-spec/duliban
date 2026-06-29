@@ -8,11 +8,11 @@
 Thumbs.db
 desktop.ini
 
-# Build / deps (none yet — placeholders if we add a build step)
+# Build / deps
 node_modules/
-dist/
 .cache/
 .parcel-cache/
+# dist/ is committed on purpose — it's the precompiled CSS the static site serves.
 
 # Env
 .env

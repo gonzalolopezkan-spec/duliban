@@ -1,0 +1,13 @@
+{
+  "name": "duliban",
+  "version": "1.0.0",
+  "private": true,
+  "description": "du Liban — sitio del restaurante libanés en La Moraleja, Madrid",
+  "scripts": {
+    "build:css": "tailwindcss -i ./src/input.css -o ./dist/styles.css --minify",
+    "watch:css": "tailwindcss -i ./src/input.css -o ./dist/styles.css --watch"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.19"
+  }
+}
