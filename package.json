@@ -5,7 +5,9 @@
   "description": "du Liban — sitio del restaurante libanés en La Moraleja, Madrid",
   "scripts": {
     "build:css": "tailwindcss -i ./src/input.css -o ./dist/styles.css --minify",
-    "watch:css": "tailwindcss -i ./src/input.css -o ./dist/styles.css --watch"
+    "watch:css": "tailwindcss -i ./src/input.css -o ./dist/styles.css --watch",
+    "build:brand": "tailwindcss -i ./src/input.css -o ./brand/styles.css --config ./tailwind.brand.config.js --minify",
+    "watch:brand": "tailwindcss -i ./src/input.css -o ./brand/styles.css --config ./tailwind.brand.config.js --watch"
   },
   "devDependencies": {
     "tailwindcss": "^3.4.19"
