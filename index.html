@@ -516,7 +516,7 @@
   /* ── Scroll-expand video hero ────────────────────────────────────────── */
   .scroll-expand-hero {
     position: relative;
-    height: 220vh;
+    height: 170vh;
     background: #1F3329;
   }
   .seh-sticky {
@@ -1200,8 +1200,8 @@
 <!-- ─────────────────────────  ZOOM PARALLAX → SCROLL X CARRUSEL · LA COCINA  ───────────────────────── -->
 <style>
   .zp-host { background: var(--cream); }
-  /* Combined track: 700vh holds (parallax 280vh) + (cross-fade 48vh) + (carousel 272vh) above 100vh sticky */
-  .zpx-track { position: relative; height: 700vh; }
+  /* Combined track: 850vh holds (parallax 135vh) + (cross-fade 45vh) + (carousel 570vh) above 100vh sticky */
+  .zpx-track { position: relative; height: 850vh; }
   .zpx-stage {
     position: sticky; top: 0; height: 100vh;
     overflow: hidden;
@@ -1275,7 +1275,7 @@
 
   .xc-head {
     position: absolute;
-    top: clamp(40px, 6vh, 70px);
+    top: clamp(112px, 14vh, 136px);
     left: 0; right: 0;
     padding: 0 6vw;
     text-align: center;
@@ -1301,6 +1301,7 @@
   .xc-viewport {
     position: absolute; inset: 0;
     display: flex; align-items: center;
+    padding-top: clamp(60px, 7vh, 76px);
   }
   .xc-wrap {
     display: flex;
@@ -1399,7 +1400,7 @@
   /* Progress bar */
   .xc-progress {
     position: absolute;
-    bottom: clamp(22px, 3.5vh, 44px);
+    bottom: clamp(14px, 2vh, 24px);
     left: 4vw; right: 4vw;
     height: 2px;
     background: rgba(47,74,62,0.10);
@@ -1544,8 +1545,7 @@
       <!-- ──── LAYER 2 · SCROLL X CARRUSEL ─────────────────────────────── -->
       <div class="xc-layer" data-xc-layer aria-label="Recorrido por du Liban">
         <div class="xc-head">
-          <p class="xc-head-eyebrow">Cocina · Sala · Servicio</p>
-          <h3 class="xc-head-title">La hospitalidad libanesa, plato a plato.</h3>
+<h3 class="xc-head-title">La hospitalidad libanesa, plato a plato.</h3>
         </div>
         <div class="xc-viewport">
           <div class="xc-wrap" data-xc-wrap>
@@ -2510,8 +2510,8 @@
     //   parallax   : 0      → P_END (zoom scales 1 → max)
     //   transition : P_END  → T_END (opacity cross-fade between layers)
     //   carousel   : T_END  → 1     (translateX wrap + scaleX progress bar)
-    const P_END = 0.47;
-    const T_END = 0.55;
+    const P_END = 0.18;
+    const T_END = 0.24;
     // Extra slack after the carousel "ends" to keep it stuck a few px while the
     // user keeps scrolling — protects against snapping on touchpads.
     const RIGHT_PAD_PX = 80;
