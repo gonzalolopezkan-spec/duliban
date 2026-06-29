@@ -1,28 +1,30 @@
 <!doctype html>
-<html lang="es" data-brand="1">
+<html lang="en">
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-<meta name="theme-color" content="#FAF7F0" />
-<title>du Liban — Alta cocina libanesa en La Moraleja, Madrid</title>
-<meta name="description" content="du Liban. Alta cocina libanesa en La Moraleja, Madrid. Recetas familiares de Beirut, mezze, brasa y postres. Reservas online." />
+<meta name="theme-color" content="#F5EFE3" />
+<title>du Liban — Lebanese Fine Dining in La Moraleja, Madrid</title>
+<meta name="description" content="du Liban. Lebanese fine dining in La Moraleja, Madrid. Family recipes from Beirut, mezze, charcoal grill and desserts. Online reservations." />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Allura&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Allura&display=swap" rel="stylesheet">
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700&display=swap" rel="stylesheet">
 
-<!-- Favicon: brand diamond motif (gold + turquoise) -->
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='12' fill='%23FAF7F0'/><path d='M32 12 L52 32 L32 52 L12 32 Z' fill='none' stroke='%2385754E' stroke-width='3' stroke-linejoin='round'/><path d='M32 22 L42 32 L32 42 L22 32 Z' fill='%2385754E' opacity='0.22'/><circle cx='32' cy='32' r='4.5' fill='%2300A6CE'/></svg>">
+<!-- Favicon: olive sprig in cedar -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><circle cx='32' cy='32' r='32' fill='%23F5EFE3'/><path d='M14 50 C 22 40, 30 30, 50 16' stroke='%232F4A3E' stroke-width='2' fill='none' stroke-linecap='round'/><g fill='%232F4A3E'><ellipse cx='44' cy='22' rx='5' ry='2' transform='rotate(35 44 22)'/><ellipse cx='36' cy='30' rx='5' ry='2' transform='rotate(30 36 30)'/><ellipse cx='28' cy='38' rx='5' ry='2' transform='rotate(25 28 38)'/></g><circle cx='40' cy='26' r='1.5' fill='%23BFA15A'/></svg>">
 
-<link rel="alternate" hreflang="es" href="index.html">
-<link rel="alternate" hreflang="en" href="en/index.html">
-<link rel="alternate" hreflang="ar" href="ar/index.html">
-<link rel="alternate" hreflang="x-default" href="index.html">
+<link rel="alternate" hreflang="es" href="../index.html">
+<link rel="alternate" hreflang="en" href="../en/index.html">
+<link rel="alternate" hreflang="ar" href="../ar/index.html">
+<link rel="alternate" hreflang="x-default" href="../index.html">
 
 <!-- Open Graph / Twitter -->
 <meta property="og:type" content="restaurant.restaurant">
-<meta property="og:title" content="du Liban — Alta cocina libanesa en La Moraleja">
-<meta property="og:description" content="Recetas familiares de Beirut servidas en La Moraleja. Mezze, brasa, postres con agua de azahar.">
-<meta property="og:locale" content="es_ES">
+<meta property="og:title" content="du Liban — Lebanese Fine Dining in La Moraleja">
+<meta property="og:description" content="Family recipes from Beirut served in La Moraleja. Mezze, charcoal grill, orange-blossom desserts.">
+<meta property="og:locale" content="en_US">
 <meta property="og:image" content="../design-inspiration/real-fotos/interior-del-restaurante-1.jpeg">
 <meta name="twitter:card" content="summary_large_image">
 
@@ -55,36 +57,21 @@
 
 <!-- Tailwind: precompiled static CSS (built from src/input.css via `npm run build:css`).
      Replaces the render-blocking Play CDN that JIT-compiled in the browser. -->
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../dist/styles.css">
 <style>
-
-  /* Language switcher (top nav) */
-  .lang-switch { font-feature-settings: 'tnum'; letter-spacing: .12em; }
-  .lang-switch .lang-item { color: rgba(47,74,62,.65); transition: color .2s ease; padding: 0 2px; }
-  .lang-switch .lang-item:hover { color: var(--cedar); }
-  .lang-switch .lang-active { color: var(--cedar); font-weight: 600; padding: 0 2px; }
-  .lang-switch .lang-sep { color: rgba(47,74,62,.30); }
-  /* Brand variant uses neutral cedar grey */
-  html[data-brand="1"] .lang-switch .lang-item { color: rgba(60,61,63,.65); }
-  html[data-brand="1"] .lang-switch .lang-item:hover { color: var(--cedar); }
-  html[data-brand="1"] .lang-switch .lang-active { color: var(--cedar); }
-  html[data-brand="1"] .lang-switch .lang-sep { color: rgba(60,61,63,.30); }
-  /* AR variant — keep latin digits LTR */
-  html[lang="ar"] .lang-switch { direction: ltr; }
-
   :root {
     color-scheme: light;
-    --cream: #FAF7F0;
-    --sand: #EFE9DC;
-    --cedar: #3C3D3F;
-    --gold: #85754E;
-    --gold-deep: #6E6041;
-    --terracotta: #0A7390;
-    --cedar-deep: #262729;
-    --teal: #00A6CE;
+    --cream: #F5EFE3;
+    --sand: #EADFCB;
+    --cedar: #2F4A3E;
+    --gold: #BFA15A;
+    --gold-deep: #7C6226;
+    --terracotta: #A64A33;
+    --cedar-deep: #1F3329;
+    --teal: #5FAFA8;
   }
   html { scroll-behavior: smooth; }
-  body { background: var(--cream); color: #474749; font-family: 'Jost', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+  body { background: var(--cream); color: #1A1A17; font-family: 'Satoshi', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
   body.has-custom-cursor { cursor: none; }
   body.has-custom-cursor a, body.has-custom-cursor button { cursor: none; }
 
@@ -94,7 +81,7 @@
     position: fixed; inset: 0;
     pointer-events: none;
     z-index: 1;
-    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.52  0 0 0 0 0.46  0 0 0 0 0.31  0 0 0 0.32 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.45'/></svg>");
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.18  0 0 0 0 0.29  0 0 0 0 0.24  0 0 0 0.32 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.45'/></svg>");
     mix-blend-mode: multiply;
     opacity: .35;
   }
@@ -102,66 +89,63 @@
   /* ── Elevated section background: layered warm gradient ─────────────────── */
   .bg-elevated {
     background:
-      radial-gradient(900px 700px at 8% 0%,   rgba(0,166,206,0.07), transparent 60%),
-      radial-gradient(1000px 800px at 92% 100%, rgba(10,115,144,0.06), transparent 65%),
-      linear-gradient(180deg, #FAF7F0 0%, #EDE6D6 100%);
+      radial-gradient(900px 700px at 8% 0%,   rgba(95,175,168,0.07), transparent 60%),
+      radial-gradient(1000px 800px at 92% 100%, rgba(180,83,60,0.06), transparent 65%),
+      linear-gradient(180deg, #F5EFE3 0%, #EBE0CB 100%);
   }
   .bg-elevated-deep {
     background:
-      radial-gradient(900px 600px at 50% 10%, rgba(0,166,206,0.10), transparent 60%),
-      radial-gradient(700px 500px at 10% 95%, rgba(133,117,78,0.10), transparent 65%),
-      linear-gradient(180deg, #F4EEE1 0%, #E8DFCB 100%);
+      radial-gradient(900px 600px at 50% 10%, rgba(95,175,168,0.10), transparent 60%),
+      radial-gradient(700px 500px at 10% 95%, rgba(191,161,90,0.10), transparent 65%),
+      linear-gradient(180deg, #F1E9D5 0%, #E6D8BB 100%);
   }
   .bg-cedar-elevated {
     background:
-      radial-gradient(800px 700px at 80% 10%, rgba(133,117,78,0.12), transparent 60%),
-      radial-gradient(700px 600px at 10% 90%, rgba(0,166,206,0.10), transparent 65%),
-      linear-gradient(180deg, #3C3D3F 0%, #262729 100%);
+      radial-gradient(800px 700px at 80% 10%, rgba(191,161,90,0.12), transparent 60%),
+      radial-gradient(700px 600px at 10% 90%, rgba(95,175,168,0.10), transparent 65%),
+      linear-gradient(180deg, #2F4A3E 0%, #1F3329 100%);
   }
 
   /* Faded ornamental olive corner watermark */
-  /* Watermark ornamental de esquina — motivo floral de marca (sustituye al olivo, ajeno al manual) */
   .corner-olive {
-    position: absolute; pointer-events: none; opacity: .10;
-    width: 380px; max-width: 60vw; aspect-ratio: 380 / 123;
-    background: url('../brand_assets/ornament_floral.png') center / contain no-repeat;
+    position: absolute; pointer-events: none; opacity: .06;
+    width: 380px; max-width: 60vw;
   }
-  .corner-olive > * { display: none; }
 
   /* Editorial section-number rail */
   .sec-mark {
     position: absolute; left: 24px; top: 28px;
-    font-family: 'Jost', sans-serif;
+    font-family: 'Satoshi', sans-serif;
     font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
-    color: rgba(60,61,63,.8);
+    color: rgba(47,74,62,.8);
     display: flex; align-items: center; gap: 10px;
     z-index: 2;
   }
   .sec-mark::after { content: ''; display: block; width: 28px; height: 1px; background: currentColor; opacity: .6; }
-  .sec-mark--light { color: rgba(250,247,240,.55); }
+  .sec-mark--light { color: rgba(245,239,227,.55); }
   @media (max-width: 900px) { .sec-mark { left: 20px; top: 20px; } }
 
   /* Selection */
-  ::selection { background: #3C3D3F; color: #FAF7F0; }
+  ::selection { background: #2F4A3E; color: #F5EFE3; }
 
   /* Custom hairlines */
-  .hairline { height: 1px; background: linear-gradient(90deg, transparent, #85754E66 20%, #85754E66 80%, transparent); }
-  .hairline-soft { height: 1px; background: linear-gradient(90deg, transparent, #3C3D3F33 20%, #3C3D3F33 80%, transparent); }
+  .hairline { height: 1px; background: linear-gradient(90deg, transparent, #BFA15A66 20%, #BFA15A66 80%, transparent); }
+  .hairline-soft { height: 1px; background: linear-gradient(90deg, transparent, #2F4A3E33 20%, #2F4A3E33 80%, transparent); }
 
   /* Gold ornament divider (matches the menu PDF) */
-  .ornament { display: inline-flex; align-items: center; gap: 12px; color: #6E6041; }
-  .ornament::before, .ornament::after { content: ''; display: block; width: 40px; height: 1px; background: #85754E; opacity: .6; }
+  .ornament { display: inline-flex; align-items: center; gap: 12px; color: #7C6226; }
+  .ornament::before, .ornament::after { content: ''; display: block; width: 40px; height: 1px; background: #BFA15A; opacity: .6; }
 
   /* Hero giant wordmark */
   .display-hero {
-    font-family: 'Jost', serif;
+    font-family: 'Cormorant Garamond', serif;
     font-weight: 500;
     letter-spacing: -0.04em;
     line-height: 0.84;
   }
   .display-script {
     font-family: 'Allura', cursive;
-    color: #00A6CE;
+    color: #5FAFA8;
     letter-spacing: -0.01em;
     line-height: 0.9;
   }
@@ -189,28 +173,24 @@
   /* Preloader */
   #preloader {
     position: fixed; inset: 0; z-index: 100;
-    background: #FAF7F0;
+    background: #F5EFE3;
     display: flex; align-items: center; justify-content: center;
     transition: opacity .9s ease, visibility .9s ease;
   }
   #preloader.gone { opacity: 0; visibility: hidden; pointer-events: none; }
   .pre-script {
     font-family: 'Allura', cursive;
-    color: #00A6CE;
+    color: #5FAFA8;
     font-size: clamp(72px, 12vw, 180px);
     line-height: 1;
   }
   .pre-script path {
     fill: none;
-    stroke: #00A6CE;
+    stroke: #5FAFA8;
     stroke-width: 1.4;
     stroke-linecap: round;
     stroke-linejoin: round;
   }
-  /* Brand logo reveal in preloader */
-  .pre-logo { width: min(340px, 72vw); height: auto; animation: preLogoIn 1.1s cubic-bezier(.2,.7,.2,1) both; }
-  @keyframes preLogoIn { from { opacity: 0; transform: translateY(10px) scale(.97); } to { opacity: 1; transform: none; } }
-  @media (prefers-reduced-motion: reduce) { .pre-logo { animation: none; } }
 
   /* Handwriting stroke draw */
   .draw-on-view path {
@@ -232,13 +212,13 @@
     grid-template-columns: 56px 1fr 56px;
     align-items: center; gap: 14px;
     padding: 24px 22px;
-    border-top: 1px solid rgba(60,61,63,.15);
+    border-top: 1px solid rgba(47,74,62,.15);
     transition: border-color .4s ease;
   }
   @media (min-width: 768px) {
     .menu-row { padding: 38px 36px; grid-template-columns: 80px 1fr 80px; gap: 24px; }
   }
-  .menu-block:last-of-type .menu-row { border-bottom: 1px solid rgba(60,61,63,.15); }
+  .menu-block:last-of-type .menu-row { border-bottom: 1px solid rgba(47,74,62,.15); }
 
   .menu-row .row-bar {
     position: absolute; inset: 6px 0;
@@ -259,13 +239,13 @@
   .menu-row > * { position: relative; z-index: 1; }
 
   .row-count {
-    font-family: 'Jost', sans-serif;
+    font-family: 'Satoshi', sans-serif;
     font-size: 13px; letter-spacing: .04em;
-    color: rgba(60,61,63,.8); font-feature-settings: 'tnum';
+    color: rgba(47,74,62,.8); font-feature-settings: 'tnum';
     transition: color .35s ease;
   }
   .row-text {
-    font-family: 'Jost', serif;
+    font-family: 'Cormorant Garamond', serif;
     font-weight: 500;
     font-size: 28px; line-height: 1; letter-spacing: .04em;
     text-transform: uppercase;
@@ -274,7 +254,7 @@
     transition: color .35s ease, letter-spacing .5s ease;
   }
   @media (min-width: 768px) { .row-text { font-size: 40px; letter-spacing: .06em; } }
-  .row-arrow { color: rgba(60,61,63,.8); justify-self: end; transition: color .35s ease, transform .4s ease; }
+  .row-arrow { color: rgba(47,74,62,.8); justify-self: end; transition: color .35s ease, transform .4s ease; }
 
   .menu-row:hover .row-text,
   .menu-row[aria-expanded="true"] .row-text { color: var(--cream); letter-spacing: .07em; }
@@ -318,9 +298,9 @@
     margin: -10px 0 0 0;
     padding: 36px 22px 32px;
     background:
-      linear-gradient(180deg, rgba(201,185,140,0.28) 0%, rgba(201,185,140,0.10) 100%);
+      linear-gradient(180deg, rgba(214,196,160,0.28) 0%, rgba(214,196,160,0.10) 100%);
     border-radius: 0 0 10px 10px;
-    box-shadow: inset 0 1px 0 rgba(110,96,65,0.10);
+    box-shadow: inset 0 1px 0 rgba(143,118,68,0.10);
   }
   @media (min-width: 768px) {
     .menu-detail.open { padding: 44px 44px 40px; }
@@ -341,7 +321,7 @@
 
   /* Footer wordmark image-fill */
   .word-fill {
-    font-family: 'Jost', serif;
+    font-family: 'Cormorant Garamond', serif;
     font-weight: 600;
     letter-spacing: -0.045em;
     line-height: 0.85;
@@ -358,22 +338,22 @@
   .btn-reserve::after {
     content: '';
     position: absolute; inset: 0;
-    background: linear-gradient(120deg, transparent 30%, rgba(250,247,240,.55) 50%, transparent 70%);
+    background: linear-gradient(120deg, transparent 30%, rgba(245,239,227,.55) 50%, transparent 70%);
     transform: translateX(-110%);
     transition: transform .8s ease;
   }
   .btn-reserve:hover::after { transform: translateX(110%); }
 
   /* Marquee text color tweaks */
-  .marquee-word { font-family: 'Jost', serif; font-style: italic; font-size: clamp(48px, 7vw, 110px); line-height: 1; color: #3C3D3F; letter-spacing: -0.02em; }
-  .marquee-dot { width: 10px; height: 10px; border-radius: 999px; background: #85754E; flex: none; align-self: center; }
+  .marquee-word { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: clamp(48px, 7vw, 110px); line-height: 1; color: #2F4A3E; letter-spacing: -0.02em; }
+  .marquee-dot { width: 10px; height: 10px; border-radius: 999px; background: #BFA15A; flex: none; align-self: center; }
 
   /* Hours grid */
-  .hours-row { display: grid; grid-template-columns: 1fr auto; gap: 1rem; padding: .85rem 0; border-bottom: 1px solid rgba(60,61,63,.16); font-feature-settings: 'tnum'; }
+  .hours-row { display: grid; grid-template-columns: 1fr auto; gap: 1rem; padding: .85rem 0; border-bottom: 1px solid rgba(47,74,62,.16); font-feature-settings: 'tnum'; }
   .hours-row:last-child { border-bottom: 0; }
 
   /* Focus rings */
-  :focus-visible { outline: 2px solid #0A7390; outline-offset: 3px; border-radius: 2px; }
+  :focus-visible { outline: 2px solid #A64A33; outline-offset: 3px; border-radius: 2px; }
 
   /* Skip-to-content link — visible only on keyboard focus */
   .skip-link {
@@ -382,9 +362,9 @@
     transition: transform .2s ease;
     background: var(--cedar); color: var(--cream);
     padding: 10px 18px; border-radius: 8px;
-    font-family: 'Jost', system-ui, sans-serif;
+    font-family: 'Satoshi', system-ui, sans-serif;
     font-size: 13px; letter-spacing: .04em;
-    box-shadow: 0 8px 24px -8px rgba(38,39,41,.5);
+    box-shadow: 0 8px 24px -8px rgba(31,51,41,.5);
   }
   .skip-link:focus { transform: translateY(0); }
 
@@ -394,16 +374,16 @@
     display: block;
     margin-top: 28px;
     padding: 22px 24px;
-    background: rgba(250,247,240,0.05);
-    border: 1px solid rgba(250,247,240,0.12);
+    background: rgba(245,239,227,0.05);
+    border: 1px solid rgba(245,239,227,0.12);
     border-radius: 10px;
-    font-size: 13px; line-height: 1.7; color: rgba(250,247,240,0.82);
+    font-size: 13px; line-height: 1.7; color: rgba(245,239,227,0.82);
     max-width: 760px;
     scroll-margin-top: 90px;
   }
-  .legal-doc h3 { font-family: 'Jost', serif; font-size: 21px; color: #C9B98C; margin-bottom: 8px; }
+  .legal-doc h3 { font-family: 'Cormorant Garamond', serif; font-size: 21px; color: #D9C490; margin-bottom: 8px; }
   .legal-doc p + p { margin-top: 10px; }
-  .legal-doc a { color: #C9B98C; text-decoration: underline; }
+  .legal-doc a { color: #D9C490; text-decoration: underline; }
 
   /* ── Unified image grade (one cohesive film look across every photo) ───── */
   .tile img, .img-reveal { filter: saturate(.88) contrast(1.06) brightness(.98) sepia(.05); }
@@ -428,8 +408,8 @@
     border-radius: 999px; transition: transform .14s ease-out, width .25s ease, height .25s ease, background-color .25s ease, opacity .25s;
     mix-blend-mode: difference;
   }
-  #cursor-dot { width: 6px; height: 6px; background: #FAF7F0; transform: translate(-3px, -3px); }
-  #cursor-ring { width: 36px; height: 36px; border: 1px solid #FAF7F0; transform: translate(-18px, -18px); transition: transform .28s cubic-bezier(.2,.7,.2,1), width .25s ease, height .25s ease, opacity .25s; }
+  #cursor-dot { width: 6px; height: 6px; background: #F5EFE3; transform: translate(-3px, -3px); }
+  #cursor-ring { width: 36px; height: 36px; border: 1px solid #F5EFE3; transform: translate(-18px, -18px); transition: transform .28s cubic-bezier(.2,.7,.2,1), width .25s ease, height .25s ease, opacity .25s; }
   body.cursor-hover #cursor-ring { width: 56px; height: 56px; transform: translate(-28px, -28px); }
   body.cursor-press #cursor-ring { width: 28px; height: 28px; transform: translate(-14px, -14px); }
   @media (hover: none), (pointer: coarse) { #cursor-dot, #cursor-ring { display: none; } }
@@ -442,7 +422,7 @@
   .dish { position: relative; }
   .dish .dish-name { transition: letter-spacing .4s ease, color .3s ease; }
   .dish:hover .dish-name { letter-spacing: .03em; color: var(--terracotta); }
-  .dish .dish-dots { background-image: radial-gradient(circle, rgba(60,61,63,.42) 1px, transparent 1.4px); background-size: 6px 2px; background-repeat: repeat-x; background-position: left center; border: 0; height: 1px; transition: background-image .3s ease; }
+  .dish .dish-dots { background-image: radial-gradient(circle, rgba(47,74,62,.42) 1px, transparent 1.4px); background-size: 6px 2px; background-repeat: repeat-x; background-position: left center; border: 0; height: 1px; transition: background-image .3s ease; }
   .dish:hover .dish-dots { background-image: radial-gradient(circle, var(--terracotta) 1.1px, transparent 1.6px); }
   .dish .dish-price { transition: color .3s ease, transform .3s ease; }
   .dish:hover .dish-price { color: var(--terracotta); transform: translateX(-2px); }
@@ -472,42 +452,42 @@
     background: var(--cream);
     border-radius: 10px;
     box-shadow:
-      0 28px 64px -16px rgba(38,39,41,0.55),
-      0 10px 28px -10px rgba(38,39,41,0.30),
-      0 0 0 1px rgba(110,96,65,0.10);
+      0 28px 64px -16px rgba(31,51,41,0.55),
+      0 10px 28px -10px rgba(31,51,41,0.30),
+      0 0 0 1px rgba(143,118,68,0.10);
     position: relative;
   }
   .dp-card::before {
     content: '';
     position: absolute; inset: 5px;
-    border: 1px solid rgba(133,117,78,0.18);
+    border: 1px solid rgba(191,161,90,0.18);
     border-radius: 7px;
     pointer-events: none;
   }
   .dp-eyebrow {
     font-size: 10px; letter-spacing: .22em; text-transform: uppercase;
-    color: rgba(60,61,63,0.8);
+    color: rgba(47,74,62,0.8);
     display: flex; align-items: center; gap: 8px;
     margin-bottom: 6px; padding: 2px 4px 0;
   }
-  .dp-eyebrow::before { content: ''; width: 14px; height: 1px; background: rgba(133,117,78,0.65); }
+  .dp-eyebrow::before { content: ''; width: 14px; height: 1px; background: rgba(191,161,90,0.65); }
   .dp-header {
     display: grid; grid-template-columns: 1fr auto;
     align-items: baseline; gap: 14px;
     padding: 0 4px 14px;
-    border-bottom: 1px solid rgba(60,61,63,0.14);
+    border-bottom: 1px solid rgba(47,74,62,0.14);
     margin-bottom: 14px;
   }
   .dp-name {
-    font-family: 'Jost', serif;
+    font-family: 'Cormorant Garamond', serif;
     font-weight: 600; font-size: 20px; line-height: 1.15;
     color: var(--cedar-deep);
     letter-spacing: .01em;
   }
   .dp-price {
-    font-family: 'Jost', serif;
+    font-family: 'Cormorant Garamond', serif;
     font-weight: 600; font-size: 17px;
-    color: #6E6041; font-feature-settings: 'tnum';
+    color: #7C6226; font-feature-settings: 'tnum';
     letter-spacing: .02em;
   }
   .dp-photos { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; padding: 0 4px; }
@@ -515,20 +495,20 @@
     aspect-ratio: 4 / 5;
     border-radius: 6px;
     overflow: hidden;
-    box-shadow: 0 8px 22px rgba(38,39,41,0.30);
-    background: rgba(60,61,63,0.06);
+    box-shadow: 0 8px 22px rgba(31,51,41,0.30);
+    background: rgba(47,74,62,0.06);
   }
   .dp-photo:first-child { transform: rotate(-1.4deg); }
   .dp-photo:last-child  { transform: rotate( 1.4deg); }
   .dp-photo img { width: 100%; height: 100%; object-fit: cover; filter: saturate(.92) contrast(1.05) sepia(.05); display: block; }
   .dp-desc {
-    font-family: 'Jost', serif;
+    font-family: 'Cormorant Garamond', serif;
     font-style: italic;
     font-size: 14.5px; line-height: 1.55;
-    color: rgba(60,61,63,0.82);
+    color: rgba(47,74,62,0.82);
     padding: 14px 4px 0;
     margin-top: 14px;
-    border-top: 1px solid rgba(60,61,63,0.10);
+    border-top: 1px solid rgba(47,74,62,0.10);
   }
   .dp-desc:empty { display: none; }
 
@@ -543,7 +523,7 @@
   .scroll-expand-hero {
     position: relative;
     height: 170vh;
-    background: #262729;
+    background: #1F3329;
   }
   .seh-sticky {
     position: sticky;
@@ -551,7 +531,7 @@
     height: 100vh;
     width: 100%;
     overflow: hidden;
-    background: #262729;
+    background: #1F3329;
   }
   .seh-bg {
     position: absolute;
@@ -565,8 +545,8 @@
     content: '';
     position: absolute; inset: 0;
     background:
-      radial-gradient(90% 70% at 50% 50%, transparent 0%, rgba(20,21,23,0.55) 100%),
-      linear-gradient(180deg, rgba(20,21,23,0.30) 0%, rgba(20,21,23,0.60) 100%);
+      radial-gradient(90% 70% at 50% 50%, transparent 0%, rgba(15,28,22,0.55) 100%),
+      linear-gradient(180deg, rgba(15,28,22,0.30) 0%, rgba(15,28,22,0.60) 100%);
   }
   .seh-video-wrap {
     position: absolute;
@@ -579,7 +559,7 @@
     z-index: 2;
     box-shadow:
       0 36px 90px -20px rgba(0,0,0,.70),
-      0 0 0 1px rgba(133,117,78,0.18);
+      0 0 0 1px rgba(191,161,90,0.18);
     will-change: width, height, border-radius;
     transition: box-shadow .8s ease;
   }
@@ -587,11 +567,11 @@
     width: 100%; height: 100%;
     object-fit: cover;
     display: block;
-    background: #262729;
+    background: #1F3329;
   }
   .seh-video-tint {
     position: absolute; inset: 0;
-    background: linear-gradient(180deg, rgba(38,39,41,0.05) 0%, rgba(38,39,41,0.18) 100%);
+    background: linear-gradient(180deg, rgba(31,51,41,0.05) 0%, rgba(31,51,41,0.18) 100%);
     pointer-events: none;
   }
 
@@ -609,17 +589,17 @@
 
   .seh-text-script {
     font-family: 'Allura', cursive;
-    color: #C9B98C;
+    color: #D9C490;
     font-size: clamp(72px, 11vw, 168px);
     line-height: .85;
     letter-spacing: -0.01em;
     text-shadow: 0 6px 30px rgba(0,0,0,.45);
   }
   .seh-text-display {
-    font-family: 'Jost', serif;
+    font-family: 'Cormorant Garamond', serif;
     font-weight: 400;
     font-style: italic;
-    color: #FAF7F0;
+    color: #F5EFE3;
     font-size: clamp(32px, 5vw, 78px);
     letter-spacing: -0.02em;
     line-height: 1;
@@ -627,34 +607,34 @@
   }
   .seh-text-display em {
     font-family: 'Allura', cursive;
-    color: #85754E;
+    color: #BFA15A;
     font-style: normal;
     font-size: 1.05em;
     letter-spacing: 0;
     padding: 0 .04em;
   }
   .seh-text-caps {
-    font-family: 'Jost', system-ui, sans-serif;
+    font-family: 'Satoshi', system-ui, sans-serif;
     font-weight: 500;
-    color: #C9B98C;
+    color: #D9C490;
     font-size: clamp(13px, 1.3vw, 18px);
     letter-spacing: 0.32em;
     text-transform: uppercase;
   }
   .seh-text-est {
-    font-family: 'Jost', serif;
+    font-family: 'Cormorant Garamond', serif;
     font-style: italic;
     font-weight: 400;
-    color: #FAF7F0;
+    color: #F5EFE3;
     font-size: clamp(22px, 2.6vw, 38px);
     letter-spacing: 0.02em;
     text-shadow: 0 4px 20px rgba(0,0,0,.55);
   }
   .seh-text-est b {
-    font-family: 'Jost', sans-serif;
+    font-family: 'Satoshi', sans-serif;
     font-weight: 500;
     font-style: normal;
-    color: #85754E;
+    color: #BFA15A;
     font-size: .7em;
     letter-spacing: .28em;
     text-transform: uppercase;
@@ -666,9 +646,9 @@
     position: absolute;
     bottom: 26px; left: 50%;
     transform: translateX(-50%);
-    color: #FAF7F0;
+    color: #F5EFE3;
     opacity: .7;
-    font-family: 'Jost', sans-serif;
+    font-family: 'Satoshi', sans-serif;
     font-size: 10px; letter-spacing: .32em; text-transform: uppercase;
     display: flex; flex-direction: column; align-items: center; gap: 10px;
     z-index: 4;
@@ -701,9 +681,9 @@
       width: 100%; height: 60vh;
       max-width: none; max-height: none;
       border-radius: 12px;
-      box-shadow: 0 18px 50px -16px rgba(38,39,41,.5);
+      box-shadow: 0 18px 50px -16px rgba(31,51,41,.5);
     }
-    .seh-video-tint { background: linear-gradient(180deg, transparent 70%, rgba(38,39,41,0.30) 100%); }
+    .seh-video-tint { background: linear-gradient(180deg, transparent 70%, rgba(31,51,41,0.30) 100%); }
     .seh-text {
       position: relative;
       top: auto; bottom: auto; left: auto; right: auto;
@@ -718,7 +698,7 @@
     .seh-text-est b { color: var(--gold); }
     .seh-scroll-hint { display: none; }
     /* Hairline separator between video and the location/est row */
-    .seh-text--bl { margin-top: 4px; padding-top: 18px; border-top: 1px solid rgba(60,61,63,.15); }
+    .seh-text--bl { margin-top: 4px; padding-top: 18px; border-top: 1px solid rgba(47,74,62,.15); }
   }
 
   /* Reduced motion */
@@ -732,10 +712,7 @@
 </head>
 <body class="font-sans text-ink">
 
-<a href="#contenido" class="skip-link">Saltar al contenido</a>
-
-<!-- Marcador de versión (solo para comparación con el cliente — quitar antes de producción) -->
-<div aria-hidden="true" style="position:fixed;left:14px;bottom:14px;z-index:60;background:rgba(38,39,41,.82);color:#FAF7F0;font:500 11px/1 'Jost',system-ui,sans-serif;letter-spacing:.12em;text-transform:uppercase;padding:8px 12px;border-radius:999px;backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);pointer-events:none;box-shadow:0 4px 18px -8px rgba(0,0,0,.5)">Versión · imagen de marca</div>
+<a href="#contenido" class="skip-link">Skip to content</a>
 
 <!-- Custom cursor -->
 <div id="cursor-ring" aria-hidden="true"></div>
@@ -744,20 +721,42 @@
 <!-- ─────────────────────────  PRELOADER  ───────────────────────── -->
 <div id="preloader" aria-hidden="true">
   <div class="text-center">
-    <img src="../brand_assets/logo_full.png" alt="du Liban — Lebanese Cuisine" class="pre-logo" width="340" height="225"/>
+    <svg viewBox="0 0 600 200" width="320" height="auto" class="pre-script draw-on-view" aria-hidden="true" id="preWord">
+      <!-- Stylized 'du Liban' handwritten path -->
+      <path d="M 50 130
+               C 50 90, 90 70, 110 90
+               C 130 110, 110 140, 90 140
+               C 70 140, 70 110, 90 100
+               M 130 80 L 130 145
+               C 130 155, 145 160, 158 145
+               C 168 132, 162 110, 150 110
+               M 220 60
+               C 200 70, 195 110, 215 130
+               C 235 150, 270 140, 275 110
+               M 305 80 L 305 150
+               M 305 105 C 320 90, 345 100, 345 130 C 345 150, 320 155, 305 145
+               M 380 80 L 380 145
+               M 380 105 C 395 90, 420 100, 420 130 C 420 150, 395 155, 380 145
+               M 440 60 L 440 145
+               M 475 110 C 475 95, 500 95, 510 110 C 520 125, 510 150, 490 150 C 470 150, 460 130, 475 110 Z
+               M 540 80 L 540 145
+               M 540 110 C 555 95, 580 100, 580 130 L 580 145"
+            />
+    </svg>
+    <p class="font-sans tracking-widest-2 text-xs text-cedar/80 mt-6">L E B A N E S E   C U I S I N E</p>
   </div>
 </div>
 
 <!-- ─────────────────────────  HERO (scroll-expand video)  ───────────────────────── -->
-<section id="top" class="scroll-expand-hero" data-seh aria-label="du Liban — alta cocina libanesa en La Moraleja">
+<section id="top" class="scroll-expand-hero" data-seh aria-label="du Liban — Lebanese fine dining in La Moraleja">
   <div class="seh-sticky">
     <!-- Static background photo (dimmed) -->
     <div class="seh-bg" style="background-image: url('../design-inspiration/real-fotos/cena-elegante-de-noche-1.jpeg')" aria-hidden="true"></div>
 
     <!-- Text blocks: absolutely positioned on desktop (TL/TR/BL/BR corners);
          stack in this source order on mobile -->
-    <h1 class="seh-text seh-text--tl seh-text-script"  data-seh-text data-dir="left">du <span class="text-gold">Liban</span></h1>
-    <p  class="seh-text seh-text--tr seh-text-display" data-seh-text data-dir="right">Cocina <em>libanesa</em></p>
+    <h1 class="seh-text seh-text--tl seh-text-script"  data-seh-text data-dir="left">du Liban</h1>
+    <p  class="seh-text seh-text--tr seh-text-display" data-seh-text data-dir="right"><em>Lebanese</em> cuisine</p>
 
     <!-- Video that grows on scroll -->
     <div class="seh-video-wrap" data-seh-video>
@@ -767,7 +766,7 @@
         poster="../design-inspiration/real-fotos/mesa-comida-lujo-abundante.jpeg"
         autoplay loop muted playsinline preload="auto"
         disablepictureinpicture disableremoteplayback
-        aria-label="Mesa de mezze libanés servida en du Liban"
+        aria-label="Lebanese mezze table served at du Liban"
       ></video>
       <div class="seh-video-tint" aria-hidden="true"></div>
     </div>
@@ -776,7 +775,7 @@
 
     <!-- Scroll hint -->
     <div class="seh-scroll-hint" aria-hidden="true">
-      <span>Desliza</span>
+      <span>Scroll</span>
       <svg width="14" height="22" viewBox="0 0 14 22" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
         <rect x="1" y="1" width="12" height="20" rx="6"/>
         <line x1="7" y1="6" x2="7" y2="10"/>
@@ -788,29 +787,29 @@
 <!-- ─────────────────────────  NAV (sticky after hero)  ───────────────────────── -->
 <header class="sticky top-0 z-40">
   <div class="max-w-[1400px] mx-auto px-5 md:px-10 pt-5 pb-4 md:pb-7">
-    <nav class="backdrop-blur-md bg-cream/85 border border-cedar/10 rounded-full px-4 md:px-6 py-3 flex items-center justify-between shadow-[0_4px_24px_-12px_rgba(38,39,41,0.25)]">
-      <a href="#top" class="flex items-center gap-2 group" aria-label="du Liban — inicio">
-        <img src="../brand_assets/logo_full.png" alt="du Liban — Lebanese Cuisine" class="h-9 md:h-10 w-auto" width="60" height="40"/>
+    <nav class="backdrop-blur-md bg-cream/85 border border-cedar/10 rounded-full px-4 md:px-6 py-3 flex items-center justify-between shadow-[0_4px_24px_-12px_rgba(31,51,41,0.25)]">
+      <a href="#top" class="flex items-center gap-2 group" aria-label="du Liban — home">
+        <span class="font-script text-teal text-3xl leading-none -mt-1">du Liban</span>
       </a>
 
       <ul class="hidden lg:flex items-center gap-8 text-[13px] tracking-wider-2 uppercase text-cedar/85">
-        <li><a class="hover:text-terracotta transition-colors duration-200" href="#concepto">Concepto</a></li>
-        <li><a class="hover:text-terracotta transition-colors duration-200" href="#carta">Carta</a></li>
-        <li><a class="hover:text-terracotta transition-colors duration-200" href="#chef">Cocina</a></li>
-        <li><a class="hover:text-terracotta transition-colors duration-200" href="#eventos">Eventos privados</a></li>
-        <li><a class="hover:text-terracotta transition-colors duration-200" href="#visitanos">Visítanos</a></li>
+        <li><a class="hover:text-terracotta transition-colors duration-200" href="#concepto">Story</a></li>
+        <li><a class="hover:text-terracotta transition-colors duration-200" href="#carta">Menu</a></li>
+        <li><a class="hover:text-terracotta transition-colors duration-200" href="#chef">Kitchen</a></li>
+        <li><a class="hover:text-terracotta transition-colors duration-200" href="#eventos">Private Events</a></li>
+        <li><a class="hover:text-terracotta transition-colors duration-200" href="#visitanos">Visit Us</a></li>
       </ul>
 
       <div class="flex items-center gap-2">
         <div class="lang-switch hidden md:flex items-center gap-1.5 text-[11px] tracking-wider-2 uppercase text-cedar/70 px-2 mr-1" aria-label="Language">
-          <span aria-current="page" class="lang-active">ES</span><span class="lang-sep">·</span><a href="en/index.html" hreflang="en" class="lang-item">EN</a><span class="lang-sep">·</span><a href="ar/index.html" hreflang="ar" class="lang-item">AR</a>
+          <a href="../index.html" hreflang="es" class="lang-item">ES</a><span class="lang-sep">·</span><span aria-current="page" class="lang-active">EN</span><span class="lang-sep">·</span><a href="../ar/index.html" hreflang="ar" class="lang-item">AR</a>
         </div>
-        <a href="tel:+34916250072" class="hidden md:inline-flex items-center gap-2 text-[12px] tracking-wider-2 uppercase text-cedar/80 hover:text-cedar transition-colors px-2" aria-label="Llamar al restaurante">
+        <a href="tel:+34916250072" class="hidden md:inline-flex items-center gap-2 text-[12px] tracking-wider-2 uppercase text-cedar/80 hover:text-cedar transition-colors px-2" aria-label="Call the restaurant">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
           916 25 00 72
         </a>
-        <a href="https://wa.me/34690206459?text=Hola%2C%20me%20gustar%C3%ADa%20reservar%20mesa%20en%20du%20Liban." target="_blank" rel="noopener" data-cursor="cta" class="btn-reserve inline-flex items-center gap-2 bg-terracotta hover:bg-terracotta-deep text-cream text-[12px] md:text-[13px] tracking-wider-2 uppercase px-5 py-3 md:py-2.5 rounded-full transition-colors duration-200 cursor-pointer min-h-[44px]" aria-label="Reservar por WhatsApp">
-          Reservar
+        <a href="https://wa.me/34690206459?text=Hello%2C%20I%27d%20like%20to%20book%20a%20table%20at%20du%20Liban." target="_blank" rel="noopener" data-cursor="cta" class="btn-reserve inline-flex items-center gap-2 bg-terracotta hover:bg-terracotta-deep text-cream text-[12px] md:text-[13px] tracking-wider-2 uppercase px-4 md:px-5 py-2.5 rounded-full transition-colors duration-200 cursor-pointer" aria-label="Reserve via WhatsApp">
+          Reserve
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
         </a>
       </div>
@@ -841,12 +840,12 @@
 </section>
 
 <!-- ─────────────────────────  CONCEPTO  ───────────────────────── -->
-<section id="concepto" class="sec py-16 md:py-40 relative overflow-hidden">
-  <span class="sec-mark">01 · Concepto</span>
+<section id="concepto" class="sec py-24 md:py-40 relative overflow-hidden">
+  <span class="sec-mark">01 · Story</span>
   <svg class="corner-olive bottom-0 right-0" viewBox="0 0 380 380" aria-hidden="true">
-    <g stroke="#3C3D3F" stroke-width="1" fill="none" stroke-linecap="round">
+    <g stroke="#2F4A3E" stroke-width="1" fill="none" stroke-linecap="round">
       <path d="M360 20 C 280 100, 200 180, 120 280 C 90 320, 60 350, 30 370"/>
-      <g fill="#3C3D3F" stroke="none">
+      <g fill="#2F4A3E" stroke="none">
         <ellipse cx="320" cy="60"  rx="22" ry="8" transform="rotate(35 320 60)"/>
         <ellipse cx="280" cy="110" rx="24" ry="9" transform="rotate(30 280 110)"/>
         <ellipse cx="240" cy="160" rx="25" ry="9" transform="rotate(25 240 160)"/>
@@ -858,30 +857,27 @@
   </svg>
 
   <div class="max-w-[1100px] mx-auto px-5 md:px-10 text-center relative z-10">
-    <p class="reveal ornament text-[11px] tracking-widest-2 uppercase mb-8">Concepto</p>
+    <p class="reveal ornament text-[11px] tracking-widest-2 uppercase mb-8">Story</p>
     <h2 class="reveal delay-1 word-reveal font-display text-cedar text-4xl md:text-6xl lg:text-7xl leading-[1.05] tracking-tightest">
-      Recetas familiares de Beirut,<br class="hidden md:block"/>
-      una sola <em class="font-display italic">mesa</em>.
+      Family recipes from Beirut,<br class="hidden md:block"/>
+      one shared <em class="font-display italic">table</em>.
     </h2>
-    <div class="reveal delay-1 flex justify-center mt-7" aria-hidden="true">
-      <img src="../brand_assets/ornament_diamond.png" alt="" class="h-4 w-auto opacity-90"/>
-    </div>
     <p class="reveal delay-2 mt-8 max-w-2xl mx-auto text-cedar/80 text-[16px] leading-relaxed">
-      Du Liban nace de una familia que aprendió a cocinar antes que a escribir. Lo que servimos cada noche es esa
-      memoria: el mezze que se comparte sin prisa, la brasa que se enciende al atardecer, los dulces con agua de
-      azahar que cierran la sobremesa.
+      Du Liban is the work of a family that learned to cook before they learned to write. What we serve every night is that
+      memory: the mezze shared without haste, the grill lit at sundown, the orange-blossom sweets that
+      close the meal.
     </p>
   </div>
 
   <div class="max-w-[1400px] mx-auto px-5 md:px-10 mt-16 md:mt-24 grid md:grid-cols-2 gap-6 md:gap-10">
     <figure class="reveal tile aspect-[4/5] overflow-hidden rounded-sm bg-sand">
       <img src="../design-inspiration/real-fotos/mesa-comida-lujo-abundante.jpeg"
-           alt="Mesa abundante de mezze libaneses en du Liban"
+           alt="Generous Lebanese mezze table at du Liban"
            class="img-reveal w-full h-full object-cover" loading="lazy"/>
     </figure>
     <figure class="reveal delay-2 tile aspect-[4/5] overflow-hidden rounded-sm bg-sand md:mt-20">
       <img src="../design-inspiration/real-fotos/montando-plato-de-AISH%20EL%20SARAYA.jpeg"
-           alt="El equipo de du Liban montando un plato en cocina"
+           alt="du Liban's team plating a dish in the kitchen"
            class="img-reveal w-full h-full object-cover" loading="lazy"/>
     </figure>
   </div>
@@ -890,23 +886,23 @@
   <div class="max-w-[1400px] mx-auto px-5 md:px-10 mt-20 md:mt-28 grid md:grid-cols-12 gap-10">
     <div class="reveal md:col-span-5">
       <p class="font-display italic text-cedar text-3xl md:text-4xl leading-tight">
-        "En cada mezze hay una historia familiar.
-        Cocinamos como en casa de la abuela en Beirut: con tiempo, con manos y con memoria."
+        "In every mezze there is a family story.
+        We cook as in our grandmother's home in Beirut: with time, with hands and with memory."
       </p>
     </div>
     <div class="reveal delay-1 md:col-span-6 md:col-start-7 text-cedar/80 text-[15px] leading-relaxed space-y-4">
       <p>
-        El horno de leña, el mortero de piedra y la parrilla son los tres pilares de nuestra cocina. De ellos salen
-        los manoucheh recién horneados, el tabbouleh picado a cuchillo, el cordero al carbón y los kebabs especiados
-        a mano.
+        The wood-fired oven, the stone mortar and the grill are the three pillars of our kitchen. From them come
+        freshly baked manoucheh, the knife-chopped tabbouleh, the charcoal-grilled lamb and the spiced kebabs
+        made by hand.
       </p>
       <p>
-        Trabajamos producto del día: hierbas frescas, cordero lechal, pescado de lonja y verduras de temporada.
-        Las salsas, los encurtidos y los dulces se elaboran cada mañana en nuestra cocina.
+        We work with day-fresh produce: herbs, milk-fed lamb, market fish and seasonal vegetables.
+        Sauces, pickles and sweets are prepared in our kitchen every morning.
       </p>
       <p class="pt-2">
         <a href="#carta" class="inline-flex items-center gap-2 text-cedar font-medium border-b border-cedar/40 hover:border-terracotta hover:text-terracotta transition-colors duration-200 pb-0.5">
-          Descubrir la carta
+          Discover the menu
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
         </a>
       </p>
@@ -915,12 +911,12 @@
 </section>
 
 <!-- ─────────────────────────  CARTA / MENU  ───────────────────────── -->
-<section id="carta" class="sec py-16 md:py-40 bg-elevated border-y border-cedar/10 relative overflow-hidden">
-  <span class="sec-mark">02 · La carta</span>
+<section id="carta" class="sec py-24 md:py-40 bg-elevated border-y border-cedar/10 relative overflow-hidden">
+  <span class="sec-mark">02 · The Menu</span>
   <svg class="corner-olive top-0 left-0" style="transform: scaleX(-1) scaleY(-1)" viewBox="0 0 380 380" aria-hidden="true">
-    <g stroke="#3C3D3F" stroke-width="1" fill="none" stroke-linecap="round">
+    <g stroke="#2F4A3E" stroke-width="1" fill="none" stroke-linecap="round">
       <path d="M360 20 C 280 100, 200 180, 120 280 C 90 320, 60 350, 30 370"/>
-      <g fill="#3C3D3F" stroke="none">
+      <g fill="#2F4A3E" stroke="none">
         <ellipse cx="320" cy="60" rx="22" ry="8" transform="rotate(35 320 60)"/>
         <ellipse cx="280" cy="110" rx="24" ry="9" transform="rotate(30 280 110)"/>
         <ellipse cx="240" cy="160" rx="25" ry="9" transform="rotate(25 240 160)"/>
@@ -932,37 +928,37 @@
     <!-- Upper-right editorial chrome: "Carta vigente" tag -->
     <div class="reveal absolute top-6 right-5 md:top-10 md:right-10 z-10 hidden sm:flex items-center gap-3 text-[10px] tracking-widest-2 uppercase text-cedar/80">
       <span class="block w-8 h-px bg-cedar/30"></span>
-      <span>Carta de verano</span>
-      <span class="font-display italic text-cedar/80 text-[15px] leading-none normal-case tracking-normal">vigente · 2026</span>
+      <span>Summer menu</span>
+      <span class="font-display italic text-cedar/80 text-[15px] leading-none normal-case tracking-normal">current · 2026</span>
     </div>
 
     <div class="grid md:grid-cols-12 gap-10 md:gap-12 mb-16 md:mb-24 items-end">
       <!-- Headline column -->
       <div class="md:col-span-6 reveal">
-        <p class="ornament text-[11px] tracking-widest-2 uppercase mb-6">La carta</p>
+        <p class="ornament text-[11px] tracking-widest-2 uppercase mb-6">The Menu</p>
         <h2 class="word-reveal font-display text-cedar text-4xl md:text-6xl leading-[1.02] tracking-tightest">
-          De la <em class="italic">brasa</em> a la mesa,<br/>
-          de Beirut a Madrid.
+          From the <em class="italic">grill</em> to the table,<br/>
+          from Beirut to Madrid.
         </h2>
       </div>
 
       <!-- Editorial table of contents (desktop only) -->
-      <aside class="md:col-span-2 reveal delay-1 hidden md:block self-end" aria-label="Cinco actos de la carta">
+      <aside class="md:col-span-2 reveal delay-1 hidden md:block self-end" aria-label="Five acts of the menu">
         <p class="text-[10px] tracking-widest-2 uppercase text-cedar/80 mb-4 flex items-center gap-2">
-          <span class="block w-4 h-px bg-cedar/30"></span> 5 actos
+          <span class="block w-4 h-px bg-cedar/30"></span> 5 acts
         </p>
         <ol class="font-display text-cedar/85 text-[15px] leading-[1.9] tabular-nums">
           <li class="grid grid-cols-[28px_1fr] items-baseline">
             <span class="text-[11px] tracking-widest-2 text-cedar/80">I</span>
-            <a href="#carta" class="hover:text-terracotta transition-colors">Del Horno</a>
+            <a href="#carta" class="hover:text-terracotta transition-colors">From the Oven</a>
           </li>
           <li class="grid grid-cols-[28px_1fr] items-baseline">
             <span class="text-[11px] tracking-widest-2 text-cedar/80">II</span>
-            <a href="#carta" class="hover:text-terracotta transition-colors">Mezze Frío</a>
+            <a href="#carta" class="hover:text-terracotta transition-colors">Cold Mezze</a>
           </li>
           <li class="grid grid-cols-[28px_1fr] items-baseline">
             <span class="text-[11px] tracking-widest-2 text-cedar/80">III</span>
-            <a href="#carta" class="hover:text-terracotta transition-colors">Mezze Caliente</a>
+            <a href="#carta" class="hover:text-terracotta transition-colors">Hot Mezze</a>
           </li>
           <li class="grid grid-cols-[28px_1fr] items-baseline">
             <span class="text-[11px] tracking-widest-2 text-cedar/80">IV</span>
@@ -970,14 +966,14 @@
           </li>
           <li class="grid grid-cols-[28px_1fr] items-baseline">
             <span class="text-[11px] tracking-widest-2 text-cedar/80">V</span>
-            <a href="#carta" class="hover:text-terracotta transition-colors">Postres</a>
+            <a href="#carta" class="hover:text-terracotta transition-colors">Desserts</a>
           </li>
         </ol>
       </aside>
 
       <!-- Description column -->
       <div class="md:col-span-4 reveal delay-2 text-cedar/80 text-[15px] leading-relaxed self-end">
-        <p>Una selección viva, escrita en cinco actos. Empezamos por el horno y el mezze frío, pasamos al mezze caliente, llegamos a la brasa y cerramos con los dulces de toda la vida. Todos los precios incluyen IVA.</p>
+        <p>A living selection, written in five acts. We begin with the oven and the cold mezze, move on to hot mezze, reach the grill and close with the desserts of always. All prices include VAT.</p>
       </div>
     </div>
 
@@ -985,16 +981,16 @@
     <figure class="reveal relative mb-14 md:mb-20 -mx-5 md:mx-0 overflow-hidden md:rounded-sm">
       <div class="tile aspect-[16/6] md:aspect-[16/5]">
         <img src="../design-inspiration/real-fotos/cocinando-horno-ZAATAR%20%26%20LABNEH%20MANOUCHEH%20%E2%80%94%20masa%20al%20horno%20con%20zaatar.jpeg"
-             alt="Horno encendido en la cocina de du Liban"
+             alt="The lit oven in du Liban's kitchen"
              class="img-reveal w-full h-full object-cover" loading="lazy"/>
       </div>
       <div class="absolute inset-0 bg-gradient-to-r from-cedar-deep/65 via-cedar-deep/15 to-transparent pointer-events-none"></div>
       <figcaption class="absolute bottom-5 left-5 md:bottom-10 md:left-10 max-w-md text-cream">
         <p class="text-[10px] tracking-widest-2 uppercase text-gold-soft/90 mb-2 flex items-center gap-3">
-          <span class="block w-6 h-px bg-gold-soft/60"></span> Del horno
+          <span class="block w-6 h-px bg-gold-soft/60"></span> From the oven
         </p>
         <p class="font-display italic text-2xl md:text-4xl leading-tight">
-          "El horno se enciende a las cinco y no se apaga hasta el último manoucheh."
+          "The oven is lit at five and only goes out after the last manoucheh."
         </p>
       </figcaption>
     </figure>
@@ -1007,7 +1003,7 @@
         <button class="menu-row" aria-expanded="false" aria-controls="m-horno">
           <span class="row-bar"></span>
           <span class="row-count">(04)</span>
-          <span class="row-text">Del Horno</span>
+          <span class="row-text">From the Oven</span>
           <span class="row-arrow" aria-hidden="true">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
           </span>
@@ -1018,19 +1014,19 @@
           <ul class="grid md:grid-cols-2 gap-x-12 gap-y-6">
             <li class="dish">
               <div class="dish-head"><span class="dish-name">Kafta bil Jebneh</span><span class="dish-dots"></span><span class="dish-price">15&nbsp;€</span></div>
-              <p class="dish-desc">Masa al horno, kafta (carne especiada), mezcla de quesos, mayonesa y pepinillos.</p>
+              <p class="dish-desc">Oven-baked dough, kafta (spiced minced meat), cheese blend, mayonnaise and pickles.</p>
             </li>
             <li class="dish">
               <div class="dish-head"><span class="dish-name">Lahme bi Aajin</span><span class="dish-dots"></span><span class="dish-price">13&nbsp;€</span></div>
-              <p class="dish-desc">Masa al horno con mezcla de carne, piñones y limón.</p>
+              <p class="dish-desc">Oven-baked dough with spiced meat, pine nuts and lemon.</p>
             </li>
             <li class="dish">
               <div class="dish-head"><span class="dish-name">Manoucheh Jebneh</span><span class="dish-dots"></span><span class="dish-price">12&nbsp;€</span></div>
-              <p class="dish-desc">Masa al horno con mezcla de quesos y sésamo blanco y negro.</p>
+              <p class="dish-desc">Oven-baked dough with cheese blend, white and black sesame.</p>
             </li>
             <li class="dish">
               <div class="dish-head"><span class="dish-name">Zaatar &amp; Labneh Manoucheh</span><span class="dish-dots"></span><span class="dish-price">12&nbsp;€</span></div>
-              <p class="dish-desc">Masa al horno con zaatar, labneh, menta, aceitunas y tomates cherry.</p>
+              <p class="dish-desc">Oven-baked dough with zaatar, labneh, mint, olives and cherry tomatoes.</p>
             </li>
           </ul>
         </div>
@@ -1041,7 +1037,7 @@
         <button class="menu-row" aria-expanded="false" aria-controls="m-frio">
           <span class="row-bar"></span>
           <span class="row-count">(11)</span>
-          <span class="row-text">Mezze Frío</span>
+          <span class="row-text">Cold Mezze</span>
           <span class="row-arrow" aria-hidden="true">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
           </span>
@@ -1050,17 +1046,17 @@
         </button>
         <div id="m-frio" class="menu-detail pb-10 md:pb-14">
           <ul class="grid md:grid-cols-2 gap-x-12 gap-y-6">
-            <li class="dish"><div class="dish-head"><span class="dish-name">Fattoush</span><span class="dish-dots"></span><span class="dish-price">14&nbsp;€</span></div><p class="dish-desc">Hojas verdes, tomate, cebolla tierna, pepino, rábano, pan frito, melaza de granada y sumac.</p></li>
-            <li class="dish"><div class="dish-head"><span class="dish-name">Tabbouleh</span><span class="dish-dots"></span><span class="dish-price">13&nbsp;€</span></div><p class="dish-desc">Perejil, tomate, bulgur, cebolla, limón y aceite de oliva.</p></li>
-            <li class="dish"><div class="dish-head"><span class="dish-name">Salata al Jarjir</span><span class="dish-dots"></span><span class="dish-price">12&nbsp;€</span></div><p class="dish-desc">Rúcula, tomillo, cebolla, sumac y salsa de mostaza al limón.</p></li>
-            <li class="dish"><div class="dish-head"><span class="dish-name">Salata al Rubyan</span><span class="dish-dots"></span><span class="dish-price">18&nbsp;€</span></div><p class="dish-desc">Langostinos, tomates cherry, albahaca y piñones.</p></li>
-            <li class="dish"><div class="dish-head"><span class="dish-name">Hummus</span><span class="dish-dots"></span><span class="dish-price">13&nbsp;€</span></div><p class="dish-desc">Garbanzos cocidos, pasta tahini y aceite de oliva.</p></li>
-            <li class="dish"><div class="dish-head"><span class="dish-name">Hummus bil Pesto</span><span class="dish-dots"></span><span class="dish-price">16&nbsp;€</span></div><p class="dish-desc">Garbanzos cocidos, pasta tahini y pesto de pistacho.</p></li>
-            <li class="dish"><div class="dish-head"><span class="dish-name">Moutabal</span><span class="dish-dots"></span><span class="dish-price">12&nbsp;€</span></div><p class="dish-desc">Berenjena asada, tahini, aceite de oliva y semillas de granada.</p></li>
-            <li class="dish"><div class="dish-head"><span class="dish-name">Warak Enab</span><span class="dish-dots"></span><span class="dish-price">14&nbsp;€</span></div><p class="dish-desc">Hojas de parra rellenas con arroz y carne picada.</p></li>
-            <li class="dish"><div class="dish-head"><span class="dish-name">Muhammara</span><span class="dish-dots"></span><span class="dish-price">14&nbsp;€</span></div><p class="dish-desc">Pimiento rojo, cebolla, tomate, tahini, pan rallado, comino, melaza de granada, aceite de oliva y nueces.</p></li>
-            <li class="dish"><div class="dish-head"><span class="dish-name">Ariche bel Zaatar</span><span class="dish-dots"></span><span class="dish-price">15&nbsp;€</span></div><p class="dish-desc">Queso ariche, cebolla, tomate, pimiento verde, sumac, aceite de oliva y especias aromáticas.</p></li>
-            <li class="dish"><div class="dish-head"><span class="dish-name">Quinoa ma al Shamandar</span><span class="dish-dots"></span><span class="dish-price">14&nbsp;€</span></div><p class="dish-desc">Remolacha, quinoa, tahini, nueces, tomillo, albahaca y aceite de oliva.</p></li>
+            <li class="dish"><div class="dish-head"><span class="dish-name">Fattoush</span><span class="dish-dots"></span><span class="dish-price">14&nbsp;€</span></div><p class="dish-desc">Mixed greens, tomato, spring onion, cucumber, radish, fried bread, pomegranate molasses and sumac.</p></li>
+            <li class="dish"><div class="dish-head"><span class="dish-name">Tabbouleh</span><span class="dish-dots"></span><span class="dish-price">13&nbsp;€</span></div><p class="dish-desc">Parsley, tomato, bulgur, onion, lemon and olive oil.</p></li>
+            <li class="dish"><div class="dish-head"><span class="dish-name">Salata al Jarjir</span><span class="dish-dots"></span><span class="dish-price">12&nbsp;€</span></div><p class="dish-desc">Arugula, thyme, onion, sumac and lemon-mustard dressing.</p></li>
+            <li class="dish"><div class="dish-head"><span class="dish-name">Salata al Rubyan</span><span class="dish-dots"></span><span class="dish-price">18&nbsp;€</span></div><p class="dish-desc">King prawns, cherry tomatoes, basil and pine nuts.</p></li>
+            <li class="dish"><div class="dish-head"><span class="dish-name">Hummus</span><span class="dish-dots"></span><span class="dish-price">13&nbsp;€</span></div><p class="dish-desc">Cooked chickpeas, tahini paste and olive oil.</p></li>
+            <li class="dish"><div class="dish-head"><span class="dish-name">Hummus bil Pesto</span><span class="dish-dots"></span><span class="dish-price">16&nbsp;€</span></div><p class="dish-desc">Cooked chickpeas, tahini paste and pistachio pesto.</p></li>
+            <li class="dish"><div class="dish-head"><span class="dish-name">Moutabal</span><span class="dish-dots"></span><span class="dish-price">12&nbsp;€</span></div><p class="dish-desc">Roasted eggplant, tahini, olive oil and pomegranate seeds.</p></li>
+            <li class="dish"><div class="dish-head"><span class="dish-name">Warak Enab</span><span class="dish-dots"></span><span class="dish-price">14&nbsp;€</span></div><p class="dish-desc">Vine leaves stuffed with rice and minced meat.</p></li>
+            <li class="dish"><div class="dish-head"><span class="dish-name">Muhammara</span><span class="dish-dots"></span><span class="dish-price">14&nbsp;€</span></div><p class="dish-desc">Red pepper, onion, tomato, tahini, breadcrumbs, cumin, pomegranate molasses, olive oil and walnuts.</p></li>
+            <li class="dish"><div class="dish-head"><span class="dish-name">Ariche bel Zaatar</span><span class="dish-dots"></span><span class="dish-price">15&nbsp;€</span></div><p class="dish-desc">Ariche cheese, onion, tomato, green pepper, sumac, olive oil and aromatic spices.</p></li>
+            <li class="dish"><div class="dish-head"><span class="dish-name">Quinoa ma al Shamandar</span><span class="dish-dots"></span><span class="dish-price">14&nbsp;€</span></div><p class="dish-desc">Beetroot, quinoa, tahini, walnuts, thyme, basil and olive oil.</p></li>
           </ul>
         </div>
       </div>
@@ -1070,7 +1066,7 @@
         <button class="menu-row" aria-expanded="false" aria-controls="m-caliente">
           <span class="row-bar"></span>
           <span class="row-count">(13)</span>
-          <span class="row-text">Mezze Caliente</span>
+          <span class="row-text">Hot Mezze</span>
           <span class="row-arrow" aria-hidden="true">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
           </span>
@@ -1079,19 +1075,19 @@
         </button>
         <div id="m-caliente" class="menu-detail pb-10 md:pb-14">
           <ul class="grid md:grid-cols-2 gap-x-12 gap-y-6">
-            <li class="dish"><div class="dish-head"><span class="dish-name">Hummus Lahme</span><span class="dish-dots"></span><span class="dish-price">17&nbsp;€</span></div><p class="dish-desc">Hummus con mezcla de carne y piñones.</p></li>
-            <li class="dish"><div class="dish-head"><span class="dish-name">Rass Assfour</span><span class="dish-dots"></span><span class="dish-price">22&nbsp;€</span></div><p class="dish-desc">Trozos de carne salteados con ajo, mantequilla, piñones, limón o salsa de granada.</p></li>
-            <li class="dish"><div class="dish-head"><span class="dish-name">Fatteh al Rubyan</span><span class="dish-dots"></span><span class="dish-price">22&nbsp;€</span></div><p class="dish-desc">Pan frito, langostinos, yogur, ajo, cilantro, berenjena frita y piñones.</p></li>
-            <li class="dish"><div class="dish-head"><span class="dish-name">Fatteh Djaj</span><span class="dish-dots"></span><span class="dish-price">20&nbsp;€</span></div><p class="dish-desc">Arroz con canela, yogur, pollo a la parrilla, ajo, berenjena frita, piñones y cilantro.</p></li>
-            <li class="dish"><div class="dish-head"><span class="dish-name">Hallumi</span><span class="dish-dots"></span><span class="dish-price">17&nbsp;€</span></div><p class="dish-desc">Halloumi empanizado, mermelada de higo, semillas de granada y espinaca baby.</p></li>
-            <li class="dish"><div class="dish-head"><span class="dish-name">Kebbeh Sajyeh</span><span class="dish-dots"></span><span class="dish-price">13&nbsp;€</span></div><p class="dish-desc">Masa de kibbeh rellena de carne y nueces (4 piezas).</p></li>
-            <li class="dish"><div class="dish-head"><span class="dish-name">Hummus Falafel</span><span class="dish-dots"></span><span class="dish-price">16&nbsp;€</span></div><p class="dish-desc">Falafel con hummus y aceite de oliva.</p></li>
-            <li class="dish"><div class="dish-head"><span class="dish-name">Batata Meklieh</span><span class="dish-dots"></span><span class="dish-price">10&nbsp;€</span></div><p class="dish-desc">Patatas fritas.</p></li>
-            <li class="dish"><div class="dish-head"><span class="dish-name">Batata Harrah</span><span class="dish-dots"></span><span class="dish-price">13&nbsp;€</span></div><p class="dish-desc">Cubos de patata con cilantro, pasta de chile y ajo.</p></li>
-            <li class="dish"><div class="dish-head"><span class="dish-name">Jawaneh Dajaj</span><span class="dish-dots"></span><span class="dish-price">17&nbsp;€</span></div><p class="dish-desc">Alitas a la parrilla salteadas con ajo, limón y cilantro.</p></li>
-            <li class="dish"><div class="dish-head"><span class="dish-name">Soujok</span><span class="dish-dots"></span><span class="dish-price">18&nbsp;€</span></div><p class="dish-desc">Salchicha soujok con cebolla, pimiento, tomate, limón y comino.</p></li>
-            <li class="dish"><div class="dish-head"><span class="dish-name">Rakakt Jebneh</span><span class="dish-dots"></span><span class="dish-price">13&nbsp;€</span></div><p class="dish-desc">4 rollos de queso rellenos a la parrilla.</p></li>
-            <li class="dish"><div class="dish-head"><span class="dish-name">Okhtobut bil Thoum</span><span class="dish-dots"></span><span class="dish-price">25&nbsp;€</span></div><p class="dish-desc">Pulpo sellado con ajo, limón y cilantro.</p></li>
+            <li class="dish"><div class="dish-head"><span class="dish-name">Hummus Lahme</span><span class="dish-dots"></span><span class="dish-price">17&nbsp;€</span></div><p class="dish-desc">Hummus topped with spiced meat and pine nuts.</p></li>
+            <li class="dish"><div class="dish-head"><span class="dish-name">Rass Assfour</span><span class="dish-dots"></span><span class="dish-price">22&nbsp;€</span></div><p class="dish-desc">Beef chunks sautéed with garlic, butter, pine nuts, lemon or pomegranate sauce.</p></li>
+            <li class="dish"><div class="dish-head"><span class="dish-name">Fatteh al Rubyan</span><span class="dish-dots"></span><span class="dish-price">22&nbsp;€</span></div><p class="dish-desc">Fried bread, prawns, yoghurt, garlic, coriander, fried eggplant and pine nuts.</p></li>
+            <li class="dish"><div class="dish-head"><span class="dish-name">Fatteh Djaj</span><span class="dish-dots"></span><span class="dish-price">20&nbsp;€</span></div><p class="dish-desc">Cinnamon rice, yoghurt, grilled chicken, garlic, fried eggplant, pine nuts and coriander.</p></li>
+            <li class="dish"><div class="dish-head"><span class="dish-name">Hallumi</span><span class="dish-dots"></span><span class="dish-price">17&nbsp;€</span></div><p class="dish-desc">Breaded halloumi, fig jam, pomegranate seeds and baby spinach.</p></li>
+            <li class="dish"><div class="dish-head"><span class="dish-name">Kebbeh Sajyeh</span><span class="dish-dots"></span><span class="dish-price">13&nbsp;€</span></div><p class="dish-desc">Kibbeh shells filled with meat and walnuts (4 pieces).</p></li>
+            <li class="dish"><div class="dish-head"><span class="dish-name">Hummus Falafel</span><span class="dish-dots"></span><span class="dish-price">16&nbsp;€</span></div><p class="dish-desc">Falafel with hummus and olive oil.</p></li>
+            <li class="dish"><div class="dish-head"><span class="dish-name">Batata Meklieh</span><span class="dish-dots"></span><span class="dish-price">10&nbsp;€</span></div><p class="dish-desc">French fries.</p></li>
+            <li class="dish"><div class="dish-head"><span class="dish-name">Batata Harrah</span><span class="dish-dots"></span><span class="dish-price">13&nbsp;€</span></div><p class="dish-desc">Potato cubes with coriander, chilli paste and garlic.</p></li>
+            <li class="dish"><div class="dish-head"><span class="dish-name">Jawaneh Dajaj</span><span class="dish-dots"></span><span class="dish-price">17&nbsp;€</span></div><p class="dish-desc">Grilled wings sautéed with garlic, lemon and coriander.</p></li>
+            <li class="dish"><div class="dish-head"><span class="dish-name">Soujok</span><span class="dish-dots"></span><span class="dish-price">18&nbsp;€</span></div><p class="dish-desc">Soujok sausage with onion, pepper, tomato, lemon and cumin.</p></li>
+            <li class="dish"><div class="dish-head"><span class="dish-name">Rakakt Jebneh</span><span class="dish-dots"></span><span class="dish-price">13&nbsp;€</span></div><p class="dish-desc">Four grilled cheese rolls.</p></li>
+            <li class="dish"><div class="dish-head"><span class="dish-name">Okhtobut bil Thoum</span><span class="dish-dots"></span><span class="dish-price">25&nbsp;€</span></div><p class="dish-desc">Seared octopus with garlic, lemon and coriander.</p></li>
           </ul>
         </div>
       </div>
@@ -1101,7 +1097,7 @@
         <button class="menu-row" aria-expanded="false" aria-controls="m-mash">
           <span class="row-bar"></span>
           <span class="row-count">(09)</span>
-          <span class="row-text">Masheweh · A la brasa</span>
+          <span class="row-text">Masheweh · Grill</span>
           <span class="row-arrow" aria-hidden="true">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
           </span>
@@ -1110,15 +1106,15 @@
         </button>
         <div id="m-mash" class="menu-detail pb-10 md:pb-14">
           <ul class="grid md:grid-cols-2 gap-x-12 gap-y-6">
-            <li class="dish"><div class="dish-head"><span class="dish-name">Taouk</span><span class="dish-dots"></span><span class="dish-price">23&nbsp;€</span></div><p class="dish-desc">Cubos de pollo Taouk a la parrilla, pepinillos y pasta de ajo.</p></li>
-            <li class="dish"><div class="dish-head"><span class="dish-name">Farrouj</span><span class="dish-dots"></span><span class="dish-price">26&nbsp;€</span></div><p class="dish-desc">Pollo deshuesado a la parrilla con pepinillos y ajo.</p></li>
-            <li class="dish"><div class="dish-head"><span class="dish-name">Lahmeh Mshwieh</span><span class="dish-dots"></span><span class="dish-price">32&nbsp;€</span></div><p class="dish-desc">Cubos de carne a la parrilla con grasa, cebolla asada, tomate y chile.</p></li>
-            <li class="dish"><div class="dish-head"><span class="dish-name">Kabab</span><span class="dish-dots"></span><span class="dish-price">23&nbsp;€</span></div><p class="dish-desc">Kabab a la parrilla con cebolla asada, tomate, chile y biwaz.</p></li>
-            <li class="dish"><div class="dish-head"><span class="dish-name">Mawzet Kharouf</span><span class="dish-dots"></span><span class="dish-price">35&nbsp;€</span></div><p class="dish-desc">Jarrete de cordero con arroz especiado y frutos secos.</p></li>
-            <li class="dish"><div class="dish-head"><span class="dish-name">Shawarma Lehme</span><span class="dish-dots"></span><span class="dish-price">26&nbsp;€</span></div><p class="dish-desc">Shawarma de res, tomate, biwaz, salsa tarator y pepinillos.</p></li>
-            <li class="dish"><div class="dish-head"><span class="dish-name">Freekeh Djaj</span><span class="dish-dots"></span><span class="dish-price">27&nbsp;€</span></div><p class="dish-desc">Freekeh cocido con carne, cebolla y especias, cubierto con pollo, frutos secos y salsa gravy.</p></li>
-            <li class="dish"><div class="dish-head"><span class="dish-name">Okhtobut Mashwi</span><span class="dish-dots"></span><span class="dish-price">26&nbsp;€</span></div><p class="dish-desc">Pulpo a la parrilla servido con salsa de hierbas, limón y aceite picante.</p></li>
-            <li class="dish"><div class="dish-head"><span class="dish-name">Samak Mashwi</span><span class="dish-dots"></span><span class="dish-price">58&nbsp;€</span></div><p class="dish-desc">Lubina a la parrilla servida con salsa tarator y limón.</p></li>
+            <li class="dish"><div class="dish-head"><span class="dish-name">Taouk</span><span class="dish-dots"></span><span class="dish-price">23&nbsp;€</span></div><p class="dish-desc">Grilled Taouk chicken cubes, pickles and garlic paste.</p></li>
+            <li class="dish"><div class="dish-head"><span class="dish-name">Farrouj</span><span class="dish-dots"></span><span class="dish-price">26&nbsp;€</span></div><p class="dish-desc">Grilled boneless chicken with pickles and garlic.</p></li>
+            <li class="dish"><div class="dish-head"><span class="dish-name">Lahmeh Mshwieh</span><span class="dish-dots"></span><span class="dish-price">32&nbsp;€</span></div><p class="dish-desc">Grilled beef cubes with fat, roasted onion, tomato and chilli.</p></li>
+            <li class="dish"><div class="dish-head"><span class="dish-name">Kabab</span><span class="dish-dots"></span><span class="dish-price">23&nbsp;€</span></div><p class="dish-desc">Grilled kabab with roasted onion, tomato, chilli and biwaz.</p></li>
+            <li class="dish"><div class="dish-head"><span class="dish-name">Mawzet Kharouf</span><span class="dish-dots"></span><span class="dish-price">35&nbsp;€</span></div><p class="dish-desc">Lamb shank with spiced rice and nuts.</p></li>
+            <li class="dish"><div class="dish-head"><span class="dish-name">Shawarma Lehme</span><span class="dish-dots"></span><span class="dish-price">26&nbsp;€</span></div><p class="dish-desc">Beef shawarma, tomato, biwaz, tarator sauce and pickles.</p></li>
+            <li class="dish"><div class="dish-head"><span class="dish-name">Freekeh Djaj</span><span class="dish-dots"></span><span class="dish-price">27&nbsp;€</span></div><p class="dish-desc">Freekeh cooked with meat, onion and spices, topped with chicken, nuts and gravy.</p></li>
+            <li class="dish"><div class="dish-head"><span class="dish-name">Okhtobut Mashwi</span><span class="dish-dots"></span><span class="dish-price">26&nbsp;€</span></div><p class="dish-desc">Grilled octopus served with herb sauce, lemon and spicy oil.</p></li>
+            <li class="dish"><div class="dish-head"><span class="dish-name">Samak Mashwi</span><span class="dish-dots"></span><span class="dish-price">58&nbsp;€</span></div><p class="dish-desc">Grilled sea bass served with tarator sauce and lemon.</p></li>
           </ul>
         </div>
       </div>
@@ -1128,7 +1124,7 @@
         <button class="menu-row" aria-expanded="false" aria-controls="m-postres">
           <span class="row-bar"></span>
           <span class="row-count">(05)</span>
-          <span class="row-text">Postres</span>
+          <span class="row-text">Desserts</span>
           <span class="row-arrow" aria-hidden="true">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
           </span>
@@ -1137,11 +1133,11 @@
         </button>
         <div id="m-postres" class="menu-detail pb-10 md:pb-14">
           <ul class="grid md:grid-cols-2 gap-x-12 gap-y-6">
-            <li class="dish"><div class="dish-head"><span class="dish-name">Em Ali</span><span class="dish-dots"></span><span class="dish-price">15&nbsp;€</span></div><p class="dish-desc">Milhojas bañada en salsa especial Em Ali, cubierta con pistacho, nata, almendra y nuez.</p></li>
-            <li class="dish"><div class="dish-head"><span class="dish-name">Mafroukit Ashta</span><span class="dish-dots"></span><span class="dish-price">14&nbsp;€</span></div><p class="dish-desc">Mafrouki de pistacho relleno con crema de leche y sirope de azúcar.</p></li>
-            <li class="dish"><div class="dish-head"><span class="dish-name">Aish el Saraya</span><span class="dish-dots"></span><span class="dish-price">12&nbsp;€</span></div><p class="dish-desc">Masa Aish el Saraya con mezcla de crema de leche y frutos secos.</p></li>
-            <li class="dish"><div class="dish-head"><span class="dish-name">Knefeh</span><span class="dish-dots"></span><span class="dish-price">14&nbsp;€</span></div><p class="dish-desc">Masa de knefeh rellena de queso libanés, sirope de azúcar y pistacho.</p></li>
-            <li class="dish"><div class="dish-head"><span class="dish-name">Mhalabieh</span><span class="dish-dots"></span><span class="dish-price">11&nbsp;€</span></div><p class="dish-desc">Postre de leche servido con salsa ghazel y caramelo.</p></li>
+            <li class="dish"><div class="dish-head"><span class="dish-name">Em Ali</span><span class="dish-dots"></span><span class="dish-price">15&nbsp;€</span></div><p class="dish-desc">Layered pastry soaked in Em Ali's special sauce, topped with pistachio, cream, almond and walnut.</p></li>
+            <li class="dish"><div class="dish-head"><span class="dish-name">Mafroukit Ashta</span><span class="dish-dots"></span><span class="dish-price">14&nbsp;€</span></div><p class="dish-desc">Pistachio mafrouki filled with milk cream and sugar syrup.</p></li>
+            <li class="dish"><div class="dish-head"><span class="dish-name">Aish el Saraya</span><span class="dish-dots"></span><span class="dish-price">12&nbsp;€</span></div><p class="dish-desc">Aish el Saraya dough with milk cream and nuts.</p></li>
+            <li class="dish"><div class="dish-head"><span class="dish-name">Knefeh</span><span class="dish-dots"></span><span class="dish-price">14&nbsp;€</span></div><p class="dish-desc">Knefeh dough filled with Lebanese cheese, sugar syrup and pistachio.</p></li>
+            <li class="dish"><div class="dish-head"><span class="dish-name">Mhalabieh</span><span class="dish-dots"></span><span class="dish-price">11&nbsp;€</span></div><p class="dish-desc">Milk dessert served with ghazel sauce and caramel.</p></li>
           </ul>
         </div>
       </div>
@@ -1150,7 +1146,7 @@
 
     <!-- Allergens note -->
     <p class="reveal mt-10 text-center text-[12px] tracking-wider-2 uppercase text-cedar/80">
-      ¿Alergias o intolerancias? Consulte con nuestro equipo · Todos los precios incluyen IVA
+      Allergies or intolerances? Please ask our team · All prices include VAT
     </p>
   </div>
 </section>
@@ -1158,43 +1154,54 @@
 <style>
   .dish { padding-top: 0; }
   .dish-head { display: grid; grid-template-columns: auto 1fr auto; align-items: baseline; gap: .6rem; }
-  .dish-name { font-family: 'Jost', serif; font-weight: 600; font-size: 19px; color: #262729; letter-spacing: .01em; }
+  .dish-name { font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 19px; color: #1F3329; letter-spacing: .01em; }
   .dish-price {
-    font-family: 'Jost', serif;
+    font-family: 'Cormorant Garamond', serif;
     font-feature-settings: 'tnum';
-    color: #6E6041;
+    color: #7C6226;
     font-weight: 600;
     font-size: 17px;
     letter-spacing: .02em;
   }
-  .dish-desc { font-size: 13.5px; line-height: 1.55; color: rgba(60,61,63,.85); margin-top: 4px; max-width: 52ch; font-style: italic; }
+  .dish-desc { font-size: 13.5px; line-height: 1.55; color: rgba(47,74,62,.85); margin-top: 4px; max-width: 52ch; font-style: italic; }
 </style>
 
 <!-- ─────────────────────────  CHEF QUOTE + GALLERY  ───────────────────────── -->
-<section id="chef" class="sec pt-16 pb-6 md:pt-40 md:pb-40 relative overflow-hidden">
-  <span class="sec-mark">03 · La cocina</span>
-  <!-- Brand floral ornament -->
-  <img src="../brand_assets/ornament_floral_single.png" alt="" aria-hidden="true"
-       class="absolute top-10 left-0 w-24 md:w-36 opacity-70 pointer-events-none sway" style="--rot:0deg"/>
+<section id="chef" class="sec pt-24 pb-8 md:py-40 relative overflow-hidden">
+  <span class="sec-mark">03 · The Kitchen</span>
+  <!-- Olive ornament -->
+  <svg class="absolute top-10 left-0 w-32 md:w-56 opacity-80 pointer-events-none sway" style="--rot:165deg" viewBox="0 0 220 220" fill="none" aria-hidden="true">
+    <g stroke="#2F4A3E" stroke-width="1.2" stroke-linecap="round" fill="none">
+      <path d="M195 18 C 160 50, 130 90, 95 145 C 78 172, 60 192, 38 205" />
+      <g fill="#2F4A3E" stroke="none" opacity=".9">
+        <ellipse cx="178" cy="40" rx="13" ry="5" transform="rotate(35 178 40)"/>
+        <ellipse cx="160" cy="62" rx="14" ry="5" transform="rotate(30 160 62)"/>
+        <ellipse cx="140" cy="88" rx="15" ry="5.5" transform="rotate(25 140 88)"/>
+        <ellipse cx="120" cy="116" rx="14" ry="5" transform="rotate(20 120 116)"/>
+        <ellipse cx="100" cy="142" rx="13" ry="5" transform="rotate(15 100 142)"/>
+        <ellipse cx="78" cy="170" rx="12" ry="4.5" transform="rotate(10 78 170)"/>
+      </g>
+    </g>
+  </svg>
 
   <div class="max-w-[1400px] mx-auto px-5 md:px-10">
     <div class="grid md:grid-cols-12 gap-10 md:gap-16 items-end mb-0 md:mb-20">
       <div class="md:col-span-5 reveal">
-        <p class="ornament text-[11px] tracking-widest-2 uppercase mb-6">La cocina</p>
+        <p class="ornament text-[11px] tracking-widest-2 uppercase mb-6">The Kitchen</p>
         <h2 class="word-reveal font-display text-cedar text-4xl md:text-6xl leading-[1.04] tracking-tightest">
-          La hospitalidad libanesa, plato a plato.
+          Lebanese hospitality, dish by dish.
         </h2>
       </div>
       <div class="md:col-span-6 md:col-start-7 reveal delay-1">
         <blockquote class="font-display italic text-cedar text-2xl md:text-3xl leading-snug">
-          "En Líbano se come para celebrar, para recordar y para querernos. Aquí hacemos lo mismo, todas las noches, con producto de Madrid y manos de Beirut."
+          "In Lebanon we eat to celebrate, to remember and to love one another. Here we do the same, every night, with Madrid produce and Beirut hands."
         </blockquote>
         <div class="mt-6 flex items-center gap-4">
           <div class="w-12 h-12 rounded-full overflow-hidden bg-cedar/15 shrink-0">
-            <img src="../design-inspiration/real-fotos/primer-plano-del-chef.jpeg" alt="Retrato del jefe de cocina de du Liban" class="w-full h-full object-cover" loading="lazy" width="48" height="48"/>
+            <img src="../design-inspiration/real-fotos/primer-plano-del-chef.jpeg" alt="Portrait of du Liban's head chef" class="w-full h-full object-cover" loading="lazy" width="48" height="48"/>
           </div>
           <div>
-            <p class="font-display text-cedar text-lg">El equipo de cocina</p>
+            <p class="font-display text-cedar text-lg">The kitchen team</p>
             <p class="text-[12px] tracking-wider-2 uppercase text-cedar/80">du Liban · Madrid</p>
           </div>
         </div>
@@ -1235,7 +1242,7 @@
     height: 25vh; width: 25vw;
     overflow: hidden;
     border-radius: 2px;
-    box-shadow: 0 18px 50px -20px rgba(38,39,41,.35);
+    box-shadow: 0 18px 50px -20px rgba(31,51,41,.35);
   }
   .zp-img > .zp-frame > img {
     width: 100%; height: 100%;
@@ -1264,7 +1271,7 @@
 
   .zp-vignette {
     position: absolute; inset: 0; pointer-events: none;
-    background: radial-gradient(ellipse at center, transparent 55%, rgba(250,247,240,.35) 100%);
+    background: radial-gradient(ellipse at center, transparent 55%, rgba(245,239,227,.35) 100%);
     z-index: 2;
   }
 
@@ -1296,7 +1303,7 @@
     margin-bottom: 8px;
   }
   .xc-head-title {
-    font-family: 'Jost', serif;
+    font-family: 'Cormorant Garamond', serif;
     font-size: clamp(22px, 2.6vw, 36px);
     color: var(--cedar);
     font-weight: 400;
@@ -1326,7 +1333,7 @@
     height: clamp(320px, 56vh, 460px);
     border-radius: 6px;
     overflow: hidden;
-    box-shadow: 0 28px 60px -32px rgba(38,39,41,.5), 0 8px 22px -14px rgba(38,39,41,.25);
+    box-shadow: 0 28px 60px -32px rgba(31,51,41,.5), 0 8px 22px -14px rgba(31,51,41,.25);
     background: var(--sand);
   }
   .xc-card > img {
@@ -1340,7 +1347,7 @@
   .xc-caption {
     position: absolute; left: 0; right: 0; bottom: 0;
     padding: 38% 16px 14px;
-    background: linear-gradient(to top, rgba(38,39,41,.78) 0%, rgba(38,39,41,.35) 55%, transparent 100%);
+    background: linear-gradient(to top, rgba(31,51,41,.78) 0%, rgba(31,51,41,.35) 55%, transparent 100%);
     color: var(--cream);
     pointer-events: none;
     transition: opacity 360ms ease;
@@ -1352,7 +1359,7 @@
     display: block;
   }
   .xc-caption-title {
-    font-family: 'Jost', serif;
+    font-family: 'Cormorant Garamond', serif;
     font-size: 18px; line-height: 1.2;
     color: var(--cream); font-weight: 500;
   }
@@ -1361,7 +1368,7 @@
   .xc-reveal {
     position: absolute; inset: auto 14px 14px;
     padding: 18px 18px 16px;
-    background: rgba(38,39,41, 0.78);
+    background: rgba(31, 51, 41, 0.78);
     backdrop-filter: blur(18px) saturate(140%);
     -webkit-backdrop-filter: blur(18px) saturate(140%);
     border-radius: 4px;
@@ -1383,21 +1390,21 @@
     display: inline-block;
     padding: 3px 9px 4px;
     border-radius: 999px;
-    background: rgba(250,247,240,0.12);
+    background: rgba(245,239,227,0.12);
     color: var(--gold-soft);
     font-size: 10px;
     letter-spacing: .14em; text-transform: uppercase;
-    border: 1px solid rgba(201,185,140,0.22);
+    border: 1px solid rgba(217,196,144,0.22);
   }
   .xc-reveal-title {
-    font-family: 'Jost', serif;
+    font-family: 'Cormorant Garamond', serif;
     font-size: 19px; line-height: 1.18;
     color: var(--cream); font-weight: 500;
     margin: 4px 0 8px;
   }
   .xc-reveal-desc {
     font-size: 12.5px; line-height: 1.55;
-    color: rgba(250,247,240,0.84);
+    color: rgba(245,239,227,0.84);
   }
 
   /* Edge gradients framing the carousel */
@@ -1414,7 +1421,7 @@
     bottom: clamp(14px, 2vh, 24px);
     left: 4vw; right: 4vw;
     height: 2px;
-    background: rgba(60,61,63,0.10);
+    background: rgba(47,74,62,0.10);
     border-radius: 999px;
     overflow: hidden;
     z-index: 5;
@@ -1494,7 +1501,7 @@
   }
 </style>
 
-<section id="chef-gallery" class="zp-host" aria-label="Galería: la hospitalidad libanesa, plato a plato">
+<section id="chef-gallery" class="zp-host" aria-label="Gallery: Lebanese hospitality, dish by dish">
   <div class="zpx-track" data-zpx>
     <div class="zpx-stage">
 
@@ -1505,10 +1512,10 @@
       <div class="zp-layer" data-zp-layer>
         <div class="zp-img zp-img-0" data-zp-scale="1">
           <article class="xc-card xc-card-bridge">
-            <img src="../design-inspiration/real-fotos/primer-plano-del-chef.jpeg" alt="Chef de du Liban concentrado en el emplatado" loading="eager"/>
+            <img src="../design-inspiration/real-fotos/primer-plano-del-chef.jpeg" alt="du Liban's chef focused on plating" loading="eager"/>
             <div class="xc-caption">
-              <span class="xc-caption-eyebrow">01 · El chef</span>
-              <p class="xc-caption-title">Mohammad · jefe de cocina</p>
+              <span class="xc-caption-eyebrow">01 · The chef</span>
+              <p class="xc-caption-title">Mohammad · head chef</p>
             </div>
           </article>
         </div>
@@ -1519,17 +1526,17 @@
         </div>
         <div class="zp-img zp-img-2" data-zp-scale="4">
           <div class="zp-frame">
-            <img src="../design-inspiration/real-fotos/complementos-bonitos-Labneh%20%20Muhammara%20%20Moutabal%20%20tomate.jpeg" alt="Labneh, muhammara, moutabal y tomate en cuencos" loading="lazy"/>
+            <img src="../design-inspiration/real-fotos/complementos-bonitos-Labneh%20%20Muhammara%20%20Moutabal%20%20tomate.jpeg" alt="Labneh, muhammara, moutabal and tomato in bowls" loading="lazy"/>
           </div>
         </div>
         <div class="zp-img zp-img-3" data-zp-scale="3.5">
           <div class="zp-frame">
-            <img src="../design-inspiration/real-fotos/primer-plano-diagonal-plato-1.jpeg" alt="Lahme bi Aajin recién hecho" loading="lazy"/>
+            <img src="../design-inspiration/real-fotos/primer-plano-diagonal-plato-1.jpeg" alt="Freshly made Lahme bi Aajin" loading="lazy"/>
           </div>
         </div>
         <div class="zp-img zp-img-4" data-zp-scale="4">
           <div class="zp-frame">
-            <img src="../design-inspiration/real-fotos/primer-plano-diagonal-ZAATAR%20%26%20LABNEH%20MANOUCHEH.jpeg" alt="Zaatar y labneh manoucheh recién hecho" loading="lazy"/>
+            <img src="../design-inspiration/real-fotos/primer-plano-diagonal-ZAATAR%20%26%20LABNEH%20MANOUCHEH.jpeg" alt="Zaatar and labneh manoucheh fresh from the oven" loading="lazy"/>
           </div>
         </div>
         <div class="zp-img zp-img-5" data-zp-scale="5">
@@ -1539,289 +1546,289 @@
         </div>
         <div class="zp-img zp-img-6" data-zp-scale="6">
           <div class="zp-frame">
-            <img src="../design-inspiration/real-fotos/primer-plano-montando-cocktail-1.jpeg" alt="Cóctel siendo emplatado en la barra" loading="lazy"/>
+            <img src="../design-inspiration/real-fotos/primer-plano-montando-cocktail-1.jpeg" alt="A cocktail being prepared at the bar" loading="lazy"/>
           </div>
         </div>
         <div class="zp-vignette" aria-hidden="true"></div>
       </div>
 
       <!-- ──── LAYER 2 · SCROLL X CARRUSEL ─────────────────────────────── -->
-      <div class="xc-layer" data-xc-layer aria-label="Recorrido por du Liban">
+      <div class="xc-layer" data-xc-layer aria-label="A walk through du Liban">
         <div class="xc-head">
-<h3 class="xc-head-title">La hospitalidad libanesa, plato a plato.</h3>
+<h3 class="xc-head-title">Lebanese hospitality, dish by dish.</h3>
         </div>
         <div class="xc-viewport">
           <div class="xc-wrap" data-xc-wrap>
 
             <!-- 01 · El chef -->
             <article class="xc-card">
-              <img src="../design-inspiration/real-fotos/primer-plano-del-chef.jpeg" alt="Chef de du Liban concentrado en el emplatado" loading="lazy"/>
+              <img src="../design-inspiration/real-fotos/primer-plano-del-chef.jpeg" alt="du Liban's chef focused on plating" loading="lazy"/>
               <div class="xc-caption">
-                <span class="xc-caption-eyebrow">01 · El chef</span>
-                <p class="xc-caption-title">Mohammad · jefe de cocina</p>
+                <span class="xc-caption-eyebrow">01 · The chef</span>
+                <p class="xc-caption-title">Mohammad · head chef</p>
               </div>
               <div class="xc-reveal">
-                <div class="xc-reveal-tags"><span class="xc-tag">Chef</span><span class="xc-tag">Tradición</span></div>
-                <p class="xc-reveal-title">Mohammad, jefe de cocina</p>
-                <p class="xc-reveal-desc">Aprendió en la cocina de su abuela en Beirut, los domingos, antes de cumplir diez años. En du Liban cocina esas recetas familiares aprendidas en aquella cocina — sin atajos, con el horno encendido a las ocho.</p>
+                <div class="xc-reveal-tags"><span class="xc-tag">Chef</span><span class="xc-tag">Tradition</span></div>
+                <p class="xc-reveal-title">Mohammad, head chef</p>
+                <p class="xc-reveal-desc">He learned in his grandmother's kitchen in Beirut, on Sundays, before turning ten. At du Liban he cooks those family recipes — no shortcuts, with the oven lit at eight.</p>
               </div>
             </article>
 
             <!-- 02 · El horno -->
             <article class="xc-card">
-              <img src="../design-inspiration/real-fotos/cocinando-horno-ZAATAR%20%26%20LABNEH%20MANOUCHEH%20%E2%80%94%20masa%20al%20horno%20con%20zaatar.jpeg" alt="Manakish recién hechos sobre piedra de horno" loading="lazy"/>
+              <img src="../design-inspiration/real-fotos/cocinando-horno-ZAATAR%20%26%20LABNEH%20MANOUCHEH%20%E2%80%94%20masa%20al%20horno%20con%20zaatar.jpeg" alt="Freshly baked manakish on the oven stone" loading="lazy"/>
               <div class="xc-caption">
-                <span class="xc-caption-eyebrow">02 · El horno</span>
-                <p class="xc-caption-title">Manakish de zaatar</p>
+                <span class="xc-caption-eyebrow">02 · The oven</span>
+                <p class="xc-caption-title">Zaatar manakish</p>
               </div>
               <div class="xc-reveal">
-                <div class="xc-reveal-tags"><span class="xc-tag">Horno</span><span class="xc-tag">Vegetariano</span></div>
-                <p class="xc-reveal-title">Manakish de zaatar</p>
-                <p class="xc-reveal-desc">Masa fermentada 24 horas, cubierta con zaatar — tomillo silvestre, sumac y sésamo — y un hilo de aceite. Al horno hasta que la corteza dora y el aroma llena la sala.</p>
+                <div class="xc-reveal-tags"><span class="xc-tag">Oven</span><span class="xc-tag">Vegetarian</span></div>
+                <p class="xc-reveal-title">Zaatar manakish</p>
+                <p class="xc-reveal-desc">24-hour fermented dough, topped with zaatar — wild thyme, sumac and sesame — and a drizzle of oil. Baked until the crust turns gold and the room fills with the aroma.</p>
               </div>
             </article>
 
             <!-- 03 · La brasa -->
             <article class="xc-card">
-              <img src="../design-inspiration/real-fotos/cocinando-SAMAK%20MASHWI.jpeg" alt="Pescado abierto sobre la parrilla de carbón" loading="lazy"/>
+              <img src="../design-inspiration/real-fotos/cocinando-SAMAK%20MASHWI.jpeg" alt="Whole fish split open on the charcoal grill" loading="lazy"/>
               <div class="xc-caption">
-                <span class="xc-caption-eyebrow">03 · La brasa</span>
+                <span class="xc-caption-eyebrow">03 · The grill</span>
                 <p class="xc-caption-title">Samak mashwi</p>
               </div>
               <div class="xc-reveal">
-                <div class="xc-reveal-tags"><span class="xc-tag">Brasa</span><span class="xc-tag">Pescado</span></div>
-                <p class="xc-reveal-title">Samak Mashwi · pescado a la brasa</p>
-                <p class="xc-reveal-desc">Lubina entera marinada con ajo, limón y comino, abierta sobre carbón vegetal. El humo perfuma la piel y la carne se queda blanca, jugosa, con costra dorada.</p>
+                <div class="xc-reveal-tags"><span class="xc-tag">Grill</span><span class="xc-tag">Fish</span></div>
+                <p class="xc-reveal-title">Samak Mashwi · grilled fish</p>
+                <p class="xc-reveal-desc">Whole sea bass marinated with garlic, lemon and cumin, opened over charcoal. The smoke perfumes the skin; the flesh stays white, juicy, with a golden crust.</p>
               </div>
             </article>
 
             <!-- 04 · Condimentos -->
             <article class="xc-card">
-              <img src="../design-inspiration/real-fotos/complementos-bonitos-Labneh%20%20Muhammara%20%20Moutabal%20%20tomate.jpeg" alt="Especias libanesas dispuestas en cuencos" loading="lazy"/>
+              <img src="../design-inspiration/real-fotos/complementos-bonitos-Labneh%20%20Muhammara%20%20Moutabal%20%20tomate.jpeg" alt="Lebanese spices arranged in bowls" loading="lazy"/>
               <div class="xc-caption">
-                <span class="xc-caption-eyebrow">04 · La despensa</span>
-                <p class="xc-caption-title">Las siete especias</p>
+                <span class="xc-caption-eyebrow">04 · The pantry</span>
+                <p class="xc-caption-title">The seven spices</p>
               </div>
               <div class="xc-reveal">
-                <div class="xc-reveal-tags"><span class="xc-tag">Despensa</span><span class="xc-tag">Especias</span></div>
-                <p class="xc-reveal-title">El alma del mezze</p>
-                <p class="xc-reveal-desc">Zaatar, sumac, tahini, melaza de granada, comino, cardamomo y pimienta blanca. Sin estas siete especias, ningún plato libanés tiene nombre propio.</p>
+                <div class="xc-reveal-tags"><span class="xc-tag">Pantry</span><span class="xc-tag">Spices</span></div>
+                <p class="xc-reveal-title">The soul of the mezze</p>
+                <p class="xc-reveal-desc">Zaatar, sumac, tahini, pomegranate molasses, cumin, cardamom and white pepper. Without these seven spices, no Lebanese dish keeps its name.</p>
               </div>
             </article>
 
             <!-- 05 · Montaje 1 -->
             <article class="xc-card">
-              <img src="../design-inspiration/real-fotos/primer-plano-aero-HUMMUS%20BIL%20PESTO.jpeg" alt="Hummus bil pesto con pesto de pistacho, visto desde arriba" loading="lazy"/>
+              <img src="../design-inspiration/real-fotos/primer-plano-aero-HUMMUS%20BIL%20PESTO.jpeg" alt="Hummus bil pesto with pistachio pesto, seen from above" loading="lazy"/>
               <div class="xc-caption">
-                <span class="xc-caption-eyebrow">05 · Mezze frío</span>
+                <span class="xc-caption-eyebrow">05 · Cold mezze</span>
                 <p class="xc-caption-title">Hummus bil Pesto</p>
               </div>
               <div class="xc-reveal">
-                <div class="xc-reveal-tags"><span class="xc-tag">Mezze frío</span><span class="xc-tag">Garbanzo</span></div>
+                <div class="xc-reveal-tags"><span class="xc-tag">Cold mezze</span><span class="xc-tag">Chickpea</span></div>
                 <p class="xc-reveal-title">Hummus bil Pesto</p>
-                <p class="xc-reveal-desc">Hummus clásico de garbanzo y tahini, terminado con un pesto verde de albahaca, piñones y ajo. Aceite de oliva en hilo y pan de pita caliente para mojar.</p>
+                <p class="xc-reveal-desc">Classic chickpea-and-tahini hummus, finished with a green basil-pine-nut-garlic pesto. Olive oil drizzle and warm pita to dip.</p>
               </div>
             </article>
 
             <!-- 06 · Montaje 2 -->
             <article class="xc-card">
-              <img src="../design-inspiration/real-fotos/montando-plato-de-ZAATAR%20%26%20LABNEH%20MANOUCHEH-2.jpeg" alt="Mezze libanés recién emplatado en cocina" loading="lazy"/>
+              <img src="../design-inspiration/real-fotos/montando-plato-de-ZAATAR%20%26%20LABNEH%20MANOUCHEH-2.jpeg" alt="Lebanese mezze freshly plated in the kitchen" loading="lazy"/>
               <div class="xc-caption">
-                <span class="xc-caption-eyebrow">06 · Mezze frío</span>
+                <span class="xc-caption-eyebrow">06 · Cold mezze</span>
                 <p class="xc-caption-title">Moutabal</p>
               </div>
               <div class="xc-reveal">
-                <div class="xc-reveal-tags"><span class="xc-tag">Mezze frío</span><span class="xc-tag">Berenjena</span></div>
-                <p class="xc-reveal-title">Moutabal · berenjena ahumada</p>
-                <p class="xc-reveal-desc">Berenjena ahumada a fuego abierto, batida con tahini, ajo, zumo de limón y yogur. Cremoso, profundo, con granos de granada y aceite encima.</p>
+                <div class="xc-reveal-tags"><span class="xc-tag">Cold mezze</span><span class="xc-tag">Eggplant</span></div>
+                <p class="xc-reveal-title">Moutabal · smoked eggplant</p>
+                <p class="xc-reveal-desc">Eggplant smoked over open flame, whipped with tahini, garlic, lemon juice and yoghurt. Creamy, deep, with pomegranate seeds and oil on top.</p>
               </div>
             </article>
 
             <!-- 07 · Montaje 3 -->
             <article class="xc-card">
-              <img src="../design-inspiration/real-fotos/montando-plato-de-AISH%20EL%20SARAYA.jpeg" alt="Detalle del emplatado libanés" loading="lazy"/>
+              <img src="../design-inspiration/real-fotos/montando-plato-de-AISH%20EL%20SARAYA.jpeg" alt="A Lebanese plating detail" loading="lazy"/>
               <div class="xc-caption">
-                <span class="xc-caption-eyebrow">07 · El detalle</span>
-                <p class="xc-caption-title">El último gesto</p>
+                <span class="xc-caption-eyebrow">07 · The detail</span>
+                <p class="xc-caption-title">The last gesture</p>
               </div>
               <div class="xc-reveal">
-                <div class="xc-reveal-tags"><span class="xc-tag">Cocina</span><span class="xc-tag">Detalle</span></div>
-                <p class="xc-reveal-title">El último gesto</p>
-                <p class="xc-reveal-desc">Cada plato sale de cocina dos veces: una con la receta, otra con los detalles — la flor de granada, la hoja de cilantro, el hilo final de aceite.</p>
+                <div class="xc-reveal-tags"><span class="xc-tag">Kitchen</span><span class="xc-tag">Detail</span></div>
+                <p class="xc-reveal-title">The last gesture</p>
+                <p class="xc-reveal-desc">Every dish leaves the kitchen twice: once with the recipe, again with the details — the pomegranate flower, the coriander leaf, the final thread of oil.</p>
               </div>
             </article>
 
             <!-- 08 · Montaje 4 -->
             <article class="xc-card">
-              <img src="../design-inspiration/real-fotos/primer-plano-diagonal-plato-1.jpeg" alt="Masa fina con carne especiada recién horneada" loading="lazy"/>
+              <img src="../design-inspiration/real-fotos/primer-plano-diagonal-plato-1.jpeg" alt="Thin dough with spiced meat freshly baked" loading="lazy"/>
               <div class="xc-caption">
-                <span class="xc-caption-eyebrow">08 · Mezze caliente</span>
+                <span class="xc-caption-eyebrow">08 · Hot mezze</span>
                 <p class="xc-caption-title">Kebbeh Sajyeh</p>
               </div>
               <div class="xc-reveal">
-                <div class="xc-reveal-tags"><span class="xc-tag">Mezze caliente</span><span class="xc-tag">Cordero</span></div>
+                <div class="xc-reveal-tags"><span class="xc-tag">Hot mezze</span><span class="xc-tag">Lamb</span></div>
                 <p class="xc-reveal-title">Kebbeh Sajyeh</p>
-                <p class="xc-reveal-desc">Cordero picado a cuchillo con bulgur fino y siete especias. Bolitas rellenas de piñones y cebolla caramelizada, fritas al momento y servidas con yogur de menta.</p>
+                <p class="xc-reveal-desc">Knife-chopped lamb with fine bulgur and seven spices. Shells filled with pine nuts and caramelised onion, fried to order and served with mint yoghurt.</p>
               </div>
             </article>
 
             <!-- 09 · Montaje 5 -->
             <article class="xc-card">
-              <img src="../design-inspiration/real-fotos/montando-plato-de-%20ZAATAR%20%26%20LABNEH%20MANOUCHEH.jpeg" alt="Mezze caliente recién montado en cocina" loading="lazy"/>
+              <img src="../design-inspiration/real-fotos/montando-plato-de-%20ZAATAR%20%26%20LABNEH%20MANOUCHEH.jpeg" alt="Hot mezze freshly plated in the kitchen" loading="lazy"/>
               <div class="xc-caption">
-                <span class="xc-caption-eyebrow">09 · Mezze caliente</span>
+                <span class="xc-caption-eyebrow">09 · Hot mezze</span>
                 <p class="xc-caption-title">Fatteh al Rubyan</p>
               </div>
               <div class="xc-reveal">
-                <div class="xc-reveal-tags"><span class="xc-tag">Mezze caliente</span><span class="xc-tag">Marisco</span></div>
+                <div class="xc-reveal-tags"><span class="xc-tag">Hot mezze</span><span class="xc-tag">Seafood</span></div>
                 <p class="xc-reveal-title">Fatteh al Rubyan</p>
-                <p class="xc-reveal-desc">Pan crujiente, langostinos salteados con ajo y cilantro, yogur batido con tahini y piñones tostados. Capa sobre capa — se come con cuchara.</p>
+                <p class="xc-reveal-desc">Crisp bread, prawns sautéed with garlic and coriander, yoghurt whipped with tahini and toasted pine nuts. Layer on layer — eaten with a spoon.</p>
               </div>
             </article>
 
             <!-- 10 · Primer plano diagonal 1 -->
             <article class="xc-card">
-              <img src="../design-inspiration/real-fotos/primer-plano-diagonal-plato-1.jpeg" alt="Lahme bi Aajin recién hecho" loading="lazy"/>
+              <img src="../design-inspiration/real-fotos/primer-plano-diagonal-plato-1.jpeg" alt="Freshly made Lahme bi Aajin" loading="lazy"/>
               <div class="xc-caption">
-                <span class="xc-caption-eyebrow">10 · Horno</span>
+                <span class="xc-caption-eyebrow">10 · Oven</span>
                 <p class="xc-caption-title">Lahme bi Aajin</p>
               </div>
               <div class="xc-reveal">
-                <div class="xc-reveal-tags"><span class="xc-tag">Horno</span><span class="xc-tag">Cordero</span></div>
+                <div class="xc-reveal-tags"><span class="xc-tag">Oven</span><span class="xc-tag">Lamb</span></div>
                 <p class="xc-reveal-title">Lahme bi Aajin</p>
-                <p class="xc-reveal-desc">Masa fina cubierta con cordero picado, tomate concassé, cebolla y siete especias. La pizza beirutí — al horno hasta que las puntas crujen, y un cuarto de limón al lado.</p>
+                <p class="xc-reveal-desc">Thin dough topped with minced lamb, tomato concassé, onion and seven spices. The Beirut pizza — baked until the edges crisp, with a lemon wedge on the side.</p>
               </div>
             </article>
 
             <!-- 11 · Primer plano diagonal 2 -->
             <article class="xc-card">
-              <img src="../design-inspiration/real-fotos/primer-plano-diagonal-plato-2.jpeg" alt="Manakish con labneh y aceitunas" loading="lazy"/>
+              <img src="../design-inspiration/real-fotos/primer-plano-diagonal-plato-2.jpeg" alt="Manakish with labneh and olives" loading="lazy"/>
               <div class="xc-caption">
-                <span class="xc-caption-eyebrow">11 · Horno</span>
+                <span class="xc-caption-eyebrow">11 · Oven</span>
                 <p class="xc-caption-title">Zaatar &amp; Labneh</p>
               </div>
               <div class="xc-reveal">
-                <div class="xc-reveal-tags"><span class="xc-tag">Horno</span><span class="xc-tag">Vegetariano</span></div>
+                <div class="xc-reveal-tags"><span class="xc-tag">Oven</span><span class="xc-tag">Vegetarian</span></div>
                 <p class="xc-reveal-title">Zaatar &amp; Labneh</p>
-                <p class="xc-reveal-desc">Manakish de zaatar con labneh casero — yogur colado tres días — y aceitunas negras de Líbano. El desayuno de toda la costa, servido hasta medianoche.</p>
+                <p class="xc-reveal-desc">Zaatar manakish with house-made labneh — yoghurt strained for three days — and Lebanese black olives. The whole coast eats this for breakfast; we serve it until midnight.</p>
               </div>
             </article>
 
             <!-- 12 · Primer plano diagonal 3 -->
             <article class="xc-card">
-              <img src="../design-inspiration/real-fotos/primer-plano-diagonal-plato-2.jpeg" alt="Ensalada libanesa con verduras frescas y pan de pita" loading="lazy"/>
+              <img src="../design-inspiration/real-fotos/primer-plano-diagonal-plato-2.jpeg" alt="Lebanese salad with fresh vegetables and pita bread" loading="lazy"/>
               <div class="xc-caption">
-                <span class="xc-caption-eyebrow">12 · Mezze frío</span>
+                <span class="xc-caption-eyebrow">12 · Cold mezze</span>
                 <p class="xc-caption-title">Fattoush</p>
               </div>
               <div class="xc-reveal">
-                <div class="xc-reveal-tags"><span class="xc-tag">Ensalada</span><span class="xc-tag">Mezze frío</span></div>
+                <div class="xc-reveal-tags"><span class="xc-tag">Salad</span><span class="xc-tag">Cold mezze</span></div>
                 <p class="xc-reveal-title">Fattoush</p>
-                <p class="xc-reveal-desc">Tomate, pepino, rábano, rúcula y menta, aliñados con melaza de granada y aceite. Cuadraditos de pan de pita tostado para crujido — la ensalada que abre la mesa.</p>
+                <p class="xc-reveal-desc">Tomato, cucumber, radish, arugula and mint, dressed with pomegranate molasses and oil. Toasted pita squares for crunch — the salad that opens the table.</p>
               </div>
             </article>
 
             <!-- 13 · Primer plano diagonal 4 -->
             <article class="xc-card">
-              <img src="../design-inspiration/real-fotos/primer-plano-aero-HUMMUS.jpeg" alt="Hummus cremoso de garbanzo, visto desde arriba" loading="lazy"/>
+              <img src="../design-inspiration/real-fotos/primer-plano-aero-HUMMUS.jpeg" alt="Creamy chickpea hummus, seen from above" loading="lazy"/>
               <div class="xc-caption">
-                <span class="xc-caption-eyebrow">13 · Mezze caliente</span>
+                <span class="xc-caption-eyebrow">13 · Hot mezze</span>
                 <p class="xc-caption-title">Hummus Lahme</p>
               </div>
               <div class="xc-reveal">
-                <div class="xc-reveal-tags"><span class="xc-tag">Mezze caliente</span><span class="xc-tag">Cordero</span></div>
+                <div class="xc-reveal-tags"><span class="xc-tag">Hot mezze</span><span class="xc-tag">Lamb</span></div>
                 <p class="xc-reveal-title">Hummus Lahme</p>
-                <p class="xc-reveal-desc">Hummus caliente coronado con cordero salteado en mantequilla clarificada y piñones dorados. El contraste entre la crema del garbanzo y el calor de la carne.</p>
+                <p class="xc-reveal-desc">Warm hummus crowned with lamb sautéed in clarified butter and golden pine nuts. The contrast between the chickpea cream and the heat of the meat.</p>
               </div>
             </article>
 
             <!-- 14 · Primer plano diagonal 5 -->
             <article class="xc-card">
-              <img src="../design-inspiration/real-fotos/primer-plano-diagonal-plato-5.jpeg" alt="Kabab de cordero recién hecho" loading="lazy"/>
+              <img src="../design-inspiration/real-fotos/primer-plano-diagonal-plato-5.jpeg" alt="Freshly made lamb kabab" loading="lazy"/>
               <div class="xc-caption">
-                <span class="xc-caption-eyebrow">14 · Brasa</span>
+                <span class="xc-caption-eyebrow">14 · Grill</span>
                 <p class="xc-caption-title">Kabab</p>
               </div>
               <div class="xc-reveal">
-                <div class="xc-reveal-tags"><span class="xc-tag">Brasa</span><span class="xc-tag">Cordero</span></div>
+                <div class="xc-reveal-tags"><span class="xc-tag">Grill</span><span class="xc-tag">Lamb</span></div>
                 <p class="xc-reveal-title">Kabab</p>
-                <p class="xc-reveal-desc">Pinchos de cordero picado a cuchillo con perejil y cebolla, sobre carbón vegetal. Acompañados de tomate asado, cebolla con sumac y pan caliente para envolver.</p>
+                <p class="xc-reveal-desc">Skewers of knife-chopped lamb with parsley and onion, over charcoal. Served with roasted tomato, sumac onion and warm bread to wrap.</p>
               </div>
             </article>
 
             <!-- 15 · Primer plano diagonal 6 -->
             <article class="xc-card">
-              <img src="../design-inspiration/real-fotos/primer-plano-diagonal-ZAATAR%20%26%20LABNEH%20MANOUCHEH.jpeg" alt="Jarrete de cordero con su jugo" loading="lazy"/>
+              <img src="../design-inspiration/real-fotos/primer-plano-diagonal-ZAATAR%20%26%20LABNEH%20MANOUCHEH.jpeg" alt="Lamb shank with its braising jus" loading="lazy"/>
               <div class="xc-caption">
-                <span class="xc-caption-eyebrow">15 · Brasa</span>
+                <span class="xc-caption-eyebrow">15 · Grill</span>
                 <p class="xc-caption-title">Mawzet Kharouf</p>
               </div>
               <div class="xc-reveal">
-                <div class="xc-reveal-tags"><span class="xc-tag">Cordero lento</span><span class="xc-tag">Brasa</span></div>
+                <div class="xc-reveal-tags"><span class="xc-tag">Slow lamb</span><span class="xc-tag">Grill</span></div>
                 <p class="xc-reveal-title">Mawzet Kharouf</p>
-                <p class="xc-reveal-desc">Jarrete de cordero cocinado seis horas con cebolla, tomate, canela y comino. Carne que se separa con la cuchara y caldo concentrado debajo, con freekeh ahumado.</p>
+                <p class="xc-reveal-desc">Lamb shank braised for six hours with onion, tomato, cinnamon and cumin. Meat that falls apart at the spoon and a concentrated jus beneath, with smoked freekeh.</p>
               </div>
             </article>
 
             <!-- 16 · Postre 1 -->
             <article class="xc-card">
-              <img src="../design-inspiration/real-fotos/primer-plano-aero-postre-AISH%20EL%20SARAYA.jpeg" alt="Postre libanés visto desde arriba" loading="lazy"/>
+              <img src="../design-inspiration/real-fotos/primer-plano-aero-postre-AISH%20EL%20SARAYA.jpeg" alt="Lebanese dessert seen from above" loading="lazy"/>
               <div class="xc-caption">
-                <span class="xc-caption-eyebrow">16 · Postre</span>
+                <span class="xc-caption-eyebrow">16 · Dessert</span>
                 <p class="xc-caption-title">Knefeh</p>
               </div>
               <div class="xc-reveal">
-                <div class="xc-reveal-tags"><span class="xc-tag">Postre</span><span class="xc-tag">Caliente</span></div>
+                <div class="xc-reveal-tags"><span class="xc-tag">Dessert</span><span class="xc-tag">Warm</span></div>
                 <p class="xc-reveal-title">Knefeh</p>
-                <p class="xc-reveal-desc">Cabello de ángel relleno de queso fresco, horneado hasta dorar y bañado en almíbar de azahar. Se sirve caliente, con un café cardamomo al lado.</p>
+                <p class="xc-reveal-desc">Angel-hair pastry stuffed with fresh cheese, baked until gold and soaked in orange-blossom syrup. Served warm, with a cardamom coffee on the side.</p>
               </div>
             </article>
 
             <!-- 17 · Postre 2 -->
             <article class="xc-card">
-              <img src="../design-inspiration/real-fotos/montando-plato-de-MHALABIEH%20%E2%80%94%20postre%20de%20leche.jpeg" alt="Mafroukit con ashta y pistacho" loading="lazy"/>
+              <img src="../design-inspiration/real-fotos/montando-plato-de-MHALABIEH%20%E2%80%94%20postre%20de%20leche.jpeg" alt="Mafroukit with ashta and pistachio" loading="lazy"/>
               <div class="xc-caption">
-                <span class="xc-caption-eyebrow">17 · Postre</span>
+                <span class="xc-caption-eyebrow">17 · Dessert</span>
                 <p class="xc-caption-title">Mafroukit Ashta</p>
               </div>
               <div class="xc-reveal">
-                <div class="xc-reveal-tags"><span class="xc-tag">Postre</span><span class="xc-tag">Pistacho</span></div>
+                <div class="xc-reveal-tags"><span class="xc-tag">Dessert</span><span class="xc-tag">Pistachio</span></div>
                 <p class="xc-reveal-title">Mafroukit Ashta</p>
-                <p class="xc-reveal-desc">Sémola dorada con miel, mantequilla y agua de azahar. Encima, ashta — la nata reducida libanesa — y un puñado de pistachos enteros del Bekaa.</p>
+                <p class="xc-reveal-desc">Golden semolina with honey, butter and orange-blossom water. On top, ashta — Lebanese reduced cream — and a handful of whole Bekaa pistachios.</p>
               </div>
             </article>
 
             <!-- 18 · Postre 3 -->
             <article class="xc-card">
-              <img src="../design-inspiration/real-fotos/montando-plato-de-AISH%20EL%20SARAYA.jpeg" alt="Em Ali con frutos secos" loading="lazy"/>
+              <img src="../design-inspiration/real-fotos/montando-plato-de-AISH%20EL%20SARAYA.jpeg" alt="Em Ali with nuts" loading="lazy"/>
               <div class="xc-caption">
-                <span class="xc-caption-eyebrow">18 · Postre</span>
+                <span class="xc-caption-eyebrow">18 · Dessert</span>
                 <p class="xc-caption-title">Em Ali</p>
               </div>
               <div class="xc-reveal">
-                <div class="xc-reveal-tags"><span class="xc-tag">Postre</span><span class="xc-tag">Frutos secos</span></div>
+                <div class="xc-reveal-tags"><span class="xc-tag">Dessert</span><span class="xc-tag">Nuts</span></div>
                 <p class="xc-reveal-title">Em Ali</p>
-                <p class="xc-reveal-desc">El pudding de hojaldre tradicional: capas finas, leche caliente perfumada con cardamomo, almendras, pistachos y coco rallado por encima — recién horneado.</p>
+                <p class="xc-reveal-desc">The traditional pastry pudding: thin layers, warm cardamom-scented milk, almonds, pistachios and grated coconut on top — freshly baked.</p>
               </div>
             </article>
 
             <!-- 19 · Coctel 1 -->
             <article class="xc-card">
-              <img src="../design-inspiration/real-fotos/primer-plano-montando-cocktail-1.jpeg" alt="Cóctel con melaza de granada" loading="lazy"/>
+              <img src="../design-inspiration/real-fotos/primer-plano-montando-cocktail-1.jpeg" alt="Cocktail with pomegranate molasses" loading="lazy"/>
               <div class="xc-caption">
                 <span class="xc-caption-eyebrow">19 · Bar</span>
                 <p class="xc-caption-title">Granada &amp; Mezcal</p>
               </div>
               <div class="xc-reveal">
-                <div class="xc-reveal-tags"><span class="xc-tag">Bar</span><span class="xc-tag">Coctelería</span></div>
+                <div class="xc-reveal-tags"><span class="xc-tag">Bar</span><span class="xc-tag">Cocktail</span></div>
                 <p class="xc-reveal-title">Granada &amp; Mezcal</p>
-                <p class="xc-reveal-desc">Mezcal con melaza de granada y zumo de lima. Inspirado en el grenadine — granada y azúcar reducidos a fuego lento como en los pueblos del sur.</p>
+                <p class="xc-reveal-desc">Mezcal with pomegranate molasses and lime juice. Inspired by grenadine — pomegranate and sugar reduced over a slow flame, as in the southern villages.</p>
               </div>
             </article>
 
             <!-- 20 · Coctel 2 -->
             <article class="xc-card">
-              <img src="../design-inspiration/real-fotos/primer-plano-montando-cocktail-2.jpeg" alt="Arak sour servido en copa" loading="lazy"/>
+              <img src="../design-inspiration/real-fotos/primer-plano-montando-cocktail-2.jpeg" alt="Arak sour served in a coupe" loading="lazy"/>
               <div class="xc-caption">
                 <span class="xc-caption-eyebrow">20 · Bar</span>
                 <p class="xc-caption-title">Arak Sour</p>
@@ -1829,273 +1836,273 @@
               <div class="xc-reveal">
                 <div class="xc-reveal-tags"><span class="xc-tag">Bar</span><span class="xc-tag">Arak</span></div>
                 <p class="xc-reveal-title">Arak Sour</p>
-                <p class="xc-reveal-desc">Arak — el anisado libanés — con zumo de limón fresco, jarabe de azahar y clara batida. Servido en copa fría con piel de naranja.</p>
+                <p class="xc-reveal-desc">Arak — the Lebanese aniseed — with fresh lemon juice, orange-blossom syrup and whipped egg white. Served in a chilled coupe with orange peel.</p>
               </div>
             </article>
 
             <!-- 21 · Probando 1 -->
             <article class="xc-card">
-              <img src="../design-inspiration/real-fotos/plano-aereo-probando-SAMAK%20MASHWI,%20OKHTOBUT%20MASHWI%20y%20probablemente%20HUMMUS.jpeg" alt="Manos compartiendo platos desde arriba" loading="lazy"/>
+              <img src="../design-inspiration/real-fotos/plano-aereo-probando-SAMAK%20MASHWI,%20OKHTOBUT%20MASHWI%20y%20probablemente%20HUMMUS.jpeg" alt="Hands sharing dishes from above" loading="lazy"/>
               <div class="xc-caption">
-                <span class="xc-caption-eyebrow">21 · Mesa</span>
-                <p class="xc-caption-title">Compartir es libanés</p>
+                <span class="xc-caption-eyebrow">21 · Table</span>
+                <p class="xc-caption-title">Sharing is Lebanese</p>
               </div>
               <div class="xc-reveal">
                 <div class="xc-reveal-tags"><span class="xc-tag">Cultura</span><span class="xc-tag">Mezze</span></div>
-                <p class="xc-reveal-title">Compartir es libanés</p>
-                <p class="xc-reveal-desc">La mesa libanesa nunca es de uno solo. Los mezze llegan al centro y todos cogen del mismo plato — eso es lo que hace que la comida sepa a hogar.</p>
+                <p class="xc-reveal-title">Sharing is Lebanese</p>
+                <p class="xc-reveal-desc">A Lebanese table is never for one. The mezze arrives at the centre and everyone reaches into the same dish — that's what makes the food taste of home.</p>
               </div>
             </article>
 
             <!-- 22 · Probando 2 -->
             <article class="xc-card">
-              <img src="../design-inspiration/real-fotos/plano-diagonal-probando-OKHTOBUT%20MASHWI%20%E2%80%94%20pulpo%20a%20la%20parrilla.jpeg" alt="Pan, hummus y menta en el primer bocado" loading="lazy"/>
+              <img src="../design-inspiration/real-fotos/plano-diagonal-probando-OKHTOBUT%20MASHWI%20%E2%80%94%20pulpo%20a%20la%20parrilla.jpeg" alt="Bread, hummus and mint for the first bite" loading="lazy"/>
               <div class="xc-caption">
-                <span class="xc-caption-eyebrow">22 · Mesa</span>
-                <p class="xc-caption-title">El primer bocado</p>
+                <span class="xc-caption-eyebrow">22 · Table</span>
+                <p class="xc-caption-title">The first bite</p>
               </div>
               <div class="xc-reveal">
                 <div class="xc-reveal-tags"><span class="xc-tag">Ritual</span><span class="xc-tag">Mezze</span></div>
-                <p class="xc-reveal-title">El primer bocado</p>
-                <p class="xc-reveal-desc">El pan caliente recién salido del horno, el hummus en el centro, una hoja de menta. Así empieza siempre — el ritual antes del ritual.</p>
+                <p class="xc-reveal-title">The first bite</p>
+                <p class="xc-reveal-desc">Warm bread fresh from the oven, hummus at the centre, a leaf of mint. That's how it always begins — the ritual before the ritual.</p>
               </div>
             </article>
 
             <!-- 23 · Mesa abundante -->
             <article class="xc-card">
-              <img src="../design-inspiration/real-fotos/mesa-comida-lujo-abundante.jpeg" alt="Mesa libanesa completa con mezze" loading="lazy"/>
+              <img src="../design-inspiration/real-fotos/mesa-comida-lujo-abundante.jpeg" alt="A full Lebanese mezze table" loading="lazy"/>
               <div class="xc-caption">
-                <span class="xc-caption-eyebrow">23 · Mesa</span>
-                <p class="xc-caption-title">Una mesa libanesa</p>
+                <span class="xc-caption-eyebrow">23 · Table</span>
+                <p class="xc-caption-title">A Lebanese table</p>
               </div>
               <div class="xc-reveal">
-                <div class="xc-reveal-tags"><span class="xc-tag">Mesa</span><span class="xc-tag">Sobremesa</span></div>
-                <p class="xc-reveal-title">Una mesa libanesa</p>
-                <p class="xc-reveal-desc">Veinte mezze, el horno y la brasa, vino del Bekaa, agua de azahar al final. Para cuatro, para ocho, para los que vengan a unirse.</p>
+                <div class="xc-reveal-tags"><span class="xc-tag">Table</span><span class="xc-tag">Sobremesa</span></div>
+                <p class="xc-reveal-title">A Lebanese table</p>
+                <p class="xc-reveal-desc">Twenty mezze, the oven and the grill, Bekaa wine, orange-blossom at the end. For four, for eight, for whoever joins.</p>
               </div>
             </article>
 
             <!-- 24 · Comiendo abundante -->
             <article class="xc-card">
-              <img src="../design-inspiration/real-fotos/comiendo-abundante-mesa-lujo.jpeg" alt="Comensales compartiendo cena libanesa" loading="lazy"/>
+              <img src="../design-inspiration/real-fotos/comiendo-abundante-mesa-lujo.jpeg" alt="Diners sharing a Lebanese supper" loading="lazy"/>
               <div class="xc-caption">
-                <span class="xc-caption-eyebrow">24 · Sala</span>
-                <p class="xc-caption-title">Cenar despacio</p>
+                <span class="xc-caption-eyebrow">24 · Dining room</span>
+                <p class="xc-caption-title">Dining slowly</p>
               </div>
               <div class="xc-reveal">
-                <div class="xc-reveal-tags"><span class="xc-tag">Sala</span><span class="xc-tag">Ritual</span></div>
-                <p class="xc-reveal-title">Cenar despacio</p>
-                <p class="xc-reveal-desc">En Beirut nadie come en una hora. Aquí tampoco — reserva con tiempo y deja que la mesa se llene de a poco, como cuando es en casa.</p>
+                <div class="xc-reveal-tags"><span class="xc-tag">Dining room</span><span class="xc-tag">Ritual</span></div>
+                <p class="xc-reveal-title">Dining slowly</p>
+                <p class="xc-reveal-desc">In Beirut nobody eats in an hour. Neither do we — reserve with time and let the table fill little by little, as if at home.</p>
               </div>
             </article>
 
             <!-- 25 · Bebiendo abundante -->
             <article class="xc-card">
-              <img src="../design-inspiration/real-fotos/bebiendo-abundante-mesa-lujo.jpeg" alt="Copas servidas en la mesa" loading="lazy"/>
+              <img src="../design-inspiration/real-fotos/bebiendo-abundante-mesa-lujo.jpeg" alt="Glasses poured at the table" loading="lazy"/>
               <div class="xc-caption">
                 <span class="xc-caption-eyebrow">25 · Bar</span>
-                <p class="xc-caption-title">Vinos del Bekaa</p>
+                <p class="xc-caption-title">Wines from the Bekaa</p>
               </div>
               <div class="xc-reveal">
-                <div class="xc-reveal-tags"><span class="xc-tag">Bar</span><span class="xc-tag">Vino</span></div>
-                <p class="xc-reveal-title">Vinos del Bekaa</p>
-                <p class="xc-reveal-desc">Carta libanesa de viñedos a mil metros — Château Musar, Ksara, Domaine des Tourelles — junto a referencias de la Ribera, Rueda y la Borgoña.</p>
+                <div class="xc-reveal-tags"><span class="xc-tag">Bar</span><span class="xc-tag">Wine</span></div>
+                <p class="xc-reveal-title">Wines from the Bekaa</p>
+                <p class="xc-reveal-desc">Lebanese list from vineyards at one thousand metres — Château Musar, Ksara, Domaine des Tourelles — alongside bottles from Ribera, Rueda and Burgundy.</p>
               </div>
             </article>
 
             <!-- 26 · Detalles 1 -->
             <article class="xc-card">
-              <img src="../design-inspiration/real-fotos/detalles-bonitos-decoración-1.jpeg" alt="Detalle de la decoración de la sala" loading="lazy"/>
+              <img src="../design-inspiration/real-fotos/detalles-bonitos-decoración-1.jpeg" alt="Decorative detail in the dining room" loading="lazy"/>
               <div class="xc-caption">
-                <span class="xc-caption-eyebrow">26 · Detalle</span>
-                <p class="xc-caption-title">Detalles de Beirut</p>
+                <span class="xc-caption-eyebrow">26 · Detail</span>
+                <p class="xc-caption-title">Details of Beirut</p>
               </div>
               <div class="xc-reveal">
-                <div class="xc-reveal-tags"><span class="xc-tag">Sala</span><span class="xc-tag">Decoración</span></div>
-                <p class="xc-reveal-title">Detalles de Beirut</p>
-                <p class="xc-reveal-desc">Tapicería bordada a mano, lámparas de latón, mosaicos de mármol. Cada objeto de la sala viene de algún rincón del Líbano — del zoco o de la casa familiar.</p>
+                <div class="xc-reveal-tags"><span class="xc-tag">Dining room</span><span class="xc-tag">Decor</span></div>
+                <p class="xc-reveal-title">Details of Beirut</p>
+                <p class="xc-reveal-desc">Hand-embroidered upholstery, brass lamps, marble mosaics. Every object in the room comes from a corner of Lebanon — the souk or the family home.</p>
               </div>
             </article>
 
             <!-- 27 · Detalles 2 -->
             <article class="xc-card">
-              <img src="../design-inspiration/real-fotos/detalles-bonitos-decoración-2.jpeg" alt="Vajilla y cristalería de la mesa" loading="lazy"/>
+              <img src="../design-inspiration/real-fotos/detalles-bonitos-decoración-2.jpeg" alt="Tableware and glassware on the table" loading="lazy"/>
               <div class="xc-caption">
-                <span class="xc-caption-eyebrow">27 · Detalle</span>
-                <p class="xc-caption-title">Hospitalidad en mesa</p>
+                <span class="xc-caption-eyebrow">27 · Detail</span>
+                <p class="xc-caption-title">Hospitality at the table</p>
               </div>
               <div class="xc-reveal">
-                <div class="xc-reveal-tags"><span class="xc-tag">Sala</span><span class="xc-tag">Mesa</span></div>
-                <p class="xc-reveal-title">Hospitalidad en mesa</p>
-                <p class="xc-reveal-desc">Vajilla pintada, cubertería con peso, copas finas. La forma en que se sirve también es parte del plato — el detalle se ve antes que el sabor.</p>
+                <div class="xc-reveal-tags"><span class="xc-tag">Dining room</span><span class="xc-tag">Table</span></div>
+                <p class="xc-reveal-title">Hospitality at the table</p>
+                <p class="xc-reveal-desc">Hand-painted dishes, weighted cutlery, fine glassware. How it's served is part of the plate — the detail is seen before the flavour.</p>
               </div>
             </article>
 
             <!-- 28 · Detalles 3 -->
             <article class="xc-card">
-              <img src="../design-inspiration/real-fotos/detalles-bonitos-decoración-3.jpeg" alt="Textura de madera y cobre en la sala" loading="lazy"/>
+              <img src="../design-inspiration/real-fotos/detalles-bonitos-decoración-3.jpeg" alt="Wood and copper textures in the dining room" loading="lazy"/>
               <div class="xc-caption">
-                <span class="xc-caption-eyebrow">28 · Detalle</span>
-                <p class="xc-caption-title">La textura de la casa</p>
+                <span class="xc-caption-eyebrow">28 · Detail</span>
+                <p class="xc-caption-title">The texture of the house</p>
               </div>
               <div class="xc-reveal">
-                <div class="xc-reveal-tags"><span class="xc-tag">Sala</span><span class="xc-tag">Diseño</span></div>
-                <p class="xc-reveal-title">La textura de la casa</p>
-                <p class="xc-reveal-desc">Madera oscura, cobre martillado, telas naturales. Una sala que se siente con las manos antes que con los ojos — pensada para no tener prisa.</p>
+                <div class="xc-reveal-tags"><span class="xc-tag">Dining room</span><span class="xc-tag">Design</span></div>
+                <p class="xc-reveal-title">The texture of the house</p>
+                <p class="xc-reveal-desc">Dark wood, hammered copper, natural fabrics. A room you feel with your hands before your eyes — built so nobody hurries.</p>
               </div>
             </article>
 
             <!-- 29 · Lujo revisando menú -->
             <article class="xc-card">
-              <img src="../design-inspiration/real-fotos/lujo-revisando-el-menu.jpeg" alt="Comensal revisando la carta" loading="lazy"/>
+              <img src="../design-inspiration/real-fotos/lujo-revisando-el-menu.jpeg" alt="A diner studying the menu" loading="lazy"/>
               <div class="xc-caption">
-                <span class="xc-caption-eyebrow">29 · La carta</span>
-                <p class="xc-caption-title">Elegir la mesa</p>
+                <span class="xc-caption-eyebrow">29 · The menu</span>
+                <p class="xc-caption-title">Choosing the table</p>
               </div>
               <div class="xc-reveal">
-                <div class="xc-reveal-tags"><span class="xc-tag">Carta</span><span class="xc-tag">Ritual</span></div>
-                <p class="xc-reveal-title">Elegir la mesa</p>
-                <p class="xc-reveal-desc">Cinco actos: del horno, mezze frío, mezze caliente, brasa y postres. Pedir a la libanesa no es pedir poco — y siempre sobra para llevarse a casa.</p>
+                <div class="xc-reveal-tags"><span class="xc-tag">Menu</span><span class="xc-tag">Ritual</span></div>
+                <p class="xc-reveal-title">Choosing the table</p>
+                <p class="xc-reveal-desc">Five acts: from the oven, cold mezze, hot mezze, the grill and desserts. Ordering Lebanese-style isn't ordering little — and there's always something to take home.</p>
               </div>
             </article>
 
             <!-- 30 · Servicio en mesa 1 -->
             <article class="xc-card">
-              <img src="../design-inspiration/real-fotos/camarero-sirviendo-mesa-1.jpeg" alt="Camarero sirviendo en la sala" loading="lazy"/>
+              <img src="../design-inspiration/real-fotos/camarero-sirviendo-mesa-1.jpeg" alt="A waiter serving in the dining room" loading="lazy"/>
               <div class="xc-caption">
-                <span class="xc-caption-eyebrow">30 · Servicio</span>
-                <p class="xc-caption-title">Servicio en sala</p>
+                <span class="xc-caption-eyebrow">30 · Service</span>
+                <p class="xc-caption-title">Service in the dining room</p>
               </div>
               <div class="xc-reveal">
-                <div class="xc-reveal-tags"><span class="xc-tag">Servicio</span><span class="xc-tag">Sala</span></div>
-                <p class="xc-reveal-title">Servicio en sala</p>
-                <p class="xc-reveal-desc">El maître presenta cada plato, explica la receta y la procedencia del ingrediente. La sobremesa empieza antes del primer bocado.</p>
+                <div class="xc-reveal-tags"><span class="xc-tag">Service</span><span class="xc-tag">Dining room</span></div>
+                <p class="xc-reveal-title">Service in the dining room</p>
+                <p class="xc-reveal-desc">The maître presents each dish, explains the recipe and where each ingredient came from. The sobremesa begins before the first bite.</p>
               </div>
             </article>
 
             <!-- 31 · Servicio en mesa 2 -->
             <article class="xc-card">
-              <img src="../design-inspiration/real-fotos/camarero-sirviendo-mesa-2.jpeg" alt="Plato terminado en la mesa" loading="lazy"/>
+              <img src="../design-inspiration/real-fotos/camarero-sirviendo-mesa-2.jpeg" alt="Finished plate on the table" loading="lazy"/>
               <div class="xc-caption">
-                <span class="xc-caption-eyebrow">31 · Servicio</span>
-                <p class="xc-caption-title">Compartir la mesa</p>
+                <span class="xc-caption-eyebrow">31 · Service</span>
+                <p class="xc-caption-title">Sharing the table</p>
               </div>
               <div class="xc-reveal">
-                <div class="xc-reveal-tags"><span class="xc-tag">Servicio</span><span class="xc-tag">Mezze</span></div>
-                <p class="xc-reveal-title">Compartir la mesa</p>
-                <p class="xc-reveal-desc">Los platos se colocan al centro, las manos se cruzan, el pan pasa. Comer libanés es un gesto colectivo — la mesa entera comparte el mismo bocado.</p>
+                <div class="xc-reveal-tags"><span class="xc-tag">Service</span><span class="xc-tag">Mezze</span></div>
+                <p class="xc-reveal-title">Sharing the table</p>
+                <p class="xc-reveal-desc">Plates are placed at the centre, hands cross, the bread is passed. Eating Lebanese is a collective gesture — the whole table shares the same bite.</p>
               </div>
             </article>
 
             <!-- 32 · Servicio del pescado -->
             <article class="xc-card">
-              <img src="../design-inspiration/real-fotos/camarero-sirviendo-SAMAK%20MASHWI%20%E2%80%94%20lubina%20a%20la%20parrilla.jpeg" alt="Camarero trinchando pescado en mesa" loading="lazy"/>
+              <img src="../design-inspiration/real-fotos/camarero-sirviendo-SAMAK%20MASHWI%20%E2%80%94%20lubina%20a%20la%20parrilla.jpeg" alt="A waiter carving fish tableside" loading="lazy"/>
               <div class="xc-caption">
-                <span class="xc-caption-eyebrow">32 · Servicio</span>
-                <p class="xc-caption-title">El pescado a la sala</p>
+                <span class="xc-caption-eyebrow">32 · Service</span>
+                <p class="xc-caption-title">The fish to the table</p>
               </div>
               <div class="xc-reveal">
-                <div class="xc-reveal-tags"><span class="xc-tag">Servicio</span><span class="xc-tag">Brasa</span></div>
-                <p class="xc-reveal-title">El pescado a la sala</p>
-                <p class="xc-reveal-desc">El samak mashwi se trae entero desde la cocina y se trincha delante del comensal. El humo de la brasa todavía acompaña la cabeza, los lomos y la cola.</p>
+                <div class="xc-reveal-tags"><span class="xc-tag">Service</span><span class="xc-tag">Grill</span></div>
+                <p class="xc-reveal-title">The fish to the table</p>
+                <p class="xc-reveal-desc">The samak mashwi is brought whole from the kitchen and carved at the table. The smoke of the grill still trails the head, the loins and the tail.</p>
               </div>
             </article>
 
             <!-- 33 · Amigas atardecer -->
             <article class="xc-card">
-              <img src="../design-inspiration/real-fotos/amigas-al-atardecer.jpeg" alt="Brindis al atardecer en la terraza" loading="lazy"/>
+              <img src="../design-inspiration/real-fotos/amigas-al-atardecer.jpeg" alt="A sunset toast on the terrace" loading="lazy"/>
               <div class="xc-caption">
-                <span class="xc-caption-eyebrow">33 · Terraza</span>
-                <p class="xc-caption-title">La hora dorada</p>
+                <span class="xc-caption-eyebrow">33 · Terrace</span>
+                <p class="xc-caption-title">The golden hour</p>
               </div>
               <div class="xc-reveal">
-                <div class="xc-reveal-tags"><span class="xc-tag">Terraza</span><span class="xc-tag">Aperitivo</span></div>
-                <p class="xc-reveal-title">La hora dorada</p>
-                <p class="xc-reveal-desc">Las terrazas de La Moraleja al atardecer. Empieza el aperitivo, llegan los amigos, baja el sol — y la noche aún ni siquiera ha empezado.</p>
+                <div class="xc-reveal-tags"><span class="xc-tag">Terrace</span><span class="xc-tag">Aperitif</span></div>
+                <p class="xc-reveal-title">The golden hour</p>
+                <p class="xc-reveal-desc">La Moraleja's terraces at dusk. The aperitif begins, friends arrive, the sun goes down — and the night has not even started yet.</p>
               </div>
             </article>
 
             <!-- 34 · Cena de noche 1 -->
             <article class="xc-card">
-              <img src="../design-inspiration/real-fotos/cena-elegante-de-noche-1.jpeg" alt="Mesa preparada para la cena" loading="lazy"/>
+              <img src="../design-inspiration/real-fotos/cena-elegante-de-noche-1.jpeg" alt="A table set for dinner" loading="lazy"/>
               <div class="xc-caption">
-                <span class="xc-caption-eyebrow">34 · Sala</span>
-                <p class="xc-caption-title">Cena de noche</p>
+                <span class="xc-caption-eyebrow">34 · Dining room</span>
+                <p class="xc-caption-title">Dinner at night</p>
               </div>
               <div class="xc-reveal">
-                <div class="xc-reveal-tags"><span class="xc-tag">Sala</span><span class="xc-tag">Noche</span></div>
-                <p class="xc-reveal-title">Cena de noche</p>
-                <p class="xc-reveal-desc">Luz cálida, mantel blanco, copa servida. La mesa preparada para una velada larga — la cocina abre a las ocho y no cierra hasta medianoche.</p>
+                <div class="xc-reveal-tags"><span class="xc-tag">Dining room</span><span class="xc-tag">Night</span></div>
+                <p class="xc-reveal-title">Dinner at night</p>
+                <p class="xc-reveal-desc">Warm light, white linen, glass poured. The table set for a long evening — the kitchen opens at eight and closes only at midnight.</p>
               </div>
             </article>
 
             <!-- 35 · Cena de noche 2 -->
             <article class="xc-card">
-              <img src="../design-inspiration/real-fotos/cena-elegante-de-noche-2.jpeg" alt="Sobremesa en la sala" loading="lazy"/>
+              <img src="../design-inspiration/real-fotos/cena-elegante-de-noche-2.jpeg" alt="Sobremesa in the dining room" loading="lazy"/>
               <div class="xc-caption">
-                <span class="xc-caption-eyebrow">35 · Sala</span>
-                <p class="xc-caption-title">Sobremesa libanesa</p>
+                <span class="xc-caption-eyebrow">35 · Dining room</span>
+                <p class="xc-caption-title">Lebanese sobremesa</p>
               </div>
               <div class="xc-reveal">
-                <div class="xc-reveal-tags"><span class="xc-tag">Sala</span><span class="xc-tag">Sobremesa</span></div>
-                <p class="xc-reveal-title">Sobremesa libanesa</p>
-                <p class="xc-reveal-desc">El café cardamomo, el dulce, la conversación. La cena termina cuando alguien decide irse — y casi nunca nadie tiene prisa.</p>
+                <div class="xc-reveal-tags"><span class="xc-tag">Dining room</span><span class="xc-tag">Sobremesa</span></div>
+                <p class="xc-reveal-title">Lebanese sobremesa</p>
+                <p class="xc-reveal-desc">Cardamom coffee, the sweet, conversation. Dinner ends when someone decides to leave — and almost nobody is ever in a hurry.</p>
               </div>
             </article>
 
             <!-- 36 · Interior 1 -->
             <article class="xc-card">
-              <img src="../design-inspiration/real-fotos/interior-del-restaurante-1.jpeg" alt="Comedor del restaurante" loading="lazy"/>
+              <img src="../design-inspiration/real-fotos/interior-del-restaurante-1.jpeg" alt="The restaurant's dining room" loading="lazy"/>
               <div class="xc-caption">
-                <span class="xc-caption-eyebrow">36 · Comedor</span>
-                <p class="xc-caption-title">El comedor</p>
+                <span class="xc-caption-eyebrow">36 · Dining room</span>
+                <p class="xc-caption-title">The dining room</p>
               </div>
               <div class="xc-reveal">
-                <div class="xc-reveal-tags"><span class="xc-tag">Sala</span><span class="xc-tag">Comedor</span></div>
-                <p class="xc-reveal-title">El comedor</p>
-                <p class="xc-reveal-desc">Cincuenta cubiertos en una sala que conserva los detalles de las casas de la costa libanesa — luz baja, maderas oscuras, mosaico al fondo, lámparas de latón.</p>
+                <div class="xc-reveal-tags"><span class="xc-tag">Dining room</span><span class="xc-tag">Hall</span></div>
+                <p class="xc-reveal-title">The dining room</p>
+                <p class="xc-reveal-desc">Fifty covers in a room that holds the details of the Lebanese coast — low light, dark wood, mosaic at the back, brass lamps.</p>
               </div>
             </article>
 
             <!-- 37 · Interior 2 -->
             <article class="xc-card">
-              <img src="../design-inspiration/real-fotos/interior-del-restaurante-2.jpeg" alt="Sala iluminada en cálido" loading="lazy"/>
+              <img src="../design-inspiration/real-fotos/interior-del-restaurante-2.jpeg" alt="The room in warm light" loading="lazy"/>
               <div class="xc-caption">
-                <span class="xc-caption-eyebrow">37 · Comedor</span>
-                <p class="xc-caption-title">La hospitalidad libanesa</p>
+                <span class="xc-caption-eyebrow">37 · Dining room</span>
+                <p class="xc-caption-title">Lebanese hospitality</p>
               </div>
               <div class="xc-reveal">
-                <div class="xc-reveal-tags"><span class="xc-tag">Sala</span><span class="xc-tag">Hospitalidad</span></div>
-                <p class="xc-reveal-title">La hospitalidad libanesa</p>
-                <p class="xc-reveal-desc">La sala diseñada para que nadie tenga prisa. Cada mesa tiene su propio rincón — y cada rincón un pedazo de Beirut en madera o en cobre.</p>
+                <div class="xc-reveal-tags"><span class="xc-tag">Dining room</span><span class="xc-tag">Hospitality</span></div>
+                <p class="xc-reveal-title">Lebanese hospitality</p>
+                <p class="xc-reveal-desc">A dining room built so nobody hurries. Every table has its own corner — and every corner a piece of Beirut in wood or copper.</p>
               </div>
             </article>
 
             <!-- 38 · Terraza noche 1 -->
             <article class="xc-card">
-              <img src="../design-inspiration/real-fotos/terraza-bar-noche-1.jpeg" alt="Terraza con barra abierta de noche" loading="lazy"/>
+              <img src="../design-inspiration/real-fotos/terraza-bar-noche-1.jpeg" alt="Terrace with open bar at night" loading="lazy"/>
               <div class="xc-caption">
-                <span class="xc-caption-eyebrow">38 · Terraza</span>
-                <p class="xc-caption-title">Terraza de noche</p>
+                <span class="xc-caption-eyebrow">38 · Terrace</span>
+                <p class="xc-caption-title">Terrace at night</p>
               </div>
               <div class="xc-reveal">
-                <div class="xc-reveal-tags"><span class="xc-tag">Terraza</span><span class="xc-tag">Bar</span></div>
-                <p class="xc-reveal-title">Terraza de noche</p>
-                <p class="xc-reveal-desc">La barra abierta al exterior, cócteles libaneses, vinos del Bekaa y mezze ligeros — todo hasta cierre, todas las noches de la semana menos los lunes.</p>
+                <div class="xc-reveal-tags"><span class="xc-tag">Terrace</span><span class="xc-tag">Bar</span></div>
+                <p class="xc-reveal-title">Terrace at night</p>
+                <p class="xc-reveal-desc">The bar open to the outside, Lebanese cocktails, Bekaa wine and light mezze — all until close, every night of the week except Monday.</p>
               </div>
             </article>
 
             <!-- 39 · Terraza noche 2 -->
             <article class="xc-card">
-              <img src="../design-inspiration/real-fotos/terraza-bar-noche-2.jpeg" alt="La plaza de La Moraleja de noche" loading="lazy"/>
+              <img src="../design-inspiration/real-fotos/terraza-bar-noche-2.jpeg" alt="The plaza of La Moraleja at night" loading="lazy"/>
               <div class="xc-caption">
-                <span class="xc-caption-eyebrow">39 · La plaza</span>
+                <span class="xc-caption-eyebrow">39 · The plaza</span>
                 <p class="xc-caption-title">La Moraleja</p>
               </div>
               <div class="xc-reveal">
-                <div class="xc-reveal-tags"><span class="xc-tag">Terraza</span><span class="xc-tag">La Moraleja</span></div>
-                <p class="xc-reveal-title">La plaza de La Moraleja</p>
-                <p class="xc-reveal-desc">Veintitrés años en la misma plaza. La terraza llena cada noche, el horno encendido a las ocho — y el barrio sabiendo que esta es la casa libanesa de Madrid.</p>
+                <div class="xc-reveal-tags"><span class="xc-tag">Terrace</span><span class="xc-tag">La Moraleja</span></div>
+                <p class="xc-reveal-title">The plaza of La Moraleja</p>
+                <p class="xc-reveal-desc">Twenty-three years in the same plaza. The terrace full every night, the oven lit at eight — and the neighbourhood knowing this is Madrid's Lebanese house.</p>
               </div>
             </article>
 
@@ -2111,44 +2118,42 @@
 </section>
 
 <!-- ─────────────────────────  SCRIPT OVERLAY · BEIRUT EN MADRID  ───────────────────────── -->
-<section class="sec py-20 md:py-36 bg-cedar-elevated text-cream relative overflow-hidden">
-  <!-- Velo de patrón arabesco de marca (sutil, sobre fondo oscuro) -->
-  <div aria-hidden="true" class="absolute inset-0 pointer-events-none" style="background-image:url('../brand_assets/pattern_arabesque_gold.png');background-size:cover;background-position:center;opacity:.07;mix-blend-mode:screen"></div>
-  <span class="sec-mark sec-mark--light">— Pausa</span>
+<section class="sec py-24 md:py-36 bg-cedar-elevated text-cream relative overflow-hidden">
+  <span class="sec-mark sec-mark--light">— Pause</span>
   <div class="absolute inset-0 pointer-events-none opacity-[0.08]" aria-hidden="true">
     <div class="absolute -top-10 left-1/2 -translate-x-1/2 whitespace-nowrap font-script text-gold leading-none" style="font-size: clamp(180px, 30vw, 520px);">Beirut · Madrid</div>
   </div>
 
   <div class="max-w-[1100px] mx-auto px-5 md:px-10 relative z-10">
-    <p class="reveal text-center text-[11px] tracking-widest-2 uppercase text-gold/90 mb-8">Cuando vienes a du Liban</p>
+    <p class="reveal text-center text-[11px] tracking-widest-2 uppercase text-gold/90 mb-8">When you come to du Liban</p>
     <h2 class="reveal delay-1 font-display text-cream text-center text-4xl md:text-6xl lg:text-7xl leading-[1.04] tracking-tightest">
-      <span>El primer plato</span>
-      <span class="font-script text-gold-soft block text-6xl md:text-8xl my-2">tarda en llegar.</span>
-      <span>El último también.</span>
+      <span>The first course</span>
+      <span class="font-script text-gold-soft block text-6xl md:text-8xl my-2">takes its time.</span>
+      <span>And so does the last.</span>
     </h2>
     <p class="reveal delay-2 mt-10 text-center max-w-2xl mx-auto text-cream/75 text-[15px] leading-relaxed">
-      Comer libanés es comer despacio. Mezze para compartir, vino, conversación. Reserva con tiempo y deja que la
-      mesa se llene de a poco — como en Beirut.
+      Eating Lebanese means eating slowly. Mezze to share, wine, conversation. Reserve with time and let the
+      table fill little by little — like in Beirut.
     </p>
     <div class="reveal delay-3 mt-10 flex flex-wrap items-center justify-center gap-3">
-      <a href="https://wa.me/34690206459?text=Hola%2C%20me%20gustar%C3%ADa%20reservar%20mesa%20en%20du%20Liban." target="_blank" rel="noopener" data-cursor="cta" class="btn-reserve inline-flex items-center gap-2 bg-terracotta hover:bg-terracotta-deep text-cream text-[12px] tracking-wider-2 uppercase px-6 py-3 rounded-full transition-colors duration-200 cursor-pointer" aria-label="Reservar mesa por WhatsApp">
-        Reservar mesa
+      <a href="https://wa.me/34690206459?text=Hello%2C%20I%27d%20like%20to%20book%20a%20table%20at%20du%20Liban." target="_blank" rel="noopener" data-cursor="cta" class="btn-reserve inline-flex items-center gap-2 bg-terracotta hover:bg-terracotta-deep text-cream text-[12px] tracking-wider-2 uppercase px-6 py-3 rounded-full transition-colors duration-200 cursor-pointer" aria-label="Reserve a table via WhatsApp">
+        Reserve a table
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
       </a>
       <a href="tel:+34916250072" class="inline-flex items-center gap-2 border border-cream/30 hover:border-gold-soft text-cream text-[12px] tracking-wider-2 uppercase px-6 py-3 rounded-full transition-colors duration-200 cursor-pointer">
-        Llamar al 916 25 00 72
+        Call 916 25 00 72
       </a>
     </div>
   </div>
 </section>
 
 <!-- ─────────────────────────  EVENTOS PRIVADOS  ───────────────────────── -->
-<section id="eventos" class="sec py-16 md:py-36 relative overflow-hidden">
-  <span class="sec-mark">04 · Eventos privados</span>
+<section id="eventos" class="sec py-24 md:py-36 relative overflow-hidden">
+  <span class="sec-mark">04 · Private Events</span>
   <svg class="corner-olive bottom-0 right-0" viewBox="0 0 380 380" aria-hidden="true">
-    <g stroke="#3C3D3F" stroke-width="1" fill="none" stroke-linecap="round">
+    <g stroke="#2F4A3E" stroke-width="1" fill="none" stroke-linecap="round">
       <path d="M360 20 C 280 100, 200 180, 120 280 C 90 320, 60 350, 30 370"/>
-      <g fill="#3C3D3F" stroke="none">
+      <g fill="#2F4A3E" stroke="none">
         <ellipse cx="320" cy="60" rx="22" ry="8" transform="rotate(35 320 60)"/>
         <ellipse cx="280" cy="110" rx="24" ry="9" transform="rotate(30 280 110)"/>
         <ellipse cx="240" cy="160" rx="25" ry="9" transform="rotate(25 240 160)"/>
@@ -2161,30 +2166,29 @@
     <div class="md:col-span-6 reveal">
       <figure class="tile aspect-[5/6] overflow-hidden rounded-sm">
         <img src="../design-inspiration/real-fotos/comiendo-abundante-mesa-lujo.jpeg"
-             alt="Mesa larga compartiendo mezze en evento privado en du Liban"
+             alt="Long table sharing mezze at a private event at du Liban"
              class="img-reveal w-full h-full object-cover" loading="lazy"/>
       </figure>
     </div>
     <div class="md:col-span-6 reveal delay-1">
-      <p class="ornament text-[11px] tracking-widest-2 uppercase mb-6">Eventos privados &amp; catering</p>
-      <h2 class="word-reveal font-display text-cedar text-[28px] md:text-5xl leading-[1.08] md:leading-[1.05] tracking-tightest mb-6">
-        Una cena en casa. Una boda.<br class="hidden md:block"/>
-        Una recepción de embajada.
+      <p class="ornament text-[11px] tracking-widest-2 uppercase mb-6">Private Events &amp; Catering</p>
+      <h2 class="word-reveal font-display text-cedar text-4xl md:text-5xl leading-[1.05] tracking-tightest mb-6">
+        A dinner at home. A wedding. An embassy reception.
       </h2>
       <p class="text-cedar/80 text-[15px] leading-relaxed mb-6">
-        Diseñamos menús a medida para reuniones íntimas, celebraciones familiares, eventos corporativos y catering
-        en La Moraleja y resto de Madrid. Mezze para 12 o banquetes para 200, con nuestro equipo y nuestro horno.
+        We design bespoke menus for intimate gatherings, family celebrations, corporate events and catering
+        in La Moraleja and across Madrid. Mezze for 12 or banquets for 200, with our team and our oven.
       </p>
       <ul class="text-cedar/85 text-[14px] grid grid-cols-2 gap-y-3 gap-x-6 mb-8">
-        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-gold"></span> Salones privados</li>
-        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-gold"></span> Catering a domicilio</li>
-        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-gold"></span> Cócteles &amp; shisha</li>
-        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-gold"></span> Menús kosher / halal</li>
-        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-gold"></span> Servicio de protocolo</li>
-        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-gold"></span> Música en directo</li>
+        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-gold"></span> Private dining rooms</li>
+        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-gold"></span> Catering at your venue</li>
+        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-gold"></span> Cocktails &amp; shisha</li>
+        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-gold"></span> Kosher / halal menus</li>
+        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-gold"></span> Protocol service</li>
+        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-gold"></span> Live music</li>
       </ul>
-      <a href="mailto:reservas@dulibanrestaurants.com?subject=Evento%20privado%20-%20du%20Liban" class="inline-flex items-center gap-2 text-cedar font-medium border-b border-cedar/40 hover:border-terracotta hover:text-terracotta transition-colors duration-200 pb-0.5">
-        Solicitar propuesta de evento
+      <a href="mailto:reservas@dulibanrestaurants.com?subject=Private%20Event%20-%20du%20Liban" class="inline-flex items-center gap-2 text-cedar font-medium border-b border-cedar/40 hover:border-terracotta hover:text-terracotta transition-colors duration-200 pb-0.5">
+        Request an event proposal
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
       </a>
     </div>
@@ -2192,12 +2196,12 @@
 </section>
 
 <!-- ─────────────────────────  VISÍTANOS  ───────────────────────── -->
-<section id="visitanos" class="sec py-16 md:py-36 bg-elevated-deep border-y border-cedar/10 relative overflow-hidden">
-  <span class="sec-mark">05 · Visítanos</span>
+<section id="visitanos" class="sec py-24 md:py-36 bg-elevated-deep border-y border-cedar/10 relative overflow-hidden">
+  <span class="sec-mark">05 · Visit Us</span>
   <svg class="corner-olive top-0 right-0" style="transform: scaleX(-1)" viewBox="0 0 380 380" aria-hidden="true">
-    <g stroke="#3C3D3F" stroke-width="1" fill="none" stroke-linecap="round">
+    <g stroke="#2F4A3E" stroke-width="1" fill="none" stroke-linecap="round">
       <path d="M360 20 C 280 100, 200 180, 120 280 C 90 320, 60 350, 30 370"/>
-      <g fill="#3C3D3F" stroke="none">
+      <g fill="#2F4A3E" stroke="none">
         <ellipse cx="320" cy="60" rx="22" ry="8" transform="rotate(35 320 60)"/>
         <ellipse cx="280" cy="110" rx="24" ry="9" transform="rotate(30 280 110)"/>
         <ellipse cx="240" cy="160" rx="25" ry="9" transform="rotate(25 240 160)"/>
@@ -2206,9 +2210,9 @@
   </svg>
   <div class="max-w-[1400px] mx-auto px-5 md:px-10 grid md:grid-cols-12 gap-12 md:gap-16 relative z-10">
     <div class="md:col-span-5 reveal">
-      <p class="ornament text-[11px] tracking-widest-2 uppercase mb-6">Visítanos</p>
-      <h2 class="word-reveal font-display text-cedar text-[32px] md:text-5xl leading-[1.1] md:leading-[1.05] tracking-tightest mb-8">
-        En la Plaza de La Moraleja,<br class="hidden md:block"/> detrás de los olivos.
+      <p class="ornament text-[11px] tracking-widest-2 uppercase mb-6">Visit Us</p>
+      <h2 class="word-reveal font-display text-cedar text-4xl md:text-5xl leading-[1.05] tracking-tightest mb-8">
+        On the Plaza de La Moraleja, behind the olive trees.
       </h2>
 
       <address class="not-italic">
@@ -2220,30 +2224,30 @@
       <div class="mt-8 hairline-soft"></div>
 
       <div class="mt-8">
-        <p class="text-[11px] tracking-widest-2 uppercase text-cedar/80 mb-3">Horario</p>
-        <div class="hours-row"><span>Martes – Sábado</span><span class="text-cedar">13:00 – 16:00 · 20:00 – 00:00</span></div>
-        <div class="hours-row"><span>Domingo</span><span class="text-cedar">13:00 – 17:00</span></div>
-        <div class="hours-row"><span>Lunes</span><span class="text-cedar/80">Cerrado</span></div>
+        <p class="text-[11px] tracking-widest-2 uppercase text-cedar/80 mb-3">Hours</p>
+        <div class="hours-row"><span>Tuesday – Saturday</span><span class="text-cedar">13:00 – 16:00 · 20:00 – 00:00</span></div>
+        <div class="hours-row"><span>Sunday</span><span class="text-cedar">13:00 – 17:00</span></div>
+        <div class="hours-row"><span>Monday</span><span class="text-cedar/80">Closed</span></div>
       </div>
 
       <div class="mt-8 hairline-soft"></div>
 
       <div class="mt-8 grid sm:grid-cols-2 gap-6 text-[14px]">
         <div>
-          <p class="text-[11px] tracking-widest-2 uppercase text-cedar/80 mb-2">Reservas</p>
+          <p class="text-[11px] tracking-widest-2 uppercase text-cedar/80 mb-2">Reservations</p>
           <a href="tel:+34916250072" class="text-cedar hover:text-terracotta transition-colors duration-200 block">+34 916 25 00 72</a>
           <a href="mailto:reservas@dulibanrestaurants.com" class="text-cedar hover:text-terracotta transition-colors duration-200 block">reservas@dulibanrestaurants.com</a>
         </div>
         <div>
-          <p class="text-[11px] tracking-widest-2 uppercase text-cedar/80 mb-2">Síguenos</p>
+          <p class="text-[11px] tracking-widest-2 uppercase text-cedar/80 mb-2">Follow us</p>
           <a href="https://www.instagram.com/dulibanrestaurant/" target="_blank" rel="noopener" class="text-cedar hover:text-terracotta transition-colors duration-200 block">Instagram</a>
-          <a href="https://www.google.com/maps/search/?api=1&query=Du+Liban+La+Moraleja+Alcobendas" target="_blank" rel="noopener" class="text-cedar hover:text-terracotta transition-colors duration-200 block">Cómo llegar</a>
+          <a href="https://www.google.com/maps/search/?api=1&query=Du+Liban+La+Moraleja+Alcobendas" target="_blank" rel="noopener" class="text-cedar hover:text-terracotta transition-colors duration-200 block">Directions</a>
         </div>
       </div>
 
       <div class="mt-10">
-        <a href="https://wa.me/34690206459?text=Hola%2C%20me%20gustar%C3%ADa%20reservar%20mesa%20en%20du%20Liban." target="_blank" rel="noopener" data-cursor="cta" class="btn-reserve inline-flex items-center gap-2 bg-terracotta hover:bg-terracotta-deep text-cream text-[12px] tracking-wider-2 uppercase px-6 py-3 rounded-full transition-colors duration-200 cursor-pointer" aria-label="Reservar por WhatsApp">
-          Reservar por WhatsApp
+        <a href="https://wa.me/34690206459?text=Hello%2C%20I%27d%20like%20to%20book%20a%20table%20at%20du%20Liban." target="_blank" rel="noopener" data-cursor="cta" class="btn-reserve inline-flex items-center gap-2 bg-terracotta hover:bg-terracotta-deep text-cream text-[12px] tracking-wider-2 uppercase px-6 py-3 rounded-full transition-colors duration-200 cursor-pointer" aria-label="Reserve via WhatsApp">
+          Reserve via WhatsApp
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
         </a>
       </div>
@@ -2269,36 +2273,35 @@
 
 <!-- ─────────────────────────  FOOTER  ───────────────────────── -->
 <footer class="bg-cedar-deep text-cream/85 pt-20 pb-8 relative overflow-hidden">
-  <div aria-hidden="true" class="absolute top-0 left-0 right-0 h-3" style="background-image:url('../brand_assets/border_geo2.png');background-repeat:repeat-x;background-size:auto 12px;background-position:center;opacity:.55"></div>
   <div class="max-w-[1400px] mx-auto px-5 md:px-10">
     <div class="grid md:grid-cols-12 gap-10">
       <div class="md:col-span-5">
-        <p class="font-script text-5xl mb-3 leading-none"><span class="text-teal">du</span> <span class="text-gold-soft">Liban</span></p>
+        <p class="font-script text-gold-soft text-5xl mb-3 leading-none">du Liban</p>
         <p class="text-[11px] tracking-widest-2 uppercase text-cream/55">Lebanese cuisine · Madrid</p>
         <p class="mt-8 text-cream/65 text-[14px] leading-relaxed max-w-md">
-          Recetas familiares, horno de leña, mezze y brasa libanesa.
+          Family recipes, wood-fired oven, Lebanese mezze and grill.
         </p>
       </div>
 
       <div class="md:col-span-3">
-        <p class="text-[11px] tracking-widest-2 uppercase text-gold-soft/90 mb-4">Navegar</p>
+        <p class="text-[11px] tracking-widest-2 uppercase text-gold-soft/90 mb-4">Browse</p>
         <ul class="space-y-2 text-[14px]">
-          <li><a href="#concepto" class="text-cream/80 hover:text-cream transition-colors duration-200">Concepto</a></li>
-          <li><a href="#carta" class="text-cream/80 hover:text-cream transition-colors duration-200">Carta</a></li>
-          <li><a href="#chef" class="text-cream/80 hover:text-cream transition-colors duration-200">La cocina</a></li>
-          <li><a href="#eventos" class="text-cream/80 hover:text-cream transition-colors duration-200">Eventos privados</a></li>
-          <li><a href="#visitanos" class="text-cream/80 hover:text-cream transition-colors duration-200">Visítanos</a></li>
+          <li><a href="#concepto" class="text-cream/80 hover:text-cream transition-colors duration-200">Story</a></li>
+          <li><a href="#carta" class="text-cream/80 hover:text-cream transition-colors duration-200">Menu</a></li>
+          <li><a href="#chef" class="text-cream/80 hover:text-cream transition-colors duration-200">The kitchen</a></li>
+          <li><a href="#eventos" class="text-cream/80 hover:text-cream transition-colors duration-200">Private Events</a></li>
+          <li><a href="#visitanos" class="text-cream/80 hover:text-cream transition-colors duration-200">Visit Us</a></li>
         </ul>
       </div>
 
       <div class="md:col-span-4">
-        <p class="text-[11px] tracking-widest-2 uppercase text-gold-soft/90 mb-4">Contacto</p>
+        <p class="text-[11px] tracking-widest-2 uppercase text-gold-soft/90 mb-4">Contact</p>
         <ul class="space-y-2 text-[14px]">
           <li><a href="tel:+34916250072" class="text-cream/80 hover:text-cream transition-colors duration-200">+34 916 25 00 72</a></li>
           <li><a href="mailto:reservas@dulibanrestaurants.com" class="text-cream/80 hover:text-cream transition-colors duration-200">reservas@dulibanrestaurants.com</a></li>
           <li class="text-cream/80">Plaza de la Moraleja, C. de la Estafeta 2 · Alcobendas</li>
         </ul>
-        <p class="text-[11px] tracking-widest-2 uppercase text-gold-soft/90 mt-8 mb-4">Síguenos</p>
+        <p class="text-[11px] tracking-widest-2 uppercase text-gold-soft/90 mt-8 mb-4">Follow us</p>
         <div class="flex items-center gap-3">
           <a href="https://www.instagram.com/dulibanrestaurant/" target="_blank" rel="noopener" aria-label="Instagram"
              class="inline-flex w-10 h-10 items-center justify-center rounded-full border border-cream/20 hover:border-gold-soft hover:text-gold-soft transition-colors duration-200">
@@ -2322,29 +2325,29 @@
     </div>
 
     <!-- Legal (revealed on :target from the links below) -->
-    <section id="aviso-legal" class="legal-doc" aria-label="Aviso legal">
-      <h3>Aviso legal</h3>
-      <p>Titular: du Liban — [razón social y CIF a completar por el titular]. Domicilio: Plaza de la Moraleja, C. de la Estafeta 2, Local 4/5, 28109 Alcobendas (Madrid). Contacto: +34&nbsp;916&nbsp;25&nbsp;00&nbsp;72 · reservas@dulibanrestaurants.com.</p>
-      <p>Este sitio web tiene carácter informativo sobre el restaurante du Liban, su carta y sus servicios. El acceso y uso del sitio implican la aceptación de este aviso.</p>
-      <p><a href="#contenido">Cerrar</a></p>
+    <section id="aviso-legal" class="legal-doc" aria-label="Legal notice">
+      <h3>Legal notice</h3>
+      <p>Operator: du Liban — [legal name and tax ID to be completed by the operator]. Address: Plaza de la Moraleja, C. de la Estafeta 2, Local 4/5, 28109 Alcobendas (Madrid). Contact: +34&nbsp;916&nbsp;25&nbsp;00&nbsp;72 · reservas@dulibanrestaurants.com.</p>
+      <p>This site provides information about du Liban restaurant, its menu and its services. Accessing and using the site implies acceptance of this notice.</p>
+      <p><a href="#contenido">Close</a></p>
     </section>
-    <section id="privacidad" class="legal-doc" aria-label="Política de privacidad">
-      <h3>Privacidad</h3>
-      <p>Responsable: du Liban (datos de contacto en el aviso legal). Finalidad: gestionar las reservas y consultas que el cliente envía por teléfono, correo electrónico o WhatsApp. Legitimación: consentimiento del interesado.</p>
-      <p>No se ceden datos a terceros salvo obligación legal. Puede ejercer sus derechos de acceso, rectificación, supresión, oposición, limitación y portabilidad escribiendo a reservas@dulibanrestaurants.com.</p>
-      <p><a href="#contenido">Cerrar</a></p>
+    <section id="privacidad" class="legal-doc" aria-label="Privacy policy">
+      <h3>Privacy</h3>
+      <p>Controller: du Liban (contact details in the legal notice). Purpose: handling reservations and enquiries received by phone, email or WhatsApp. Lawful basis: consent of the data subject.</p>
+      <p>Data is not shared with third parties except where required by law. You may exercise your rights of access, rectification, erasure, objection, restriction and portability by writing to reservas@dulibanrestaurants.com.</p>
+      <p><a href="#contenido">Close</a></p>
     </section>
-    <section id="cookies" class="legal-doc" aria-label="Política de cookies">
+    <section id="cookies" class="legal-doc" aria-label="Cookie policy">
       <h3>Cookies</h3>
-      <p>Este sitio no utiliza cookies propias de seguimiento ni de publicidad. El mapa incrustado de Google Maps puede instalar cookies de terceros de Google al cargarse; puede consultar su política en las páginas de Google.</p>
-      <p><a href="#contenido">Cerrar</a></p>
+      <p>This site does not use first-party tracking or advertising cookies. The embedded Google Maps may set third-party Google cookies when it loads; please refer to Google's pages for their policy.</p>
+      <p><a href="#contenido">Close</a></p>
     </section>
 
     <div class="mt-10 pt-6 border-t border-cream/10 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 text-[12px] text-cream/55">
-      <p>© <span id="year">2026</span> du Liban — Lebanese Cuisine. Todos los derechos reservados.</p>
+      <p>© <span id="year">2026</span> du Liban — Lebanese Cuisine. All rights reserved.</p>
       <div class="flex items-center gap-5">
-        <a href="#aviso-legal" class="hover:text-cream transition-colors duration-200">Aviso legal</a>
-        <a href="#privacidad" class="hover:text-cream transition-colors duration-200">Privacidad</a>
+        <a href="#aviso-legal" class="hover:text-cream transition-colors duration-200">Legal notice</a>
+        <a href="#privacidad" class="hover:text-cream transition-colors duration-200">Privacy</a>
         <a href="#cookies" class="hover:text-cream transition-colors duration-200">Cookies</a>
       </div>
     </div>

@@ -1,29 +1,29 @@
 <!doctype html>
-<html lang="es" data-brand="1">
+<html lang="ar" dir="rtl" data-brand="1">
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <meta name="theme-color" content="#FAF7F0" />
-<title>du Liban — Alta cocina libanesa en La Moraleja, Madrid</title>
-<meta name="description" content="du Liban. Alta cocina libanesa en La Moraleja, Madrid. Recetas familiares de Beirut, mezze, brasa y postres. Reservas online." />
+<title>du Liban — مطعم لبناني راقٍ في لا مورالخا، مدريد</title>
+<meta name="description" content="du Liban. مطعم لبناني راقٍ في لا مورالخا، مدريد. وصفات عائلية من بيروت، مازات، مشاوي على الفحم، وحلويات. حجز عبر الإنترنت." />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Allura&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Noto+Naskh+Arabic:wght@400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@300;400;500;700&family=Allura&display=swap" rel="stylesheet">
 
 <!-- Favicon: brand diamond motif (gold + turquoise) -->
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='12' fill='%23FAF7F0'/><path d='M32 12 L52 32 L32 52 L12 32 Z' fill='none' stroke='%2385754E' stroke-width='3' stroke-linejoin='round'/><path d='M32 22 L42 32 L32 42 L22 32 Z' fill='%2385754E' opacity='0.22'/><circle cx='32' cy='32' r='4.5' fill='%2300A6CE'/></svg>">
 
-<link rel="alternate" hreflang="es" href="index.html">
-<link rel="alternate" hreflang="en" href="en/index.html">
-<link rel="alternate" hreflang="ar" href="ar/index.html">
-<link rel="alternate" hreflang="x-default" href="index.html">
+<link rel="alternate" hreflang="es" href="../index.html">
+<link rel="alternate" hreflang="en" href="../en/index.html">
+<link rel="alternate" hreflang="ar" href="../ar/index.html">
+<link rel="alternate" hreflang="x-default" href="../index.html">
 
 <!-- Open Graph / Twitter -->
 <meta property="og:type" content="restaurant.restaurant">
-<meta property="og:title" content="du Liban — Alta cocina libanesa en La Moraleja">
-<meta property="og:description" content="Recetas familiares de Beirut servidas en La Moraleja. Mezze, brasa, postres con agua de azahar.">
-<meta property="og:locale" content="es_ES">
-<meta property="og:image" content="../design-inspiration/real-fotos/interior-del-restaurante-1.jpeg">
+<meta property="og:title" content="du Liban — مطعم لبناني راقٍ في لا مورالخا">
+<meta property="og:description" content="وصفات عائلية من بيروت تُقدَّم في لا مورالخا. مازات، مشاوي، وحلويات بماء الزهر.">
+<meta property="og:locale" content="ar_AR">
+<meta property="og:image" content="../../design-inspiration/real-fotos/interior-del-restaurante-1.jpeg">
 <meta name="twitter:card" content="summary_large_image">
 
 <!-- JSON-LD: Restaurant schema -->
@@ -32,7 +32,7 @@
   "@context": "https://schema.org",
   "@type": "Restaurant",
   "name": "du Liban",
-  "image": "../design-inspiration/real-fotos/interior-del-restaurante-1.jpeg",
+  "image": "../../design-inspiration/real-fotos/interior-del-restaurante-1.jpeg",
   "servesCuisine": "Lebanese",
   "priceRange": "€€€",
   "telephone": "+34916250072",
@@ -55,8 +55,45 @@
 
 <!-- Tailwind: precompiled static CSS (built from src/input.css via `npm run build:css`).
      Replaces the render-blocking Play CDN that JIT-compiled in the browser. -->
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../styles.css">
 <style>
+  /* Arabic webfont overrides — applied site-wide via :lang(ar) and dir */
+  html[lang="ar"] body,
+  html[lang="ar"] .font-sans,
+  html[lang="ar"] .skip-link {
+    font-family: 'IBM Plex Sans Arabic', 'Satoshi', 'Jost', system-ui, sans-serif;
+  }
+  html[lang="ar"] .font-display,
+  html[lang="ar"] .display-hero,
+  html[lang="ar"] h1, html[lang="ar"] h2, html[lang="ar"] h3,
+  html[lang="ar"] .row-text,
+  html[lang="ar"] .dish-name,
+  html[lang="ar"] .marquee-word,
+  html[lang="ar"] .word-fill,
+  html[lang="ar"] .seh-text-display,
+  html[lang="ar"] .seh-text-est,
+  html[lang="ar"] .xc-head-title,
+  html[lang="ar"] .xc-caption-title,
+  html[lang="ar"] .xc-reveal-title,
+  html[lang="ar"] .dp-name,
+  html[lang="ar"] blockquote {
+    font-family: 'Noto Naskh Arabic', 'Cormorant Garamond', 'Jost', serif;
+    font-style: normal;
+  }
+  /* Tighten RTL section-rail position */
+  html[lang="ar"] .sec-mark { left: auto; right: 24px; }
+  @media (max-width: 900px) {
+    html[lang="ar"] .sec-mark { left: auto; right: 20px; }
+  }
+  /* Allura wordmark stays Latin (it IS the logo); precios in tabular Latin digits */
+  html[lang="ar"] .dish-price,
+  html[lang="ar"] .dp-price,
+  html[lang="ar"] .hours-row > span:last-child {
+    font-family: 'Cormorant Garamond', 'Jost', serif;
+    direction: ltr;
+    unicode-bidi: isolate;
+  }
+
 
   /* Language switcher (top nav) */
   .lang-switch { font-feature-settings: 'tnum'; letter-spacing: .12em; }
@@ -124,7 +161,7 @@
   .corner-olive {
     position: absolute; pointer-events: none; opacity: .10;
     width: 380px; max-width: 60vw; aspect-ratio: 380 / 123;
-    background: url('../brand_assets/ornament_floral.png') center / contain no-repeat;
+    background: url('../../brand_assets/ornament_floral.png') center / contain no-repeat;
   }
   .corner-olive > * { display: none; }
 
@@ -345,7 +382,7 @@
     font-weight: 600;
     letter-spacing: -0.045em;
     line-height: 0.85;
-    background-image: url('../design-inspiration/real-fotos/cena-elegante-de-noche-2.jpeg');
+    background-image: url('../../design-inspiration/real-fotos/cena-elegante-de-noche-2.jpeg');
     background-size: cover;
     background-position: center 40%;
     -webkit-background-clip: text;
@@ -728,14 +765,44 @@
     .marquee-track { animation: none !important; }
     .sway { animation: none !important; }
   }
+
+  /* Carousel: keep visual order LTR on Arabic pages — the desktop animation
+     uses transform: translate3d() which is not direction-aware. Inner text
+     blocks reset themselves to RTL so the captions still read right-to-left. */
+  html[lang="ar"] .zpx-stage,
+  html[lang="ar"] .xc-layer,
+  html[lang="ar"] .xc-viewport,
+  html[lang="ar"] .xc-wrap,
+  html[lang="ar"] .zp-layer { direction: ltr; }
+  html[lang="ar"] .xc-card .xc-caption,
+  html[lang="ar"] .xc-card .xc-reveal,
+  html[lang="ar"] .xc-head { direction: rtl; text-align: right; }
+  html[lang="ar"] .xc-caption-eyebrow,
+  html[lang="ar"] .xc-reveal-tags { direction: rtl; }
+
+
+  /* Latin wordmarks ("du Liban") in Arabic pages keep their LTR flow so the
+     big footer mark does not slide off-screen to the left. */
+  html[lang="ar"] .word-fill,
+  html[lang="ar"] .display-script,
+  html[lang="ar"] .pre-script,
+  html[lang="ar"] .seh-text-script,
+  html[lang="ar"] .font-script {
+    direction: ltr;
+    unicode-bidi: isolate;
+    text-align: left;
+  }
+  /* Footer giant wordmark — keep it centered so neither edge cuts off */
+  html[lang="ar"] .word-fill { text-align: center; }
+
 </style>
 </head>
 <body class="font-sans text-ink">
 
-<a href="#contenido" class="skip-link">Saltar al contenido</a>
+<a href="#contenido" class="skip-link">الانتقال إلى المحتوى</a>
 
 <!-- Marcador de versión (solo para comparación con el cliente — quitar antes de producción) -->
-<div aria-hidden="true" style="position:fixed;left:14px;bottom:14px;z-index:60;background:rgba(38,39,41,.82);color:#FAF7F0;font:500 11px/1 'Jost',system-ui,sans-serif;letter-spacing:.12em;text-transform:uppercase;padding:8px 12px;border-radius:999px;backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);pointer-events:none;box-shadow:0 4px 18px -8px rgba(0,0,0,.5)">Versión · imagen de marca</div>
+<div aria-hidden="true" style="position:fixed;left:14px;bottom:14px;z-index:60;background:rgba(38,39,41,.82);color:#FAF7F0;font:500 11px/1 'Jost',system-ui,sans-serif;letter-spacing:.12em;text-transform:uppercase;padding:8px 12px;border-radius:999px;backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);pointer-events:none;box-shadow:0 4px 18px -8px rgba(0,0,0,.5)">النسخة · الهوية البصرية</div>
 
 <!-- Custom cursor -->
 <div id="cursor-ring" aria-hidden="true"></div>
@@ -744,30 +811,30 @@
 <!-- ─────────────────────────  PRELOADER  ───────────────────────── -->
 <div id="preloader" aria-hidden="true">
   <div class="text-center">
-    <img src="../brand_assets/logo_full.png" alt="du Liban — Lebanese Cuisine" class="pre-logo" width="340" height="225"/>
+    <img src="../../brand_assets/logo_full.png" alt="du Liban — Lebanese Cuisine" class="pre-logo" width="340" height="225"/>
   </div>
 </div>
 
 <!-- ─────────────────────────  HERO (scroll-expand video)  ───────────────────────── -->
-<section id="top" class="scroll-expand-hero" data-seh aria-label="du Liban — alta cocina libanesa en La Moraleja">
+<section id="top" class="scroll-expand-hero" data-seh aria-label="du Liban — مطعم لبناني راقٍ في لا مورالخا">
   <div class="seh-sticky">
     <!-- Static background photo (dimmed) -->
-    <div class="seh-bg" style="background-image: url('../design-inspiration/real-fotos/cena-elegante-de-noche-1.jpeg')" aria-hidden="true"></div>
+    <div class="seh-bg" style="background-image: url('../../design-inspiration/real-fotos/cena-elegante-de-noche-1.jpeg')" aria-hidden="true"></div>
 
     <!-- Text blocks: absolutely positioned on desktop (TL/TR/BL/BR corners);
          stack in this source order on mobile -->
     <h1 class="seh-text seh-text--tl seh-text-script"  data-seh-text data-dir="left">du <span class="text-gold">Liban</span></h1>
-    <p  class="seh-text seh-text--tr seh-text-display" data-seh-text data-dir="right">Cocina <em>libanesa</em></p>
+    <p  class="seh-text seh-text--tr seh-text-display" data-seh-text data-dir="right">مطبخٌ <em>لبناني</em></p>
 
     <!-- Video that grows on scroll -->
     <div class="seh-video-wrap" data-seh-video>
       <video
         class="seh-video"
-        src="../assets/hero-mezze.mp4"
-        poster="../design-inspiration/real-fotos/mesa-comida-lujo-abundante.jpeg"
+        src="../../assets/hero-mezze.mp4"
+        poster="../../design-inspiration/real-fotos/mesa-comida-lujo-abundante.jpeg"
         autoplay loop muted playsinline preload="auto"
         disablepictureinpicture disableremoteplayback
-        aria-label="Mesa de mezze libanés servida en du Liban"
+        aria-label="طاولة مازات لبنانية في du Liban"
       ></video>
       <div class="seh-video-tint" aria-hidden="true"></div>
     </div>
@@ -776,7 +843,7 @@
 
     <!-- Scroll hint -->
     <div class="seh-scroll-hint" aria-hidden="true">
-      <span>Desliza</span>
+      <span>اسحب</span>
       <svg width="14" height="22" viewBox="0 0 14 22" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
         <rect x="1" y="1" width="12" height="20" rx="6"/>
         <line x1="7" y1="6" x2="7" y2="10"/>
@@ -789,28 +856,28 @@
 <header class="sticky top-0 z-40">
   <div class="max-w-[1400px] mx-auto px-5 md:px-10 pt-5 pb-4 md:pb-7">
     <nav class="backdrop-blur-md bg-cream/85 border border-cedar/10 rounded-full px-4 md:px-6 py-3 flex items-center justify-between shadow-[0_4px_24px_-12px_rgba(38,39,41,0.25)]">
-      <a href="#top" class="flex items-center gap-2 group" aria-label="du Liban — inicio">
-        <img src="../brand_assets/logo_full.png" alt="du Liban — Lebanese Cuisine" class="h-9 md:h-10 w-auto" width="60" height="40"/>
+      <a href="#top" class="flex items-center gap-2 group" aria-label="du Liban — الصفحة الرئيسية">
+        <img src="../../brand_assets/logo_full.png" alt="du Liban — Lebanese Cuisine" class="h-9 md:h-10 w-auto" width="60" height="40"/>
       </a>
 
       <ul class="hidden lg:flex items-center gap-8 text-[13px] tracking-wider-2 uppercase text-cedar/85">
-        <li><a class="hover:text-terracotta transition-colors duration-200" href="#concepto">Concepto</a></li>
-        <li><a class="hover:text-terracotta transition-colors duration-200" href="#carta">Carta</a></li>
-        <li><a class="hover:text-terracotta transition-colors duration-200" href="#chef">Cocina</a></li>
-        <li><a class="hover:text-terracotta transition-colors duration-200" href="#eventos">Eventos privados</a></li>
-        <li><a class="hover:text-terracotta transition-colors duration-200" href="#visitanos">Visítanos</a></li>
+        <li><a class="hover:text-terracotta transition-colors duration-200" href="#concepto">الفكرة</a></li>
+        <li><a class="hover:text-terracotta transition-colors duration-200" href="#carta">قائمة الطعام</a></li>
+        <li><a class="hover:text-terracotta transition-colors duration-200" href="#chef">المطبخ</a></li>
+        <li><a class="hover:text-terracotta transition-colors duration-200" href="#eventos">المناسبات الخاصة</a></li>
+        <li><a class="hover:text-terracotta transition-colors duration-200" href="#visitanos">زيارتنا</a></li>
       </ul>
 
       <div class="flex items-center gap-2">
         <div class="lang-switch hidden md:flex items-center gap-1.5 text-[11px] tracking-wider-2 uppercase text-cedar/70 px-2 mr-1" aria-label="Language">
-          <span aria-current="page" class="lang-active">ES</span><span class="lang-sep">·</span><a href="en/index.html" hreflang="en" class="lang-item">EN</a><span class="lang-sep">·</span><a href="ar/index.html" hreflang="ar" class="lang-item">AR</a>
+          <a href="../index.html" hreflang="es" class="lang-item">ES</a><span class="lang-sep">·</span><a href="../en/index.html" hreflang="en" class="lang-item">EN</a><span class="lang-sep">·</span><span aria-current="page" class="lang-active">AR</span>
         </div>
-        <a href="tel:+34916250072" class="hidden md:inline-flex items-center gap-2 text-[12px] tracking-wider-2 uppercase text-cedar/80 hover:text-cedar transition-colors px-2" aria-label="Llamar al restaurante">
+        <a href="tel:+34916250072" class="hidden md:inline-flex items-center gap-2 text-[12px] tracking-wider-2 uppercase text-cedar/80 hover:text-cedar transition-colors px-2" aria-label="الاتصال بالمطعم">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
           916 25 00 72
         </a>
-        <a href="https://wa.me/34690206459?text=Hola%2C%20me%20gustar%C3%ADa%20reservar%20mesa%20en%20du%20Liban." target="_blank" rel="noopener" data-cursor="cta" class="btn-reserve inline-flex items-center gap-2 bg-terracotta hover:bg-terracotta-deep text-cream text-[12px] md:text-[13px] tracking-wider-2 uppercase px-5 py-3 md:py-2.5 rounded-full transition-colors duration-200 cursor-pointer min-h-[44px]" aria-label="Reservar por WhatsApp">
-          Reservar
+        <a href="https://wa.me/34690206459?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%A3%D9%88%D8%AF%D9%91%20%D8%AD%D8%AC%D8%B2%20%D8%B7%D8%A7%D9%88%D9%84%D8%A9%20%D9%81%D9%8A%20du%20Liban." target="_blank" rel="noopener" data-cursor="cta" class="btn-reserve inline-flex items-center gap-2 bg-terracotta hover:bg-terracotta-deep text-cream text-[12px] md:text-[13px] tracking-wider-2 uppercase px-5 py-3 md:py-2.5 rounded-full transition-colors duration-200 cursor-pointer min-h-[44px]" aria-label="حجز عبر واتساب">
+          احجز
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
         </a>
       </div>
@@ -842,7 +909,7 @@
 
 <!-- ─────────────────────────  CONCEPTO  ───────────────────────── -->
 <section id="concepto" class="sec py-16 md:py-40 relative overflow-hidden">
-  <span class="sec-mark">01 · Concepto</span>
+  <span class="sec-mark">01 · الفكرة</span>
   <svg class="corner-olive bottom-0 right-0" viewBox="0 0 380 380" aria-hidden="true">
     <g stroke="#3C3D3F" stroke-width="1" fill="none" stroke-linecap="round">
       <path d="M360 20 C 280 100, 200 180, 120 280 C 90 320, 60 350, 30 370"/>
@@ -858,30 +925,30 @@
   </svg>
 
   <div class="max-w-[1100px] mx-auto px-5 md:px-10 text-center relative z-10">
-    <p class="reveal ornament text-[11px] tracking-widest-2 uppercase mb-8">Concepto</p>
+    <p class="reveal ornament text-[11px] tracking-widest-2 uppercase mb-8">الفكرة</p>
     <h2 class="reveal delay-1 word-reveal font-display text-cedar text-4xl md:text-6xl lg:text-7xl leading-[1.05] tracking-tightest">
-      Recetas familiares de Beirut,<br class="hidden md:block"/>
-      una sola <em class="font-display italic">mesa</em>.
+      وصفاتٌ عائلية من بيروت،<br class="hidden md:block"/>
+      على <em class="font-display italic">طاولةٍ</em> واحدة.
     </h2>
     <div class="reveal delay-1 flex justify-center mt-7" aria-hidden="true">
-      <img src="../brand_assets/ornament_diamond.png" alt="" class="h-4 w-auto opacity-90"/>
+      <img src="../../brand_assets/ornament_diamond.png" alt="" class="h-4 w-auto opacity-90"/>
     </div>
     <p class="reveal delay-2 mt-8 max-w-2xl mx-auto text-cedar/80 text-[16px] leading-relaxed">
-      Du Liban nace de una familia que aprendió a cocinar antes que a escribir. Lo que servimos cada noche es esa
-      memoria: el mezze que se comparte sin prisa, la brasa que se enciende al atardecer, los dulces con agua de
-      azahar que cierran la sobremesa.
+      وُلد du Liban من عائلةٍ تعلّمت الطبخ قبل أن تتعلّم الكتابة. ما نقدّمه كلّ ليلة هو تلك
+      الذاكرة: مازاتٌ تُقاسَم على مهل، فحمٌ يُشعَل عند الغروب، حلوياتٌ بماء الزهر
+      تختم السهرة.
     </p>
   </div>
 
   <div class="max-w-[1400px] mx-auto px-5 md:px-10 mt-16 md:mt-24 grid md:grid-cols-2 gap-6 md:gap-10">
     <figure class="reveal tile aspect-[4/5] overflow-hidden rounded-sm bg-sand">
-      <img src="../design-inspiration/real-fotos/mesa-comida-lujo-abundante.jpeg"
-           alt="Mesa abundante de mezze libaneses en du Liban"
+      <img src="../../design-inspiration/real-fotos/mesa-comida-lujo-abundante.jpeg"
+           alt="طاولة مازات لبنانية وافرة في du Liban"
            class="img-reveal w-full h-full object-cover" loading="lazy"/>
     </figure>
     <figure class="reveal delay-2 tile aspect-[4/5] overflow-hidden rounded-sm bg-sand md:mt-20">
-      <img src="../design-inspiration/real-fotos/montando-plato-de-AISH%20EL%20SARAYA.jpeg"
-           alt="El equipo de du Liban montando un plato en cocina"
+      <img src="../../design-inspiration/real-fotos/montando-plato-de-AISH%20EL%20SARAYA.jpeg"
+           alt="فريق du Liban أثناء تحضير طبق في المطبخ"
            class="img-reveal w-full h-full object-cover" loading="lazy"/>
     </figure>
   </div>
@@ -890,23 +957,23 @@
   <div class="max-w-[1400px] mx-auto px-5 md:px-10 mt-20 md:mt-28 grid md:grid-cols-12 gap-10">
     <div class="reveal md:col-span-5">
       <p class="font-display italic text-cedar text-3xl md:text-4xl leading-tight">
-        "En cada mezze hay una historia familiar.
-        Cocinamos como en casa de la abuela en Beirut: con tiempo, con manos y con memoria."
+        "في كلّ مازة قصة عائلية.
+        نطبخ كما في بيت الجدّة في بيروت: بوقتٍ، وأيدٍ، وذاكرة."
       </p>
     </div>
     <div class="reveal delay-1 md:col-span-6 md:col-start-7 text-cedar/80 text-[15px] leading-relaxed space-y-4">
       <p>
-        El horno de leña, el mortero de piedra y la parrilla son los tres pilares de nuestra cocina. De ellos salen
-        los manoucheh recién horneados, el tabbouleh picado a cuchillo, el cordero al carbón y los kebabs especiados
-        a mano.
+        الفرن الحطبي، والجاروشة الحجرية، والشواية، هي أعمدة مطبخنا الثلاثة. منها يخرج
+        المنقوش الطازج، والتبولة المفرومة بالسكين، والخروف على الفحم، والكباب المتبّل
+        يدويًا.
       </p>
       <p>
-        Trabajamos producto del día: hierbas frescas, cordero lechal, pescado de lonja y verduras de temporada.
-        Las salsas, los encurtidos y los dulces se elaboran cada mañana en nuestra cocina.
+        نعمل بمنتجات اليوم: أعشاب طازجة، خروف رضيع، سمك من الميناء، وخضروات الموسم.
+        الصلصات والمخلّلات والحلويات تُحضَّر كلّ صباح في مطبخنا.
       </p>
       <p class="pt-2">
         <a href="#carta" class="inline-flex items-center gap-2 text-cedar font-medium border-b border-cedar/40 hover:border-terracotta hover:text-terracotta transition-colors duration-200 pb-0.5">
-          Descubrir la carta
+          استكشف القائمة
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
         </a>
       </p>
@@ -916,7 +983,7 @@
 
 <!-- ─────────────────────────  CARTA / MENU  ───────────────────────── -->
 <section id="carta" class="sec py-16 md:py-40 bg-elevated border-y border-cedar/10 relative overflow-hidden">
-  <span class="sec-mark">02 · La carta</span>
+  <span class="sec-mark">02 · قائمة الطعام</span>
   <svg class="corner-olive top-0 left-0" style="transform: scaleX(-1) scaleY(-1)" viewBox="0 0 380 380" aria-hidden="true">
     <g stroke="#3C3D3F" stroke-width="1" fill="none" stroke-linecap="round">
       <path d="M360 20 C 280 100, 200 180, 120 280 C 90 320, 60 350, 30 370"/>
@@ -932,37 +999,37 @@
     <!-- Upper-right editorial chrome: "Carta vigente" tag -->
     <div class="reveal absolute top-6 right-5 md:top-10 md:right-10 z-10 hidden sm:flex items-center gap-3 text-[10px] tracking-widest-2 uppercase text-cedar/80">
       <span class="block w-8 h-px bg-cedar/30"></span>
-      <span>Carta de verano</span>
-      <span class="font-display italic text-cedar/80 text-[15px] leading-none normal-case tracking-normal">vigente · 2026</span>
+      <span>قائمة الصيف</span>
+      <span class="font-display italic text-cedar/80 text-[15px] leading-none normal-case tracking-normal">سارية · 2026</span>
     </div>
 
     <div class="grid md:grid-cols-12 gap-10 md:gap-12 mb-16 md:mb-24 items-end">
       <!-- Headline column -->
       <div class="md:col-span-6 reveal">
-        <p class="ornament text-[11px] tracking-widest-2 uppercase mb-6">La carta</p>
+        <p class="ornament text-[11px] tracking-widest-2 uppercase mb-6">قائمة الطعام</p>
         <h2 class="word-reveal font-display text-cedar text-4xl md:text-6xl leading-[1.02] tracking-tightest">
-          De la <em class="italic">brasa</em> a la mesa,<br/>
-          de Beirut a Madrid.
+          من <em class="italic">الفحم</em> إلى الطاولة،<br/>
+          من بيروت إلى مدريد.
         </h2>
       </div>
 
       <!-- Editorial table of contents (desktop only) -->
-      <aside class="md:col-span-2 reveal delay-1 hidden md:block self-end" aria-label="Cinco actos de la carta">
+      <aside class="md:col-span-2 reveal delay-1 hidden md:block self-end" aria-label="خمسة فصول من القائمة">
         <p class="text-[10px] tracking-widest-2 uppercase text-cedar/80 mb-4 flex items-center gap-2">
-          <span class="block w-4 h-px bg-cedar/30"></span> 5 actos
+          <span class="block w-4 h-px bg-cedar/30"></span> ٥ فصول
         </p>
         <ol class="font-display text-cedar/85 text-[15px] leading-[1.9] tabular-nums">
           <li class="grid grid-cols-[28px_1fr] items-baseline">
             <span class="text-[11px] tracking-widest-2 text-cedar/80">I</span>
-            <a href="#carta" class="hover:text-terracotta transition-colors">Del Horno</a>
+            <a href="#carta" class="hover:text-terracotta transition-colors">من الفرن</a>
           </li>
           <li class="grid grid-cols-[28px_1fr] items-baseline">
             <span class="text-[11px] tracking-widest-2 text-cedar/80">II</span>
-            <a href="#carta" class="hover:text-terracotta transition-colors">Mezze Frío</a>
+            <a href="#carta" class="hover:text-terracotta transition-colors">مازات باردة</a>
           </li>
           <li class="grid grid-cols-[28px_1fr] items-baseline">
             <span class="text-[11px] tracking-widest-2 text-cedar/80">III</span>
-            <a href="#carta" class="hover:text-terracotta transition-colors">Mezze Caliente</a>
+            <a href="#carta" class="hover:text-terracotta transition-colors">مازات ساخنة</a>
           </li>
           <li class="grid grid-cols-[28px_1fr] items-baseline">
             <span class="text-[11px] tracking-widest-2 text-cedar/80">IV</span>
@@ -970,31 +1037,31 @@
           </li>
           <li class="grid grid-cols-[28px_1fr] items-baseline">
             <span class="text-[11px] tracking-widest-2 text-cedar/80">V</span>
-            <a href="#carta" class="hover:text-terracotta transition-colors">Postres</a>
+            <a href="#carta" class="hover:text-terracotta transition-colors">الحلويات</a>
           </li>
         </ol>
       </aside>
 
       <!-- Description column -->
       <div class="md:col-span-4 reveal delay-2 text-cedar/80 text-[15px] leading-relaxed self-end">
-        <p>Una selección viva, escrita en cinco actos. Empezamos por el horno y el mezze frío, pasamos al mezze caliente, llegamos a la brasa y cerramos con los dulces de toda la vida. Todos los precios incluyen IVA.</p>
+        <p>اختيارٌ حيّ، مكتوبٌ في خمسة فصول. نبدأ بالفرن والمازات الباردة، ننتقل إلى المازات الساخنة، نصل إلى المشاوي على الفحم، ونختم بحلوياتنا التقليدية. جميع الأسعار شاملة لضريبة القيمة المضافة.</p>
       </div>
     </div>
 
     <!-- Cinematic break: anchors the section in color before the long list -->
     <figure class="reveal relative mb-14 md:mb-20 -mx-5 md:mx-0 overflow-hidden md:rounded-sm">
       <div class="tile aspect-[16/6] md:aspect-[16/5]">
-        <img src="../design-inspiration/real-fotos/cocinando-horno-ZAATAR%20%26%20LABNEH%20MANOUCHEH%20%E2%80%94%20masa%20al%20horno%20con%20zaatar.jpeg"
-             alt="Horno encendido en la cocina de du Liban"
+        <img src="../../design-inspiration/real-fotos/cocinando-horno-ZAATAR%20%26%20LABNEH%20MANOUCHEH%20%E2%80%94%20masa%20al%20horno%20con%20zaatar.jpeg"
+             alt="فرن مشتعل في مطبخ du Liban"
              class="img-reveal w-full h-full object-cover" loading="lazy"/>
       </div>
       <div class="absolute inset-0 bg-gradient-to-r from-cedar-deep/65 via-cedar-deep/15 to-transparent pointer-events-none"></div>
       <figcaption class="absolute bottom-5 left-5 md:bottom-10 md:left-10 max-w-md text-cream">
         <p class="text-[10px] tracking-widest-2 uppercase text-gold-soft/90 mb-2 flex items-center gap-3">
-          <span class="block w-6 h-px bg-gold-soft/60"></span> Del horno
+          <span class="block w-6 h-px bg-gold-soft/60"></span> من الفرن
         </p>
         <p class="font-display italic text-2xl md:text-4xl leading-tight">
-          "El horno se enciende a las cinco y no se apaga hasta el último manoucheh."
+          "يُشعَل الفرن عند الخامسة، ولا يُطفأ إلا بعد آخر منقوشة."
         </p>
       </figcaption>
     </figure>
@@ -1007,30 +1074,30 @@
         <button class="menu-row" aria-expanded="false" aria-controls="m-horno">
           <span class="row-bar"></span>
           <span class="row-count">(04)</span>
-          <span class="row-text">Del Horno</span>
+          <span class="row-text">من الفرن</span>
           <span class="row-arrow" aria-hidden="true">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
           </span>
-          <img class="row-thumb thumb-l" alt="" aria-hidden="true" src="../design-inspiration/real-fotos/primer-plano-diagonal-plato-1.jpeg">
-          <img class="row-thumb thumb-r" alt="" aria-hidden="true" src="../design-inspiration/real-fotos/montando-plato-de-ZAATAR%20%26%20LABNEH%20MANOUCHEH-1.jpeg">
+          <img class="row-thumb thumb-l" alt="" aria-hidden="true" src="../../design-inspiration/real-fotos/primer-plano-diagonal-plato-1.jpeg">
+          <img class="row-thumb thumb-r" alt="" aria-hidden="true" src="../../design-inspiration/real-fotos/montando-plato-de-ZAATAR%20%26%20LABNEH%20MANOUCHEH-1.jpeg">
         </button>
         <div id="m-horno" class="menu-detail pb-10 md:pb-14">
           <ul class="grid md:grid-cols-2 gap-x-12 gap-y-6">
             <li class="dish">
-              <div class="dish-head"><span class="dish-name">Kafta bil Jebneh</span><span class="dish-dots"></span><span class="dish-price">15&nbsp;€</span></div>
-              <p class="dish-desc">Masa al horno, kafta (carne especiada), mezcla de quesos, mayonesa y pepinillos.</p>
+              <div class="dish-head"><span class="dish-name">كفتة بالجبنة</span><span class="dish-dots"></span><span class="dish-price">15&nbsp;€</span></div>
+              <p class="dish-desc">عجينة بالفرن، كفتة (لحمة متبّلة)، خليط أجبان، مايونيز، ومخلّل.</p>
             </li>
             <li class="dish">
-              <div class="dish-head"><span class="dish-name">Lahme bi Aajin</span><span class="dish-dots"></span><span class="dish-price">13&nbsp;€</span></div>
-              <p class="dish-desc">Masa al horno con mezcla de carne, piñones y limón.</p>
+              <div class="dish-head"><span class="dish-name">لحم بعجين</span><span class="dish-dots"></span><span class="dish-price">13&nbsp;€</span></div>
+              <p class="dish-desc">عجينة بالفرن مع خليط لحمة، صنوبر، وليمون.</p>
             </li>
             <li class="dish">
-              <div class="dish-head"><span class="dish-name">Manoucheh Jebneh</span><span class="dish-dots"></span><span class="dish-price">12&nbsp;€</span></div>
-              <p class="dish-desc">Masa al horno con mezcla de quesos y sésamo blanco y negro.</p>
+              <div class="dish-head"><span class="dish-name">منقوشة جبنة</span><span class="dish-dots"></span><span class="dish-price">12&nbsp;€</span></div>
+              <p class="dish-desc">عجينة بالفرن مع خليط أجبان، وسمسم أبيض وأسود.</p>
             </li>
             <li class="dish">
-              <div class="dish-head"><span class="dish-name">Zaatar &amp; Labneh Manoucheh</span><span class="dish-dots"></span><span class="dish-price">12&nbsp;€</span></div>
-              <p class="dish-desc">Masa al horno con zaatar, labneh, menta, aceitunas y tomates cherry.</p>
+              <div class="dish-head"><span class="dish-name">منقوشة زعتر ولبنة</span><span class="dish-dots"></span><span class="dish-price">12&nbsp;€</span></div>
+              <p class="dish-desc">عجينة بالفرن مع زعتر، لبنة، نعناع، زيتون، وطماطم كرزية.</p>
             </li>
           </ul>
         </div>
@@ -1041,26 +1108,26 @@
         <button class="menu-row" aria-expanded="false" aria-controls="m-frio">
           <span class="row-bar"></span>
           <span class="row-count">(11)</span>
-          <span class="row-text">Mezze Frío</span>
+          <span class="row-text">مازات باردة</span>
           <span class="row-arrow" aria-hidden="true">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
           </span>
-          <img class="row-thumb thumb-l" alt="" aria-hidden="true" src="../design-inspiration/real-fotos/primer-plano-diagonal-plato-2.jpeg">
-          <img class="row-thumb thumb-r" alt="" aria-hidden="true" src="../design-inspiration/real-fotos/complementos-bonitos-Labneh%20%20Muhammara%20%20Moutabal%20%20tomate.jpeg">
+          <img class="row-thumb thumb-l" alt="" aria-hidden="true" src="../../design-inspiration/real-fotos/primer-plano-diagonal-plato-2.jpeg">
+          <img class="row-thumb thumb-r" alt="" aria-hidden="true" src="../../design-inspiration/real-fotos/complementos-bonitos-Labneh%20%20Muhammara%20%20Moutabal%20%20tomate.jpeg">
         </button>
         <div id="m-frio" class="menu-detail pb-10 md:pb-14">
           <ul class="grid md:grid-cols-2 gap-x-12 gap-y-6">
-            <li class="dish"><div class="dish-head"><span class="dish-name">Fattoush</span><span class="dish-dots"></span><span class="dish-price">14&nbsp;€</span></div><p class="dish-desc">Hojas verdes, tomate, cebolla tierna, pepino, rábano, pan frito, melaza de granada y sumac.</p></li>
-            <li class="dish"><div class="dish-head"><span class="dish-name">Tabbouleh</span><span class="dish-dots"></span><span class="dish-price">13&nbsp;€</span></div><p class="dish-desc">Perejil, tomate, bulgur, cebolla, limón y aceite de oliva.</p></li>
-            <li class="dish"><div class="dish-head"><span class="dish-name">Salata al Jarjir</span><span class="dish-dots"></span><span class="dish-price">12&nbsp;€</span></div><p class="dish-desc">Rúcula, tomillo, cebolla, sumac y salsa de mostaza al limón.</p></li>
-            <li class="dish"><div class="dish-head"><span class="dish-name">Salata al Rubyan</span><span class="dish-dots"></span><span class="dish-price">18&nbsp;€</span></div><p class="dish-desc">Langostinos, tomates cherry, albahaca y piñones.</p></li>
-            <li class="dish"><div class="dish-head"><span class="dish-name">Hummus</span><span class="dish-dots"></span><span class="dish-price">13&nbsp;€</span></div><p class="dish-desc">Garbanzos cocidos, pasta tahini y aceite de oliva.</p></li>
-            <li class="dish"><div class="dish-head"><span class="dish-name">Hummus bil Pesto</span><span class="dish-dots"></span><span class="dish-price">16&nbsp;€</span></div><p class="dish-desc">Garbanzos cocidos, pasta tahini y pesto de pistacho.</p></li>
-            <li class="dish"><div class="dish-head"><span class="dish-name">Moutabal</span><span class="dish-dots"></span><span class="dish-price">12&nbsp;€</span></div><p class="dish-desc">Berenjena asada, tahini, aceite de oliva y semillas de granada.</p></li>
-            <li class="dish"><div class="dish-head"><span class="dish-name">Warak Enab</span><span class="dish-dots"></span><span class="dish-price">14&nbsp;€</span></div><p class="dish-desc">Hojas de parra rellenas con arroz y carne picada.</p></li>
-            <li class="dish"><div class="dish-head"><span class="dish-name">Muhammara</span><span class="dish-dots"></span><span class="dish-price">14&nbsp;€</span></div><p class="dish-desc">Pimiento rojo, cebolla, tomate, tahini, pan rallado, comino, melaza de granada, aceite de oliva y nueces.</p></li>
-            <li class="dish"><div class="dish-head"><span class="dish-name">Ariche bel Zaatar</span><span class="dish-dots"></span><span class="dish-price">15&nbsp;€</span></div><p class="dish-desc">Queso ariche, cebolla, tomate, pimiento verde, sumac, aceite de oliva y especias aromáticas.</p></li>
-            <li class="dish"><div class="dish-head"><span class="dish-name">Quinoa ma al Shamandar</span><span class="dish-dots"></span><span class="dish-price">14&nbsp;€</span></div><p class="dish-desc">Remolacha, quinoa, tahini, nueces, tomillo, albahaca y aceite de oliva.</p></li>
+            <li class="dish"><div class="dish-head"><span class="dish-name">فتّوش</span><span class="dish-dots"></span><span class="dish-price">14&nbsp;€</span></div><p class="dish-desc">خضار ورقية، طماطم، بصل أخضر، خيار، فجل، خبز محمّص، دبس الرمّان، وسمّاق.</p></li>
+            <li class="dish"><div class="dish-head"><span class="dish-name">تبّولة</span><span class="dish-dots"></span><span class="dish-price">13&nbsp;€</span></div><p class="dish-desc">بقدونس، طماطم، برغل، بصل، ليمون، وزيت زيتون.</p></li>
+            <li class="dish"><div class="dish-head"><span class="dish-name">سلطة الجرجير</span><span class="dish-dots"></span><span class="dish-price">12&nbsp;€</span></div><p class="dish-desc">جرجير، زعتر، بصل، سمّاق، وصلصة خردل بالليمون.</p></li>
+            <li class="dish"><div class="dish-head"><span class="dish-name">سلطة الروبيان</span><span class="dish-dots"></span><span class="dish-price">18&nbsp;€</span></div><p class="dish-desc">روبيان، طماطم كرزية، ريحان، وصنوبر.</p></li>
+            <li class="dish"><div class="dish-head"><span class="dish-name">حمّص</span><span class="dish-dots"></span><span class="dish-price">13&nbsp;€</span></div><p class="dish-desc">حمّص مطبوخ، طحينة، وزيت زيتون.</p></li>
+            <li class="dish"><div class="dish-head"><span class="dish-name">حمّص بالبيستو</span><span class="dish-dots"></span><span class="dish-price">16&nbsp;€</span></div><p class="dish-desc">حمّص مطبوخ، طحينة، وبيستو الفستق.</p></li>
+            <li class="dish"><div class="dish-head"><span class="dish-name">متبّل</span><span class="dish-dots"></span><span class="dish-price">12&nbsp;€</span></div><p class="dish-desc">باذنجان مشوي، طحينة، زيت زيتون، وحبّ رمّان.</p></li>
+            <li class="dish"><div class="dish-head"><span class="dish-name">ورق عنب</span><span class="dish-dots"></span><span class="dish-price">14&nbsp;€</span></div><p class="dish-desc">ورق عنب محشي بالأرز واللحمة المفرومة.</p></li>
+            <li class="dish"><div class="dish-head"><span class="dish-name">محمّرة</span><span class="dish-dots"></span><span class="dish-price">14&nbsp;€</span></div><p class="dish-desc">فلفل أحمر، بصل، طماطم، طحينة، بقسماط، كمّون، دبس الرمّان، زيت زيتون، وجوز.</p></li>
+            <li class="dish"><div class="dish-head"><span class="dish-name">عريشة بالزعتر</span><span class="dish-dots"></span><span class="dish-price">15&nbsp;€</span></div><p class="dish-desc">جبنة العريشة، بصل، طماطم، فلفل أخضر، سمّاق، زيت زيتون، وبهارات.</p></li>
+            <li class="dish"><div class="dish-head"><span class="dish-name">كينوا مع الشمندر</span><span class="dish-dots"></span><span class="dish-price">14&nbsp;€</span></div><p class="dish-desc">شمندر، كينوا، طحينة، جوز، زعتر، ريحان، وزيت زيتون.</p></li>
           </ul>
         </div>
       </div>
@@ -1070,28 +1137,28 @@
         <button class="menu-row" aria-expanded="false" aria-controls="m-caliente">
           <span class="row-bar"></span>
           <span class="row-count">(13)</span>
-          <span class="row-text">Mezze Caliente</span>
+          <span class="row-text">مازات ساخنة</span>
           <span class="row-arrow" aria-hidden="true">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
           </span>
-          <img class="row-thumb thumb-l" alt="" aria-hidden="true" src="../design-inspiration/real-fotos/primer-plano-diagonal-MUHAMMARA.jpeg">
-          <img class="row-thumb thumb-r" alt="" aria-hidden="true" src="../design-inspiration/real-fotos/primer-plano-diagonal-OKHTOBUT%20MASHWI.jpeg">
+          <img class="row-thumb thumb-l" alt="" aria-hidden="true" src="../../design-inspiration/real-fotos/primer-plano-diagonal-MUHAMMARA.jpeg">
+          <img class="row-thumb thumb-r" alt="" aria-hidden="true" src="../../design-inspiration/real-fotos/primer-plano-diagonal-OKHTOBUT%20MASHWI.jpeg">
         </button>
         <div id="m-caliente" class="menu-detail pb-10 md:pb-14">
           <ul class="grid md:grid-cols-2 gap-x-12 gap-y-6">
-            <li class="dish"><div class="dish-head"><span class="dish-name">Hummus Lahme</span><span class="dish-dots"></span><span class="dish-price">17&nbsp;€</span></div><p class="dish-desc">Hummus con mezcla de carne y piñones.</p></li>
-            <li class="dish"><div class="dish-head"><span class="dish-name">Rass Assfour</span><span class="dish-dots"></span><span class="dish-price">22&nbsp;€</span></div><p class="dish-desc">Trozos de carne salteados con ajo, mantequilla, piñones, limón o salsa de granada.</p></li>
-            <li class="dish"><div class="dish-head"><span class="dish-name">Fatteh al Rubyan</span><span class="dish-dots"></span><span class="dish-price">22&nbsp;€</span></div><p class="dish-desc">Pan frito, langostinos, yogur, ajo, cilantro, berenjena frita y piñones.</p></li>
-            <li class="dish"><div class="dish-head"><span class="dish-name">Fatteh Djaj</span><span class="dish-dots"></span><span class="dish-price">20&nbsp;€</span></div><p class="dish-desc">Arroz con canela, yogur, pollo a la parrilla, ajo, berenjena frita, piñones y cilantro.</p></li>
-            <li class="dish"><div class="dish-head"><span class="dish-name">Hallumi</span><span class="dish-dots"></span><span class="dish-price">17&nbsp;€</span></div><p class="dish-desc">Halloumi empanizado, mermelada de higo, semillas de granada y espinaca baby.</p></li>
-            <li class="dish"><div class="dish-head"><span class="dish-name">Kebbeh Sajyeh</span><span class="dish-dots"></span><span class="dish-price">13&nbsp;€</span></div><p class="dish-desc">Masa de kibbeh rellena de carne y nueces (4 piezas).</p></li>
-            <li class="dish"><div class="dish-head"><span class="dish-name">Hummus Falafel</span><span class="dish-dots"></span><span class="dish-price">16&nbsp;€</span></div><p class="dish-desc">Falafel con hummus y aceite de oliva.</p></li>
-            <li class="dish"><div class="dish-head"><span class="dish-name">Batata Meklieh</span><span class="dish-dots"></span><span class="dish-price">10&nbsp;€</span></div><p class="dish-desc">Patatas fritas.</p></li>
-            <li class="dish"><div class="dish-head"><span class="dish-name">Batata Harrah</span><span class="dish-dots"></span><span class="dish-price">13&nbsp;€</span></div><p class="dish-desc">Cubos de patata con cilantro, pasta de chile y ajo.</p></li>
-            <li class="dish"><div class="dish-head"><span class="dish-name">Jawaneh Dajaj</span><span class="dish-dots"></span><span class="dish-price">17&nbsp;€</span></div><p class="dish-desc">Alitas a la parrilla salteadas con ajo, limón y cilantro.</p></li>
-            <li class="dish"><div class="dish-head"><span class="dish-name">Soujok</span><span class="dish-dots"></span><span class="dish-price">18&nbsp;€</span></div><p class="dish-desc">Salchicha soujok con cebolla, pimiento, tomate, limón y comino.</p></li>
-            <li class="dish"><div class="dish-head"><span class="dish-name">Rakakt Jebneh</span><span class="dish-dots"></span><span class="dish-price">13&nbsp;€</span></div><p class="dish-desc">4 rollos de queso rellenos a la parrilla.</p></li>
-            <li class="dish"><div class="dish-head"><span class="dish-name">Okhtobut bil Thoum</span><span class="dish-dots"></span><span class="dish-price">25&nbsp;€</span></div><p class="dish-desc">Pulpo sellado con ajo, limón y cilantro.</p></li>
+            <li class="dish"><div class="dish-head"><span class="dish-name">حمّص باللحمة</span><span class="dish-dots"></span><span class="dish-price">17&nbsp;€</span></div><p class="dish-desc">حمّص مع خليط لحمة وصنوبر.</p></li>
+            <li class="dish"><div class="dish-head"><span class="dish-name">رأس عصفور</span><span class="dish-dots"></span><span class="dish-price">22&nbsp;€</span></div><p class="dish-desc">قطع لحمة مقلية بالثوم والزبدة والصنوبر مع ليمون أو دبس الرمّان.</p></li>
+            <li class="dish"><div class="dish-head"><span class="dish-name">فتّة الروبيان</span><span class="dish-dots"></span><span class="dish-price">22&nbsp;€</span></div><p class="dish-desc">خبز محمّص، روبيان، لبن، ثوم، كزبرة، باذنجان مقلي، وصنوبر.</p></li>
+            <li class="dish"><div class="dish-head"><span class="dish-name">فتّة الدجاج</span><span class="dish-dots"></span><span class="dish-price">20&nbsp;€</span></div><p class="dish-desc">أرز بالقرفة، لبن، دجاج مشوي، ثوم، باذنجان مقلي، صنوبر، وكزبرة.</p></li>
+            <li class="dish"><div class="dish-head"><span class="dish-name">حلوم</span><span class="dish-dots"></span><span class="dish-price">17&nbsp;€</span></div><p class="dish-desc">حلوم مغطّس بالبقسماط، مربّى تين، حبّ رمّان، وسبانخ.</p></li>
+            <li class="dish"><div class="dish-head"><span class="dish-name">كبّة صاجية</span><span class="dish-dots"></span><span class="dish-price">13&nbsp;€</span></div><p class="dish-desc">كبّة محشيّة باللحمة والجوز (٤ قطع).</p></li>
+            <li class="dish"><div class="dish-head"><span class="dish-name">حمّص فلافل</span><span class="dish-dots"></span><span class="dish-price">16&nbsp;€</span></div><p class="dish-desc">فلافل مع حمّص وزيت زيتون.</p></li>
+            <li class="dish"><div class="dish-head"><span class="dish-name">بطاطا مقلية</span><span class="dish-dots"></span><span class="dish-price">10&nbsp;€</span></div><p class="dish-desc">بطاطا مقلية.</p></li>
+            <li class="dish"><div class="dish-head"><span class="dish-name">بطاطا حرّة</span><span class="dish-dots"></span><span class="dish-price">13&nbsp;€</span></div><p class="dish-desc">مكعّبات بطاطا مع كزبرة، فلفل حار، وثوم.</p></li>
+            <li class="dish"><div class="dish-head"><span class="dish-name">جوانح الدجاج</span><span class="dish-dots"></span><span class="dish-price">17&nbsp;€</span></div><p class="dish-desc">جوانح مشويّة مع ثوم، ليمون، وكزبرة.</p></li>
+            <li class="dish"><div class="dish-head"><span class="dish-name">سجق</span><span class="dish-dots"></span><span class="dish-price">18&nbsp;€</span></div><p class="dish-desc">سجق مع بصل، فلفل، طماطم، ليمون، وكمّون.</p></li>
+            <li class="dish"><div class="dish-head"><span class="dish-name">رقاقات جبنة</span><span class="dish-dots"></span><span class="dish-price">13&nbsp;€</span></div><p class="dish-desc">٤ رقاقات جبنة مشويّة.</p></li>
+            <li class="dish"><div class="dish-head"><span class="dish-name">أخطبوط بالثوم</span><span class="dish-dots"></span><span class="dish-price">25&nbsp;€</span></div><p class="dish-desc">أخطبوط محمّر بالثوم، الليمون، والكزبرة.</p></li>
           </ul>
         </div>
       </div>
@@ -1101,24 +1168,24 @@
         <button class="menu-row" aria-expanded="false" aria-controls="m-mash">
           <span class="row-bar"></span>
           <span class="row-count">(09)</span>
-          <span class="row-text">Masheweh · A la brasa</span>
+          <span class="row-text">مشاوي · على الفحم</span>
           <span class="row-arrow" aria-hidden="true">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
           </span>
-          <img class="row-thumb thumb-l" alt="" aria-hidden="true" src="../design-inspiration/real-fotos/cocinando-SAMAK%20MASHWI.jpeg">
-          <img class="row-thumb thumb-r" alt="" aria-hidden="true" src="../design-inspiration/real-fotos/primer-plano-diagonal-plato-5.jpeg">
+          <img class="row-thumb thumb-l" alt="" aria-hidden="true" src="../../design-inspiration/real-fotos/cocinando-SAMAK%20MASHWI.jpeg">
+          <img class="row-thumb thumb-r" alt="" aria-hidden="true" src="../../design-inspiration/real-fotos/primer-plano-diagonal-plato-5.jpeg">
         </button>
         <div id="m-mash" class="menu-detail pb-10 md:pb-14">
           <ul class="grid md:grid-cols-2 gap-x-12 gap-y-6">
-            <li class="dish"><div class="dish-head"><span class="dish-name">Taouk</span><span class="dish-dots"></span><span class="dish-price">23&nbsp;€</span></div><p class="dish-desc">Cubos de pollo Taouk a la parrilla, pepinillos y pasta de ajo.</p></li>
-            <li class="dish"><div class="dish-head"><span class="dish-name">Farrouj</span><span class="dish-dots"></span><span class="dish-price">26&nbsp;€</span></div><p class="dish-desc">Pollo deshuesado a la parrilla con pepinillos y ajo.</p></li>
-            <li class="dish"><div class="dish-head"><span class="dish-name">Lahmeh Mshwieh</span><span class="dish-dots"></span><span class="dish-price">32&nbsp;€</span></div><p class="dish-desc">Cubos de carne a la parrilla con grasa, cebolla asada, tomate y chile.</p></li>
-            <li class="dish"><div class="dish-head"><span class="dish-name">Kabab</span><span class="dish-dots"></span><span class="dish-price">23&nbsp;€</span></div><p class="dish-desc">Kabab a la parrilla con cebolla asada, tomate, chile y biwaz.</p></li>
-            <li class="dish"><div class="dish-head"><span class="dish-name">Mawzet Kharouf</span><span class="dish-dots"></span><span class="dish-price">35&nbsp;€</span></div><p class="dish-desc">Jarrete de cordero con arroz especiado y frutos secos.</p></li>
-            <li class="dish"><div class="dish-head"><span class="dish-name">Shawarma Lehme</span><span class="dish-dots"></span><span class="dish-price">26&nbsp;€</span></div><p class="dish-desc">Shawarma de res, tomate, biwaz, salsa tarator y pepinillos.</p></li>
-            <li class="dish"><div class="dish-head"><span class="dish-name">Freekeh Djaj</span><span class="dish-dots"></span><span class="dish-price">27&nbsp;€</span></div><p class="dish-desc">Freekeh cocido con carne, cebolla y especias, cubierto con pollo, frutos secos y salsa gravy.</p></li>
-            <li class="dish"><div class="dish-head"><span class="dish-name">Okhtobut Mashwi</span><span class="dish-dots"></span><span class="dish-price">26&nbsp;€</span></div><p class="dish-desc">Pulpo a la parrilla servido con salsa de hierbas, limón y aceite picante.</p></li>
-            <li class="dish"><div class="dish-head"><span class="dish-name">Samak Mashwi</span><span class="dish-dots"></span><span class="dish-price">58&nbsp;€</span></div><p class="dish-desc">Lubina a la parrilla servida con salsa tarator y limón.</p></li>
+            <li class="dish"><div class="dish-head"><span class="dish-name">شيش طاووق</span><span class="dish-dots"></span><span class="dish-price">23&nbsp;€</span></div><p class="dish-desc">مكعّبات شيش طاووق مشويّة مع مخلّل وثومية.</p></li>
+            <li class="dish"><div class="dish-head"><span class="dish-name">فرّوج مشوي</span><span class="dish-dots"></span><span class="dish-price">26&nbsp;€</span></div><p class="dish-desc">فرّوج مشوي بدون عظم مع مخلّل وثوم.</p></li>
+            <li class="dish"><div class="dish-head"><span class="dish-name">لحمة مشوية</span><span class="dish-dots"></span><span class="dish-price">32&nbsp;€</span></div><p class="dish-desc">مكعّبات لحمة مشويّة مع شحم، بصل مشوي، طماطم، وفلفل حار.</p></li>
+            <li class="dish"><div class="dish-head"><span class="dish-name">كباب</span><span class="dish-dots"></span><span class="dish-price">23&nbsp;€</span></div><p class="dish-desc">كباب مشوي مع بصل مشوي، طماطم، فلفل حار، وبيواز.</p></li>
+            <li class="dish"><div class="dish-head"><span class="dish-name">موزات خروف</span><span class="dish-dots"></span><span class="dish-price">35&nbsp;€</span></div><p class="dish-desc">موزات خروف مع أرز بالبهارات والمكسّرات.</p></li>
+            <li class="dish"><div class="dish-head"><span class="dish-name">شاورما لحمة</span><span class="dish-dots"></span><span class="dish-price">26&nbsp;€</span></div><p class="dish-desc">شاورما لحمة، طماطم، بيواز، طراطور، ومخلّل.</p></li>
+            <li class="dish"><div class="dish-head"><span class="dish-name">فريكة بالدجاج</span><span class="dish-dots"></span><span class="dish-price">27&nbsp;€</span></div><p class="dish-desc">فريكة بالّلحمة والبصل والبهارات، مغطّاة بالدجاج، المكسّرات، وصلصة گرافي.</p></li>
+            <li class="dish"><div class="dish-head"><span class="dish-name">أخطبوط مشوي</span><span class="dish-dots"></span><span class="dish-price">26&nbsp;€</span></div><p class="dish-desc">أخطبوط مشوي مع صلصة أعشاب، ليمون، وزيت حار.</p></li>
+            <li class="dish"><div class="dish-head"><span class="dish-name">سمك مشوي</span><span class="dish-dots"></span><span class="dish-price">58&nbsp;€</span></div><p class="dish-desc">قاروص مشوي مع طراطور وليمون.</p></li>
           </ul>
         </div>
       </div>
@@ -1128,20 +1195,20 @@
         <button class="menu-row" aria-expanded="false" aria-controls="m-postres">
           <span class="row-bar"></span>
           <span class="row-count">(05)</span>
-          <span class="row-text">Postres</span>
+          <span class="row-text">الحلويات</span>
           <span class="row-arrow" aria-hidden="true">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
           </span>
-          <img class="row-thumb thumb-l" alt="" aria-hidden="true" src="../design-inspiration/real-fotos/primer-plano-aero-postre-AISH%20EL%20SARAYA.jpeg">
-          <img class="row-thumb thumb-r" alt="" aria-hidden="true" src="../design-inspiration/real-fotos/montando-plato-de-MHALABIEH%20%E2%80%94%20postre%20de%20leche.jpeg">
+          <img class="row-thumb thumb-l" alt="" aria-hidden="true" src="../../design-inspiration/real-fotos/primer-plano-aero-postre-AISH%20EL%20SARAYA.jpeg">
+          <img class="row-thumb thumb-r" alt="" aria-hidden="true" src="../../design-inspiration/real-fotos/montando-plato-de-MHALABIEH%20%E2%80%94%20postre%20de%20leche.jpeg">
         </button>
         <div id="m-postres" class="menu-detail pb-10 md:pb-14">
           <ul class="grid md:grid-cols-2 gap-x-12 gap-y-6">
-            <li class="dish"><div class="dish-head"><span class="dish-name">Em Ali</span><span class="dish-dots"></span><span class="dish-price">15&nbsp;€</span></div><p class="dish-desc">Milhojas bañada en salsa especial Em Ali, cubierta con pistacho, nata, almendra y nuez.</p></li>
-            <li class="dish"><div class="dish-head"><span class="dish-name">Mafroukit Ashta</span><span class="dish-dots"></span><span class="dish-price">14&nbsp;€</span></div><p class="dish-desc">Mafrouki de pistacho relleno con crema de leche y sirope de azúcar.</p></li>
-            <li class="dish"><div class="dish-head"><span class="dish-name">Aish el Saraya</span><span class="dish-dots"></span><span class="dish-price">12&nbsp;€</span></div><p class="dish-desc">Masa Aish el Saraya con mezcla de crema de leche y frutos secos.</p></li>
-            <li class="dish"><div class="dish-head"><span class="dish-name">Knefeh</span><span class="dish-dots"></span><span class="dish-price">14&nbsp;€</span></div><p class="dish-desc">Masa de knefeh rellena de queso libanés, sirope de azúcar y pistacho.</p></li>
-            <li class="dish"><div class="dish-head"><span class="dish-name">Mhalabieh</span><span class="dish-dots"></span><span class="dish-price">11&nbsp;€</span></div><p class="dish-desc">Postre de leche servido con salsa ghazel y caramelo.</p></li>
+            <li class="dish"><div class="dish-head"><span class="dish-name">أم علي</span><span class="dish-dots"></span><span class="dish-price">15&nbsp;€</span></div><p class="dish-desc">طبقات هشّة مغمورة بصلصة أم علي الخاصة، مزيّنة بالفستق، القشطة، اللوز، والجوز.</p></li>
+            <li class="dish"><div class="dish-head"><span class="dish-name">مفروكة بالقشطة</span><span class="dish-dots"></span><span class="dish-price">14&nbsp;€</span></div><p class="dish-desc">مفروكة فستق محشيّة بالقشطة وقطر السكر.</p></li>
+            <li class="dish"><div class="dish-head"><span class="dish-name">عيش السرايا</span><span class="dish-dots"></span><span class="dish-price">12&nbsp;€</span></div><p class="dish-desc">عيش السرايا مع خليط قشطة ومكسّرات.</p></li>
+            <li class="dish"><div class="dish-head"><span class="dish-name">كنافة</span><span class="dish-dots"></span><span class="dish-price">14&nbsp;€</span></div><p class="dish-desc">كنافة محشيّة بالجبنة اللبنانية، قطر السكر، والفستق.</p></li>
+            <li class="dish"><div class="dish-head"><span class="dish-name">مهلّبية</span><span class="dish-dots"></span><span class="dish-price">11&nbsp;€</span></div><p class="dish-desc">حلوى الحليب مع غزل البنات والكراميل.</p></li>
           </ul>
         </div>
       </div>
@@ -1150,7 +1217,7 @@
 
     <!-- Allergens note -->
     <p class="reveal mt-10 text-center text-[12px] tracking-wider-2 uppercase text-cedar/80">
-      ¿Alergias o intolerancias? Consulte con nuestro equipo · Todos los precios incluyen IVA
+      هل لديكم حساسية أو عدم تحمّل؟ يُرجى إبلاغ فريقنا · جميع الأسعار شاملة لضريبة القيمة المضافة
     </p>
   </div>
 </section>
@@ -1172,29 +1239,29 @@
 
 <!-- ─────────────────────────  CHEF QUOTE + GALLERY  ───────────────────────── -->
 <section id="chef" class="sec pt-16 pb-6 md:pt-40 md:pb-40 relative overflow-hidden">
-  <span class="sec-mark">03 · La cocina</span>
+  <span class="sec-mark">03 · المطبخ</span>
   <!-- Brand floral ornament -->
-  <img src="../brand_assets/ornament_floral_single.png" alt="" aria-hidden="true"
+  <img src="../../brand_assets/ornament_floral_single.png" alt="" aria-hidden="true"
        class="absolute top-10 left-0 w-24 md:w-36 opacity-70 pointer-events-none sway" style="--rot:0deg"/>
 
   <div class="max-w-[1400px] mx-auto px-5 md:px-10">
     <div class="grid md:grid-cols-12 gap-10 md:gap-16 items-end mb-0 md:mb-20">
       <div class="md:col-span-5 reveal">
-        <p class="ornament text-[11px] tracking-widest-2 uppercase mb-6">La cocina</p>
+        <p class="ornament text-[11px] tracking-widest-2 uppercase mb-6">المطبخ</p>
         <h2 class="word-reveal font-display text-cedar text-4xl md:text-6xl leading-[1.04] tracking-tightest">
-          La hospitalidad libanesa, plato a plato.
+          الضيافة اللبنانية، طبقًا بعد طبق.
         </h2>
       </div>
       <div class="md:col-span-6 md:col-start-7 reveal delay-1">
         <blockquote class="font-display italic text-cedar text-2xl md:text-3xl leading-snug">
-          "En Líbano se come para celebrar, para recordar y para querernos. Aquí hacemos lo mismo, todas las noches, con producto de Madrid y manos de Beirut."
+          "في لبنان نأكل احتفالاً، وللذكرى، ولأنّنا نحبّ بعضنا. هنا نفعل المثل، كلّ ليلة، بمنتجات مدريد وأيدٍ بيروتية."
         </blockquote>
         <div class="mt-6 flex items-center gap-4">
           <div class="w-12 h-12 rounded-full overflow-hidden bg-cedar/15 shrink-0">
-            <img src="../design-inspiration/real-fotos/primer-plano-del-chef.jpeg" alt="Retrato del jefe de cocina de du Liban" class="w-full h-full object-cover" loading="lazy" width="48" height="48"/>
+            <img src="../../design-inspiration/real-fotos/primer-plano-del-chef.jpeg" alt="صورة رئيس الطهاة في du Liban" class="w-full h-full object-cover" loading="lazy" width="48" height="48"/>
           </div>
           <div>
-            <p class="font-display text-cedar text-lg">El equipo de cocina</p>
+            <p class="font-display text-cedar text-lg">فريق المطبخ</p>
             <p class="text-[12px] tracking-wider-2 uppercase text-cedar/80">du Liban · Madrid</p>
           </div>
         </div>
@@ -1494,7 +1561,7 @@
   }
 </style>
 
-<section id="chef-gallery" class="zp-host" aria-label="Galería: la hospitalidad libanesa, plato a plato">
+<section id="chef-gallery" class="zp-host" aria-label="معرض: الضيافة اللبنانية، طبقًا بعد طبق">
   <div class="zpx-track" data-zpx>
     <div class="zpx-stage">
 
@@ -1505,323 +1572,323 @@
       <div class="zp-layer" data-zp-layer>
         <div class="zp-img zp-img-0" data-zp-scale="1">
           <article class="xc-card xc-card-bridge">
-            <img src="../design-inspiration/real-fotos/primer-plano-del-chef.jpeg" alt="Chef de du Liban concentrado en el emplatado" loading="eager"/>
+            <img src="../../design-inspiration/real-fotos/primer-plano-del-chef.jpeg" alt="رئيس الطهاة في du Liban يركّز على تحضير الطبق" loading="eager"/>
             <div class="xc-caption">
-              <span class="xc-caption-eyebrow">01 · El chef</span>
-              <p class="xc-caption-title">Mohammad · jefe de cocina</p>
+              <span class="xc-caption-eyebrow">01 · رئيس الطهاة</span>
+              <p class="xc-caption-title">محمد · رئيس الطهاة</p>
             </div>
           </article>
         </div>
         <div class="zp-img zp-img-1" data-zp-scale="3.5">
           <div class="zp-frame">
-            <img src="../design-inspiration/real-fotos/camarero-sirviendo-SAMAK%20MASHWI%20%E2%80%94%20lubina%20a%20la%20parrilla.jpeg" alt="Camarero sirviendo lubina a la parrilla" loading="lazy"/>
+            <img src="../../design-inspiration/real-fotos/camarero-sirviendo-SAMAK%20MASHWI%20%E2%80%94%20lubina%20a%20la%20parrilla.jpeg" alt="Camarero sirviendo lubina a la parrilla" loading="lazy"/>
           </div>
         </div>
         <div class="zp-img zp-img-2" data-zp-scale="4">
           <div class="zp-frame">
-            <img src="../design-inspiration/real-fotos/complementos-bonitos-Labneh%20%20Muhammara%20%20Moutabal%20%20tomate.jpeg" alt="Labneh, muhammara, moutabal y tomate en cuencos" loading="lazy"/>
+            <img src="../../design-inspiration/real-fotos/complementos-bonitos-Labneh%20%20Muhammara%20%20Moutabal%20%20tomate.jpeg" alt="لبنة، محمّرة، متبّل، وطماطم في صحون" loading="lazy"/>
           </div>
         </div>
         <div class="zp-img zp-img-3" data-zp-scale="3.5">
           <div class="zp-frame">
-            <img src="../design-inspiration/real-fotos/primer-plano-diagonal-plato-1.jpeg" alt="Lahme bi Aajin recién hecho" loading="lazy"/>
+            <img src="../../design-inspiration/real-fotos/primer-plano-diagonal-plato-1.jpeg" alt="لحم بعجين طازج" loading="lazy"/>
           </div>
         </div>
         <div class="zp-img zp-img-4" data-zp-scale="4">
           <div class="zp-frame">
-            <img src="../design-inspiration/real-fotos/primer-plano-diagonal-ZAATAR%20%26%20LABNEH%20MANOUCHEH.jpeg" alt="Zaatar y labneh manoucheh recién hecho" loading="lazy"/>
+            <img src="../../design-inspiration/real-fotos/primer-plano-diagonal-ZAATAR%20%26%20LABNEH%20MANOUCHEH.jpeg" alt="منقوشة زعتر ولبنة طازجة" loading="lazy"/>
           </div>
         </div>
         <div class="zp-img zp-img-5" data-zp-scale="5">
           <div class="zp-frame">
-            <img src="../design-inspiration/real-fotos/interior-del-restaurante-2.jpeg" alt="Comedor del restaurante du Liban" loading="lazy"/>
+            <img src="../../design-inspiration/real-fotos/interior-del-restaurante-2.jpeg" alt="Comedor del restaurante du Liban" loading="lazy"/>
           </div>
         </div>
         <div class="zp-img zp-img-6" data-zp-scale="6">
           <div class="zp-frame">
-            <img src="../design-inspiration/real-fotos/primer-plano-montando-cocktail-1.jpeg" alt="Cóctel siendo emplatado en la barra" loading="lazy"/>
+            <img src="../../design-inspiration/real-fotos/primer-plano-montando-cocktail-1.jpeg" alt="كوكتيل قيد التحضير في البار" loading="lazy"/>
           </div>
         </div>
         <div class="zp-vignette" aria-hidden="true"></div>
       </div>
 
       <!-- ──── LAYER 2 · SCROLL X CARRUSEL ─────────────────────────────── -->
-      <div class="xc-layer" data-xc-layer aria-label="Recorrido por du Liban">
+      <div class="xc-layer" data-xc-layer aria-label="جولة في du Liban">
         <div class="xc-head">
-<h3 class="xc-head-title">La hospitalidad libanesa, plato a plato.</h3>
+<h3 class="xc-head-title">الضيافة اللبنانية، طبقًا بعد طبق.</h3>
         </div>
         <div class="xc-viewport">
           <div class="xc-wrap" data-xc-wrap>
 
             <!-- 01 · El chef -->
             <article class="xc-card">
-              <img src="../design-inspiration/real-fotos/primer-plano-del-chef.jpeg" alt="Chef de du Liban concentrado en el emplatado" loading="lazy"/>
+              <img src="../../design-inspiration/real-fotos/primer-plano-del-chef.jpeg" alt="رئيس الطهاة في du Liban يركّز على تحضير الطبق" loading="lazy"/>
               <div class="xc-caption">
-                <span class="xc-caption-eyebrow">01 · El chef</span>
-                <p class="xc-caption-title">Mohammad · jefe de cocina</p>
+                <span class="xc-caption-eyebrow">01 · رئيس الطهاة</span>
+                <p class="xc-caption-title">محمد · رئيس الطهاة</p>
               </div>
               <div class="xc-reveal">
-                <div class="xc-reveal-tags"><span class="xc-tag">Chef</span><span class="xc-tag">Tradición</span></div>
-                <p class="xc-reveal-title">Mohammad, jefe de cocina</p>
-                <p class="xc-reveal-desc">Aprendió en la cocina de su abuela en Beirut, los domingos, antes de cumplir diez años. En du Liban cocina esas recetas familiares aprendidas en aquella cocina — sin atajos, con el horno encendido a las ocho.</p>
+                <div class="xc-reveal-tags"><span class="xc-tag">رئيس الطهاة</span><span class="xc-tag">تقاليد</span></div>
+                <p class="xc-reveal-title">محمد، رئيس الطهاة</p>
+                <p class="xc-reveal-desc">تعلّم في مطبخ جدّته في بيروت، أيام الآحاد، قبل بلوغه العاشرة. في du Liban يطبخ تلك الوصفات العائلية بلا اختصارات، والفرن مشتعل من الثامنة.</p>
               </div>
             </article>
 
             <!-- 02 · El horno -->
             <article class="xc-card">
-              <img src="../design-inspiration/real-fotos/cocinando-horno-ZAATAR%20%26%20LABNEH%20MANOUCHEH%20%E2%80%94%20masa%20al%20horno%20con%20zaatar.jpeg" alt="Manakish recién hechos sobre piedra de horno" loading="lazy"/>
+              <img src="../../design-inspiration/real-fotos/cocinando-horno-ZAATAR%20%26%20LABNEH%20MANOUCHEH%20%E2%80%94%20masa%20al%20horno%20con%20zaatar.jpeg" alt="مناقيش طازجة على حجر الفرن" loading="lazy"/>
               <div class="xc-caption">
-                <span class="xc-caption-eyebrow">02 · El horno</span>
-                <p class="xc-caption-title">Manakish de zaatar</p>
+                <span class="xc-caption-eyebrow">02 · الفرن</span>
+                <p class="xc-caption-title">مناقيش زعتر</p>
               </div>
               <div class="xc-reveal">
-                <div class="xc-reveal-tags"><span class="xc-tag">Horno</span><span class="xc-tag">Vegetariano</span></div>
-                <p class="xc-reveal-title">Manakish de zaatar</p>
-                <p class="xc-reveal-desc">Masa fermentada 24 horas, cubierta con zaatar — tomillo silvestre, sumac y sésamo — y un hilo de aceite. Al horno hasta que la corteza dora y el aroma llena la sala.</p>
+                <div class="xc-reveal-tags"><span class="xc-tag">فرن</span><span class="xc-tag">نباتي</span></div>
+                <p class="xc-reveal-title">مناقيش زعتر</p>
+                <p class="xc-reveal-desc">عجين مخمّر ٢٤ ساعة، مغطّى بالزعتر — زعتر برّي، سمّاق، وسمسم — مع زيت زيتون. في الفرن حتى تكتسب القشرة لونها الذهبي ويملأ العطر القاعة.</p>
               </div>
             </article>
 
             <!-- 03 · La brasa -->
             <article class="xc-card">
-              <img src="../design-inspiration/real-fotos/cocinando-SAMAK%20MASHWI.jpeg" alt="Pescado abierto sobre la parrilla de carbón" loading="lazy"/>
+              <img src="../../design-inspiration/real-fotos/cocinando-SAMAK%20MASHWI.jpeg" alt="سمك مفتوح على شواية الفحم" loading="lazy"/>
               <div class="xc-caption">
-                <span class="xc-caption-eyebrow">03 · La brasa</span>
+                <span class="xc-caption-eyebrow">03 · الفحم</span>
                 <p class="xc-caption-title">Samak mashwi</p>
               </div>
               <div class="xc-reveal">
-                <div class="xc-reveal-tags"><span class="xc-tag">Brasa</span><span class="xc-tag">Pescado</span></div>
-                <p class="xc-reveal-title">Samak Mashwi · pescado a la brasa</p>
-                <p class="xc-reveal-desc">Lubina entera marinada con ajo, limón y comino, abierta sobre carbón vegetal. El humo perfuma la piel y la carne se queda blanca, jugosa, con costra dorada.</p>
+                <div class="xc-reveal-tags"><span class="xc-tag">فحم</span><span class="xc-tag">سمك</span></div>
+                <p class="xc-reveal-title">سمك مشوي · على الفحم</p>
+                <p class="xc-reveal-desc">قاروص كامل متبّل بالثوم والليمون والكمّون، مفتوحٌ على الفحم النباتي. الدخان يعطّر القشرة، واللحم يبقى أبيض، طريًّا، بقشرةٍ ذهبية.</p>
               </div>
             </article>
 
             <!-- 04 · Condimentos -->
             <article class="xc-card">
-              <img src="../design-inspiration/real-fotos/complementos-bonitos-Labneh%20%20Muhammara%20%20Moutabal%20%20tomate.jpeg" alt="Especias libanesas dispuestas en cuencos" loading="lazy"/>
+              <img src="../../design-inspiration/real-fotos/complementos-bonitos-Labneh%20%20Muhammara%20%20Moutabal%20%20tomate.jpeg" alt="بهارات لبنانية في صحونٍ صغيرة" loading="lazy"/>
               <div class="xc-caption">
-                <span class="xc-caption-eyebrow">04 · La despensa</span>
-                <p class="xc-caption-title">Las siete especias</p>
+                <span class="xc-caption-eyebrow">04 · المؤونة</span>
+                <p class="xc-caption-title">البهارات السبعة</p>
               </div>
               <div class="xc-reveal">
-                <div class="xc-reveal-tags"><span class="xc-tag">Despensa</span><span class="xc-tag">Especias</span></div>
-                <p class="xc-reveal-title">El alma del mezze</p>
-                <p class="xc-reveal-desc">Zaatar, sumac, tahini, melaza de granada, comino, cardamomo y pimienta blanca. Sin estas siete especias, ningún plato libanés tiene nombre propio.</p>
+                <div class="xc-reveal-tags"><span class="xc-tag">مؤونة</span><span class="xc-tag">بهارات</span></div>
+                <p class="xc-reveal-title">روح المازات</p>
+                <p class="xc-reveal-desc">زعتر، سمّاق، طحينة، دبس الرمّان، كمّون، هيل، وفلفل أبيض. بلا هذه البهارات السبعة، ما من طبقٍ لبناني يحتفظ باسمه.</p>
               </div>
             </article>
 
             <!-- 05 · Montaje 1 -->
             <article class="xc-card">
-              <img src="../design-inspiration/real-fotos/primer-plano-aero-HUMMUS%20BIL%20PESTO.jpeg" alt="Hummus bil pesto con pesto de pistacho, visto desde arriba" loading="lazy"/>
+              <img src="../../design-inspiration/real-fotos/primer-plano-aero-HUMMUS%20BIL%20PESTO.jpeg" alt="حمّص بالبيستو مع بيستو الفستق، من الأعلى" loading="lazy"/>
               <div class="xc-caption">
-                <span class="xc-caption-eyebrow">05 · Mezze frío</span>
+                <span class="xc-caption-eyebrow">05 · مازات باردة</span>
                 <p class="xc-caption-title">Hummus bil Pesto</p>
               </div>
               <div class="xc-reveal">
-                <div class="xc-reveal-tags"><span class="xc-tag">Mezze frío</span><span class="xc-tag">Garbanzo</span></div>
+                <div class="xc-reveal-tags"><span class="xc-tag">مازات باردة</span><span class="xc-tag">حمّص</span></div>
                 <p class="xc-reveal-title">Hummus bil Pesto</p>
-                <p class="xc-reveal-desc">Hummus clásico de garbanzo y tahini, terminado con un pesto verde de albahaca, piñones y ajo. Aceite de oliva en hilo y pan de pita caliente para mojar.</p>
+                <p class="xc-reveal-desc">حمّص كلاسيكي مع طحينة، يُختم ببيستو أخضر من الريحان والصنوبر والثوم. زيت زيتون فوقه وخبز عربي ساخن للغمس.</p>
               </div>
             </article>
 
             <!-- 06 · Montaje 2 -->
             <article class="xc-card">
-              <img src="../design-inspiration/real-fotos/montando-plato-de-ZAATAR%20%26%20LABNEH%20MANOUCHEH-2.jpeg" alt="Mezze libanés recién emplatado en cocina" loading="lazy"/>
+              <img src="../../design-inspiration/real-fotos/montando-plato-de-ZAATAR%20%26%20LABNEH%20MANOUCHEH-2.jpeg" alt="مازات لبنانية طازجة في المطبخ" loading="lazy"/>
               <div class="xc-caption">
-                <span class="xc-caption-eyebrow">06 · Mezze frío</span>
+                <span class="xc-caption-eyebrow">06 · مازات باردة</span>
                 <p class="xc-caption-title">Moutabal</p>
               </div>
               <div class="xc-reveal">
-                <div class="xc-reveal-tags"><span class="xc-tag">Mezze frío</span><span class="xc-tag">Berenjena</span></div>
-                <p class="xc-reveal-title">Moutabal · berenjena ahumada</p>
-                <p class="xc-reveal-desc">Berenjena ahumada a fuego abierto, batida con tahini, ajo, zumo de limón y yogur. Cremoso, profundo, con granos de granada y aceite encima.</p>
+                <div class="xc-reveal-tags"><span class="xc-tag">مازات باردة</span><span class="xc-tag">باذنجان</span></div>
+                <p class="xc-reveal-title">متبّل · باذنجان مدخّن</p>
+                <p class="xc-reveal-desc">باذنجان مدخّن على نار مفتوحة، يُخفق مع الطحينة، الثوم، عصير الليمون، واللبن. ناعم، عميق، مع حبّ رمّان وزيت زيتون فوقه.</p>
               </div>
             </article>
 
             <!-- 07 · Montaje 3 -->
             <article class="xc-card">
-              <img src="../design-inspiration/real-fotos/montando-plato-de-AISH%20EL%20SARAYA.jpeg" alt="Detalle del emplatado libanés" loading="lazy"/>
+              <img src="../../design-inspiration/real-fotos/montando-plato-de-AISH%20EL%20SARAYA.jpeg" alt="تفصيلٌ من تقديم طبق لبناني" loading="lazy"/>
               <div class="xc-caption">
-                <span class="xc-caption-eyebrow">07 · El detalle</span>
-                <p class="xc-caption-title">El último gesto</p>
+                <span class="xc-caption-eyebrow">07 · التفصيل</span>
+                <p class="xc-caption-title">اللمسة الأخيرة</p>
               </div>
               <div class="xc-reveal">
-                <div class="xc-reveal-tags"><span class="xc-tag">Cocina</span><span class="xc-tag">Detalle</span></div>
-                <p class="xc-reveal-title">El último gesto</p>
-                <p class="xc-reveal-desc">Cada plato sale de cocina dos veces: una con la receta, otra con los detalles — la flor de granada, la hoja de cilantro, el hilo final de aceite.</p>
+                <div class="xc-reveal-tags"><span class="xc-tag">المطبخ</span><span class="xc-tag">تفصيل</span></div>
+                <p class="xc-reveal-title">اللمسة الأخيرة</p>
+                <p class="xc-reveal-desc">كلّ طبق يغادر المطبخ مرّتين: مرّة بالوصفة، ومرّة بالتفاصيل — زهرة الرمّان، ورقة الكزبرة، خيط زيت الزيتون الأخير.</p>
               </div>
             </article>
 
             <!-- 08 · Montaje 4 -->
             <article class="xc-card">
-              <img src="../design-inspiration/real-fotos/primer-plano-diagonal-plato-1.jpeg" alt="Masa fina con carne especiada recién horneada" loading="lazy"/>
+              <img src="../../design-inspiration/real-fotos/primer-plano-diagonal-plato-1.jpeg" alt="عجين رفيع مع لحمة متبّلة طازجة من الفرن" loading="lazy"/>
               <div class="xc-caption">
-                <span class="xc-caption-eyebrow">08 · Mezze caliente</span>
+                <span class="xc-caption-eyebrow">08 · مازات ساخنة</span>
                 <p class="xc-caption-title">Kebbeh Sajyeh</p>
               </div>
               <div class="xc-reveal">
-                <div class="xc-reveal-tags"><span class="xc-tag">Mezze caliente</span><span class="xc-tag">Cordero</span></div>
+                <div class="xc-reveal-tags"><span class="xc-tag">مازات ساخنة</span><span class="xc-tag">خروف</span></div>
                 <p class="xc-reveal-title">Kebbeh Sajyeh</p>
-                <p class="xc-reveal-desc">Cordero picado a cuchillo con bulgur fino y siete especias. Bolitas rellenas de piñones y cebolla caramelizada, fritas al momento y servidas con yogur de menta.</p>
+                <p class="xc-reveal-desc">لحمة خروف مفرومة بالسكّين مع برغل ناعم والبهارات السبعة. كرات محشيّة بالصنوبر والبصل المحمّر، تُقلى على الفور وتُقدَّم مع لبن النعناع.</p>
               </div>
             </article>
 
             <!-- 09 · Montaje 5 -->
             <article class="xc-card">
-              <img src="../design-inspiration/real-fotos/montando-plato-de-%20ZAATAR%20%26%20LABNEH%20MANOUCHEH.jpeg" alt="Mezze caliente recién montado en cocina" loading="lazy"/>
+              <img src="../../design-inspiration/real-fotos/montando-plato-de-%20ZAATAR%20%26%20LABNEH%20MANOUCHEH.jpeg" alt="مازات ساخنة طازجة في المطبخ" loading="lazy"/>
               <div class="xc-caption">
-                <span class="xc-caption-eyebrow">09 · Mezze caliente</span>
+                <span class="xc-caption-eyebrow">09 · مازات ساخنة</span>
                 <p class="xc-caption-title">Fatteh al Rubyan</p>
               </div>
               <div class="xc-reveal">
-                <div class="xc-reveal-tags"><span class="xc-tag">Mezze caliente</span><span class="xc-tag">Marisco</span></div>
+                <div class="xc-reveal-tags"><span class="xc-tag">مازات ساخنة</span><span class="xc-tag">مأكولات بحرية</span></div>
                 <p class="xc-reveal-title">Fatteh al Rubyan</p>
-                <p class="xc-reveal-desc">Pan crujiente, langostinos salteados con ajo y cilantro, yogur batido con tahini y piñones tostados. Capa sobre capa — se come con cuchara.</p>
+                <p class="xc-reveal-desc">خبز مقرمش، روبيان مع الثوم والكزبرة، لبن مخفوق بالطحينة، وصنوبر محمّص. طبقة فوق طبقة — يُؤكل بالملعقة.</p>
               </div>
             </article>
 
             <!-- 10 · Primer plano diagonal 1 -->
             <article class="xc-card">
-              <img src="../design-inspiration/real-fotos/primer-plano-diagonal-plato-1.jpeg" alt="Lahme bi Aajin recién hecho" loading="lazy"/>
+              <img src="../../design-inspiration/real-fotos/primer-plano-diagonal-plato-1.jpeg" alt="لحم بعجين طازج" loading="lazy"/>
               <div class="xc-caption">
-                <span class="xc-caption-eyebrow">10 · Horno</span>
+                <span class="xc-caption-eyebrow">10 · فرن</span>
                 <p class="xc-caption-title">Lahme bi Aajin</p>
               </div>
               <div class="xc-reveal">
-                <div class="xc-reveal-tags"><span class="xc-tag">Horno</span><span class="xc-tag">Cordero</span></div>
+                <div class="xc-reveal-tags"><span class="xc-tag">فرن</span><span class="xc-tag">خروف</span></div>
                 <p class="xc-reveal-title">Lahme bi Aajin</p>
-                <p class="xc-reveal-desc">Masa fina cubierta con cordero picado, tomate concassé, cebolla y siete especias. La pizza beirutí — al horno hasta que las puntas crujen, y un cuarto de limón al lado.</p>
+                <p class="xc-reveal-desc">عجين رفيع مغطّى بلحمة خروف مفرومة، طماطم مفروم، بصل، والبهارات السبعة. بيتزا بيروت — تُخبز حتى تتقرمش حوافها، مع شريحة ليمون إلى جانبها.</p>
               </div>
             </article>
 
             <!-- 11 · Primer plano diagonal 2 -->
             <article class="xc-card">
-              <img src="../design-inspiration/real-fotos/primer-plano-diagonal-plato-2.jpeg" alt="Manakish con labneh y aceitunas" loading="lazy"/>
+              <img src="../../design-inspiration/real-fotos/primer-plano-diagonal-plato-2.jpeg" alt="مناقيش مع لبنة وزيتون" loading="lazy"/>
               <div class="xc-caption">
-                <span class="xc-caption-eyebrow">11 · Horno</span>
+                <span class="xc-caption-eyebrow">11 · فرن</span>
                 <p class="xc-caption-title">Zaatar &amp; Labneh</p>
               </div>
               <div class="xc-reveal">
-                <div class="xc-reveal-tags"><span class="xc-tag">Horno</span><span class="xc-tag">Vegetariano</span></div>
+                <div class="xc-reveal-tags"><span class="xc-tag">فرن</span><span class="xc-tag">نباتي</span></div>
                 <p class="xc-reveal-title">Zaatar &amp; Labneh</p>
-                <p class="xc-reveal-desc">Manakish de zaatar con labneh casero — yogur colado tres días — y aceitunas negras de Líbano. El desayuno de toda la costa, servido hasta medianoche.</p>
+                <p class="xc-reveal-desc">مناقيش زعتر مع لبنة بيتية — لبنٌ مصفّى ثلاثة أيام — وزيتون أسود من لبنان. فطور الساحل، يُقدَّم إلى منتصف الليل.</p>
               </div>
             </article>
 
             <!-- 12 · Primer plano diagonal 3 -->
             <article class="xc-card">
-              <img src="../design-inspiration/real-fotos/primer-plano-diagonal-plato-2.jpeg" alt="Ensalada libanesa con verduras frescas y pan de pita" loading="lazy"/>
+              <img src="../../design-inspiration/real-fotos/primer-plano-diagonal-plato-2.jpeg" alt="سلطة لبنانية مع خضار طازجة وخبز عربي" loading="lazy"/>
               <div class="xc-caption">
-                <span class="xc-caption-eyebrow">12 · Mezze frío</span>
+                <span class="xc-caption-eyebrow">12 · مازات باردة</span>
                 <p class="xc-caption-title">Fattoush</p>
               </div>
               <div class="xc-reveal">
-                <div class="xc-reveal-tags"><span class="xc-tag">Ensalada</span><span class="xc-tag">Mezze frío</span></div>
+                <div class="xc-reveal-tags"><span class="xc-tag">سلطة</span><span class="xc-tag">مازات باردة</span></div>
                 <p class="xc-reveal-title">Fattoush</p>
-                <p class="xc-reveal-desc">Tomate, pepino, rábano, rúcula y menta, aliñados con melaza de granada y aceite. Cuadraditos de pan de pita tostado para crujido — la ensalada que abre la mesa.</p>
+                <p class="xc-reveal-desc">طماطم، خيار، فجل، جرجير، ونعناع، تُتبَّل بدبس الرمّان وزيت الزيتون. مكعّبات خبز عربي محمّص للقرمشة — السلطة التي تفتح الطاولة.</p>
               </div>
             </article>
 
             <!-- 13 · Primer plano diagonal 4 -->
             <article class="xc-card">
-              <img src="../design-inspiration/real-fotos/primer-plano-aero-HUMMUS.jpeg" alt="Hummus cremoso de garbanzo, visto desde arriba" loading="lazy"/>
+              <img src="../../design-inspiration/real-fotos/primer-plano-aero-HUMMUS.jpeg" alt="حمّص بالحمّص ناعم، من الأعلى" loading="lazy"/>
               <div class="xc-caption">
-                <span class="xc-caption-eyebrow">13 · Mezze caliente</span>
+                <span class="xc-caption-eyebrow">13 · مازات ساخنة</span>
                 <p class="xc-caption-title">Hummus Lahme</p>
               </div>
               <div class="xc-reveal">
-                <div class="xc-reveal-tags"><span class="xc-tag">Mezze caliente</span><span class="xc-tag">Cordero</span></div>
+                <div class="xc-reveal-tags"><span class="xc-tag">مازات ساخنة</span><span class="xc-tag">خروف</span></div>
                 <p class="xc-reveal-title">Hummus Lahme</p>
-                <p class="xc-reveal-desc">Hummus caliente coronado con cordero salteado en mantequilla clarificada y piñones dorados. El contraste entre la crema del garbanzo y el calor de la carne.</p>
+                <p class="xc-reveal-desc">حمّص ساخن متوّج بلحمة خروف مقلية بالسمن المصفّى وصنوبر ذهبي. تباين بين نعومة الحمّص وحرارة اللحم.</p>
               </div>
             </article>
 
             <!-- 14 · Primer plano diagonal 5 -->
             <article class="xc-card">
-              <img src="../design-inspiration/real-fotos/primer-plano-diagonal-plato-5.jpeg" alt="Kabab de cordero recién hecho" loading="lazy"/>
+              <img src="../../design-inspiration/real-fotos/primer-plano-diagonal-plato-5.jpeg" alt="كباب خروف طازج" loading="lazy"/>
               <div class="xc-caption">
-                <span class="xc-caption-eyebrow">14 · Brasa</span>
+                <span class="xc-caption-eyebrow">14 · فحم</span>
                 <p class="xc-caption-title">Kabab</p>
               </div>
               <div class="xc-reveal">
-                <div class="xc-reveal-tags"><span class="xc-tag">Brasa</span><span class="xc-tag">Cordero</span></div>
+                <div class="xc-reveal-tags"><span class="xc-tag">فحم</span><span class="xc-tag">خروف</span></div>
                 <p class="xc-reveal-title">Kabab</p>
-                <p class="xc-reveal-desc">Pinchos de cordero picado a cuchillo con perejil y cebolla, sobre carbón vegetal. Acompañados de tomate asado, cebolla con sumac y pan caliente para envolver.</p>
+                <p class="xc-reveal-desc">أسياخ خروف مفرومة بالسكّين مع البقدونس والبصل، على الفحم النباتي. تُقدَّم مع طماطم مشويّة، بصل بالسمّاق، وخبز ساخن للفّ.</p>
               </div>
             </article>
 
             <!-- 15 · Primer plano diagonal 6 -->
             <article class="xc-card">
-              <img src="../design-inspiration/real-fotos/primer-plano-diagonal-ZAATAR%20%26%20LABNEH%20MANOUCHEH.jpeg" alt="Jarrete de cordero con su jugo" loading="lazy"/>
+              <img src="../../design-inspiration/real-fotos/primer-plano-diagonal-ZAATAR%20%26%20LABNEH%20MANOUCHEH.jpeg" alt="موزات خروف مع مرقها" loading="lazy"/>
               <div class="xc-caption">
-                <span class="xc-caption-eyebrow">15 · Brasa</span>
+                <span class="xc-caption-eyebrow">15 · فحم</span>
                 <p class="xc-caption-title">Mawzet Kharouf</p>
               </div>
               <div class="xc-reveal">
-                <div class="xc-reveal-tags"><span class="xc-tag">Cordero lento</span><span class="xc-tag">Brasa</span></div>
+                <div class="xc-reveal-tags"><span class="xc-tag">خروف على نار هادئة</span><span class="xc-tag">فحم</span></div>
                 <p class="xc-reveal-title">Mawzet Kharouf</p>
-                <p class="xc-reveal-desc">Jarrete de cordero cocinado seis horas con cebolla, tomate, canela y comino. Carne que se separa con la cuchara y caldo concentrado debajo, con freekeh ahumado.</p>
+                <p class="xc-reveal-desc">موزات خروف تُطبخ ست ساعات مع البصل والطماطم والقرفة والكمّون. لحمٌ ينفصل بالملعقة ومرقٌ مركّز تحته، مع فريكة مدخّنة.</p>
               </div>
             </article>
 
             <!-- 16 · Postre 1 -->
             <article class="xc-card">
-              <img src="../design-inspiration/real-fotos/primer-plano-aero-postre-AISH%20EL%20SARAYA.jpeg" alt="Postre libanés visto desde arriba" loading="lazy"/>
+              <img src="../../design-inspiration/real-fotos/primer-plano-aero-postre-AISH%20EL%20SARAYA.jpeg" alt="حلوى لبنانية من الأعلى" loading="lazy"/>
               <div class="xc-caption">
-                <span class="xc-caption-eyebrow">16 · Postre</span>
+                <span class="xc-caption-eyebrow">16 · حلويات</span>
                 <p class="xc-caption-title">Knefeh</p>
               </div>
               <div class="xc-reveal">
-                <div class="xc-reveal-tags"><span class="xc-tag">Postre</span><span class="xc-tag">Caliente</span></div>
+                <div class="xc-reveal-tags"><span class="xc-tag">حلويات</span><span class="xc-tag">ساخنة</span></div>
                 <p class="xc-reveal-title">Knefeh</p>
-                <p class="xc-reveal-desc">Cabello de ángel relleno de queso fresco, horneado hasta dorar y bañado en almíbar de azahar. Se sirve caliente, con un café cardamomo al lado.</p>
+                <p class="xc-reveal-desc">كنافة بالشعر محشيّة بالجبنة الطازجة، تُخبز حتى تذهب، تُغمر بقطر الزهر. تُقدَّم ساخنة مع قهوة بالهيل.</p>
               </div>
             </article>
 
             <!-- 17 · Postre 2 -->
             <article class="xc-card">
-              <img src="../design-inspiration/real-fotos/montando-plato-de-MHALABIEH%20%E2%80%94%20postre%20de%20leche.jpeg" alt="Mafroukit con ashta y pistacho" loading="lazy"/>
+              <img src="../../design-inspiration/real-fotos/montando-plato-de-MHALABIEH%20%E2%80%94%20postre%20de%20leche.jpeg" alt="مفروكة مع قشطة وفستق" loading="lazy"/>
               <div class="xc-caption">
-                <span class="xc-caption-eyebrow">17 · Postre</span>
+                <span class="xc-caption-eyebrow">17 · حلويات</span>
                 <p class="xc-caption-title">Mafroukit Ashta</p>
               </div>
               <div class="xc-reveal">
-                <div class="xc-reveal-tags"><span class="xc-tag">Postre</span><span class="xc-tag">Pistacho</span></div>
+                <div class="xc-reveal-tags"><span class="xc-tag">حلويات</span><span class="xc-tag">فستق</span></div>
                 <p class="xc-reveal-title">Mafroukit Ashta</p>
-                <p class="xc-reveal-desc">Sémola dorada con miel, mantequilla y agua de azahar. Encima, ashta — la nata reducida libanesa — y un puñado de pistachos enteros del Bekaa.</p>
+                <p class="xc-reveal-desc">سميد ذهبي مع عسل، زبدة، وماء الزهر. فوقه قشطة — كريمة لبنانية مكثّفة — وحفنة فستق كامل من البقاع.</p>
               </div>
             </article>
 
             <!-- 18 · Postre 3 -->
             <article class="xc-card">
-              <img src="../design-inspiration/real-fotos/montando-plato-de-AISH%20EL%20SARAYA.jpeg" alt="Em Ali con frutos secos" loading="lazy"/>
+              <img src="../../design-inspiration/real-fotos/montando-plato-de-AISH%20EL%20SARAYA.jpeg" alt="أم علي مع مكسّرات" loading="lazy"/>
               <div class="xc-caption">
-                <span class="xc-caption-eyebrow">18 · Postre</span>
+                <span class="xc-caption-eyebrow">18 · حلويات</span>
                 <p class="xc-caption-title">Em Ali</p>
               </div>
               <div class="xc-reveal">
-                <div class="xc-reveal-tags"><span class="xc-tag">Postre</span><span class="xc-tag">Frutos secos</span></div>
+                <div class="xc-reveal-tags"><span class="xc-tag">حلويات</span><span class="xc-tag">مكسّرات</span></div>
                 <p class="xc-reveal-title">Em Ali</p>
-                <p class="xc-reveal-desc">El pudding de hojaldre tradicional: capas finas, leche caliente perfumada con cardamomo, almendras, pistachos y coco rallado por encima — recién horneado.</p>
+                <p class="xc-reveal-desc">بودينغ المعجّنات التقليدي: طبقات رفيعة، حليب ساخن معطّر بالهيل، لوز، فستق، وجوز الهند المبروش فوقه — طازج من الفرن.</p>
               </div>
             </article>
 
             <!-- 19 · Coctel 1 -->
             <article class="xc-card">
-              <img src="../design-inspiration/real-fotos/primer-plano-montando-cocktail-1.jpeg" alt="Cóctel con melaza de granada" loading="lazy"/>
+              <img src="../../design-inspiration/real-fotos/primer-plano-montando-cocktail-1.jpeg" alt="كوكتيل مع دبس الرمّان" loading="lazy"/>
               <div class="xc-caption">
                 <span class="xc-caption-eyebrow">19 · Bar</span>
                 <p class="xc-caption-title">Granada &amp; Mezcal</p>
               </div>
               <div class="xc-reveal">
-                <div class="xc-reveal-tags"><span class="xc-tag">Bar</span><span class="xc-tag">Coctelería</span></div>
+                <div class="xc-reveal-tags"><span class="xc-tag">البار</span><span class="xc-tag">كوكتيل</span></div>
                 <p class="xc-reveal-title">Granada &amp; Mezcal</p>
-                <p class="xc-reveal-desc">Mezcal con melaza de granada y zumo de lima. Inspirado en el grenadine — granada y azúcar reducidos a fuego lento como en los pueblos del sur.</p>
+                <p class="xc-reveal-desc">ميسكال مع دبس الرمّان وعصير الليمون الحامض. مستوحى من الگرينادين — رمّان وسكر يُخفّضان على نار هادئة كما في قرى الجنوب.</p>
               </div>
             </article>
 
             <!-- 20 · Coctel 2 -->
             <article class="xc-card">
-              <img src="../design-inspiration/real-fotos/primer-plano-montando-cocktail-2.jpeg" alt="Arak sour servido en copa" loading="lazy"/>
+              <img src="../../design-inspiration/real-fotos/primer-plano-montando-cocktail-2.jpeg" alt="عرق ساور في كأس" loading="lazy"/>
               <div class="xc-caption">
                 <span class="xc-caption-eyebrow">20 · Bar</span>
                 <p class="xc-caption-title">Arak Sour</p>
@@ -1829,273 +1896,273 @@
               <div class="xc-reveal">
                 <div class="xc-reveal-tags"><span class="xc-tag">Bar</span><span class="xc-tag">Arak</span></div>
                 <p class="xc-reveal-title">Arak Sour</p>
-                <p class="xc-reveal-desc">Arak — el anisado libanés — con zumo de limón fresco, jarabe de azahar y clara batida. Servido en copa fría con piel de naranja.</p>
+                <p class="xc-reveal-desc">عرق — اليانسون اللبناني — مع عصير الليمون الطازج، شراب الزهر، وبياض البيض المخفوق. يُقدَّم في كأس باردة مع قشر برتقال.</p>
               </div>
             </article>
 
             <!-- 21 · Probando 1 -->
             <article class="xc-card">
-              <img src="../design-inspiration/real-fotos/plano-aereo-probando-SAMAK%20MASHWI,%20OKHTOBUT%20MASHWI%20y%20probablemente%20HUMMUS.jpeg" alt="Manos compartiendo platos desde arriba" loading="lazy"/>
+              <img src="../../design-inspiration/real-fotos/plano-aereo-probando-SAMAK%20MASHWI,%20OKHTOBUT%20MASHWI%20y%20probablemente%20HUMMUS.jpeg" alt="أيدٍ تشارك الأطباق من الأعلى" loading="lazy"/>
               <div class="xc-caption">
-                <span class="xc-caption-eyebrow">21 · Mesa</span>
-                <p class="xc-caption-title">Compartir es libanés</p>
+                <span class="xc-caption-eyebrow">21 · الطاولة</span>
+                <p class="xc-caption-title">المشاركة لبنانية</p>
               </div>
               <div class="xc-reveal">
                 <div class="xc-reveal-tags"><span class="xc-tag">Cultura</span><span class="xc-tag">Mezze</span></div>
-                <p class="xc-reveal-title">Compartir es libanés</p>
-                <p class="xc-reveal-desc">La mesa libanesa nunca es de uno solo. Los mezze llegan al centro y todos cogen del mismo plato — eso es lo que hace que la comida sepa a hogar.</p>
+                <p class="xc-reveal-title">المشاركة لبنانية</p>
+                <p class="xc-reveal-desc">الطاولة اللبنانية ليست لشخصٍ واحد أبدًا. تصل المازات إلى الوسط، والجميع يمدّون أيديهم إلى الطبق نفسه — هذا ما يجعل للطعام طعمَ البيت.</p>
               </div>
             </article>
 
             <!-- 22 · Probando 2 -->
             <article class="xc-card">
-              <img src="../design-inspiration/real-fotos/plano-diagonal-probando-OKHTOBUT%20MASHWI%20%E2%80%94%20pulpo%20a%20la%20parrilla.jpeg" alt="Pan, hummus y menta en el primer bocado" loading="lazy"/>
+              <img src="../../design-inspiration/real-fotos/plano-diagonal-probando-OKHTOBUT%20MASHWI%20%E2%80%94%20pulpo%20a%20la%20parrilla.jpeg" alt="خبز، حمّص، ونعناع في اللقمة الأولى" loading="lazy"/>
               <div class="xc-caption">
-                <span class="xc-caption-eyebrow">22 · Mesa</span>
-                <p class="xc-caption-title">El primer bocado</p>
+                <span class="xc-caption-eyebrow">22 · الطاولة</span>
+                <p class="xc-caption-title">اللقمة الأولى</p>
               </div>
               <div class="xc-reveal">
                 <div class="xc-reveal-tags"><span class="xc-tag">Ritual</span><span class="xc-tag">Mezze</span></div>
-                <p class="xc-reveal-title">El primer bocado</p>
-                <p class="xc-reveal-desc">El pan caliente recién salido del horno, el hummus en el centro, una hoja de menta. Así empieza siempre — el ritual antes del ritual.</p>
+                <p class="xc-reveal-title">اللقمة الأولى</p>
+                <p class="xc-reveal-desc">خبزٌ ساخن لتوّه من الفرن، حمّصٌ في الوسط، ورقة نعناع. هكذا تبدأ دائمًا — الطقس قبل الطقس.</p>
               </div>
             </article>
 
             <!-- 23 · Mesa abundante -->
             <article class="xc-card">
-              <img src="../design-inspiration/real-fotos/mesa-comida-lujo-abundante.jpeg" alt="Mesa libanesa completa con mezze" loading="lazy"/>
+              <img src="../../design-inspiration/real-fotos/mesa-comida-lujo-abundante.jpeg" alt="طاولة لبنانية كاملة بالمازات" loading="lazy"/>
               <div class="xc-caption">
-                <span class="xc-caption-eyebrow">23 · Mesa</span>
-                <p class="xc-caption-title">Una mesa libanesa</p>
+                <span class="xc-caption-eyebrow">23 · الطاولة</span>
+                <p class="xc-caption-title">طاولةٌ لبنانية</p>
               </div>
               <div class="xc-reveal">
-                <div class="xc-reveal-tags"><span class="xc-tag">Mesa</span><span class="xc-tag">Sobremesa</span></div>
-                <p class="xc-reveal-title">Una mesa libanesa</p>
-                <p class="xc-reveal-desc">Veinte mezze, el horno y la brasa, vino del Bekaa, agua de azahar al final. Para cuatro, para ocho, para los que vengan a unirse.</p>
+                <div class="xc-reveal-tags"><span class="xc-tag">طاولة</span><span class="xc-tag">سهرة</span></div>
+                <p class="xc-reveal-title">طاولةٌ لبنانية</p>
+                <p class="xc-reveal-desc">عشرون مازة، الفرن والفحم، نبيذ البقاع، ماء الزهر في الختام. لأربعة، لثمانية، ولكلّ من ينضمّ.</p>
               </div>
             </article>
 
             <!-- 24 · Comiendo abundante -->
             <article class="xc-card">
-              <img src="../design-inspiration/real-fotos/comiendo-abundante-mesa-lujo.jpeg" alt="Comensales compartiendo cena libanesa" loading="lazy"/>
+              <img src="../../design-inspiration/real-fotos/comiendo-abundante-mesa-lujo.jpeg" alt="ضيوف يتشاركون عشاءً لبنانيًا" loading="lazy"/>
               <div class="xc-caption">
-                <span class="xc-caption-eyebrow">24 · Sala</span>
-                <p class="xc-caption-title">Cenar despacio</p>
+                <span class="xc-caption-eyebrow">24 · القاعة</span>
+                <p class="xc-caption-title">عشاءٌ على مهل</p>
               </div>
               <div class="xc-reveal">
-                <div class="xc-reveal-tags"><span class="xc-tag">Sala</span><span class="xc-tag">Ritual</span></div>
-                <p class="xc-reveal-title">Cenar despacio</p>
-                <p class="xc-reveal-desc">En Beirut nadie come en una hora. Aquí tampoco — reserva con tiempo y deja que la mesa se llene de a poco, como cuando es en casa.</p>
+                <div class="xc-reveal-tags"><span class="xc-tag">القاعة</span><span class="xc-tag">طقس</span></div>
+                <p class="xc-reveal-title">عشاءٌ على مهل</p>
+                <p class="xc-reveal-desc">في بيروت لا يأكل أحدٌ في ساعة، وكذلك هنا — احجز مبكّرًا واترك الطاولة تمتلئ شيئًا فشيئًا، كما في البيت.</p>
               </div>
             </article>
 
             <!-- 25 · Bebiendo abundante -->
             <article class="xc-card">
-              <img src="../design-inspiration/real-fotos/bebiendo-abundante-mesa-lujo.jpeg" alt="Copas servidas en la mesa" loading="lazy"/>
+              <img src="../../design-inspiration/real-fotos/bebiendo-abundante-mesa-lujo.jpeg" alt="كؤوس على الطاولة" loading="lazy"/>
               <div class="xc-caption">
-                <span class="xc-caption-eyebrow">25 · Bar</span>
-                <p class="xc-caption-title">Vinos del Bekaa</p>
+                <span class="xc-caption-eyebrow">25 · البار</span>
+                <p class="xc-caption-title">نبيذ البقاع</p>
               </div>
               <div class="xc-reveal">
-                <div class="xc-reveal-tags"><span class="xc-tag">Bar</span><span class="xc-tag">Vino</span></div>
-                <p class="xc-reveal-title">Vinos del Bekaa</p>
-                <p class="xc-reveal-desc">Carta libanesa de viñedos a mil metros — Château Musar, Ksara, Domaine des Tourelles — junto a referencias de la Ribera, Rueda y la Borgoña.</p>
+                <div class="xc-reveal-tags"><span class="xc-tag">البار</span><span class="xc-tag">نبيذ</span></div>
+                <p class="xc-reveal-title">نبيذ البقاع</p>
+                <p class="xc-reveal-desc">قائمة لبنانية من كروم على ارتفاع ألف متر — شاتو موسار، كسارة، دومين دي توريل — إلى جانب نبيذ من ريبيرا، روِيدا، وبرغندي.</p>
               </div>
             </article>
 
             <!-- 26 · Detalles 1 -->
             <article class="xc-card">
-              <img src="../design-inspiration/real-fotos/detalles-bonitos-decoración-1.jpeg" alt="Detalle de la decoración de la sala" loading="lazy"/>
+              <img src="../../design-inspiration/real-fotos/detalles-bonitos-decoración-1.jpeg" alt="تفصيلٌ من ديكور القاعة" loading="lazy"/>
               <div class="xc-caption">
-                <span class="xc-caption-eyebrow">26 · Detalle</span>
-                <p class="xc-caption-title">Detalles de Beirut</p>
+                <span class="xc-caption-eyebrow">26 · تفصيل</span>
+                <p class="xc-caption-title">تفاصيلٌ من بيروت</p>
               </div>
               <div class="xc-reveal">
-                <div class="xc-reveal-tags"><span class="xc-tag">Sala</span><span class="xc-tag">Decoración</span></div>
-                <p class="xc-reveal-title">Detalles de Beirut</p>
-                <p class="xc-reveal-desc">Tapicería bordada a mano, lámparas de latón, mosaicos de mármol. Cada objeto de la sala viene de algún rincón del Líbano — del zoco o de la casa familiar.</p>
+                <div class="xc-reveal-tags"><span class="xc-tag">القاعة</span><span class="xc-tag">ديكور</span></div>
+                <p class="xc-reveal-title">تفاصيلٌ من بيروت</p>
+                <p class="xc-reveal-desc">أقمشة مطرّزة يدويًا، قناديل نحاسية، فسيفساء رخامية. كلّ قطعة في القاعة تأتي من زاوية في لبنان — من السوق أو من بيت العائلة.</p>
               </div>
             </article>
 
             <!-- 27 · Detalles 2 -->
             <article class="xc-card">
-              <img src="../design-inspiration/real-fotos/detalles-bonitos-decoración-2.jpeg" alt="Vajilla y cristalería de la mesa" loading="lazy"/>
+              <img src="../../design-inspiration/real-fotos/detalles-bonitos-decoración-2.jpeg" alt="أوانٍ وكؤوس على الطاولة" loading="lazy"/>
               <div class="xc-caption">
-                <span class="xc-caption-eyebrow">27 · Detalle</span>
-                <p class="xc-caption-title">Hospitalidad en mesa</p>
+                <span class="xc-caption-eyebrow">27 · تفصيل</span>
+                <p class="xc-caption-title">الضيافة على الطاولة</p>
               </div>
               <div class="xc-reveal">
-                <div class="xc-reveal-tags"><span class="xc-tag">Sala</span><span class="xc-tag">Mesa</span></div>
-                <p class="xc-reveal-title">Hospitalidad en mesa</p>
-                <p class="xc-reveal-desc">Vajilla pintada, cubertería con peso, copas finas. La forma en que se sirve también es parte del plato — el detalle se ve antes que el sabor.</p>
+                <div class="xc-reveal-tags"><span class="xc-tag">القاعة</span><span class="xc-tag">طاولة</span></div>
+                <p class="xc-reveal-title">الضيافة على الطاولة</p>
+                <p class="xc-reveal-desc">أوانٍ مرسومة باليد، أدواتٌ ثقيلة، كؤوسٌ رفيعة. طريقة التقديم جزءٌ من الطبق — التفصيل يُرى قبل النكهة.</p>
               </div>
             </article>
 
             <!-- 28 · Detalles 3 -->
             <article class="xc-card">
-              <img src="../design-inspiration/real-fotos/detalles-bonitos-decoración-3.jpeg" alt="Textura de madera y cobre en la sala" loading="lazy"/>
+              <img src="../../design-inspiration/real-fotos/detalles-bonitos-decoración-3.jpeg" alt="ملمس الخشب والنحاس في القاعة" loading="lazy"/>
               <div class="xc-caption">
-                <span class="xc-caption-eyebrow">28 · Detalle</span>
-                <p class="xc-caption-title">La textura de la casa</p>
+                <span class="xc-caption-eyebrow">28 · تفصيل</span>
+                <p class="xc-caption-title">ملمس البيت</p>
               </div>
               <div class="xc-reveal">
-                <div class="xc-reveal-tags"><span class="xc-tag">Sala</span><span class="xc-tag">Diseño</span></div>
-                <p class="xc-reveal-title">La textura de la casa</p>
-                <p class="xc-reveal-desc">Madera oscura, cobre martillado, telas naturales. Una sala que se siente con las manos antes que con los ojos — pensada para no tener prisa.</p>
+                <div class="xc-reveal-tags"><span class="xc-tag">القاعة</span><span class="xc-tag">تصميم</span></div>
+                <p class="xc-reveal-title">ملمس البيت</p>
+                <p class="xc-reveal-desc">خشبٌ داكن، نحاسٌ مطروق، أقمشةٌ طبيعية. قاعةٌ تُحَسّ بالأيدي قبل العيون — مصمّمة بحيث لا يستعجل أحد.</p>
               </div>
             </article>
 
             <!-- 29 · Lujo revisando menú -->
             <article class="xc-card">
-              <img src="../design-inspiration/real-fotos/lujo-revisando-el-menu.jpeg" alt="Comensal revisando la carta" loading="lazy"/>
+              <img src="../../design-inspiration/real-fotos/lujo-revisando-el-menu.jpeg" alt="ضيفٌ يقرأ القائمة" loading="lazy"/>
               <div class="xc-caption">
-                <span class="xc-caption-eyebrow">29 · La carta</span>
-                <p class="xc-caption-title">Elegir la mesa</p>
+                <span class="xc-caption-eyebrow">29 · القائمة</span>
+                <p class="xc-caption-title">اختيار المائدة</p>
               </div>
               <div class="xc-reveal">
-                <div class="xc-reveal-tags"><span class="xc-tag">Carta</span><span class="xc-tag">Ritual</span></div>
-                <p class="xc-reveal-title">Elegir la mesa</p>
-                <p class="xc-reveal-desc">Cinco actos: del horno, mezze frío, mezze caliente, brasa y postres. Pedir a la libanesa no es pedir poco — y siempre sobra para llevarse a casa.</p>
+                <div class="xc-reveal-tags"><span class="xc-tag">قائمة</span><span class="xc-tag">طقس</span></div>
+                <p class="xc-reveal-title">اختيار المائدة</p>
+                <p class="xc-reveal-desc">خمسة فصول: من الفرن، مازات باردة، مازات ساخنة، فحم، وحلويات. الطلب على الطريقة اللبنانية ليس قليلًا — ودائمًا يبقى ما يُؤخذ إلى البيت.</p>
               </div>
             </article>
 
             <!-- 30 · Servicio en mesa 1 -->
             <article class="xc-card">
-              <img src="../design-inspiration/real-fotos/camarero-sirviendo-mesa-1.jpeg" alt="Camarero sirviendo en la sala" loading="lazy"/>
+              <img src="../../design-inspiration/real-fotos/camarero-sirviendo-mesa-1.jpeg" alt="نادل يخدم في القاعة" loading="lazy"/>
               <div class="xc-caption">
-                <span class="xc-caption-eyebrow">30 · Servicio</span>
-                <p class="xc-caption-title">Servicio en sala</p>
+                <span class="xc-caption-eyebrow">30 · الخدمة</span>
+                <p class="xc-caption-title">الخدمة في القاعة</p>
               </div>
               <div class="xc-reveal">
-                <div class="xc-reveal-tags"><span class="xc-tag">Servicio</span><span class="xc-tag">Sala</span></div>
-                <p class="xc-reveal-title">Servicio en sala</p>
-                <p class="xc-reveal-desc">El maître presenta cada plato, explica la receta y la procedencia del ingrediente. La sobremesa empieza antes del primer bocado.</p>
+                <div class="xc-reveal-tags"><span class="xc-tag">الخدمة</span><span class="xc-tag">القاعة</span></div>
+                <p class="xc-reveal-title">الخدمة في القاعة</p>
+                <p class="xc-reveal-desc">يقدّم رئيس القاعة كلّ طبق، يشرح الوصفة ومصدر كلّ مكوّن. السهرة تبدأ قبل اللقمة الأولى.</p>
               </div>
             </article>
 
             <!-- 31 · Servicio en mesa 2 -->
             <article class="xc-card">
-              <img src="../design-inspiration/real-fotos/camarero-sirviendo-mesa-2.jpeg" alt="Plato terminado en la mesa" loading="lazy"/>
+              <img src="../../design-inspiration/real-fotos/camarero-sirviendo-mesa-2.jpeg" alt="طبقٌ على الطاولة" loading="lazy"/>
               <div class="xc-caption">
-                <span class="xc-caption-eyebrow">31 · Servicio</span>
-                <p class="xc-caption-title">Compartir la mesa</p>
+                <span class="xc-caption-eyebrow">31 · الخدمة</span>
+                <p class="xc-caption-title">المشاركة على الطاولة</p>
               </div>
               <div class="xc-reveal">
-                <div class="xc-reveal-tags"><span class="xc-tag">Servicio</span><span class="xc-tag">Mezze</span></div>
-                <p class="xc-reveal-title">Compartir la mesa</p>
-                <p class="xc-reveal-desc">Los platos se colocan al centro, las manos se cruzan, el pan pasa. Comer libanés es un gesto colectivo — la mesa entera comparte el mismo bocado.</p>
+                <div class="xc-reveal-tags"><span class="xc-tag">الخدمة</span><span class="xc-tag">مازات</span></div>
+                <p class="xc-reveal-title">المشاركة على الطاولة</p>
+                <p class="xc-reveal-desc">تُوضع الأطباق في الوسط، تتشابك الأيدي، ويُمرَّر الخبز. الأكل اللبناني فعلٌ جماعي — الطاولة كلّها تتقاسم اللقمة نفسها.</p>
               </div>
             </article>
 
             <!-- 32 · Servicio del pescado -->
             <article class="xc-card">
-              <img src="../design-inspiration/real-fotos/camarero-sirviendo-SAMAK%20MASHWI%20%E2%80%94%20lubina%20a%20la%20parrilla.jpeg" alt="Camarero trinchando pescado en mesa" loading="lazy"/>
+              <img src="../../design-inspiration/real-fotos/camarero-sirviendo-SAMAK%20MASHWI%20%E2%80%94%20lubina%20a%20la%20parrilla.jpeg" alt="نادلٌ يقطّع السمك على الطاولة" loading="lazy"/>
               <div class="xc-caption">
-                <span class="xc-caption-eyebrow">32 · Servicio</span>
-                <p class="xc-caption-title">El pescado a la sala</p>
+                <span class="xc-caption-eyebrow">32 · الخدمة</span>
+                <p class="xc-caption-title">السمك إلى الطاولة</p>
               </div>
               <div class="xc-reveal">
-                <div class="xc-reveal-tags"><span class="xc-tag">Servicio</span><span class="xc-tag">Brasa</span></div>
-                <p class="xc-reveal-title">El pescado a la sala</p>
-                <p class="xc-reveal-desc">El samak mashwi se trae entero desde la cocina y se trincha delante del comensal. El humo de la brasa todavía acompaña la cabeza, los lomos y la cola.</p>
+                <div class="xc-reveal-tags"><span class="xc-tag">الخدمة</span><span class="xc-tag">فحم</span></div>
+                <p class="xc-reveal-title">السمك إلى الطاولة</p>
+                <p class="xc-reveal-desc">يُحضَر السمك المشوي كاملًا من المطبخ ويُقطَّع أمام الضيف. لا يزال دخان الفحم يرافق الرأس، الجوانب، والذيل.</p>
               </div>
             </article>
 
             <!-- 33 · Amigas atardecer -->
             <article class="xc-card">
-              <img src="../design-inspiration/real-fotos/amigas-al-atardecer.jpeg" alt="Brindis al atardecer en la terraza" loading="lazy"/>
+              <img src="../../design-inspiration/real-fotos/amigas-al-atardecer.jpeg" alt="نخبٌ عند المغيب على التراس" loading="lazy"/>
               <div class="xc-caption">
-                <span class="xc-caption-eyebrow">33 · Terraza</span>
-                <p class="xc-caption-title">La hora dorada</p>
+                <span class="xc-caption-eyebrow">33 · التراس</span>
+                <p class="xc-caption-title">الساعة الذهبية</p>
               </div>
               <div class="xc-reveal">
-                <div class="xc-reveal-tags"><span class="xc-tag">Terraza</span><span class="xc-tag">Aperitivo</span></div>
-                <p class="xc-reveal-title">La hora dorada</p>
-                <p class="xc-reveal-desc">Las terrazas de La Moraleja al atardecer. Empieza el aperitivo, llegan los amigos, baja el sol — y la noche aún ni siquiera ha empezado.</p>
+                <div class="xc-reveal-tags"><span class="xc-tag">تراس</span><span class="xc-tag">مقبّلات</span></div>
+                <p class="xc-reveal-title">الساعة الذهبية</p>
+                <p class="xc-reveal-desc">تراسات لا مورالخا عند المغيب. تبدأ المقبّلات، يصل الأصدقاء، تنخفض الشمس — والليلة لم تبدأ بعد.</p>
               </div>
             </article>
 
             <!-- 34 · Cena de noche 1 -->
             <article class="xc-card">
-              <img src="../design-inspiration/real-fotos/cena-elegante-de-noche-1.jpeg" alt="Mesa preparada para la cena" loading="lazy"/>
+              <img src="../../design-inspiration/real-fotos/cena-elegante-de-noche-1.jpeg" alt="طاولةٌ مُعدّة للعشاء" loading="lazy"/>
               <div class="xc-caption">
-                <span class="xc-caption-eyebrow">34 · Sala</span>
-                <p class="xc-caption-title">Cena de noche</p>
+                <span class="xc-caption-eyebrow">34 · القاعة</span>
+                <p class="xc-caption-title">عشاءٌ ليلي</p>
               </div>
               <div class="xc-reveal">
-                <div class="xc-reveal-tags"><span class="xc-tag">Sala</span><span class="xc-tag">Noche</span></div>
-                <p class="xc-reveal-title">Cena de noche</p>
-                <p class="xc-reveal-desc">Luz cálida, mantel blanco, copa servida. La mesa preparada para una velada larga — la cocina abre a las ocho y no cierra hasta medianoche.</p>
+                <div class="xc-reveal-tags"><span class="xc-tag">القاعة</span><span class="xc-tag">ليل</span></div>
+                <p class="xc-reveal-title">عشاءٌ ليلي</p>
+                <p class="xc-reveal-desc">ضوءٌ دافئ، شرشف أبيض، كأسٌ مصبوب. الطاولة جاهزةٌ لسهرة طويلة — يفتح المطبخ في الثامنة ولا يُغلق قبل منتصف الليل.</p>
               </div>
             </article>
 
             <!-- 35 · Cena de noche 2 -->
             <article class="xc-card">
-              <img src="../design-inspiration/real-fotos/cena-elegante-de-noche-2.jpeg" alt="Sobremesa en la sala" loading="lazy"/>
+              <img src="../../design-inspiration/real-fotos/cena-elegante-de-noche-2.jpeg" alt="سهرةٌ في القاعة" loading="lazy"/>
               <div class="xc-caption">
-                <span class="xc-caption-eyebrow">35 · Sala</span>
-                <p class="xc-caption-title">Sobremesa libanesa</p>
+                <span class="xc-caption-eyebrow">35 · القاعة</span>
+                <p class="xc-caption-title">سهرةٌ لبنانية</p>
               </div>
               <div class="xc-reveal">
-                <div class="xc-reveal-tags"><span class="xc-tag">Sala</span><span class="xc-tag">Sobremesa</span></div>
-                <p class="xc-reveal-title">Sobremesa libanesa</p>
-                <p class="xc-reveal-desc">El café cardamomo, el dulce, la conversación. La cena termina cuando alguien decide irse — y casi nunca nadie tiene prisa.</p>
+                <div class="xc-reveal-tags"><span class="xc-tag">القاعة</span><span class="xc-tag">سهرة</span></div>
+                <p class="xc-reveal-title">سهرةٌ لبنانية</p>
+                <p class="xc-reveal-desc">قهوةٌ بالهيل، حلوى، حديث. ينتهي العشاء حين يقرّر أحدهم المغادرة — وقلّما يستعجل أحد.</p>
               </div>
             </article>
 
             <!-- 36 · Interior 1 -->
             <article class="xc-card">
-              <img src="../design-inspiration/real-fotos/interior-del-restaurante-1.jpeg" alt="Comedor del restaurante" loading="lazy"/>
+              <img src="../../design-inspiration/real-fotos/interior-del-restaurante-1.jpeg" alt="قاعة المطعم" loading="lazy"/>
               <div class="xc-caption">
-                <span class="xc-caption-eyebrow">36 · Comedor</span>
-                <p class="xc-caption-title">El comedor</p>
+                <span class="xc-caption-eyebrow">36 · القاعة</span>
+                <p class="xc-caption-title">القاعة</p>
               </div>
               <div class="xc-reveal">
-                <div class="xc-reveal-tags"><span class="xc-tag">Sala</span><span class="xc-tag">Comedor</span></div>
-                <p class="xc-reveal-title">El comedor</p>
-                <p class="xc-reveal-desc">Cincuenta cubiertos en una sala que conserva los detalles de las casas de la costa libanesa — luz baja, maderas oscuras, mosaico al fondo, lámparas de latón.</p>
+                <div class="xc-reveal-tags"><span class="xc-tag">القاعة</span><span class="xc-tag">صالة الطعام</span></div>
+                <p class="xc-reveal-title">القاعة</p>
+                <p class="xc-reveal-desc">خمسون مقعدًا في قاعةٍ تحفظ تفاصيل بيوت الساحل اللبناني — ضوءٌ خافت، خشبٌ داكن، فسيفساء في الخلفية، قناديل نحاسية.</p>
               </div>
             </article>
 
             <!-- 37 · Interior 2 -->
             <article class="xc-card">
-              <img src="../design-inspiration/real-fotos/interior-del-restaurante-2.jpeg" alt="Sala iluminada en cálido" loading="lazy"/>
+              <img src="../../design-inspiration/real-fotos/interior-del-restaurante-2.jpeg" alt="القاعة بإضاءةٍ دافئة" loading="lazy"/>
               <div class="xc-caption">
-                <span class="xc-caption-eyebrow">37 · Comedor</span>
-                <p class="xc-caption-title">La hospitalidad libanesa</p>
+                <span class="xc-caption-eyebrow">37 · القاعة</span>
+                <p class="xc-caption-title">الضيافة اللبنانية</p>
               </div>
               <div class="xc-reveal">
-                <div class="xc-reveal-tags"><span class="xc-tag">Sala</span><span class="xc-tag">Hospitalidad</span></div>
-                <p class="xc-reveal-title">La hospitalidad libanesa</p>
-                <p class="xc-reveal-desc">La sala diseñada para que nadie tenga prisa. Cada mesa tiene su propio rincón — y cada rincón un pedazo de Beirut en madera o en cobre.</p>
+                <div class="xc-reveal-tags"><span class="xc-tag">القاعة</span><span class="xc-tag">ضيافة</span></div>
+                <p class="xc-reveal-title">الضيافة اللبنانية</p>
+                <p class="xc-reveal-desc">قاعةٌ مصمّمة لئلّا يستعجل أحد. لكلّ طاولة زاويتها — ولكلّ زاوية قطعة من بيروت في الخشب أو في النحاس.</p>
               </div>
             </article>
 
             <!-- 38 · Terraza noche 1 -->
             <article class="xc-card">
-              <img src="../design-inspiration/real-fotos/terraza-bar-noche-1.jpeg" alt="Terraza con barra abierta de noche" loading="lazy"/>
+              <img src="../../design-inspiration/real-fotos/terraza-bar-noche-1.jpeg" alt="تراسٌ مع بار مفتوح ليلًا" loading="lazy"/>
               <div class="xc-caption">
-                <span class="xc-caption-eyebrow">38 · Terraza</span>
-                <p class="xc-caption-title">Terraza de noche</p>
+                <span class="xc-caption-eyebrow">38 · التراس</span>
+                <p class="xc-caption-title">التراس ليلًا</p>
               </div>
               <div class="xc-reveal">
-                <div class="xc-reveal-tags"><span class="xc-tag">Terraza</span><span class="xc-tag">Bar</span></div>
-                <p class="xc-reveal-title">Terraza de noche</p>
-                <p class="xc-reveal-desc">La barra abierta al exterior, cócteles libaneses, vinos del Bekaa y mezze ligeros — todo hasta cierre, todas las noches de la semana menos los lunes.</p>
+                <div class="xc-reveal-tags"><span class="xc-tag">تراس</span><span class="xc-tag">بار</span></div>
+                <p class="xc-reveal-title">التراس ليلًا</p>
+                <p class="xc-reveal-desc">بارٌ مفتوح على الخارج، كوكتيلات لبنانية، نبيذ البقاع، ومازات خفيفة — كلّ ذلك حتى الإغلاق، طوال أيام الأسبوع باستثناء الإثنين.</p>
               </div>
             </article>
 
             <!-- 39 · Terraza noche 2 -->
             <article class="xc-card">
-              <img src="../design-inspiration/real-fotos/terraza-bar-noche-2.jpeg" alt="La plaza de La Moraleja de noche" loading="lazy"/>
+              <img src="../../design-inspiration/real-fotos/terraza-bar-noche-2.jpeg" alt="ساحة لا مورالخا ليلًا" loading="lazy"/>
               <div class="xc-caption">
-                <span class="xc-caption-eyebrow">39 · La plaza</span>
+                <span class="xc-caption-eyebrow">39 · الساحة</span>
                 <p class="xc-caption-title">La Moraleja</p>
               </div>
               <div class="xc-reveal">
-                <div class="xc-reveal-tags"><span class="xc-tag">Terraza</span><span class="xc-tag">La Moraleja</span></div>
-                <p class="xc-reveal-title">La plaza de La Moraleja</p>
-                <p class="xc-reveal-desc">Veintitrés años en la misma plaza. La terraza llena cada noche, el horno encendido a las ocho — y el barrio sabiendo que esta es la casa libanesa de Madrid.</p>
+                <div class="xc-reveal-tags"><span class="xc-tag">تراس</span><span class="xc-tag">لا مورالخا</span></div>
+                <p class="xc-reveal-title">ساحة لا مورالخا</p>
+                <p class="xc-reveal-desc">ثلاثٌ وعشرون سنة في الساحة نفسها. تراسٌ ممتلئ كلّ ليلة، وفرنٌ مشتعل من الثامنة — والحيّ يعرف أنّ هذا هو البيت اللبناني في مدريد.</p>
               </div>
             </article>
 
@@ -2113,30 +2180,30 @@
 <!-- ─────────────────────────  SCRIPT OVERLAY · BEIRUT EN MADRID  ───────────────────────── -->
 <section class="sec py-20 md:py-36 bg-cedar-elevated text-cream relative overflow-hidden">
   <!-- Velo de patrón arabesco de marca (sutil, sobre fondo oscuro) -->
-  <div aria-hidden="true" class="absolute inset-0 pointer-events-none" style="background-image:url('../brand_assets/pattern_arabesque_gold.png');background-size:cover;background-position:center;opacity:.07;mix-blend-mode:screen"></div>
-  <span class="sec-mark sec-mark--light">— Pausa</span>
+  <div aria-hidden="true" class="absolute inset-0 pointer-events-none" style="background-image:url('../../brand_assets/pattern_arabesque_gold.png');background-size:cover;background-position:center;opacity:.07;mix-blend-mode:screen"></div>
+  <span class="sec-mark sec-mark--light">— استراحة</span>
   <div class="absolute inset-0 pointer-events-none opacity-[0.08]" aria-hidden="true">
     <div class="absolute -top-10 left-1/2 -translate-x-1/2 whitespace-nowrap font-script text-gold leading-none" style="font-size: clamp(180px, 30vw, 520px);">Beirut · Madrid</div>
   </div>
 
   <div class="max-w-[1100px] mx-auto px-5 md:px-10 relative z-10">
-    <p class="reveal text-center text-[11px] tracking-widest-2 uppercase text-gold/90 mb-8">Cuando vienes a du Liban</p>
+    <p class="reveal text-center text-[11px] tracking-widest-2 uppercase text-gold/90 mb-8">حين تأتي إلى du Liban</p>
     <h2 class="reveal delay-1 font-display text-cream text-center text-4xl md:text-6xl lg:text-7xl leading-[1.04] tracking-tightest">
-      <span>El primer plato</span>
-      <span class="font-script text-gold-soft block text-6xl md:text-8xl my-2">tarda en llegar.</span>
-      <span>El último también.</span>
+      <span>الطبق الأول</span>
+      <span class="font-script text-gold-soft block text-6xl md:text-8xl my-2">يأخذ وقته.</span>
+      <span>والأخير كذلك.</span>
     </h2>
     <p class="reveal delay-2 mt-10 text-center max-w-2xl mx-auto text-cream/75 text-[15px] leading-relaxed">
-      Comer libanés es comer despacio. Mezze para compartir, vino, conversación. Reserva con tiempo y deja que la
-      mesa se llene de a poco — como en Beirut.
+      الأكل اللبناني أكلٌ على مهل. مازاتٌ للمشاركة، نبيذ، حديث. احجز مبكّرًا واترك
+      الطاولة تمتلئ شيئًا فشيئًا — كما في بيروت.
     </p>
     <div class="reveal delay-3 mt-10 flex flex-wrap items-center justify-center gap-3">
-      <a href="https://wa.me/34690206459?text=Hola%2C%20me%20gustar%C3%ADa%20reservar%20mesa%20en%20du%20Liban." target="_blank" rel="noopener" data-cursor="cta" class="btn-reserve inline-flex items-center gap-2 bg-terracotta hover:bg-terracotta-deep text-cream text-[12px] tracking-wider-2 uppercase px-6 py-3 rounded-full transition-colors duration-200 cursor-pointer" aria-label="Reservar mesa por WhatsApp">
-        Reservar mesa
+      <a href="https://wa.me/34690206459?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%A3%D9%88%D8%AF%D9%91%20%D8%AD%D8%AC%D8%B2%20%D8%B7%D8%A7%D9%88%D9%84%D8%A9%20%D9%81%D9%8A%20du%20Liban." target="_blank" rel="noopener" data-cursor="cta" class="btn-reserve inline-flex items-center gap-2 bg-terracotta hover:bg-terracotta-deep text-cream text-[12px] tracking-wider-2 uppercase px-6 py-3 rounded-full transition-colors duration-200 cursor-pointer" aria-label="حجز طاولة عبر واتساب">
+        احجز طاولة
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
       </a>
       <a href="tel:+34916250072" class="inline-flex items-center gap-2 border border-cream/30 hover:border-gold-soft text-cream text-[12px] tracking-wider-2 uppercase px-6 py-3 rounded-full transition-colors duration-200 cursor-pointer">
-        Llamar al 916 25 00 72
+        اتصل على 916 25 00 72
       </a>
     </div>
   </div>
@@ -2144,7 +2211,7 @@
 
 <!-- ─────────────────────────  EVENTOS PRIVADOS  ───────────────────────── -->
 <section id="eventos" class="sec py-16 md:py-36 relative overflow-hidden">
-  <span class="sec-mark">04 · Eventos privados</span>
+  <span class="sec-mark">04 · المناسبات الخاصة</span>
   <svg class="corner-olive bottom-0 right-0" viewBox="0 0 380 380" aria-hidden="true">
     <g stroke="#3C3D3F" stroke-width="1" fill="none" stroke-linecap="round">
       <path d="M360 20 C 280 100, 200 180, 120 280 C 90 320, 60 350, 30 370"/>
@@ -2160,31 +2227,31 @@
   <div class="max-w-[1400px] mx-auto px-5 md:px-10 grid md:grid-cols-12 gap-10 md:gap-16 items-center relative z-10">
     <div class="md:col-span-6 reveal">
       <figure class="tile aspect-[5/6] overflow-hidden rounded-sm">
-        <img src="../design-inspiration/real-fotos/comiendo-abundante-mesa-lujo.jpeg"
-             alt="Mesa larga compartiendo mezze en evento privado en du Liban"
+        <img src="../../design-inspiration/real-fotos/comiendo-abundante-mesa-lujo.jpeg"
+             alt="طاولة طويلة بمازات مشتركة في مناسبة خاصة في du Liban"
              class="img-reveal w-full h-full object-cover" loading="lazy"/>
       </figure>
     </div>
     <div class="md:col-span-6 reveal delay-1">
-      <p class="ornament text-[11px] tracking-widest-2 uppercase mb-6">Eventos privados &amp; catering</p>
+      <p class="ornament text-[11px] tracking-widest-2 uppercase mb-6">المناسبات الخاصة &amp; تموين الحفلات</p>
       <h2 class="word-reveal font-display text-cedar text-[28px] md:text-5xl leading-[1.08] md:leading-[1.05] tracking-tightest mb-6">
         Una cena en casa. Una boda.<br class="hidden md:block"/>
         Una recepción de embajada.
       </h2>
       <p class="text-cedar/80 text-[15px] leading-relaxed mb-6">
-        Diseñamos menús a medida para reuniones íntimas, celebraciones familiares, eventos corporativos y catering
-        en La Moraleja y resto de Madrid. Mezze para 12 o banquetes para 200, con nuestro equipo y nuestro horno.
+        نصمّم قوائم خاصة للقاءاتٍ حميمة، احتفالات عائلية، مناسبات الشركات، وتموين الحفلات
+        في لا مورالخا وبقية مدريد. مازاتٌ لاثني عشر شخصًا أو ولائم لمئتين، بفريقنا وفرننا.
       </p>
       <ul class="text-cedar/85 text-[14px] grid grid-cols-2 gap-y-3 gap-x-6 mb-8">
-        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-gold"></span> Salones privados</li>
-        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-gold"></span> Catering a domicilio</li>
-        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-gold"></span> Cócteles &amp; shisha</li>
-        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-gold"></span> Menús kosher / halal</li>
-        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-gold"></span> Servicio de protocolo</li>
-        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-gold"></span> Música en directo</li>
+        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-gold"></span> قاعات خاصة</li>
+        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-gold"></span> تموين في المكان</li>
+        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-gold"></span> كوكتيلات &amp; نرجيلة</li>
+        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-gold"></span> قوائم حلال / كوشير</li>
+        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-gold"></span> خدمة بروتوكول</li>
+        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-gold"></span> موسيقى مباشرة</li>
       </ul>
-      <a href="mailto:reservas@dulibanrestaurants.com?subject=Evento%20privado%20-%20du%20Liban" class="inline-flex items-center gap-2 text-cedar font-medium border-b border-cedar/40 hover:border-terracotta hover:text-terracotta transition-colors duration-200 pb-0.5">
-        Solicitar propuesta de evento
+      <a href="mailto:reservas@dulibanrestaurants.com?subject=Private%20Event%20-%20du%20Liban" class="inline-flex items-center gap-2 text-cedar font-medium border-b border-cedar/40 hover:border-terracotta hover:text-terracotta transition-colors duration-200 pb-0.5">
+        طلب عرضٍ للمناسبة
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
       </a>
     </div>
@@ -2193,7 +2260,7 @@
 
 <!-- ─────────────────────────  VISÍTANOS  ───────────────────────── -->
 <section id="visitanos" class="sec py-16 md:py-36 bg-elevated-deep border-y border-cedar/10 relative overflow-hidden">
-  <span class="sec-mark">05 · Visítanos</span>
+  <span class="sec-mark">05 · زيارتنا</span>
   <svg class="corner-olive top-0 right-0" style="transform: scaleX(-1)" viewBox="0 0 380 380" aria-hidden="true">
     <g stroke="#3C3D3F" stroke-width="1" fill="none" stroke-linecap="round">
       <path d="M360 20 C 280 100, 200 180, 120 280 C 90 320, 60 350, 30 370"/>
@@ -2206,7 +2273,7 @@
   </svg>
   <div class="max-w-[1400px] mx-auto px-5 md:px-10 grid md:grid-cols-12 gap-12 md:gap-16 relative z-10">
     <div class="md:col-span-5 reveal">
-      <p class="ornament text-[11px] tracking-widest-2 uppercase mb-6">Visítanos</p>
+      <p class="ornament text-[11px] tracking-widest-2 uppercase mb-6">زيارتنا</p>
       <h2 class="word-reveal font-display text-cedar text-[32px] md:text-5xl leading-[1.1] md:leading-[1.05] tracking-tightest mb-8">
         En la Plaza de La Moraleja,<br class="hidden md:block"/> detrás de los olivos.
       </h2>
@@ -2220,30 +2287,30 @@
       <div class="mt-8 hairline-soft"></div>
 
       <div class="mt-8">
-        <p class="text-[11px] tracking-widest-2 uppercase text-cedar/80 mb-3">Horario</p>
-        <div class="hours-row"><span>Martes – Sábado</span><span class="text-cedar">13:00 – 16:00 · 20:00 – 00:00</span></div>
-        <div class="hours-row"><span>Domingo</span><span class="text-cedar">13:00 – 17:00</span></div>
-        <div class="hours-row"><span>Lunes</span><span class="text-cedar/80">Cerrado</span></div>
+        <p class="text-[11px] tracking-widest-2 uppercase text-cedar/80 mb-3">ساعات العمل</p>
+        <div class="hours-row"><span>الثلاثاء – السبت</span><span class="text-cedar">13:00 – 16:00 · 20:00 – 00:00</span></div>
+        <div class="hours-row"><span>الأحد</span><span class="text-cedar">13:00 – 17:00</span></div>
+        <div class="hours-row"><span>الإثنين</span><span class="text-cedar/80">مغلق</span></div>
       </div>
 
       <div class="mt-8 hairline-soft"></div>
 
       <div class="mt-8 grid sm:grid-cols-2 gap-6 text-[14px]">
         <div>
-          <p class="text-[11px] tracking-widest-2 uppercase text-cedar/80 mb-2">Reservas</p>
+          <p class="text-[11px] tracking-widest-2 uppercase text-cedar/80 mb-2">الحجوزات</p>
           <a href="tel:+34916250072" class="text-cedar hover:text-terracotta transition-colors duration-200 block">+34 916 25 00 72</a>
           <a href="mailto:reservas@dulibanrestaurants.com" class="text-cedar hover:text-terracotta transition-colors duration-200 block">reservas@dulibanrestaurants.com</a>
         </div>
         <div>
-          <p class="text-[11px] tracking-widest-2 uppercase text-cedar/80 mb-2">Síguenos</p>
+          <p class="text-[11px] tracking-widest-2 uppercase text-cedar/80 mb-2">تابعونا</p>
           <a href="https://www.instagram.com/dulibanrestaurant/" target="_blank" rel="noopener" class="text-cedar hover:text-terracotta transition-colors duration-200 block">Instagram</a>
-          <a href="https://www.google.com/maps/search/?api=1&query=Du+Liban+La+Moraleja+Alcobendas" target="_blank" rel="noopener" class="text-cedar hover:text-terracotta transition-colors duration-200 block">Cómo llegar</a>
+          <a href="https://www.google.com/maps/search/?api=1&query=Du+Liban+La+Moraleja+Alcobendas" target="_blank" rel="noopener" class="text-cedar hover:text-terracotta transition-colors duration-200 block">الوصول إلينا</a>
         </div>
       </div>
 
       <div class="mt-10">
-        <a href="https://wa.me/34690206459?text=Hola%2C%20me%20gustar%C3%ADa%20reservar%20mesa%20en%20du%20Liban." target="_blank" rel="noopener" data-cursor="cta" class="btn-reserve inline-flex items-center gap-2 bg-terracotta hover:bg-terracotta-deep text-cream text-[12px] tracking-wider-2 uppercase px-6 py-3 rounded-full transition-colors duration-200 cursor-pointer" aria-label="Reservar por WhatsApp">
-          Reservar por WhatsApp
+        <a href="https://wa.me/34690206459?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%A3%D9%88%D8%AF%D9%91%20%D8%AD%D8%AC%D8%B2%20%D8%B7%D8%A7%D9%88%D9%84%D8%A9%20%D9%81%D9%8A%20du%20Liban." target="_blank" rel="noopener" data-cursor="cta" class="btn-reserve inline-flex items-center gap-2 bg-terracotta hover:bg-terracotta-deep text-cream text-[12px] tracking-wider-2 uppercase px-6 py-3 rounded-full transition-colors duration-200 cursor-pointer" aria-label="حجز عبر واتساب">
+          الحجز عبر واتساب
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
         </a>
       </div>
@@ -2269,36 +2336,36 @@
 
 <!-- ─────────────────────────  FOOTER  ───────────────────────── -->
 <footer class="bg-cedar-deep text-cream/85 pt-20 pb-8 relative overflow-hidden">
-  <div aria-hidden="true" class="absolute top-0 left-0 right-0 h-3" style="background-image:url('../brand_assets/border_geo2.png');background-repeat:repeat-x;background-size:auto 12px;background-position:center;opacity:.55"></div>
+  <div aria-hidden="true" class="absolute top-0 left-0 right-0 h-3" style="background-image:url('../../brand_assets/border_geo2.png');background-repeat:repeat-x;background-size:auto 12px;background-position:center;opacity:.55"></div>
   <div class="max-w-[1400px] mx-auto px-5 md:px-10">
     <div class="grid md:grid-cols-12 gap-10">
       <div class="md:col-span-5">
         <p class="font-script text-5xl mb-3 leading-none"><span class="text-teal">du</span> <span class="text-gold-soft">Liban</span></p>
         <p class="text-[11px] tracking-widest-2 uppercase text-cream/55">Lebanese cuisine · Madrid</p>
         <p class="mt-8 text-cream/65 text-[14px] leading-relaxed max-w-md">
-          Recetas familiares, horno de leña, mezze y brasa libanesa.
+          وصفاتٌ عائلية، فرنٌ حطبي، مازات، ومشاوي لبنانية.
         </p>
       </div>
 
       <div class="md:col-span-3">
-        <p class="text-[11px] tracking-widest-2 uppercase text-gold-soft/90 mb-4">Navegar</p>
+        <p class="text-[11px] tracking-widest-2 uppercase text-gold-soft/90 mb-4">تصفّح</p>
         <ul class="space-y-2 text-[14px]">
-          <li><a href="#concepto" class="text-cream/80 hover:text-cream transition-colors duration-200">Concepto</a></li>
-          <li><a href="#carta" class="text-cream/80 hover:text-cream transition-colors duration-200">Carta</a></li>
-          <li><a href="#chef" class="text-cream/80 hover:text-cream transition-colors duration-200">La cocina</a></li>
-          <li><a href="#eventos" class="text-cream/80 hover:text-cream transition-colors duration-200">Eventos privados</a></li>
-          <li><a href="#visitanos" class="text-cream/80 hover:text-cream transition-colors duration-200">Visítanos</a></li>
+          <li><a href="#concepto" class="text-cream/80 hover:text-cream transition-colors duration-200">الفكرة</a></li>
+          <li><a href="#carta" class="text-cream/80 hover:text-cream transition-colors duration-200">قائمة الطعام</a></li>
+          <li><a href="#chef" class="text-cream/80 hover:text-cream transition-colors duration-200">المطبخ</a></li>
+          <li><a href="#eventos" class="text-cream/80 hover:text-cream transition-colors duration-200">المناسبات الخاصة</a></li>
+          <li><a href="#visitanos" class="text-cream/80 hover:text-cream transition-colors duration-200">زيارتنا</a></li>
         </ul>
       </div>
 
       <div class="md:col-span-4">
-        <p class="text-[11px] tracking-widest-2 uppercase text-gold-soft/90 mb-4">Contacto</p>
+        <p class="text-[11px] tracking-widest-2 uppercase text-gold-soft/90 mb-4">تواصل</p>
         <ul class="space-y-2 text-[14px]">
           <li><a href="tel:+34916250072" class="text-cream/80 hover:text-cream transition-colors duration-200">+34 916 25 00 72</a></li>
           <li><a href="mailto:reservas@dulibanrestaurants.com" class="text-cream/80 hover:text-cream transition-colors duration-200">reservas@dulibanrestaurants.com</a></li>
           <li class="text-cream/80">Plaza de la Moraleja, C. de la Estafeta 2 · Alcobendas</li>
         </ul>
-        <p class="text-[11px] tracking-widest-2 uppercase text-gold-soft/90 mt-8 mb-4">Síguenos</p>
+        <p class="text-[11px] tracking-widest-2 uppercase text-gold-soft/90 mt-8 mb-4">تابعونا</p>
         <div class="flex items-center gap-3">
           <a href="https://www.instagram.com/dulibanrestaurant/" target="_blank" rel="noopener" aria-label="Instagram"
              class="inline-flex w-10 h-10 items-center justify-center rounded-full border border-cream/20 hover:border-gold-soft hover:text-gold-soft transition-colors duration-200">
@@ -2322,30 +2389,30 @@
     </div>
 
     <!-- Legal (revealed on :target from the links below) -->
-    <section id="aviso-legal" class="legal-doc" aria-label="Aviso legal">
-      <h3>Aviso legal</h3>
-      <p>Titular: du Liban — [razón social y CIF a completar por el titular]. Domicilio: Plaza de la Moraleja, C. de la Estafeta 2, Local 4/5, 28109 Alcobendas (Madrid). Contacto: +34&nbsp;916&nbsp;25&nbsp;00&nbsp;72 · reservas@dulibanrestaurants.com.</p>
-      <p>Este sitio web tiene carácter informativo sobre el restaurante du Liban, su carta y sus servicios. El acceso y uso del sitio implican la aceptación de este aviso.</p>
-      <p><a href="#contenido">Cerrar</a></p>
+    <section id="aviso-legal" class="legal-doc" aria-label="التنبيه القانوني">
+      <h3>التنبيه القانوني</h3>
+      <p>المالك: du Liban — [الاسم القانوني والرقم الضريبي يستكملهما المالك]. العنوان: Plaza de la Moraleja, C. de la Estafeta 2, Local 4/5, 28109 Alcobendas (Madrid). للتواصل: +34&nbsp;916&nbsp;25&nbsp;00&nbsp;72 · reservas@dulibanrestaurants.com.</p>
+      <p>يقدّم هذا الموقع معلومات حول مطعم du Liban وقائمته وخدماته. يعني دخولك واستخدامك للموقع موافقتك على هذا التنبيه.</p>
+      <p><a href="#contenido">إغلاق</a></p>
     </section>
-    <section id="privacidad" class="legal-doc" aria-label="Política de privacidad">
-      <h3>Privacidad</h3>
-      <p>Responsable: du Liban (datos de contacto en el aviso legal). Finalidad: gestionar las reservas y consultas que el cliente envía por teléfono, correo electrónico o WhatsApp. Legitimación: consentimiento del interesado.</p>
-      <p>No se ceden datos a terceros salvo obligación legal. Puede ejercer sus derechos de acceso, rectificación, supresión, oposición, limitación y portabilidad escribiendo a reservas@dulibanrestaurants.com.</p>
-      <p><a href="#contenido">Cerrar</a></p>
+    <section id="privacidad" class="legal-doc" aria-label="سياسة الخصوصية">
+      <h3>الخصوصية</h3>
+      <p>المسؤول: du Liban (بيانات الاتصال في التنبيه القانوني). الغاية: إدارة الحجوزات والاستفسارات الواردة عبر الهاتف أو البريد الإلكتروني أو واتساب. الأساس القانوني: موافقة صاحب البيانات.</p>
+      <p>لا تُحال البيانات إلى أيّ طرف ثالث إلّا بموجب التزام قانوني. يمكنكم ممارسة حقوقكم في الوصول، التصحيح، الحذف، الاعتراض، تقييد المعالجة، ونقل البيانات بمراسلة reservas@dulibanrestaurants.com.</p>
+      <p><a href="#contenido">إغلاق</a></p>
     </section>
-    <section id="cookies" class="legal-doc" aria-label="Política de cookies">
+    <section id="cookies" class="legal-doc" aria-label="سياسة الكوكيز">
       <h3>Cookies</h3>
-      <p>Este sitio no utiliza cookies propias de seguimiento ni de publicidad. El mapa incrustado de Google Maps puede instalar cookies de terceros de Google al cargarse; puede consultar su política en las páginas de Google.</p>
-      <p><a href="#contenido">Cerrar</a></p>
+      <p>لا يستخدم هذا الموقع ملفات تعريف ارتباط خاصة للتتبّع أو الإعلان. قد تضع خريطة Google Maps المضمّنة ملفات تعريف ارتباط من Google عند تحميلها؛ يُرجى مراجعة سياسة Google في صفحاتها الرسمية.</p>
+      <p><a href="#contenido">إغلاق</a></p>
     </section>
 
     <div class="mt-10 pt-6 border-t border-cream/10 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 text-[12px] text-cream/55">
-      <p>© <span id="year">2026</span> du Liban — Lebanese Cuisine. Todos los derechos reservados.</p>
+      <p>© <span id="year">2026</span> du Liban — Lebanese Cuisine. جميع الحقوق محفوظة.</p>
       <div class="flex items-center gap-5">
-        <a href="#aviso-legal" class="hover:text-cream transition-colors duration-200">Aviso legal</a>
-        <a href="#privacidad" class="hover:text-cream transition-colors duration-200">Privacidad</a>
-        <a href="#cookies" class="hover:text-cream transition-colors duration-200">Cookies</a>
+        <a href="#aviso-legal" class="hover:text-cream transition-colors duration-200">التنبيه القانوني</a>
+        <a href="#privacidad" class="hover:text-cream transition-colors duration-200">الخصوصية</a>
+        <a href="#cookies" class="hover:text-cream transition-colors duration-200">الكوكيز</a>
       </div>
     </div>
   </div>
@@ -2729,7 +2796,7 @@
 
   /* ── Dish-preview popup (hover desktop, tap mobile) ──────────────────── */
   (() => {
-    const PHOTO_BASE = '../design-inspiration/real-fotos/';
+    const PHOTO_BASE = '../../design-inspiration/real-fotos/';
 
     const DISH_PHOTOS = {
       // Del horno
