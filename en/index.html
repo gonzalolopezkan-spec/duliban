@@ -372,6 +372,17 @@
   .hours-row { display: grid; grid-template-columns: 1fr auto; gap: 1rem; padding: .85rem 0; border-bottom: 1px solid rgba(60,61,63,.16); font-feature-settings: 'tnum'; }
   .hours-row:last-child { border-bottom: 0; }
 
+  /* Gallery filter tabs (The space) */
+  .gal-tab {
+    border: 1px solid rgba(60,61,63,.25); border-radius: 999px; padding: .5rem 1.1rem;
+    font-family: 'Jost', sans-serif; font-size: 11px; letter-spacing: .18em; text-transform: uppercase;
+    color: var(--cedar); background: transparent;
+    transition: all .2s ease; min-height: 44px; cursor: pointer;
+  }
+  .gal-tab:hover { border-color: var(--gold); color: var(--gold-deep); }
+  .gal-tab[aria-pressed="true"] { background: var(--cedar); border-color: var(--cedar); color: var(--cream); }
+  @media (prefers-reduced-motion: reduce) { .gal-tab { transition: none !important; } }
+
   /* Focus rings */
   :focus-visible { outline: 2px solid #0A7390; outline-offset: 3px; border-radius: 2px; }
 
@@ -800,6 +811,7 @@
         <li><a class="hover:text-terracotta transition-colors duration-200" href="#concepto">Story</a></li>
         <li><a class="hover:text-terracotta transition-colors duration-200" href="#carta">Menu</a></li>
         <li><a class="hover:text-terracotta transition-colors duration-200" href="#chef">Kitchen</a></li>
+        <li><a class="hover:text-terracotta transition-colors duration-200" href="#espacio">The space</a></li>
         <li><a class="hover:text-terracotta transition-colors duration-200" href="#eventos">Private Events</a></li>
         <li><a class="hover:text-terracotta transition-colors duration-200" href="#visitanos">Visit Us</a></li>
       </ul>
@@ -2178,9 +2190,79 @@
   </div>
 </section>
 
+<!-- ─────────────────────────  EL ESPACIO  ───────────────────────── -->
+<section id="espacio" class="sec py-20 md:py-36 relative overflow-hidden">
+  <span class="sec-mark">04 · The space</span>
+  <div class="max-w-[1400px] mx-auto px-5 md:px-10 relative z-10">
+    <p class="reveal ornament text-[11px] tracking-widest-2 uppercase mb-6">The space</p>
+    <h2 class="reveal delay-1 word-reveal font-display text-cedar text-4xl md:text-6xl lg:text-7xl leading-[1.05] tracking-tightest mb-10 md:mb-14 max-w-3xl">
+      Terrace, lounge and bar<br class="hidden md:block"/> at Plaza de la Moraleja.
+    </h2>
+
+    <div class="reveal delay-2 flex flex-wrap gap-2 mb-10" data-gallery-filters>
+      <button type="button" data-filter="all" aria-pressed="true" class="gal-tab">All</button>
+      <button type="button" data-filter="terraza" aria-pressed="false" class="gal-tab">Terrace</button>
+      <button type="button" data-filter="interior" aria-pressed="false" class="gal-tab">Indoors</button>
+      <button type="button" data-filter="bar" aria-pressed="false" class="gal-tab">Bar</button>
+      <button type="button" data-filter="comida" aria-pressed="false" class="gal-tab">Food</button>
+    </div>
+
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4" data-gallery-grid>
+      <figure class="reveal tile overflow-hidden rounded-sm aspect-[4/5]" data-cat="terraza">
+        <img src="../fotos/terraza-al-medio-dia.jpeg" alt="du Liban terrace at midday" class="img-reveal w-full h-full object-cover" loading="lazy" decoding="async"/>
+      </figure>
+      <figure class="reveal delay-1 tile overflow-hidden rounded-sm aspect-[4/5]" data-cat="interior">
+        <img src="../fotos/salon-interior.jpeg" alt="Indoor dining room at du Liban" class="img-reveal w-full h-full object-cover" loading="lazy" decoding="async"/>
+      </figure>
+      <figure class="reveal delay-2 tile overflow-hidden rounded-sm aspect-[4/5]" data-cat="comida">
+        <img src="../fotos/camarero-ensenando-mucha-comida.jpeg" alt="Waiter presenting a table full of mezze" class="img-reveal w-full h-full object-cover" loading="lazy" decoding="async"/>
+      </figure>
+      <figure class="reveal delay-3 tile overflow-hidden rounded-sm aspect-[4/5]" data-cat="bar">
+        <img src="../fotos/bar-interior-horizontal.jpeg" alt="Indoor bar counter at du Liban" class="img-reveal w-full h-full object-cover" loading="lazy" decoding="async"/>
+      </figure>
+      <figure class="reveal tile overflow-hidden rounded-sm aspect-[4/5]" data-cat="terraza">
+        <img src="../fotos/terraza-con-gente.jpeg" alt="du Liban terrace with guests" class="img-reveal w-full h-full object-cover" loading="lazy" decoding="async"/>
+      </figure>
+      <figure class="reveal delay-1 tile overflow-hidden rounded-sm aspect-[4/5]" data-cat="interior">
+        <img src="../fotos/foto-bonita-del-interior.jpeg" alt="Interior detail at du Liban" class="img-reveal w-full h-full object-cover" loading="lazy" decoding="async"/>
+      </figure>
+      <figure class="reveal delay-2 tile overflow-hidden rounded-sm aspect-[4/5]" data-cat="comida">
+        <img src="../fotos/plano-detalle-comida-en-terraza.jpeg" alt="Lebanese dish served on the terrace" class="img-reveal w-full h-full object-cover" loading="lazy" decoding="async"/>
+      </figure>
+      <figure class="reveal delay-3 tile overflow-hidden rounded-sm aspect-[4/5]" data-cat="bar">
+        <img src="../fotos/plano-detalle-botellas-del-bar.jpeg" alt="Bottles at the du Liban bar" class="img-reveal w-full h-full object-cover" loading="lazy" decoding="async"/>
+      </figure>
+      <figure class="reveal tile overflow-hidden rounded-sm aspect-[4/5]" data-cat="terraza">
+        <img src="../fotos/esquina-bonita-en-terraza.jpeg" alt="A quiet corner of the du Liban terrace" class="img-reveal w-full h-full object-cover" loading="lazy" decoding="async"/>
+      </figure>
+      <figure class="reveal delay-1 tile overflow-hidden rounded-sm aspect-[4/5]" data-cat="interior">
+        <img src="../fotos/foto-bonita-del-interior-2.jpeg" alt="Decorative interior detail at du Liban" class="img-reveal w-full h-full object-cover" loading="lazy" decoding="async"/>
+      </figure>
+      <figure class="reveal delay-2 tile overflow-hidden rounded-sm aspect-[4/5]" data-cat="comida">
+        <img src="../fotos/plano-detalle-en-movimiento-ensaladas.jpeg" alt="Lebanese salads freshly served" class="img-reveal w-full h-full object-cover" loading="lazy" decoding="async"/>
+      </figure>
+      <figure class="reveal delay-3 tile overflow-hidden rounded-sm aspect-[4/5]" data-cat="bar">
+        <img src="../fotos/plano-detalle-descorchando-vino.jpeg" alt="Uncorking a bottle of wine at the bar" class="img-reveal w-full h-full object-cover" loading="lazy" decoding="async"/>
+      </figure>
+      <figure class="reveal tile overflow-hidden rounded-sm aspect-[4/5]" data-cat="terraza">
+        <img src="../fotos/fuente-bonita-en-la-terraza.jpeg" alt="Decorative fountain on the du Liban terrace" class="img-reveal w-full h-full object-cover" loading="lazy" decoding="async"/>
+      </figure>
+      <figure class="reveal delay-1 tile overflow-hidden rounded-sm aspect-[4/5]" data-cat="interior">
+        <img src="../fotos/plano-detalle-de-una-mesa-de-interior.jpeg" alt="A table set in the indoor dining room" class="img-reveal w-full h-full object-cover" loading="lazy" decoding="async"/>
+      </figure>
+      <figure class="reveal delay-2 tile overflow-hidden rounded-sm aspect-[4/5]" data-cat="terraza">
+        <img src="../fotos/fumando-shisha-en-terraza.jpeg" alt="Shisha on the du Liban terrace" class="img-reveal w-full h-full object-cover" loading="lazy" decoding="async"/>
+      </figure>
+      <figure class="reveal delay-3 tile overflow-hidden rounded-sm aspect-[4/5]" data-cat="terraza">
+        <img src="../fotos/chica-fumando-shisha-noche.jpeg" alt="Guest smoking shisha on the terrace at night" class="img-reveal w-full h-full object-cover" loading="lazy" decoding="async"/>
+      </figure>
+    </div>
+  </div>
+</section>
+
 <!-- ─────────────────────────  EVENTOS PRIVADOS  ───────────────────────── -->
 <section id="eventos" class="sec py-16 md:py-36 relative overflow-hidden">
-  <span class="sec-mark">04 · Private Events</span>
+  <span class="sec-mark">05 · Private Events</span>
   <svg class="corner-olive bottom-0 right-0" viewBox="0 0 380 380" aria-hidden="true">
     <g stroke="#3C3D3F" stroke-width="1" fill="none" stroke-linecap="round">
       <path d="M360 20 C 280 100, 200 180, 120 280 C 90 320, 60 350, 30 370"/>
@@ -2229,7 +2311,7 @@
 
 <!-- ─────────────────────────  VISÍTANOS  ───────────────────────── -->
 <section id="visitanos" class="sec py-16 md:py-36 bg-elevated-deep border-y border-cedar/10 relative overflow-hidden">
-  <span class="sec-mark">05 · Visit Us</span>
+  <span class="sec-mark">06 · Visit Us</span>
   <svg class="corner-olive top-0 right-0" style="transform: scaleX(-1)" viewBox="0 0 380 380" aria-hidden="true">
     <g stroke="#3C3D3F" stroke-width="1" fill="none" stroke-linecap="round">
       <path d="M360 20 C 280 100, 200 180, 120 280 C 90 320, 60 350, 30 370"/>
@@ -2320,6 +2402,7 @@
           <li><a href="#concepto" class="text-cream/80 hover:text-cream transition-colors duration-200">Story</a></li>
           <li><a href="#carta" class="text-cream/80 hover:text-cream transition-colors duration-200">Menu</a></li>
           <li><a href="#chef" class="text-cream/80 hover:text-cream transition-colors duration-200">The kitchen</a></li>
+          <li><a href="#espacio" class="text-cream/80 hover:text-cream transition-colors duration-200">The space</a></li>
           <li><a href="#eventos" class="text-cream/80 hover:text-cream transition-colors duration-200">Private Events</a></li>
           <li><a href="#visitanos" class="text-cream/80 hover:text-cream transition-colors duration-200">Visit Us</a></li>
         </ul>
@@ -2995,6 +3078,7 @@
     }
   }
 </script>
+<script src="../js/gallery.js" defer></script>
 
 </body>
 </html>
