@@ -2350,15 +2350,21 @@
 
     <!-- Map -->
     <div class="md:col-span-7 reveal delay-1">
-      <div class="aspect-[4/5] md:aspect-[5/6] w-full overflow-hidden rounded-sm border border-cedar/10 bg-cream">
+      <div class="relative aspect-[4/5] md:aspect-[5/6] w-full overflow-hidden rounded-sm border border-cedar/10 bg-cream">
         <iframe
           title="Mapa de du Liban en La Moraleja, Alcobendas"
-          src="https://www.google.com/maps?q=Plaza%20de%20la%20Moraleja%2C%20C.%20de%20la%20Estafeta%202%2C%2028109%20Alcobendas&output=embed"
+          data-consent-src="https://www.google.com/maps?q=Plaza%20de%20la%20Moraleja%2C%20C.%20de%20la%20Estafeta%202%2C%2028109%20Alcobendas&output=embed"
           loading="lazy"
           referrerpolicy="no-referrer-when-downgrade"
           class="w-full h-full"
           style="border:0; filter: sepia(.15) saturate(.9) hue-rotate(-5deg);"
           allowfullscreen></iframe>
+        <div class="absolute inset-0 flex flex-col items-center justify-center gap-4 text-center px-6 bg-cream" data-map-placeholder>
+          <p class="text-cedar/80 text-[14px] max-w-xs">El mapa de Google Maps se carga con tu consentimiento de cookies.</p>
+          <button type="button" data-map-load class="inline-flex items-center gap-2 bg-terracotta hover:bg-terracotta-deep text-cream text-[12px] tracking-wider-2 uppercase px-6 py-3 rounded-full transition-colors duration-200 cursor-pointer min-h-[44px]">
+            Cargar mapa
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -2423,6 +2429,7 @@
         <a href="legal.html#condiciones" class="hover:text-cream transition-colors duration-200">Aviso legal</a>
         <a href="legal.html#privacidad" class="hover:text-cream transition-colors duration-200">Privacidad</a>
         <a href="legal.html#cookies" class="hover:text-cream transition-colors duration-200">Cookies</a>
+        <a href="#" data-cookie-prefs class="hover:text-cream transition-colors duration-200">Preferencias de cookies</a>
       </div>
     </div>
   </div>
@@ -3043,6 +3050,7 @@
   }
 </script>
 <script src="js/gallery.js" defer></script>
+<script src="js/consent.js" data-legal="legal.html#cookies" defer></script>
 
 </body>
 </html>
