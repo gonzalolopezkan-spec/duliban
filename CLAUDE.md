@@ -1,89 +1,66 @@
 # du Liban — Restaurante libanés en La Moraleja, Madrid
 
-Single-page website para du Liban, un restaurante de alta cocina libanesa establecido en La Moraleja desde 2003.
+Single-page website para du Liban, restaurante de alta cocina libanesa en La Moraleja. Tres idiomas: ES (`index.html`), EN (`en/index.html`), AR (`ar/index.html`, RTL). Desde julio 2026 el diseño vigente es la **identidad de marca oficial** (antes vivía en `/brand`, promocionada a raíz en la rama `brand-definitivo`; el diseño "clásico" Cormorant/Satoshi vive solo en el historial de git, hasta el commit `9435c20`).
 
 ## Datos del restaurante (verificados, ya integrados)
 
-- **Dirección:** Plaza de la Moraleja, C. de la Estafeta 2 · Local 4/5 · 28109 Alcobendas
-- **Teléfono:** +34 916 25 00 72
-- **Email reservas:** reservas@dulibanrestaurants.com
-- **Horario:** Mar–Sáb 13:00–16:00 · 20:00–00:00 · Dom 13:00–17:00 · Lun cerrado
-- **Reservas online:** https://restauranteduliban.es/reservations/
-- **Instagram:** @dulibanrestaurant *(handle a confirmar)*
+- **Dirección:** Plaza de la Moraleja, C. de la Estafeta 2 · Local 4/5 · 28109 Alcobendas *(la web WordPress antigua decía "Plaza de Fuentes 2, 28100" — discrepancia pendiente de confirmar con el cliente)*
+- **Teléfono:** +34 917 54 48 38
+- **WhatsApp:** +34 690 206 459 (`wa.me/34690206459` — solo icono del footer; los botones Reservar ya NO van por WhatsApp)
+- **Email:** reservas@dulibanrestaurante.com (dominio "restaurante" singular — confirmado por el cliente)
+- **Horario:** Mar–Dom 13:00–01:00 · Lun cerrado
+- **Reservas online:** https://www.sevenrooms.com/explore/duliban/reservations/create/search/ (los 3 botones `.btn-reserve` + JSON-LD `acceptsReservations`)
+- **Instagram:** eliminado de la web a petición del cliente (el handle nunca se confirmó)
+- **Halal:** cocina 100% halal con certificado (badge en hero + banda USP `#halal` + JSON-LD). La entidad certificadora NO se conoce — no inventarla.
+- **Shisha en terraza:** USP destacada junto al halal ("combinación única en Madrid" — claim del cliente)
 
 ## Tech stack
 
-- HTML estático en un solo archivo `index.html` (~1700 líneas)
-- Tailwind CSS **compilado a CSS estático** vía Tailwind CLI (`npm run build:css` → `dist/styles.css`, ~18KB min / ~3KB gzip). Config en `tailwind.config.js`, entrada en `src/input.css`. Ya **no** se usa el Play CDN (era render-blocking y compilaba en el navegador).
-- Google Fonts: Cormorant Garamond, Allura
-- Fontshare: Satoshi (cuerpo)
-- Vanilla JS para interacciones — **sin librerías externas**
-- El HTML sigue siendo estático: tras `build:css` el sitio se sirve sin runtime. Reconstruir el CSS tras tocar clases Tailwind en `index.html`.
+- HTML estático: 3 páginas espejo (~3000 líneas c/u) + `legal.html`. `en/` y `ar/` referencian assets con prefijo `../`. `ar/` es `dir="rtl"` con fuentes árabes (Noto Naskh Arabic, IBM Plex Sans Arabic) y reglas propias (p. ej. dígitos LTR en horarios).
+- Tailwind CSS compilado: `npm run build:css` → `dist/styles.css` (config única `tailwind.config.js`, entrada `src/input.css`). **Recompilar tras tocar clases en cualquier HTML** — `content` cubre las 3 páginas + legal.html.
+- Google Fonts: **Jost** (display + body; sustituta libre de Nobel del manual de marca) y **Allura** (script del wordmark).
+- Vanilla JS: casi todo inline en cada HTML; dos externos compartidos con `defer`: `js/gallery.js` (filtros de galería) y `js/consent.js` (banner de cookies + gate de Google Maps; API `window.dlOpenConsent()`; localStorage `dl-consent-v1`; i18n es/en/ar por `document.documentElement.lang` y ruta a legal vía `data-legal` del script tag).
 
-## Sistema de diseño (NO cambiar sin discutirlo)
+## Sistema de diseño (paleta de marca — NO cambiar sin discutirlo)
 
-### Paleta — 6 colores, disciplinada
+Mismos NOMBRES de token que siempre, remapeados a la paleta del manual (`brand_assets/brand_kit.md`):
 
 | Token | Hex | Uso |
 |---|---|---|
-| `cream` | `#F5EFE3` | Fondo base |
-| `sand` | `#EADFCB` | Fondo alternativo, paneles de detalle abiertos |
-| `cedar` | `#2F4A3E` | Texto principal, fondos secciones oscuras |
-| `cedar-deep` | `#1F3329` | Headers de platos, footer |
-| `teal` | `#5FAFA8` | Wordmark script "du Liban" (viene de la PDF) |
-| `gold` (`saffron`) | `#BFA15A` | Ornamentos y líneas decorativas (NO texto — falla AA) |
-| `gold-deep` (`burnished`) | `#7C6226` | Precios y texto de eyebrows (`.ornament`) — ≥4.5:1 AA en cream |
-| `gold-soft` | `#D9C490` | Acentos sobre fondos oscuros |
-| `terracotta` | `#A64A33` | CTAs "Reservar" (texto crema ≥4.5:1 AA) |
-| `terracotta-deep` | `#8E3E2C` | CTA hover |
-| `ink` | `#1A1A17` | Texto neutro |
+| `cream` | `#FAF7F0` | Fondo base |
+| `sand` | `#EFE9DC` | Fondo alternativo |
+| `cedar` | `#3C3D3F` | Texto principal, fondos oscuros |
+| `cedar-deep` | `#262729` | Footer, headers |
+| `teal` | `#00A6CE` | Acento PANTONE 312C (wordmark "du") |
+| `gold` | `#85754E` | Ornamentos PANTONE 871C (NO texto pequeño) |
+| `gold-soft` | `#C9B98C` | Acentos sobre fondos oscuros |
+| `gold-deep` | `#6E6041` | Texto dorado AA (≥4.5:1 sobre cream) |
+| `terracotta` | `#0A7390` | CTAs Reservar (turquesa oscurecido AA) |
+| `terracotta-deep` | `#085F77` | CTA hover |
+| `ink` | `#474749` | Texto neutro (gris de marca K87) |
 
-### Tipografía
+Ornamentos PNG del manual en `brand_assets/` (logo_full, ornament_floral, pattern_arabesque_gold, border_geo2…). Hay 5 PNG sin trackear no referenciados — no borrar sin preguntar.
 
-- **Display + precios:** Cormorant Garamond (Google Fonts) — 300–700, italic disponible
-- **Script wordmark "du Liban":** Allura (Google Fonts) — viene del logo de la PDF
-- **Body:** Satoshi (Fontshare) — 300, 400, 500, 700. **NUNCA Inter ni Roboto** (criterio explícito del checklist 10k€)
+- **No usar Inter ni Roboto.** No añadir librerías JS. No emojis como iconos (SVG). `prefers-reduced-motion` en toda animación nueva. Mobile con decisiones propias, no "desktop encogido".
 
-### Motivos visuales
+## Estructura de las páginas (en orden)
 
-- Ramas de olivo SVG (vienen de los ornamentos de la PDF original)
-- Ornamentos dorados con `.ornament` class (líneas + eyebrow)
-- Fondo cream con paper-grain SVG superpuesto (multiply ~35%) — añade tactilidad
-- Gradientes radiales sutiles teal/terracotta en secciones "elevadas" (`.bg-elevated`, `.bg-elevated-deep`, `.bg-cedar-elevated`)
-- Rail editorial en cada sección: `01 · Concepto`, `02 · La carta`, etc. (`.sec-mark`)
-- Watermark de rama de olivo gigante en esquinas opuestas a 6% opacidad (`.corner-olive`)
+1. **Nav** — glass pill flotante: logo, links (Concepto · Carta · Cocina · **El espacio** · Eventos · Visítanos), lang switch ES·EN·AR, teléfono, botón Reservar (SevenRooms, target _blank)
+2. **Hero** — vídeo `assets/hero-mezze.mp4`, textos esquinados `.seh-text` (bl: "La Moraleja · Madrid"; **br: badge "100% Halal certificado"**)
+3. **Marquee** de la carta
+4. **Banda USP `#halal`** (sin número, fondo cedar-elevated + arabesco): foto shisha + "Cocina 100% halal certificada. Shisha en la terraza." + 3 bullets
+5. **01 Concepto**
+6. **02 La carta** — acordeón 5 categorías (`menu-block[data-cat]`) + popup de platos (JS `PHOTO_BASE`/`DISH_PHOTOS`)
+7. **03 La cocina** — zoom-parallax + carrusel horizontal `xc-card` (⚠️ la card puente `xc-card-bridge` y la card 01 DEBEN compartir imagen — cross-fade)
+8. **— Pausa** Beirut · Madrid (banda oscura)
+9. **04 El espacio** — galería filtrable (pestañas `data-filter` all/terraza/interior/bar/comida, 16 `figure[data-cat]`, fotos de `fotos/`). El atributo `data-cat` se comparte con el acordeón de la carta: los selectores de ambos JS están acotados a su contenedor — mantenerlo así.
+10. **05 Eventos privados**
+11. **06 Visítanos** — dirección, horario, contacto, mapa Google **gateado por consentimiento** (`iframe[data-consent-src]` + placeholder "Cargar mapa")
+12. **Footer** — wordmark, nav, contacto (tel + WhatsApp), dirección enlazada a Google Maps, legales → `legal.html#…` + "Preferencias de cookies" (`data-cookie-prefs`)
 
-## Estructura del index.html (en orden)
+## legal.html
 
-1. **Preloader** — Stroke-draw handwritten "du Liban" en SVG, fade tras 1.1s
-2. **Nav** — Glass pill flotante, top-spaced del edge, phone + Reservar siempre visibles
-3. **Hero** — Wordmark display "DU LIBAN", olive branch SVG con sway, foto cinemática
-4. **Marquee** — Italic Cormorant scrolling con palabras de la carta + dots dorados (38s loop)
-5. **01 Concepto** — "Tres generaciones, una sola mesa" + 2 fotos staggered + quote
-6. **02 La Carta** — Tag "Carta de verano vigente 2026" + headline + TOC vertical 5 actos + descripción → foto cinemática del horno → acordeón 5 categorías con popup hover por plato
-7. **03 La Cocina** — Quote del equipo + 5-tile editorial gallery (5/12 hero + 2×2 + full-width)
-8. **Pausa Beirut · Madrid** — Sección cedar oscura con script gigante de fondo, CTAs
-9. **04 Eventos privados** — Foto 6/6 + pitch con bullets dorados (embajada/catering/halal)
-10. **05 Visítanos** — Dirección + horario + contacto + mapa Google con filtro sepia
-11. **Footer** — Wordmark gigante relleno de foto con parallax + nav links + socials
-
-## Interacciones handcrafted (ya implementadas)
-
-Todas respetan `prefers-reduced-motion`.
-
-- **Custom cursor** — dot (6px) + ring (36px) laggy con mix-blend-difference. Solo desktop fine pointer. Se expande sobre interactivos.
-- **Magnetic CTAs** — los 3 botones "Reservar" se trasladan según proximidad del cursor (`data-magnetic`).
-- **Photo tilt 3D** — cada `.tile` rota ±5deg con perspective 900px según posición del cursor.
-- **Word-by-word mask reveal** — headlines con `.word-reveal`. JS envuelve cada palabra al cargar y las desliza desde abajo con stagger de 60ms.
-- **Acordeón de la carta**:
-  - Barra cedar `rounded-xl` que se expande desde el centro (no left-wipe)
-  - Inset 6px arriba/abajo → no es edge-to-edge → respira
-  - Title centrado, thumbs 108×74 que slide-in desde 310px del centro al hover/activo
-  - Arrow rota: + → 90deg (hover) → 45deg = × (expandido)
-  - Detail panel: fondo sand con border-radius bottom, margin -10px arriba para fluir desde la barra
-- **Dish-photo popup** — al hover/tap sobre `.dish-name`: card 380px con eyebrow categoría, nombre + precio gold, 2 fotos polaroid rotadas ±1.4°, descripción italic con hairline arriba. Smart-positioning lateral con clamp al viewport.
-- **Parallax footer wordmark** — background-position-y se mueve con el scroll
-- **Marquee** — pause-on-hover, gold dot separators
+Página única en español (noindex): `#condiciones`, `#privacidad`, `#cookies`. Redactada para lo que la web ES (estática, sin formularios ni analítica; único tercero: Google Maps gateado; reservas en SevenRooms como responsable externo). **Placeholder pendiente:** `[razón social y CIF pendientes de completar por el titular]`. El texto de cookies describe el mecanismo real de `js/consent.js` — si se cambia el comportamiento, actualizar el texto (y viceversa).
 
 ## Carta (datos reales de la PDF oficial)
 
@@ -99,71 +76,49 @@ Todas respetan `prefers-reduced-motion`.
 
 ```
 C:\Duliban\
-├── CLAUDE.md                              ← este archivo (contexto auto-cargado)
-├── index.html                             ← la web entera
-├── .gitignore
+├── CLAUDE.md
+├── index.html · en\index.html · ar\index.html   ← las 3 páginas (espejo, AR +~67 líneas)
+├── legal.html                                    ← políticas (solo ES)
+├── js\gallery.js · js\consent.js                 ← únicos JS externos
+├── dist\styles.css                               ← Tailwind compilado (SE COMITEA)
+├── src\input.css · tailwind.config.js · package.json
+├── assets\hero-mezze.mp4
+├── brand_assets\                                 ← logo + ornamentos del manual de marca
+├── fotos\                                        ← 38 fotos nuevas normalizadas (galería etc.)
+├── fotos nuevas\                                 ← origen crudo (gitignored, NO tocar)
 └── design-inspiration\
-    ├── Du-Liban-Comida-Nueva-Carta.pdf   ← carta oficial (precios e ingredientes)
-    ├── real-fotos\                        ← 40+ FOTOS REALES del restaurante
-    │   ├── interior-del-restaurante-1.jpeg, -2.jpeg
-    │   ├── primer-plano-del-chef.jpeg
-    │   ├── cocinando-horno.jpeg
-    │   ├── cocinando-pescado-parrilla.jpeg
-    │   ├── montando-platos-1.jpeg ... -5.jpeg
-    │   ├── primer-plano-diagonal-plato-1.jpeg ... -6.jpeg
-    │   ├── primer-plano-aero-postre-1.jpeg ... -3.jpeg
-    │   ├── camarero-sirviendo-mesa-1.jpeg, -2.jpeg
-    │   ├── camarero-sirviendo-pescado.jpeg
-    │   ├── terraza-bar-noche-1.jpeg, -2.jpeg
-    │   ├── cena-elegante-de-noche-1.jpeg, -2.jpeg
-    │   ├── mesa-comida-lujo-abundante.jpeg
-    │   ├── comiendo-abundante-mesa-lujo.jpeg
-    │   ├── bebiendo-abundante-mesa-lujo.jpeg
-    │   ├── primer-plano-montando-cocktail-1.jpeg, -2.jpeg
-    │   ├── detalles-bonitos-decoración-1.jpeg ... -3.jpeg
-    │   ├── condimentos.jpeg
-    │   ├── amigas-al-atardecer.jpeg
-    │   ├── plano-aereo-probando-comida.jpeg
-    │   ├── plano-diagonal-probando-comida.jpeg
-    │   └── lujo-revisando-el-menu.jpeg
-    ├── hero-section.png                   ← referencia de layout (Fjordsmaken-style)
-    ├── chef-quote-with-galery-...png      ← referencia gallery
-    ├── way-of-showing-off-the-food-menu.png ← referencia acordeón carta
-    ├── footer-section.png                 ← referencia footer wordmark fill
-    ├── handwritting-animation.png         ← referencia handwriting SVG
-    ├── preloader\                         ← referencias preloader food crumble
-    └── sections-displays-i-like\          ← más referencias de layout
+    ├── Du-Liban-Comida-Nueva-Carta.pdf
+    └── real-fotos\                               ← 40+ fotos de la primera sesión
 ```
 
-## SEO ya implementado
+⚠️ Fotos VETADAS por el cliente (no volver a usar): `primer-plano-del-chef.jpeg` y `comiendo-abundante-mesa-lujo.jpeg` (siguen en real-fotos/ pero sin permiso de publicación). En general: ninguna foto con una cara como sujeto principal sin OK del cliente.
 
-- JSON-LD `Restaurant` schema con dirección, teléfono, email, horarios
-- Open Graph + Twitter card meta
-- Favicon SVG inline (rama de olivo en cedar sobre cream)
+## SEO
+
+JSON-LD `Restaurant` en las 3 páginas (tel/email/horario/`servesCuisine ["Lebanese","Halal"]`/`acceptsReservations`/keywords) + Open Graph + hreflang ES/EN/AR + favicon SVG inline.
 
 ## Repo
 
-https://github.com/gonzalolopezkan-spec/duliban — `main` branch
+https://github.com/gonzalolopezkan-spec/duliban — trabajo actual en rama **`brand-definitivo`** (11 commits sobre main, sin pushear). `main` aún tiene la estructura antigua (clásico + /brand).
 
 ## Tareas pendientes conocidas (por impacto)
 
-1. ~~**Cambiar placeholders Unsplash por fotos reales**~~ — **HECHO**. Toda la imaginería son fotos reales del restaurante (`design-inspiration/real-fotos/`).
-2. ~~**Migrar Tailwind del CDN a build step**~~ — **HECHO**. `npm run build:css` compila a `dist/styles.css`.
-3. **Optimizar imágenes reales:** `.jpeg` → `.webp`, generar `srcset` para responsive. *(Pendiente — necesita `sharp` u otra herramienta; el build step ya eliminó el mayor problema de carga.)*
-4. **Confirmar handle real de Instagram** (`@dulibanrestaurant` es suposición).
-5. **Pulir microcopy** del story / chef bio — el copy actual es provisional.
-6. **Completar datos legales reales** (razón social / CIF) en las secciones `#aviso-legal` / `#privacidad` / `#cookies` del footer — ahora llevan un placeholder `[razón social y CIF a completar por el titular]`.
+1. **Merge/push de `brand-definitivo`** cuando el usuario lo decida.
+2. **Razón social + CIF** reales en legal.html (placeholder visible).
+3. **Confirmar dirección** con el cliente (web antigua decía "Plaza de Fuentes 2, 28100").
+4. **Validar la URL de SevenRooms** en producción (la pasó el cliente; responde, pero conviene una reserva de prueba).
+5. **Optimizar imágenes**: `.jpeg` → `.webp` + `srcset` (ahora también las 38 de `fotos/`).
+6. **og:image** con URL absoluta cuando haya dominio definitivo.
+7. Borrar `fotos nuevas/` del disco cuando el cliente valide la selección.
+8. Microcopy del chef ("Mohammad · jefe de cocina") es provisional.
 
 ## Reglas de trabajo
 
-- **No añadir librerías JS nuevas** sin discutirlo. Todo vanilla + Tailwind.
-- **No tocar la paleta ni la tipografía** sin justificación.
-- **No usar emojis como iconos** — SVG (Heroicons / Lucide).
-- **`prefers-reduced-motion` respetado** en cualquier animación nueva.
-- **Mobile no es "desktop encogido"** — decisiones específicas por viewport.
-- **Editar `index.html` con `Edit`**, no reescribir entero con `Write` salvo cuando sea inevitable.
-- **No usar Inter ni Roboto** como fuente del body — criterio explícito del checklist 10k€.
-- **`/ui-ux-pro-max`** se invoca solo para decisiones visuales nuevas, no para cada cambio.
+- **Editar con `Edit`**, no reescribir archivos enteros salvo inevitable.
+- **Todo cambio de contenido va a LAS TRES páginas** (ES/EN/AR, traducido — en AR con árabe real, dígitos arábigos orientales ١٢٣ en texto árabe y latinos en horas).
+- Tras tocar clases Tailwind: `npm run build:css` y comitear `dist/styles.css`.
+- No tocar paleta/tipografía sin justificación. No librerías JS nuevas.
+- `/ui-ux-pro-max` solo para decisiones visuales nuevas.
 
 ## Cuándo invocar qué skill
 
