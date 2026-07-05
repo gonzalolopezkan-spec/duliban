@@ -17,3 +17,6 @@ node_modules/
 # Env
 .env
 .env.local
+
+# Raw photo source folder (normalized copies stored in fotos/)
+fotos nuevas/
