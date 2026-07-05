@@ -1,28 +1,37 @@
 /** @type {import('tailwindcss').Config} */
+// Variante "imagen de marca" — mismos NOMBRES de token que el sitio actual,
+// pero remapeados a la paleta del manual de marca oficial (brand_assets/brand_kit.md).
+// Así las utilidades de Tailwind (bg-cream, text-cedar, text-gold-deep, …) heredan
+// los colores de marca sin tocar una sola clase del HTML. Salida: brand/styles.css.
 module.exports = {
-  // Scans the single page for utility classes (incl. arbitrary values like text-[11px]).
-  content: ['./index.html'],
+  content: ['./index.html', './en/index.html', './ar/index.html', './legal.html'],
   theme: {
     extend: {
-      // Same disciplined palette as the design system. Prices/eyebrows use gold-deep
-      // and CTAs use terracotta at AA-compliant darkness (see :root in index.html).
       colors: {
-        cream: '#F5EFE3',
-        sand: '#EADFCB',
-        cedar: '#2F4A3E',
-        'cedar-deep': '#1F3329',
-        teal: '#5FAFA8',
-        gold: '#BFA15A',
-        'gold-soft': '#D9C490',
-        'gold-deep': '#7C6226',
-        terracotta: '#A64A33',
-        'terracotta-deep': '#8E3E2C',
-        ink: '#1A1A17',
+        // Bases claras (antes crema/arena) — base premium cálida y limpia
+        cream: '#FAF7F0',
+        sand: '#EFE9DC',
+        // Oscuros (antes cedro) — carbón cálido neutro, asienta el oro + turquesa
+        cedar: '#3C3D3F',
+        'cedar-deep': '#262729',
+        // Acento de marca: turquesa PANTONE 312C (decorativo / wordmark "du")
+        teal: '#00A6CE',
+        // Oro/oliva PANTONE 871C — ornamento (gold) y texto AA (gold-deep ≥4.5:1)
+        gold: '#85754E',
+        'gold-soft': '#C9B98C',
+        'gold-deep': '#6E6041',
+        // CTAs "Reservar" — turquesa de marca oscurecido a AA (texto crema ≥4.5:1)
+        terracotta: '#0A7390',
+        'terracotta-deep': '#085F77',
+        // Texto neutro = gris de marca K87
+        ink: '#474749',
       },
       fontFamily: {
-        display: ['"Cormorant Garamond"', 'serif'],
+        // Nobel no está libre en web → Jost (geométrica, mismo aire) como sustituta
+        display: ['"Jost"', 'system-ui', 'sans-serif'],
+        // Wordmark/logotipo script — Allura (sustituta libre del script del logo de marca)
         script: ['"Allura"', 'cursive'],
-        sans: ['Satoshi', 'system-ui', 'sans-serif'],
+        sans: ['Jost', 'system-ui', 'sans-serif'],
       },
       letterSpacing: {
         tightest: '-0.04em',
