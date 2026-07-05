@@ -73,17 +73,18 @@
   }
 
   /* ── Apply consent: load gated iframes, hide placeholders ───────────── */
+  function loadFrame(frame) {
+    var src = frame.getAttribute('data-consent-src');
+    if (!src) return;
+    if (frame.getAttribute('src') !== src) frame.setAttribute('src', src);
+    var container = frame.parentElement;
+    var placeholder = container ? container.querySelector('[data-map-placeholder]') : null;
+    if (placeholder) placeholder.style.display = 'none';
+  }
+
   function applyConsent(thirdParty) {
     if (!thirdParty) return;
-    var frames = document.querySelectorAll('iframe[data-consent-src]');
-    frames.forEach(function (frame) {
-      var src = frame.getAttribute('data-consent-src');
-      if (!src) return;
-      if (frame.getAttribute('src') !== src) frame.setAttribute('src', src);
-      var container = frame.parentElement;
-      var placeholder = container ? container.querySelector('[data-map-placeholder]') : null;
-      if (placeholder) placeholder.style.display = 'none';
-    });
+    document.querySelectorAll('iframe[data-consent-src]').forEach(loadFrame);
   }
 
   /* ── Scoped CSS (prefixed .cc-, not Tailwind) ────────────────────────── */
@@ -130,6 +131,15 @@
 
   /* ── Banner markup + wiring ──────────────────────────────────────────── */
   var banner = null;
+  var lastFocused = null;
+
+  /* Escape closes the banner WITHOUT saving — postpones the decision.
+     Registered on show, removed on hide. */
+  function onEscape(e) {
+    if (e.key !== 'Escape') return;
+    if (!banner || banner.hidden) return;
+    hideBanner();
+  }
 
   function buildBanner() {
     if (banner) return banner;
@@ -210,6 +220,13 @@
     panel.hidden = true;
     customizeBtn.setAttribute('aria-expanded', 'false');
 
+    // Remember where focus was so we can return it on close (a11y).
+    // Skip if focus is already inside the banner (re-open while open).
+    if (!el.contains(document.activeElement)) {
+      lastFocused = document.activeElement;
+    }
+    document.addEventListener('keydown', onEscape);
+
     el.hidden = false;
     if (!reduceMotion) {
       el.classList.remove('cc-enter');
@@ -225,6 +242,17 @@
   function hideBanner() {
     if (!banner) return;
     banner.hidden = true;
+    document.removeEventListener('keydown', onEscape);
+    // Return focus to the element that opened the banner, if still valid
+    if (
+      lastFocused &&
+      lastFocused !== document.body &&
+      document.documentElement.contains(lastFocused) &&
+      typeof lastFocused.focus === 'function'
+    ) {
+      lastFocused.focus();
+    }
+    lastFocused = null;
   }
 
   /* ── Footer "Cookie preferences" links ───────────────────────────────── */
@@ -242,8 +270,13 @@
   function wireMapLoadButtons() {
     document.querySelectorAll('[data-map-load]').forEach(function (btn) {
       btn.addEventListener('click', function () {
+        // Consent is global, but only load THIS button's own map: the
+        // sibling iframe of its [data-map-placeholder] container.
         writeConsent(true);
-        applyConsent(true);
+        var placeholder = btn.closest('[data-map-placeholder]');
+        var container = placeholder ? placeholder.parentElement : null;
+        var frame = container ? container.querySelector('iframe[data-consent-src]') : null;
+        if (frame) loadFrame(frame);
       });
     });
   }
