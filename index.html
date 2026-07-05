@@ -399,23 +399,6 @@
   }
   .skip-link:focus { transform: translateY(0); }
 
-  /* Legal docs — hidden until linked (:target), no JS needed */
-  .legal-doc { display: none; }
-  .legal-doc:target {
-    display: block;
-    margin-top: 28px;
-    padding: 22px 24px;
-    background: rgba(250,247,240,0.05);
-    border: 1px solid rgba(250,247,240,0.12);
-    border-radius: 10px;
-    font-size: 13px; line-height: 1.7; color: rgba(250,247,240,0.82);
-    max-width: 760px;
-    scroll-margin-top: 90px;
-  }
-  .legal-doc h3 { font-family: 'Jost', serif; font-size: 21px; color: #C9B98C; margin-bottom: 8px; }
-  .legal-doc p + p { margin-top: 10px; }
-  .legal-doc a { color: #C9B98C; text-decoration: underline; }
-
   /* ── Unified image grade (one cohesive film look across every photo) ───── */
   .tile img, .img-reveal { filter: saturate(.88) contrast(1.06) brightness(.98) sepia(.05); }
 
@@ -2434,31 +2417,12 @@
       <div class="word-fill text-[20vw] md:text-[22vw] leading-[0.85]" aria-hidden="true">du&nbsp;Liban</div>
     </div>
 
-    <!-- Legal (revealed on :target from the links below) -->
-    <section id="aviso-legal" class="legal-doc" aria-label="Aviso legal">
-      <h3>Aviso legal</h3>
-      <p>Titular: du Liban — [razón social y CIF a completar por el titular]. Domicilio: Plaza de la Moraleja, C. de la Estafeta 2, Local 4/5, 28109 Alcobendas (Madrid). Contacto: +34&nbsp;917&nbsp;54&nbsp;48&nbsp;38 · reservas@dulibanrestaurante.com.</p>
-      <p>Este sitio web tiene carácter informativo sobre el restaurante du Liban, su carta y sus servicios. El acceso y uso del sitio implican la aceptación de este aviso.</p>
-      <p><a href="#contenido">Cerrar</a></p>
-    </section>
-    <section id="privacidad" class="legal-doc" aria-label="Política de privacidad">
-      <h3>Privacidad</h3>
-      <p>Responsable: du Liban (datos de contacto en el aviso legal). Finalidad: gestionar las reservas y consultas que el cliente envía por teléfono, correo electrónico o WhatsApp. Legitimación: consentimiento del interesado.</p>
-      <p>No se ceden datos a terceros salvo obligación legal. Puede ejercer sus derechos de acceso, rectificación, supresión, oposición, limitación y portabilidad escribiendo a reservas@dulibanrestaurante.com.</p>
-      <p><a href="#contenido">Cerrar</a></p>
-    </section>
-    <section id="cookies" class="legal-doc" aria-label="Política de cookies">
-      <h3>Cookies</h3>
-      <p>Este sitio no utiliza cookies propias de seguimiento ni de publicidad. El mapa incrustado de Google Maps puede instalar cookies de terceros de Google al cargarse; puede consultar su política en las páginas de Google.</p>
-      <p><a href="#contenido">Cerrar</a></p>
-    </section>
-
     <div class="mt-10 pt-6 border-t border-cream/10 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 text-[12px] text-cream/55">
       <p>© <span id="year">2026</span> du Liban — Lebanese Cuisine. Todos los derechos reservados.</p>
       <div class="flex items-center gap-5">
-        <a href="#aviso-legal" class="hover:text-cream transition-colors duration-200">Aviso legal</a>
-        <a href="#privacidad" class="hover:text-cream transition-colors duration-200">Privacidad</a>
-        <a href="#cookies" class="hover:text-cream transition-colors duration-200">Cookies</a>
+        <a href="legal.html#condiciones" class="hover:text-cream transition-colors duration-200">Aviso legal</a>
+        <a href="legal.html#privacidad" class="hover:text-cream transition-colors duration-200">Privacidad</a>
+        <a href="legal.html#cookies" class="hover:text-cream transition-colors duration-200">Cookies</a>
       </div>
     </div>
   </div>
