@@ -372,17 +372,6 @@
   .hours-row { display: grid; grid-template-columns: 1fr auto; gap: 1rem; padding: .85rem 0; border-bottom: 1px solid rgba(60,61,63,.16); font-feature-settings: 'tnum'; }
   .hours-row:last-child { border-bottom: 0; }
 
-  /* Gallery filter tabs (El espacio) */
-  .gal-tab {
-    border: 1px solid rgba(60,61,63,.25); border-radius: 999px; padding: .5rem 1.1rem;
-    font-family: 'Jost', sans-serif; font-size: 11px; letter-spacing: .18em; text-transform: uppercase;
-    color: var(--cedar); background: transparent;
-    transition: all .2s ease; min-height: 44px; cursor: pointer;
-  }
-  .gal-tab:hover { border-color: var(--gold); color: var(--gold-deep); }
-  .gal-tab[aria-pressed="true"] { background: var(--cedar); border-color: var(--cedar); color: var(--cream); }
-  @media (prefers-reduced-motion: reduce) { .gal-tab { transition: none !important; } }
-
   /* Focus rings */
   :focus-visible { outline: 2px solid #0A7390; outline-offset: 3px; border-radius: 2px; }
 
