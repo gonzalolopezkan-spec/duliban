@@ -2950,7 +2950,8 @@
       const name    = nameEl ? nameEl.textContent.trim() : '';
       const price   = priceEl ? priceEl.textContent.trim() : '';
       const desc    = descEl ? descEl.textContent.trim() : '';
-      const [p1, p2] = getPhotos(name, cat);
+      const dishKey = dish.dataset.dish;
+      const [p1, p2] = (dishKey && DISH_PHOTOS[dishKey]) ? DISH_PHOTOS[dishKey] : getPhotos(name, cat);
 
       elName.textContent    = name;
       elPrice.textContent   = price;
