@@ -58,19 +58,70 @@
 <link rel="stylesheet" href="dist/styles.css">
 <style>
 
-  /* Language switcher (top nav) */
-  .lang-switch { font-feature-settings: 'tnum'; letter-spacing: .12em; }
-  .lang-switch .lang-item { color: rgba(47,74,62,.65); transition: color .2s ease; padding: 0 2px; }
-  .lang-switch .lang-item:hover { color: var(--cedar); }
-  .lang-switch .lang-active { color: var(--cedar); font-weight: 600; padding: 0 2px; }
-  .lang-switch .lang-sep { color: rgba(47,74,62,.30); }
-  /* Brand variant uses neutral cedar grey */
-  html[data-brand="1"] .lang-switch .lang-item { color: rgba(60,61,63,.65); }
-  html[data-brand="1"] .lang-switch .lang-item:hover { color: var(--cedar); }
-  html[data-brand="1"] .lang-switch .lang-active { color: var(--cedar); }
-  html[data-brand="1"] .lang-switch .lang-sep { color: rgba(60,61,63,.30); }
-  /* AR variant — keep latin digits LTR */
+  /* Language switcher — segmented pill (T2) */
+  .lang-switch {
+    align-items: center; gap: 2px;
+    background: rgba(60,61,63,.06);
+    border: 1px solid rgba(60,61,63,.10);
+    border-radius: 999px; padding: 2px;
+    font-size: 11px; letter-spacing: .1em; text-transform: uppercase;
+    font-feature-settings: 'tnum';
+  }
+  .lang-switch .lang-item,
+  .lang-switch .lang-active {
+    display: inline-flex; align-items: center; justify-content: center;
+    min-width: 30px; padding: 5px 9px; border-radius: 999px; line-height: 1;
+    transition: background .2s ease, color .2s ease, box-shadow .2s ease;
+  }
+  .lang-switch .lang-item { color: rgba(60,61,63,.62); }
+  .lang-switch .lang-item:hover { color: var(--cedar); background: rgba(60,61,63,.07); }
+  .lang-switch .lang-active {
+    color: var(--cedar); background: var(--cream); font-weight: 600;
+    box-shadow: 0 1px 2px rgba(38,39,41,.14);
+  }
   html[lang="ar"] .lang-switch { direction: ltr; }
+
+  /* Mobile nav — logo/burger dropdown (T6) */
+  .nav-desk-only { display: none !important; }
+  .nav-burger { display: none; background: none; border: 0; padding: 6px; color: var(--cedar); cursor: pointer; border-radius: 999px; }
+  .nav-burger:hover { background: rgba(60,61,63,.06); }
+  .nav-menu {
+    position: absolute; top: calc(100% + 10px); left: 0; right: 0; z-index: 50;
+    background: var(--cream); border: 1px solid rgba(60,61,63,.12);
+    border-radius: 22px; padding: 10px;
+    box-shadow: 0 20px 50px -22px rgba(38,39,41,.45);
+    opacity: 0; transform: translateY(-8px) scale(.985); transform-origin: top center;
+    transition: opacity .22s ease, transform .22s ease;
+  }
+  .nav-menu[hidden] { display: none; }
+  .nav-menu.is-open { opacity: 1; transform: none; }
+  .nav-menu-link {
+    display: block; padding: 13px 16px; border-radius: 12px;
+    font-size: 14px; letter-spacing: .12em; text-transform: uppercase;
+    color: var(--cedar); transition: background .2s ease, color .2s ease;
+  }
+  .nav-menu-link:hover, .nav-menu-link:focus-visible { background: rgba(60,61,63,.06); color: var(--terracotta); }
+  .nav-menu-foot {
+    display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    padding: 14px 8px 6px; margin-top: 6px; border-top: 1px solid rgba(60,61,63,.10);
+  }
+  .nav-menu-phone { font-size: 13px; letter-spacing: .06em; color: var(--cedar); }
+  @media (min-width: 1024px) {
+    .nav-desk-only { display: inline-flex !important; }
+    .nav-menu { display: none !important; }
+  }
+  @media (max-width: 1023px) {
+    .nav-bar { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 8px; }
+    .nav-burger { display: inline-flex; align-items: center; justify-self: start; }
+    .nav-logo { justify-self: center; }
+    .nav-logo-img { height: 2.75rem; }
+    .nav-right { justify-self: end; }
+    .nav-reserve { font-size: 11px; padding: 9px 15px; min-height: 38px; }
+    .nav-reserve .nav-reserve-arrow { display: none; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .nav-menu { transition: none; }
+  }
 
   :root {
     color-scheme: light;
@@ -771,9 +822,13 @@
 <!-- ─────────────────────────  NAV (sticky after hero)  ───────────────────────── -->
 <header class="sticky top-0 z-40">
   <div class="max-w-[1400px] mx-auto px-5 md:px-10 pt-5 pb-4 md:pb-7">
-    <nav class="backdrop-blur-md bg-cream/85 border border-cedar/10 rounded-full px-4 md:px-6 py-3 flex items-center justify-between shadow-[0_4px_24px_-12px_rgba(38,39,41,0.25)]">
-      <a href="#top" class="flex items-center gap-2 group" aria-label="du Liban — inicio">
-        <img src="brand_assets/logo_full.png" alt="du Liban — Lebanese Cuisine" class="h-9 md:h-10 w-auto" width="60" height="40"/>
+    <nav class="nav-bar relative backdrop-blur-md bg-cream/85 border border-cedar/10 rounded-full px-4 md:px-6 py-3 flex items-center justify-between shadow-[0_4px_24px_-12px_rgba(38,39,41,0.25)]">
+      <button type="button" class="nav-burger" data-nav-toggle aria-controls="mobile-menu" aria-expanded="false" aria-label="Abrir menú de navegación">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+
+      <a href="#top" class="nav-logo flex items-center gap-2 group" aria-label="du Liban — inicio">
+        <img src="brand_assets/logo_full.png" alt="du Liban — Lebanese Cuisine" class="nav-logo-img h-9 md:h-10 w-auto" width="60" height="40"/>
       </a>
 
       <ul class="hidden lg:flex items-center gap-8 text-[13px] tracking-wider-2 uppercase text-cedar/85">
@@ -785,18 +840,34 @@
         <li><a class="hover:text-terracotta transition-colors duration-200" href="#visitanos">Visítanos</a></li>
       </ul>
 
-      <div class="flex items-center gap-2">
-        <div class="lang-switch hidden md:flex items-center gap-1.5 text-[11px] tracking-wider-2 uppercase text-cedar/70 px-2 mr-1" aria-label="Language">
-          <span aria-current="page" class="lang-active">ES</span><span class="lang-sep">·</span><a href="en/index.html" hreflang="en" class="lang-item">EN</a><span class="lang-sep">·</span><a href="ar/index.html" hreflang="ar" class="lang-item">AR</a>
+      <div class="nav-right flex items-center gap-2">
+        <div class="lang-switch nav-desk-only" aria-label="Idioma">
+          <span aria-current="page" class="lang-active">ES</span><a href="en/index.html" hreflang="en" class="lang-item">EN</a><a href="ar/index.html" hreflang="ar" class="lang-item">AR</a>
         </div>
-        <a href="tel:+34917544838" class="hidden md:inline-flex items-center gap-2 text-[12px] tracking-wider-2 uppercase text-cedar/80 hover:text-cedar transition-colors px-2" aria-label="Llamar al restaurante">
+        <a href="tel:+34917544838" class="nav-desk-only items-center gap-2 text-[12px] tracking-wider-2 uppercase text-cedar/80 hover:text-cedar transition-colors px-2" aria-label="Llamar al restaurante">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
           917 54 48 38
         </a>
-        <a href="https://www.sevenrooms.com/explore/duliban/reservations/create/search/" target="_blank" rel="noopener" data-cursor="cta" class="btn-reserve inline-flex items-center gap-2 bg-terracotta hover:bg-terracotta-deep text-cream text-[12px] md:text-[13px] tracking-wider-2 uppercase px-5 py-3 md:py-2.5 rounded-full transition-colors duration-200 cursor-pointer min-h-[44px]" aria-label="Reservar mesa">
+        <a href="https://www.sevenrooms.com/explore/duliban/reservations/create/search/" target="_blank" rel="noopener" data-cursor="cta" class="nav-reserve btn-reserve inline-flex items-center gap-2 bg-terracotta hover:bg-terracotta-deep text-cream text-[12px] md:text-[13px] tracking-wider-2 uppercase px-5 py-3 md:py-2.5 rounded-full transition-colors duration-200 cursor-pointer min-h-[44px]" aria-label="Reservar mesa">
           Reservar
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+          <svg class="nav-reserve-arrow" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
         </a>
+      </div>
+
+      <div id="mobile-menu" class="nav-menu" data-nav-menu hidden>
+        <a href="#top" class="nav-menu-link" data-nav-close>Inicio</a>
+        <a href="#concepto" class="nav-menu-link" data-nav-close>Concepto</a>
+        <a href="#carta" class="nav-menu-link" data-nav-close>Carta</a>
+        <a href="#chef" class="nav-menu-link" data-nav-close>Cocina</a>
+        <a href="#espacio" class="nav-menu-link" data-nav-close>El espacio</a>
+        <a href="#eventos" class="nav-menu-link" data-nav-close>Eventos privados</a>
+        <a href="#visitanos" class="nav-menu-link" data-nav-close>Visítanos</a>
+        <div class="nav-menu-foot">
+          <div class="lang-switch" style="display:inline-flex" aria-label="Idioma">
+            <span aria-current="page" class="lang-active">ES</span><a href="en/index.html" hreflang="en" class="lang-item">EN</a><a href="ar/index.html" hreflang="ar" class="lang-item">AR</a>
+          </div>
+          <a href="tel:+34917544838" class="nav-menu-phone" aria-label="Llamar al restaurante">917 54 48 38</a>
+        </div>
       </div>
     </nav>
   </div>
@@ -827,7 +898,7 @@
 <!-- ─────────────────────────  HALAL & SHISHA  ───────────────────────── -->
 <section id="halal" class="sec py-20 md:py-36 bg-cedar-elevated text-cream relative overflow-hidden">
   <!-- Velo de patrón arabesco de marca (sutil, sobre fondo oscuro) -->
-  <div aria-hidden="true" class="absolute inset-0 pointer-events-none" style="background-image:url('brand_assets/pattern_arabesque_gold.png');background-size:cover;background-position:center;opacity:.06;mix-blend-mode:screen"></div>
+  <div aria-hidden="true" class="absolute inset-0 pointer-events-none" style="background-image:url('brand_assets/pattern_arabesque_gold.png');background-repeat:repeat;background-size:300px auto;background-position:top left;opacity:.06;mix-blend-mode:screen"></div>
   <span class="sec-mark sec-mark--light">— Halal &amp; shisha</span>
 
   <div class="max-w-[1400px] mx-auto px-5 md:px-10 grid md:grid-cols-12 gap-10 md:gap-16 items-center relative z-10">
@@ -875,7 +946,6 @@
   </svg>
 
   <div class="max-w-[1100px] mx-auto px-5 md:px-10 text-center relative z-10">
-    <p class="reveal ornament text-[11px] tracking-widest-2 uppercase mb-8">Concepto</p>
     <h2 class="reveal delay-1 word-reveal font-display text-cedar text-4xl md:text-6xl lg:text-7xl leading-[1.05] tracking-tightest">
       Recetas familiares de Beirut,<br class="hidden md:block"/>
       una sola <em class="font-display italic">mesa</em>.
@@ -956,7 +1026,6 @@
     <div class="grid md:grid-cols-12 gap-10 md:gap-12 mb-16 md:mb-24 items-end">
       <!-- Headline column -->
       <div class="md:col-span-6 reveal">
-        <p class="ornament text-[11px] tracking-widest-2 uppercase mb-6">La carta</p>
         <h2 class="word-reveal font-display text-cedar text-4xl md:text-6xl leading-[1.02] tracking-tightest">
           De la <em class="italic">brasa</em> a la mesa,<br/>
           de Beirut a Madrid.
@@ -1170,6 +1239,17 @@
       ¿Alergias o intolerancias? Consulte con nuestro equipo · Todos los precios incluyen IVA
     </p>
   </div>
+  <svg class="corner-olive bottom-0 left-0" style="transform: scaleX(-1)" viewBox="0 0 380 380" aria-hidden="true">
+    <g stroke="#3C3D3F" stroke-width="1" fill="none" stroke-linecap="round">
+      <path d="M360 20 C 280 100, 200 180, 120 280 C 90 320, 60 350, 30 370"/>
+      <g fill="#3C3D3F" stroke="none">
+        <ellipse cx="320" cy="60" rx="22" ry="8" transform="rotate(35 320 60)"/>
+        <ellipse cx="280" cy="110" rx="24" ry="9" transform="rotate(30 280 110)"/>
+        <ellipse cx="240" cy="160" rx="25" ry="9" transform="rotate(25 240 160)"/>
+        <ellipse cx="200" cy="210" rx="24" ry="8" transform="rotate(20 200 210)"/>
+      </g>
+    </g>
+  </svg>
 </section>
 
 <style>
@@ -1190,14 +1270,23 @@
 <!-- ─────────────────────────  CHEF QUOTE + GALLERY  ───────────────────────── -->
 <section id="chef" class="sec pt-16 pb-6 md:pt-40 md:pb-40 relative overflow-hidden">
   <span class="sec-mark">03 · La cocina</span>
-  <!-- Brand floral ornament -->
-  <img src="brand_assets/ornament_floral_single.png" alt="" aria-hidden="true"
-       class="absolute top-10 left-0 w-24 md:w-36 opacity-70 pointer-events-none sway" style="--rot:0deg"/>
+  <svg class="corner-olive top-0 right-0" style="transform: scaleY(-1)" viewBox="0 0 380 380" aria-hidden="true">
+    <g stroke="#3C3D3F" stroke-width="1" fill="none" stroke-linecap="round">
+      <path d="M360 20 C 280 100, 200 180, 120 280 C 90 320, 60 350, 30 370"/>
+      <g fill="#3C3D3F" stroke="none">
+        <ellipse cx="320" cy="60"  rx="22" ry="8" transform="rotate(35 320 60)"/>
+        <ellipse cx="280" cy="110" rx="24" ry="9" transform="rotate(30 280 110)"/>
+        <ellipse cx="240" cy="160" rx="25" ry="9" transform="rotate(25 240 160)"/>
+        <ellipse cx="200" cy="210" rx="24" ry="8" transform="rotate(20 200 210)"/>
+        <ellipse cx="160" cy="260" rx="22" ry="8" transform="rotate(15 160 260)"/>
+        <ellipse cx="120" cy="300" rx="20" ry="7" transform="rotate(10 120 300)"/>
+      </g>
+    </g>
+  </svg>
 
   <div class="max-w-[1400px] mx-auto px-5 md:px-10">
     <div class="grid md:grid-cols-12 gap-10 md:gap-16 items-end mb-0 md:mb-20">
       <div class="md:col-span-5 reveal">
-        <p class="ornament text-[11px] tracking-widest-2 uppercase mb-6">La cocina</p>
         <h2 class="word-reveal font-display text-cedar text-4xl md:text-6xl leading-[1.04] tracking-tightest">
           La hospitalidad libanesa, plato a plato.
         </h2>
@@ -1480,7 +1569,8 @@
       overflow-x: auto; overflow-y: hidden;
       scroll-snap-type: x mandatory;
       -webkit-overflow-scrolling: touch;
-      padding: 8px 20px 28px;
+      padding: 8px 9vw 28px;
+      scroll-padding: 0 9vw;
       height: auto;
       gap: 14px;
       align-items: stretch;
@@ -1488,8 +1578,8 @@
     }
     .xc-wrap::-webkit-scrollbar { display: none; }
     .xc-card {
-      scroll-snap-align: start;
-      width: 76vw;
+      scroll-snap-align: center;
+      width: 82vw;
       max-width: 320px;
       height: auto;
       aspect-ratio: 4 / 5;
@@ -2130,7 +2220,7 @@
 <!-- ─────────────────────────  SCRIPT OVERLAY · BEIRUT EN MADRID  ───────────────────────── -->
 <section class="sec py-20 md:py-36 bg-cedar-elevated text-cream relative overflow-hidden">
   <!-- Velo de patrón arabesco de marca (sutil, sobre fondo oscuro) -->
-  <div aria-hidden="true" class="absolute inset-0 pointer-events-none" style="background-image:url('brand_assets/pattern_arabesque_gold.png');background-size:cover;background-position:center;opacity:.07;mix-blend-mode:screen"></div>
+  <div aria-hidden="true" class="absolute inset-0 pointer-events-none" style="background-image:url('brand_assets/pattern_arabesque_gold.png');background-repeat:repeat;background-size:300px auto;background-position:top left;opacity:.07;mix-blend-mode:screen"></div>
   <span class="sec-mark sec-mark--light">— Pausa</span>
   <div class="absolute inset-0 pointer-events-none opacity-[0.08]" aria-hidden="true">
     <div class="absolute -top-10 left-1/2 -translate-x-1/2 whitespace-nowrap font-script text-gold leading-none" style="font-size: clamp(180px, 30vw, 520px);">Beirut · Madrid</div>
@@ -2163,9 +2253,8 @@
 <section id="espacio" class="sec py-20 md:py-36 relative overflow-hidden">
   <span class="sec-mark">04 · El espacio</span>
   <div class="max-w-[1400px] mx-auto px-5 md:px-10 relative z-10">
-    <p class="reveal ornament text-[11px] tracking-widest-2 uppercase mb-6">El espacio</p>
-    <h2 class="reveal delay-1 word-reveal font-display text-cedar text-4xl md:text-6xl lg:text-7xl leading-[1.05] tracking-tightest mb-10 md:mb-14 max-w-3xl">
-      Terraza, salón y bar<br class="hidden md:block"/> en la Plaza de la Moraleja.
+    <h2 class="reveal delay-1 word-reveal font-display text-cedar text-4xl md:text-6xl lg:text-7xl leading-[1.05] tracking-tightest mb-10 md:mb-14">
+      Terraza, salón y bar en la<br class="hidden md:block"/> Plaza de la Moraleja.
     </h2>
 
     <div class="reveal delay-2 flex flex-wrap gap-2 mb-10" data-gallery-filters>
@@ -2225,6 +2314,160 @@
       <figure class="reveal delay-3 tile overflow-hidden rounded-sm aspect-[4/5]" data-cat="terraza">
         <img src="fotos/chica-fumando-shisha-noche.jpeg" alt="Cliente fumando shisha en la terraza de noche" class="img-reveal w-full h-full object-cover" loading="lazy" decoding="async"/>
       </figure>
+      <figure class="reveal tile overflow-hidden rounded-sm aspect-[4/5]" data-cat="interior">
+        <img src="fotos/foto-del-interior.jpeg" alt="Vista del salón interior con arcos y palmeras" class="img-reveal w-full h-full object-cover" loading="lazy" decoding="async"/>
+      </figure>
+      <figure class="reveal delay-1 tile overflow-hidden rounded-sm aspect-[4/5]" data-cat="comida">
+        <img src="fotos/plano-detalle-comida.jpeg" alt="Fattoush recién servido en mesa vestida" class="img-reveal w-full h-full object-cover" loading="lazy" decoding="async"/>
+      </figure>
+      <figure class="reveal delay-2 tile overflow-hidden rounded-sm aspect-[4/5]" data-cat="comida">
+        <img src="fotos/plano-detalle-comida-2.jpeg" alt="Detalle de plato libanés con guarnición" class="img-reveal w-full h-full object-cover" loading="lazy" decoding="async"/>
+      </figure>
+      <figure class="reveal delay-3 tile overflow-hidden rounded-sm aspect-[4/5]" data-cat="comida">
+        <img src="fotos/plano-detalle-comida-5.jpeg" alt="Plato libanés presentado en mesa" class="img-reveal w-full h-full object-cover" loading="lazy" decoding="async"/>
+      </figure>
+      <figure class="reveal tile overflow-hidden rounded-sm aspect-[4/5]" data-cat="comida">
+        <img src="fotos/plano-detalle-comida-en-terraza-2.jpeg" alt="Plato servido en la terraza de du Liban" class="img-reveal w-full h-full object-cover" loading="lazy" decoding="async"/>
+      </figure>
+      <figure class="reveal delay-1 tile overflow-hidden rounded-sm aspect-[4/5]" data-cat="comida">
+        <img src="fotos/plano-detalle-comida-terraza-3.jpeg" alt="Mezze servido al aire libre" class="img-reveal w-full h-full object-cover" loading="lazy" decoding="async"/>
+      </figure>
+      <figure class="reveal delay-2 tile overflow-hidden rounded-sm aspect-[4/5]" data-cat="comida">
+        <img src="fotos/plano-detalle-comida-terraza-b2.jpeg" alt="Detalle de plato en la terraza" class="img-reveal w-full h-full object-cover" loading="lazy" decoding="async"/>
+      </figure>
+      <figure class="reveal delay-3 tile overflow-hidden rounded-sm aspect-[4/5]" data-cat="bar">
+        <img src="fotos/plano-detalle-como-se-sirve-el-vino.jpeg" alt="Camarero sirviendo vino rosado en la terraza" class="img-reveal w-full h-full object-cover" loading="lazy" decoding="async"/>
+      </figure>
+      <figure class="reveal tile overflow-hidden rounded-sm aspect-[4/5]" data-cat="interior">
+        <img src="fotos/plano-detalle-decoracion-cuadros.jpeg" alt="Galería de fotografías en blanco y negro del interior" class="img-reveal w-full h-full object-cover" loading="lazy" decoding="async"/>
+      </figure>
+      <figure class="reveal delay-1 tile overflow-hidden rounded-sm aspect-[4/5]" data-cat="comida">
+        <img src="fotos/plano-detalle-horno.jpeg" alt="Pan recién horneado saliendo del horno de leña" class="img-reveal w-full h-full object-cover" loading="lazy" decoding="async"/>
+      </figure>
+      <figure class="reveal delay-2 tile overflow-hidden rounded-sm aspect-[4/5]" data-cat="terraza">
+        <img src="fotos/plano-detalle-shisha-carbones-blancoynegro.jpeg" alt="Carbones de shisha en la terraza" class="img-reveal w-full h-full object-cover" loading="lazy" decoding="async"/>
+      </figure>
+      <figure class="reveal delay-3 tile overflow-hidden rounded-sm aspect-[4/5]" data-cat="terraza">
+        <img src="fotos/plano-detalle-shisha-carbones.jpeg" alt="Preparando los carbones de la shisha" class="img-reveal w-full h-full object-cover" loading="lazy" decoding="async"/>
+      </figure>
+      <figure class="reveal tile overflow-hidden rounded-sm aspect-[4/5]" data-cat="bar">
+        <img src="fotos/premium-water.jpeg" alt="Botellas de agua premium en la terraza" class="img-reveal w-full h-full object-cover" loading="lazy" decoding="async"/>
+      </figure>
+      <figure class="reveal delay-1 tile overflow-hidden rounded-sm aspect-[4/5]" data-cat="terraza">
+        <img src="fotos/terraza-bonita.jpeg" alt="Rincón de estar en la terraza de du Liban" class="img-reveal w-full h-full object-cover" loading="lazy" decoding="async"/>
+      </figure>
+      <figure class="reveal delay-2 tile overflow-hidden rounded-sm aspect-[4/5]" data-cat="terraza">
+        <img src="fotos/terraza.jpeg" alt="Mesas vestidas en la terraza de du Liban" class="img-reveal w-full h-full object-cover" loading="lazy" decoding="async"/>
+      </figure>
+      <figure class="reveal delay-3 tile overflow-hidden rounded-sm aspect-[4/5]" data-cat="bar">
+        <img src="fotos/vinos-y-agua-premium-terraza.jpeg" alt="Vino y agua premium enfriándose en cubitera" class="img-reveal w-full h-full object-cover" loading="lazy" decoding="async"/>
+      </figure>
+      <figure class="reveal tile overflow-hidden rounded-sm aspect-[4/5]" data-cat="comida">
+        <img src="fotos/plano-detalle-camarero-llevando-platos.jpeg" alt="Bandeja de platos de mezze lista para servir" class="img-reveal w-full h-full object-cover" loading="lazy" decoding="async"/>
+      </figure>
+      <figure class="reveal delay-1 tile overflow-hidden rounded-sm aspect-[4/5]" data-cat="comida">
+        <img src="design-inspiration/real-fotos/camarero-sirviendo-mesa-1.jpeg" alt="Camarero sirviendo hummus y mezze en mesa" class="img-reveal w-full h-full object-cover" loading="lazy" decoding="async"/>
+      </figure>
+      <figure class="reveal delay-2 tile overflow-hidden rounded-sm aspect-[4/5]" data-cat="comida">
+        <img src="design-inspiration/real-fotos/camarero-sirviendo-mesa-2.jpeg" alt="Mesa de mezze vista desde arriba" class="img-reveal w-full h-full object-cover" loading="lazy" decoding="async"/>
+      </figure>
+      <figure class="reveal delay-3 tile overflow-hidden rounded-sm aspect-[4/5]" data-cat="comida">
+        <img src="design-inspiration/real-fotos/camarero-sirviendo-SAMAK%20MASHWI%20%E2%80%94%20lubina%20a%20la%20parrilla.jpeg" alt="Camarero presentando el Samak Mashwi, lubina a la parrilla" class="img-reveal w-full h-full object-cover" loading="lazy" decoding="async"/>
+      </figure>
+      <figure class="reveal tile overflow-hidden rounded-sm aspect-[4/5]" data-cat="comida">
+        <img src="design-inspiration/real-fotos/cocinando-SAMAK%20MASHWI.jpeg" alt="Lubina a la brasa sobre el carbón" class="img-reveal w-full h-full object-cover" loading="lazy" decoding="async"/>
+      </figure>
+      <figure class="reveal delay-1 tile overflow-hidden rounded-sm aspect-[4/5]" data-cat="comida">
+        <img src="design-inspiration/real-fotos/cocinando-horno-ZAATAR%20%26%20LABNEH%20MANOUCHEH%20%E2%80%94%20masa%20al%20horno%20con%20zaatar.jpeg" alt="Manoucheh de zaatar entrando al horno de leña" class="img-reveal w-full h-full object-cover" loading="lazy" decoding="async"/>
+      </figure>
+      <figure class="reveal delay-2 tile overflow-hidden rounded-sm aspect-[4/5]" data-cat="comida">
+        <img src="design-inspiration/real-fotos/complementos-bonitos-Labneh%20%20Muhammara%20%20Moutabal%20%20tomate.jpeg" alt="Labneh, muhammara, moutabal y tomate en cubetas" class="img-reveal w-full h-full object-cover" loading="lazy" decoding="async"/>
+      </figure>
+      <figure class="reveal delay-3 tile overflow-hidden rounded-sm aspect-[4/5]" data-cat="interior">
+        <img src="design-inspiration/real-fotos/detalles-bonitos-decoraci%C3%B3n-1.jpeg" alt="Lámpara de cristal ámbar del interior" class="img-reveal w-full h-full object-cover" loading="lazy" decoding="async"/>
+      </figure>
+      <figure class="reveal tile overflow-hidden rounded-sm aspect-[4/5]" data-cat="interior">
+        <img src="design-inspiration/real-fotos/detalles-bonitos-decoraci%C3%B3n-2.jpeg" alt="Lámpara geométrica dorada junto a una palmera" class="img-reveal w-full h-full object-cover" loading="lazy" decoding="async"/>
+      </figure>
+      <figure class="reveal delay-1 tile overflow-hidden rounded-sm aspect-[4/5]" data-cat="interior">
+        <img src="design-inspiration/real-fotos/detalles-bonitos-decoraci%C3%B3n-3.jpeg" alt="Galería de fotografías antiguas de Beirut" class="img-reveal w-full h-full object-cover" loading="lazy" decoding="async"/>
+      </figure>
+      <figure class="reveal delay-2 tile overflow-hidden rounded-sm aspect-[4/5]" data-cat="interior">
+        <img src="design-inspiration/real-fotos/interior-del-restaurante-1.jpeg" alt="Mesas vestidas con lámparas doradas de sobremesa" class="img-reveal w-full h-full object-cover" loading="lazy" decoding="async"/>
+      </figure>
+      <figure class="reveal delay-3 tile overflow-hidden rounded-sm aspect-[4/5]" data-cat="interior">
+        <img src="design-inspiration/real-fotos/interior-del-restaurante-2.jpeg" alt="Comedor privado con espejo tallado y galería de fotos" class="img-reveal w-full h-full object-cover" loading="lazy" decoding="async"/>
+      </figure>
+      <figure class="reveal tile overflow-hidden rounded-sm aspect-[4/5]" data-cat="comida">
+        <img src="design-inspiration/real-fotos/mesa-comida-lujo-abundante.jpeg" alt="Mesa abundante de mezze e hummus" class="img-reveal w-full h-full object-cover" loading="lazy" decoding="async"/>
+      </figure>
+      <figure class="reveal delay-1 tile overflow-hidden rounded-sm aspect-[4/5]" data-cat="comida">
+        <img src="design-inspiration/real-fotos/montando-plato-de-%20ZAATAR%20%26%20LABNEH%20MANOUCHEH.jpeg" alt="Preparando el manoucheh de zaatar y labneh" class="img-reveal w-full h-full object-cover" loading="lazy" decoding="async"/>
+      </figure>
+      <figure class="reveal delay-2 tile overflow-hidden rounded-sm aspect-[4/5]" data-cat="comida">
+        <img src="design-inspiration/real-fotos/montando-plato-de-AISH%20EL%20SARAYA.jpeg" alt="Emplatando el postre Aish el Saraya" class="img-reveal w-full h-full object-cover" loading="lazy" decoding="async"/>
+      </figure>
+      <figure class="reveal delay-3 tile overflow-hidden rounded-sm aspect-[4/5]" data-cat="comida">
+        <img src="design-inspiration/real-fotos/montando-plato-de-MHALABIEH%20%E2%80%94%20postre%20de%20leche.jpeg" alt="Terminando el Mhalabieh, postre de leche" class="img-reveal w-full h-full object-cover" loading="lazy" decoding="async"/>
+      </figure>
+      <figure class="reveal tile overflow-hidden rounded-sm aspect-[4/5]" data-cat="comida">
+        <img src="design-inspiration/real-fotos/montando-plato-de-ZAATAR%20%26%20LABNEH%20MANOUCHEH-1.jpeg" alt="Manoucheh recién servido con tomate y labneh" class="img-reveal w-full h-full object-cover" loading="lazy" decoding="async"/>
+      </figure>
+      <figure class="reveal delay-1 tile overflow-hidden rounded-sm aspect-[4/5]" data-cat="comida">
+        <img src="design-inspiration/real-fotos/montando-plato-de-ZAATAR%20%26%20LABNEH%20MANOUCHEH-2.jpeg" alt="Bandeja de manoucheh recién horneado" class="img-reveal w-full h-full object-cover" loading="lazy" decoding="async"/>
+      </figure>
+      <figure class="reveal delay-2 tile overflow-hidden rounded-sm aspect-[4/5]" data-cat="comida">
+        <img src="design-inspiration/real-fotos/plano-aereo-probando-SAMAK%20MASHWI%2C%20OKHTOBUT%20MASHWI%20y%20probablemente%20HUMMUS.jpeg" alt="Mesa con samak mashwi, pulpo y hummus" class="img-reveal w-full h-full object-cover" loading="lazy" decoding="async"/>
+      </figure>
+      <figure class="reveal delay-3 tile overflow-hidden rounded-sm aspect-[4/5]" data-cat="comida">
+        <img src="design-inspiration/real-fotos/plano-diagonal-probando-OKHTOBUT%20MASHWI%20%E2%80%94%20pulpo%20a%20la%20parrilla.jpeg" alt="Okhtobut Mashwi, pulpo a la parrilla, recién servido" class="img-reveal w-full h-full object-cover" loading="lazy" decoding="async"/>
+      </figure>
+      <figure class="reveal tile overflow-hidden rounded-sm aspect-[4/5]" data-cat="comida">
+        <img src="design-inspiration/real-fotos/primer-plano-aero-HUMMUS%20BIL%20PESTO.jpeg" alt="Hummus bil pesto con pistachos" class="img-reveal w-full h-full object-cover" loading="lazy" decoding="async"/>
+      </figure>
+      <figure class="reveal delay-1 tile overflow-hidden rounded-sm aspect-[4/5]" data-cat="comida">
+        <img src="design-inspiration/real-fotos/primer-plano-aero-HUMMUS.jpeg" alt="Hummus clásico con garbanzos y piñones" class="img-reveal w-full h-full object-cover" loading="lazy" decoding="async"/>
+      </figure>
+      <figure class="reveal delay-2 tile overflow-hidden rounded-sm aspect-[4/5]" data-cat="comida">
+        <img src="design-inspiration/real-fotos/primer-plano-aero-postre-AISH%20EL%20SARAYA.jpeg" alt="Aish el Saraya con frutos secos caramelizados" class="img-reveal w-full h-full object-cover" loading="lazy" decoding="async"/>
+      </figure>
+      <figure class="reveal delay-3 tile overflow-hidden rounded-sm aspect-[4/5]" data-cat="comida">
+        <img src="design-inspiration/real-fotos/primer-plano-diagonal-MUHAMMARA.jpeg" alt="Muhammara, crema de pimiento y nueces" class="img-reveal w-full h-full object-cover" loading="lazy" decoding="async"/>
+      </figure>
+      <figure class="reveal tile overflow-hidden rounded-sm aspect-[4/5]" data-cat="comida">
+        <img src="design-inspiration/real-fotos/primer-plano-diagonal-OKHTOBUT%20MASHWI.jpeg" alt="Okhtobut Mashwi servido en su plato" class="img-reveal w-full h-full object-cover" loading="lazy" decoding="async"/>
+      </figure>
+      <figure class="reveal delay-1 tile overflow-hidden rounded-sm aspect-[4/5]" data-cat="comida">
+        <img src="design-inspiration/real-fotos/primer-plano-diagonal-ZAATAR%20%26%20LABNEH%20MANOUCHEH.jpeg" alt="Manoucheh de zaatar y labneh recién horneado" class="img-reveal w-full h-full object-cover" loading="lazy" decoding="async"/>
+      </figure>
+      <figure class="reveal delay-2 tile overflow-hidden rounded-sm aspect-[4/5]" data-cat="comida">
+        <img src="design-inspiration/real-fotos/primer-plano-diagonal-plato-1.jpeg" alt="Detalle de plato de mezze frío" class="img-reveal w-full h-full object-cover" loading="lazy" decoding="async"/>
+      </figure>
+      <figure class="reveal delay-3 tile overflow-hidden rounded-sm aspect-[4/5]" data-cat="comida">
+        <img src="design-inspiration/real-fotos/primer-plano-diagonal-plato-2.jpeg" alt="Detalle de plato de mezze caliente" class="img-reveal w-full h-full object-cover" loading="lazy" decoding="async"/>
+      </figure>
+      <figure class="reveal tile overflow-hidden rounded-sm aspect-[4/5]" data-cat="comida">
+        <img src="design-inspiration/real-fotos/primer-plano-diagonal-plato-5.jpeg" alt="Okhtobut Mashwi servido para compartir" class="img-reveal w-full h-full object-cover" loading="lazy" decoding="async"/>
+      </figure>
+      <figure class="reveal delay-1 tile overflow-hidden rounded-sm aspect-[4/5]" data-cat="bar">
+        <img src="design-inspiration/real-fotos/primer-plano-montando-cocktail-1.jpeg" alt="Coctelero preparando un cóctel de autor" class="img-reveal w-full h-full object-cover" loading="lazy" decoding="async"/>
+      </figure>
+      <figure class="reveal delay-2 tile overflow-hidden rounded-sm aspect-[4/5]" data-cat="bar">
+        <img src="design-inspiration/real-fotos/primer-plano-montando-cocktail-2.jpeg" alt="Coctel terminado con rodaja de cítrico deshidratado" class="img-reveal w-full h-full object-cover" loading="lazy" decoding="async"/>
+      </figure>
+      <figure class="reveal delay-3 tile overflow-hidden rounded-sm aspect-[4/5]" data-cat="bar">
+        <img src="design-inspiration/real-fotos/terraza-bar-noche-1.jpeg" alt="Barra de la terraza iluminada de noche" class="img-reveal w-full h-full object-cover" loading="lazy" decoding="async"/>
+      </figure>
+      <figure class="reveal tile overflow-hidden rounded-sm aspect-[4/5]" data-cat="bar">
+        <img src="design-inspiration/real-fotos/terraza-bar-noche-2.jpeg" alt="Estantería de botellas del bar de noche" class="img-reveal w-full h-full object-cover" loading="lazy" decoding="async"/>
+      </figure>
+    </div>
+
+    <div class="gal-more-wrap hidden" data-gallery-more-wrap>
+      <button type="button" class="gal-more" data-gallery-more>
+        Ver más
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
     </div>
   </div>
 </section>
@@ -2253,7 +2496,6 @@
       </figure>
     </div>
     <div class="md:col-span-6 reveal delay-1">
-      <p class="ornament text-[11px] tracking-widest-2 uppercase mb-6">Eventos privados &amp; catering</p>
       <h2 class="word-reveal font-display text-cedar text-[28px] md:text-5xl leading-[1.08] md:leading-[1.05] tracking-tightest mb-6">
         Una cena en casa. Una boda.<br class="hidden md:block"/>
         Una recepción de embajada.
@@ -2293,7 +2535,6 @@
   </svg>
   <div class="max-w-[1400px] mx-auto px-5 md:px-10 grid md:grid-cols-12 gap-12 md:gap-16 relative z-10">
     <div class="md:col-span-5 reveal">
-      <p class="ornament text-[11px] tracking-widest-2 uppercase mb-6">Visítanos</p>
       <h2 class="word-reveal font-display text-cedar text-[32px] md:text-5xl leading-[1.1] md:leading-[1.05] tracking-tightest mb-8">
         En la Plaza de La Moraleja,<br class="hidden md:block"/> detrás de los olivos.
       </h2>
@@ -3037,6 +3278,7 @@
   }
 </script>
 <script src="js/gallery.js" defer></script>
+<script src="js/nav.js" defer></script>
 <script src="js/consent.js" data-legal="legal.html#cookies" defer></script>
 
 </body>
