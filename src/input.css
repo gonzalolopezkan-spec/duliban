@@ -31,4 +31,17 @@
   .gal-tab:hover { border-color: var(--gold); color: var(--gold-deep); }
   .gal-tab[aria-pressed="true"] { background: var(--cedar); border-color: var(--cedar); color: var(--cream); }
   @media (prefers-reduced-motion: reduce) { .gal-tab { transition: none !important; } }
+
+  /* "Ver más" gallery pagination (El espacio) — mobile only, "all" filter */
+  .gal-more-wrap { display: flex; justify-content: center; margin-top: 2rem; }
+  .gal-more {
+    display: inline-flex; align-items: center; gap: .5rem;
+    border: 1px solid rgba(60,61,63,.25); border-radius: 999px; padding: .75rem 1.5rem;
+    font-family: 'Jost', sans-serif; font-size: 11px; letter-spacing: .18em; text-transform: uppercase;
+    color: var(--cedar); background: transparent;
+    transition: all .2s ease; min-height: 44px; cursor: pointer;
+  }
+  .gal-more:hover { border-color: var(--gold); color: var(--gold-deep); }
+  @media (min-width: 1024px) { .gal-more-wrap { display: none !important; } }
+  @media (prefers-reduced-motion: reduce) { .gal-more { transition: none !important; } }
 }
