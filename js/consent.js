@@ -82,9 +82,20 @@
     if (placeholder) placeholder.style.display = 'none';
   }
 
+  function unloadFrame(frame) {
+    if (!frame.getAttribute('src')) return;
+    /* Navigate the frame away so the third-party document (and its cookies'
+       activity) actually stops, then clear the attribute so loadFrame can
+       re-gate it later. */
+    frame.setAttribute('src', 'about:blank');
+    frame.removeAttribute('src');
+    var container = frame.parentElement;
+    var placeholder = container ? container.querySelector('[data-map-placeholder]') : null;
+    if (placeholder) placeholder.style.display = '';
+  }
+
   function applyConsent(thirdParty) {
-    if (!thirdParty) return;
-    document.querySelectorAll('iframe[data-consent-src]').forEach(loadFrame);
+    document.querySelectorAll('iframe[data-consent-src]').forEach(thirdParty ? loadFrame : unloadFrame);
   }
 
   /* ── Scoped CSS (prefixed .cc-, not Tailwind) ────────────────────────── */
@@ -97,6 +108,10 @@
       'font-family:"Jost",system-ui,sans-serif;',
       'max-height:80vh;overflow-y:auto;}',
       '.cc-banner[hidden]{display:none;}',
+      /* El cursor custom del sitio (z-index 90) queda por debajo del banner y
+         el nativo esta en cursor:none — restaurar el nativo dentro del banner. */
+      'body.has-custom-cursor .cc-banner{cursor:auto;}',
+      'body.has-custom-cursor .cc-banner button,body.has-custom-cursor .cc-banner a,body.has-custom-cursor .cc-banner label{cursor:pointer;}',
       '.cc-banner.cc-enter{animation:cc-slide-up .32s ease-out;}',
       '@keyframes cc-slide-up{from{transform:translateY(100%);}to{transform:translateY(0);}}',
       '.cc-inner{max-width:1100px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;gap:14px 20px;}',
@@ -188,6 +203,7 @@
 
     rejectBtn.addEventListener('click', function () {
       writeConsent(false);
+      applyConsent(false);
       hideBanner();
     });
 
@@ -200,7 +216,7 @@
     saveBtn.addEventListener('click', function () {
       var thirdParty = !!checkbox.checked;
       writeConsent(thirdParty);
-      if (thirdParty) applyConsent(true);
+      applyConsent(thirdParty);
       hideBanner();
     });
 

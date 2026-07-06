@@ -1,8 +1,8 @@
 /** @type {import('tailwindcss').Config} */
-// Variante "imagen de marca" — mismos NOMBRES de token que el sitio actual,
-// pero remapeados a la paleta del manual de marca oficial (brand_assets/brand_kit.md).
-// Así las utilidades de Tailwind (bg-cream, text-cedar, text-gold-deep, …) heredan
-// los colores de marca sin tocar una sola clase del HTML. Salida: brand/styles.css.
+// Config único de producción (desde la promoción de /brand a raíz, jul 2026).
+// Los nombres de token históricos (cream, cedar, gold, terracotta…) están
+// remapeados a la paleta del manual de marca oficial (brand_assets/brand_kit.md).
+// Salida: `npm run build:css` → dist/styles.css (se comitea).
 module.exports = {
   content: ['./index.html', './en/index.html', './ar/index.html', './legal.html'],
   theme: {
