@@ -102,40 +102,65 @@
   function injectStyles() {
     if (document.getElementById('cc-styles')) return;
     var css = [
-      '.cc-banner{position:fixed;inset-inline:0;bottom:0;z-index:9999;',
+      /* Floating card with a gutter on every side, instead of a bar flush
+         against the viewport edges — reads as an intentional toast, not a
+         strip glued to the hero. inset-inline is a logical property so the
+         gutter mirrors correctly under dir="rtl". */
+      '.cc-banner{position:fixed;inset-inline:16px;bottom:16px;z-index:9999;',
+      'max-width:900px;margin-inline:auto;',
       'background:var(--cc-cedar-deep);color:var(--cc-cream);',
-      'padding:16px 20px;box-shadow:0 -2px 24px rgba(0,0,0,.25);',
+      'border:1px solid rgba(250,247,240,.12);border-radius:16px;',
+      'padding:22px 26px;box-shadow:0 24px 60px -18px rgba(0,0,0,.55);',
       'font-family:"Jost",system-ui,sans-serif;',
-      'max-height:80vh;overflow-y:auto;}',
+      'max-height:calc(100vh - 32px);overflow-y:auto;}',
       '.cc-banner[hidden]{display:none;}',
       /* El cursor custom del sitio (z-index 90) queda por debajo del banner y
          el nativo esta en cursor:none — restaurar el nativo dentro del banner. */
       'body.has-custom-cursor .cc-banner{cursor:auto;}',
       'body.has-custom-cursor .cc-banner button,body.has-custom-cursor .cc-banner a,body.has-custom-cursor .cc-banner label{cursor:pointer;}',
       '.cc-banner.cc-enter{animation:cc-slide-up .32s ease-out;}',
-      '@keyframes cc-slide-up{from{transform:translateY(100%);}to{transform:translateY(0);}}',
-      '.cc-inner{max-width:1100px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;gap:14px 20px;}',
-      '.cc-text{flex:1 1 320px;font-size:13.5px;line-height:1.55;color:var(--cc-cream);opacity:.92;margin:0;}',
+      '@keyframes cc-slide-up{from{transform:translateY(calc(100% + 32px));}to{transform:translateY(0);}}',
+      '.cc-inner{display:flex;flex-wrap:wrap;align-items:center;gap:16px 24px;}',
+      '.cc-text{flex:1 1 320px;font-size:13.5px;line-height:1.6;color:var(--cc-cream);opacity:.9;margin:0;}',
       '.cc-text a{color:var(--cc-gold-soft);text-decoration:underline;text-underline-offset:2px;}',
       '.cc-text a:hover{color:var(--cc-cream);}',
-      '.cc-actions{display:flex;flex-wrap:wrap;gap:10px;align-items:center;flex:0 0 auto;}',
-      '.cc-btn{appearance:none;border:0;cursor:pointer;border-radius:999px;padding:11px 20px;',
+      '.cc-actions{display:flex;flex-wrap:wrap;gap:10px 12px;align-items:center;flex:0 0 auto;}',
+      '.cc-btn{appearance:none;border:0;cursor:pointer;border-radius:999px;padding:11px 22px;',
       'font-family:inherit;font-size:12px;letter-spacing:.14em;text-transform:uppercase;',
-      'min-height:44px;min-width:44px;line-height:1;transition:background-color .2s ease,opacity .2s ease;}',
+      'min-height:44px;min-width:44px;line-height:1;transition:background-color .2s ease,border-color .2s ease,color .2s ease;}',
+      /* Native :focus rings ignore border-radius intent and render as a
+         mismatched, off-brand oval. Suppress it and draw our own — but only
+         for keyboard/programmatic focus (:focus-visible), so a mouse click
+         never shows a ring. */
+      '.cc-btn:focus{outline:none;}',
+      '.cc-btn:focus-visible{outline:2px solid var(--cc-gold-soft);outline-offset:3px;}',
+      /* Primary: the one action that moves the visit forward. */
       '.cc-btn-accept{background:var(--cc-terracotta);color:var(--cc-cream);}',
       '.cc-btn-accept:hover{background:var(--cc-terracotta-deep);}',
-      '.cc-btn-reject{background:transparent;color:var(--cc-cream);border:1px solid rgba(250,247,240,.35);}',
-      '.cc-btn-reject:hover{border-color:var(--cc-cream);}',
-      '.cc-btn-customize{background:transparent;color:var(--cc-gold-soft);border:1px solid rgba(201,185,140,.4);}',
-      '.cc-btn-customize:hover{border-color:var(--cc-gold-soft);color:var(--cc-cream);}',
+      /* Secondary, same visual weight as Accept on purpose — a reject button
+         that''s deliberately understated reads as a dark pattern. */
+      '.cc-btn-reject{background:transparent;color:var(--cc-cream);border:1px solid rgba(250,247,240,.4);}',
+      '.cc-btn-reject:hover{background:rgba(250,247,240,.08);border-color:var(--cc-cream);}',
+      /* Tertiary: reveals a panel, it is not itself a decision — demoted to
+         a text link so it doesn''t compete with Accept/Reject. */
+      '.cc-btn-customize{background:transparent;color:var(--cc-gold-soft);border:0;',
+      'border-radius:6px;padding:11px 6px;text-decoration:underline;',
+      'text-underline-offset:3px;text-decoration-color:rgba(201,185,140,.5);}',
+      '.cc-btn-customize:hover{color:var(--cc-cream);text-decoration-color:var(--cc-cream);}',
       '.cc-btn-save{background:var(--cc-terracotta);color:var(--cc-cream);}',
       '.cc-btn-save:hover{background:var(--cc-terracotta-deep);}',
-      '.cc-panel{flex:1 1 100%;display:flex;align-items:center;gap:12px;padding-top:6px;',
-      'border-top:1px solid rgba(250,247,240,.15);margin-top:6px;}',
+      '.cc-panel{flex:1 1 100%;display:flex;flex-wrap:wrap;align-items:center;gap:14px;padding-top:16px;',
+      'border-top:1px solid rgba(250,247,240,.15);margin-top:4px;}',
       '.cc-panel[hidden]{display:none;}',
-      '.cc-checkbox-row{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--cc-cream);}',
+      '.cc-checkbox-row{display:flex;align-items:center;gap:9px;font-size:13px;color:var(--cc-cream);cursor:pointer;}',
       '.cc-checkbox-row input{width:18px;height:18px;accent-color:var(--cc-terracotta);cursor:pointer;}',
+      '.cc-checkbox-row input:focus-visible{outline:2px solid var(--cc-gold-soft);outline-offset:2px;}',
+      '.cc-text a:focus-visible{outline:2px solid var(--cc-gold-soft);outline-offset:2px;border-radius:2px;}',
       '[dir="rtl"] .cc-inner{direction:rtl;}',
+      /* Stack actions full-width under the message on narrow screens instead
+         of squeezing three pill buttons into a shrinking row. */
+      '@media (max-width:640px){.cc-banner{inset-inline:10px;bottom:10px;padding:20px;}',
+      '.cc-actions{width:100%;}.cc-btn:not(.cc-btn-customize){flex:1 1 auto;}}',
       '@media (prefers-reduced-motion: reduce){.cc-banner.cc-enter{animation:none;}}'
     ].join('');
     var style = document.createElement('style');
