@@ -131,20 +131,24 @@
       /* Native :focus rings ignore border-radius intent and render as a
          mismatched, off-brand oval. Suppress it and draw our own — but only
          for keyboard/programmatic focus (:focus-visible), so a mouse click
-         never shows a ring. */
+         never shows a ring. The banner container takes the initial
+         programmatic focus on open (see showBanner), not a button, so no
+         button shows this ring until a real keyboard user tabs to it. */
       '.cc-btn:focus{outline:none;}',
       '.cc-btn:focus-visible{outline:2px solid var(--cc-gold-soft);outline-offset:3px;}',
+      '.cc-banner:focus{outline:none;}',
       /* Primary: the one action that moves the visit forward. */
       '.cc-btn-accept{background:var(--cc-terracotta);color:var(--cc-cream);}',
       '.cc-btn-accept:hover{background:var(--cc-terracotta-deep);}',
       /* Secondary, same visual weight as Accept on purpose — a reject button
-         that''s deliberately understated reads as a dark pattern. */
-      '.cc-btn-reject{background:transparent;color:var(--cc-cream);border:1px solid rgba(250,247,240,.4);}',
-      '.cc-btn-reject:hover{background:rgba(250,247,240,.08);border-color:var(--cc-cream);}',
+         that''s deliberately understated reads as a dark pattern. Neutral
+         gray outline (no gold), minimal weight. */
+      '.cc-btn-reject{background:transparent;color:var(--cc-cream);border:1px solid rgba(255,255,255,.3);}',
+      '.cc-btn-reject:hover{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.55);}',
       /* Tertiary: reveals a panel, it is not itself a decision — demoted to
-         a text link so it doesn''t compete with Accept/Reject. */
+         a small text link so it doesn''t compete with Reject/Accept. */
       '.cc-btn-customize{background:transparent;color:var(--cc-gold-soft);border:0;',
-      'border-radius:6px;padding:11px 6px;text-decoration:underline;',
+      'font-size:11px;border-radius:6px;padding:11px 6px;text-decoration:underline;',
       'text-underline-offset:3px;text-decoration-color:rgba(201,185,140,.5);}',
       '.cc-btn-customize:hover{color:var(--cc-cream);text-decoration-color:var(--cc-cream);}',
       '.cc-btn-save{background:var(--cc-terracotta);color:var(--cc-cream);}',
@@ -189,6 +193,7 @@
     banner.setAttribute('role', 'dialog');
     banner.setAttribute('aria-label', t.dialogLabel);
     banner.setAttribute('aria-modal', 'false');
+    banner.setAttribute('tabindex', '-1');
     if (isRTL) banner.setAttribute('dir', 'rtl');
     banner.hidden = true;
 
@@ -198,8 +203,8 @@
       '<div class="cc-inner">' +
         '<p class="cc-text">' + t.message + ' <a href="' + safeLegalHref + '">' + t.linkText + '</a>.</p>' +
         '<div class="cc-actions">' +
-          '<button type="button" class="cc-btn cc-btn-reject" data-cc-reject>' + t.reject + '</button>' +
           '<button type="button" class="cc-btn cc-btn-customize" data-cc-customize aria-expanded="false">' + t.customize + '</button>' +
+          '<button type="button" class="cc-btn cc-btn-reject" data-cc-reject>' + t.reject + '</button>' +
           '<button type="button" class="cc-btn cc-btn-accept" data-cc-accept>' + t.accept + '</button>' +
         '</div>' +
         '<div class="cc-panel" data-cc-panel hidden>' +
@@ -276,8 +281,7 @@
       el.classList.add('cc-enter');
     }
 
-    var firstBtn = el.querySelector('[data-cc-reject]');
-    if (firstBtn) firstBtn.focus();
+    el.focus({ preventScroll: true });
   }
 
   function hideBanner() {
