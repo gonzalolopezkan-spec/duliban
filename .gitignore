@@ -20,3 +20,6 @@ node_modules/
 
 # Raw photo source folder (normalized copies stored in fotos/)
 fotos nuevas/
+
+# Working material for the pending photo shoot — not part of the published site.
+fotos-stock/
