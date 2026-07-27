@@ -402,6 +402,11 @@
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
+    /* Con line-height 0.85, los glifos de 22vw desbordan la caja del div y en
+       viewports anchos su área de hit-test cae SOBRE la fila de enlaces
+       legales de debajo: el wordmark se tragaba esos clics. Es decorativo
+       (aria-hidden) — jamás debe capturar el puntero. */
+    pointer-events: none;
   }
 
   /* Reservations CTA pulse-glow on focus */
