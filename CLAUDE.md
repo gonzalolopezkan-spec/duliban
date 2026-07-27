@@ -4,11 +4,15 @@ Single-page website para du Liban, restaurante de alta cocina libanesa en La Mor
 
 ## Datos del restaurante (verificados, ya integrados)
 
-- **Dirección:** Plaza de la Moraleja, C. de la Estafeta 2 · Local 4/5 · 28109 Alcobendas *(la web WordPress antigua decía "Plaza de Fuentes 2, 28100" — discrepancia pendiente de confirmar con el cliente)*
-- **Teléfono:** +34 917 54 48 38
+- **Dirección:** Plaza de la Moraleja, C. de la Estafeta 2 · Local 4/5 · 28109 Alcobendas. **Discrepancia resuelta (27 jul 2026):** el complejo se llama comercialmente *Centro Comercial Plaza Moraleja* y se accede desde la *Plaza de la Fuente*; las dos son correctas. La web usa el nombre comercial ("Plaza de la Moraleja"), `legal.html` usa el registral ("Plaza de la Fuente"). El "Plaza de Fuentes 2, 28100" de la WordPress antigua era erróneo (CP mal).
+- **Razón social:** DULIBAN DE LA MORALEJA 2025, S.L. · **CIF** B24950560 · domicilio registral: C. de la Estafeta 2 — Plaza de la Fuente, La Moraleja, 28109 Alcobendas (confirmado por el cliente 27 jul 2026, ya integrado en `legal.html`)
+- **Teléfono:** +34 917 54 48 38 (lo contesta una IA, no una persona — el copy de la web debería ir también a su base de conocimiento)
 - **WhatsApp:** +34 690 206 459 (`wa.me/34690206459` — solo icono del footer; los botones Reservar ya NO van por WhatsApp)
 - **Email:** reservas@dulibanrestaurante.com (dominio "restaurante" singular — confirmado por el cliente)
-- **Horario:** Mar–Dom 13:00–01:00 · Lun cerrado
+- **Horario:** restaurante Mar–Dom 13:00–01:00 · Lun cerrado. **Cocina:** 13:00–16:30 y 20:00–23:30. Fuera del horario de cocina sigue habiendo coctelería/barra y shishas hasta el cierre (confirmado 27 jul 2026).
+- **Perros:** admitidos en las dos terrazas · **Terrazas:** dos, una cubierta y otra exterior; se puede fumar shisha en ambas · **Shisha:** tradicional (tabaco y carbón natural), sin variantes de carbón ruso
+- **Cocineros:** ❌ NO destacar a ninguno, ni nombre ni cara (petición expresa del cliente, 27 jul 2026). El jefe de cocina real no quiere aparecer; "Chef Fahed" no es el principal. Revisable más adelante si el chef cambia de opinión.
+- **Platos clave:** *Hummus bil Pesto* (16 €) es el plato por el que la gente vuelve — creación de la casa, pesto **de pistacho** (no de albahaca). *Mawzet Kharouf* (35 €) es el que el cliente querría que se pidiera más.
 - **Reservas online:** https://www.sevenrooms.com/explore/duliban/reservations/create/search/ (los 3 botones `.btn-reserve` + JSON-LD `acceptsReservations`)
 - **Instagram:** eliminado de la web a petición del cliente (el handle nunca se confirmó)
 - **Halal:** cocina 100% halal con certificado (badge en hero + banda USP `#halal` + JSON-LD). La entidad certificadora NO se conoce — no inventarla.
@@ -104,13 +108,15 @@ https://github.com/gonzalolopezkan-spec/duliban — trabajo actual en rama **`br
 ## Tareas pendientes conocidas (por impacto)
 
 1. **Merge/push de `brand-definitivo`** cuando el usuario lo decida.
-2. **Razón social + CIF** reales en legal.html (placeholder visible).
-3. **Confirmar dirección** con el cliente (web antigua decía "Plaza de Fuentes 2, 28100").
-4. **Validar la URL de SevenRooms** en producción (la pasó el cliente; responde, pero conviene una reserva de prueba).
-5. **Optimizar imágenes**: `.jpeg` → `.webp` + `srcset` (ahora también las 38 de `fotos/`).
-6. **og:image** con URL absoluta cuando haya dominio definitivo.
-7. Borrar `fotos nuevas/` del disco cuando el cliente valide la selección.
-8. Microcopy del chef ("Mohammad · jefe de cocina") es provisional.
+2. **Fotos de platos**: el cliente las está pidiendo a sus dos chefs (aunque no sean profesionales). Al llegar, mapearlas en `DISH_PHOTOS`. De la reunión del 27 jul ya se identificaron fotos de Fatteh Djaj, Fattoush, Manoucheh Jebneh, Hummus bil Pesto y pan caliente.
+3. **Acceso a SevenRooms** pendiente de que lo dé el cliente. Objetivo: que el email post-visita enlace al formulario de reseña de **Google**. ⚠️ Google NO permite importar reseñas de terceros a su ficha — no prometerlo.
+4. **¿El local de 2008 ya se llamaba du Liban?** Sin confirmar. Por eso `#concepto` dice "La cocina de la Plaza de la Moraleja abrió en septiembre de 2008" y no "du Liban abrió…". Si se confirma, se puede usar la versión fuerte.
+5. **Entidad certificadora del halal**: sigue sin conocerse — no inventarla.
+6. **Validar la URL de SevenRooms** en producción (la pasó el cliente; responde, pero conviene una reserva de prueba).
+7. **Optimizar imágenes**: `.jpeg` → `.webp` + `srcset` (ahora también las 38 de `fotos/`).
+8. **og:image** con URL absoluta cuando haya dominio definitivo.
+9. Borrar `fotos nuevas/` del disco cuando el cliente valide la selección.
+10. **Ficha de Google Business**: activar el atributo "Admite perros" (la web ya lo dice, pero esas búsquedas se resuelven en Maps).
 
 ## Reglas de trabajo
 
