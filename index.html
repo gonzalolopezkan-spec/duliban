@@ -55,7 +55,7 @@
 
 <!-- Tailwind: precompiled static CSS (built from src/input.css via `npm run build:css`).
      Replaces the render-blocking Play CDN that JIT-compiled in the browser. -->
-<link rel="stylesheet" href="dist/styles.css">
+<link rel="stylesheet" href="dist/styles.css?v=2">
 <style>
 
   /* Language switcher — segmented pill (T2) */
@@ -724,6 +724,35 @@
   @keyframes sehHintBob {
     0%, 100% { transform: translateX(-50%) translateY(0); }
     50%      { transform: translateX(-50%) translateY(6px); }
+  }
+
+  /* ── Footer legal links — hitbox, cursor y visibilidad ───────────────────
+     Los 4 enlaces del pie de página son el único acceso a legal.html, así que
+     no pueden depender de que el usuario acierte 12px x 55px. Hitbox real
+     >=44px de alto (WCAG 2.5.5) via padding vertical, cursor:pointer NATIVO
+     que anula el cursor:none del cursor custom, y subrayado permanente. */
+  .footer-legal-links a {
+    display: inline-block;
+    padding: 12px 0;
+    font-size: 13px;
+    line-height: 1.4;
+    color: inherit;
+    text-decoration: underline;
+    text-decoration-color: rgba(250,247,240,.45);
+    text-underline-offset: 4px;
+    cursor: pointer;
+    transition: color .2s ease, text-decoration-color .2s ease;
+  }
+  body.has-custom-cursor .footer-legal-links a { cursor: pointer; }
+  .footer-legal-links a:hover,
+  .footer-legal-links a:focus-visible {
+    color: var(--cream);
+    text-decoration-color: var(--cream);
+  }
+  .footer-legal-links a:focus-visible {
+    outline: 2px solid var(--gold-soft);
+    outline-offset: 3px;
+    border-radius: 2px;
   }
 
   /* Reduced motion: collapse to a static, full-bleed hero */
@@ -2699,11 +2728,11 @@
 
     <div class="mt-10 pt-6 border-t border-cream/10 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 text-[12px] text-cream/55">
       <p>© <span id="year">2026</span> du Liban — Lebanese Cuisine. Todos los derechos reservados.</p>
-      <div class="flex items-center gap-5">
-        <a href="legal.html#condiciones" class="underline underline-offset-4 decoration-cream/25 hover:decoration-cream hover:text-cream transition-colors duration-200">Aviso legal</a>
-        <a href="legal.html#privacidad" class="underline underline-offset-4 decoration-cream/25 hover:decoration-cream hover:text-cream transition-colors duration-200">Privacidad</a>
-        <a href="legal.html#cookies" class="underline underline-offset-4 decoration-cream/25 hover:decoration-cream hover:text-cream transition-colors duration-200">Cookies</a>
-        <a href="#" data-cookie-prefs class="underline underline-offset-4 decoration-cream/25 hover:decoration-cream hover:text-cream transition-colors duration-200">Preferencias de cookies</a>
+      <div class="footer-legal-links flex flex-wrap items-center gap-x-6 gap-y-1 text-cream/80">
+        <a href="legal.html#condiciones">Aviso legal</a>
+        <a href="legal.html#privacidad">Privacidad</a>
+        <a href="legal.html#cookies">Cookies</a>
+        <a href="#" data-cookie-prefs>Preferencias de cookies</a>
       </div>
     </div>
   </div>
