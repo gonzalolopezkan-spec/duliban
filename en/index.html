@@ -545,6 +545,8 @@
     letter-spacing: .02em;
   }
   .dp-photos { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; padding: 0 4px; }
+  .dp-photos[hidden] { display: none; }
+  .dp-photos.is-single { grid-template-columns: minmax(0, 64%); justify-content: center; }
   .dp-photo {
     aspect-ratio: 4 / 5;
     border-radius: 6px;
@@ -1097,24 +1099,24 @@
           <span class="row-arrow" aria-hidden="true">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
           </span>
-          <img class="row-thumb thumb-l" alt="" aria-hidden="true" src="../design-inspiration/real-fotos/primer-plano-diagonal-plato-1.jpeg">
+          <img class="row-thumb thumb-l" alt="" aria-hidden="true" src="../design-inspiration/real-fotos/primer-plano-diagonal-ZAATAR%20%26%20LABNEH%20MANOUCHEH.jpeg">
           <img class="row-thumb thumb-r" alt="" aria-hidden="true" src="../design-inspiration/real-fotos/montando-plato-de-ZAATAR%20%26%20LABNEH%20MANOUCHEH-1.jpeg">
         </button>
         <div id="m-horno" class="menu-detail pb-10 md:pb-14">
           <ul class="grid md:grid-cols-2 gap-x-12 gap-y-6">
-            <li class="dish">
+            <li class="dish" data-dish="kafta-bil-jebneh">
               <div class="dish-head"><span class="dish-name">Kafta bil Jebneh</span><span class="dish-dots"></span><span class="dish-price">15&nbsp;€</span></div>
               <p class="dish-desc">Oven-baked dough, kafta (spiced minced meat), cheese blend, mayonnaise and pickles.</p>
             </li>
-            <li class="dish">
+            <li class="dish" data-dish="lahme-bi-aajin">
               <div class="dish-head"><span class="dish-name">Lahme bi Aajin</span><span class="dish-dots"></span><span class="dish-price">13&nbsp;€</span></div>
               <p class="dish-desc">Oven-baked dough with spiced meat, pine nuts and lemon.</p>
             </li>
-            <li class="dish">
+            <li class="dish" data-dish="manoucheh-jebneh">
               <div class="dish-head"><span class="dish-name">Manoucheh Jebneh</span><span class="dish-dots"></span><span class="dish-price">12&nbsp;€</span></div>
               <p class="dish-desc">Oven-baked dough with cheese blend, white and black sesame.</p>
             </li>
-            <li class="dish">
+            <li class="dish" data-dish="zaatar-labneh">
               <div class="dish-head"><span class="dish-name">Zaatar &amp; Labneh Manoucheh</span><span class="dish-dots"></span><span class="dish-price">12&nbsp;€</span></div>
               <p class="dish-desc">Oven-baked dough with zaatar, labneh, mint, olives and cherry tomatoes.</p>
             </li>
@@ -1131,22 +1133,22 @@
           <span class="row-arrow" aria-hidden="true">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
           </span>
-          <img class="row-thumb thumb-l" alt="" aria-hidden="true" src="../design-inspiration/real-fotos/primer-plano-diagonal-plato-2.jpeg">
-          <img class="row-thumb thumb-r" alt="" aria-hidden="true" src="../design-inspiration/real-fotos/complementos-bonitos-Labneh%20%20Muhammara%20%20Moutabal%20%20tomate.jpeg">
+          <img class="row-thumb thumb-l" alt="" aria-hidden="true" src="../design-inspiration/real-fotos/primer-plano-aero-HUMMUS.jpeg">
+          <img class="row-thumb thumb-r" alt="" aria-hidden="true" src="../design-inspiration/real-fotos/primer-plano-diagonal-MUHAMMARA.jpeg">
         </button>
         <div id="m-frio" class="menu-detail pb-10 md:pb-14">
           <ul class="grid md:grid-cols-2 gap-x-12 gap-y-6">
-            <li class="dish"><div class="dish-head"><span class="dish-name">Fattoush</span><span class="dish-dots"></span><span class="dish-price">14&nbsp;€</span></div><p class="dish-desc">Mixed greens, tomato, spring onion, cucumber, radish, fried bread, pomegranate molasses and sumac.</p></li>
-            <li class="dish"><div class="dish-head"><span class="dish-name">Tabbouleh</span><span class="dish-dots"></span><span class="dish-price">13&nbsp;€</span></div><p class="dish-desc">Parsley, tomato, bulgur, onion, lemon and olive oil.</p></li>
-            <li class="dish"><div class="dish-head"><span class="dish-name">Salata al Jarjir</span><span class="dish-dots"></span><span class="dish-price">12&nbsp;€</span></div><p class="dish-desc">Arugula, thyme, onion, sumac and lemon-mustard dressing.</p></li>
-            <li class="dish"><div class="dish-head"><span class="dish-name">Salata al Rubyan</span><span class="dish-dots"></span><span class="dish-price">18&nbsp;€</span></div><p class="dish-desc">King prawns, cherry tomatoes, basil and pine nuts.</p></li>
-            <li class="dish"><div class="dish-head"><span class="dish-name">Hummus</span><span class="dish-dots"></span><span class="dish-price">13&nbsp;€</span></div><p class="dish-desc">Cooked chickpeas, tahini paste and olive oil.</p></li>
-            <li class="dish"><div class="dish-head"><span class="dish-name">Hummus bil Pesto</span><span class="dish-dots"></span><span class="dish-price">16&nbsp;€</span></div><p class="dish-desc">Cooked chickpeas, tahini paste and pistachio pesto.</p></li>
-            <li class="dish"><div class="dish-head"><span class="dish-name">Moutabal</span><span class="dish-dots"></span><span class="dish-price">12&nbsp;€</span></div><p class="dish-desc">Roasted eggplant, tahini, olive oil and pomegranate seeds.</p></li>
-            <li class="dish"><div class="dish-head"><span class="dish-name">Warak Enab</span><span class="dish-dots"></span><span class="dish-price">14&nbsp;€</span></div><p class="dish-desc">Vine leaves stuffed with rice and minced meat.</p></li>
-            <li class="dish"><div class="dish-head"><span class="dish-name">Muhammara</span><span class="dish-dots"></span><span class="dish-price">14&nbsp;€</span></div><p class="dish-desc">Red pepper, onion, tomato, tahini, breadcrumbs, cumin, pomegranate molasses, olive oil and walnuts.</p></li>
-            <li class="dish"><div class="dish-head"><span class="dish-name">Ariche bel Zaatar</span><span class="dish-dots"></span><span class="dish-price">15&nbsp;€</span></div><p class="dish-desc">Ariche cheese, onion, tomato, green pepper, sumac, olive oil and aromatic spices.</p></li>
-            <li class="dish"><div class="dish-head"><span class="dish-name">Quinoa ma al Shamandar</span><span class="dish-dots"></span><span class="dish-price">14&nbsp;€</span></div><p class="dish-desc">Beetroot, quinoa, tahini, walnuts, thyme, basil and olive oil.</p></li>
+            <li class="dish" data-dish="fattoush"><div class="dish-head"><span class="dish-name">Fattoush</span><span class="dish-dots"></span><span class="dish-price">14&nbsp;€</span></div><p class="dish-desc">Mixed greens, tomato, spring onion, cucumber, radish, fried bread, pomegranate molasses and sumac.</p></li>
+            <li class="dish" data-dish="tabbouleh"><div class="dish-head"><span class="dish-name">Tabbouleh</span><span class="dish-dots"></span><span class="dish-price">13&nbsp;€</span></div><p class="dish-desc">Parsley, tomato, bulgur, onion, lemon and olive oil.</p></li>
+            <li class="dish" data-dish="salata-al-jarjir"><div class="dish-head"><span class="dish-name">Salata al Jarjir</span><span class="dish-dots"></span><span class="dish-price">12&nbsp;€</span></div><p class="dish-desc">Arugula, thyme, onion, sumac and lemon-mustard dressing.</p></li>
+            <li class="dish" data-dish="salata-al-rubyan"><div class="dish-head"><span class="dish-name">Salata al Rubyan</span><span class="dish-dots"></span><span class="dish-price">18&nbsp;€</span></div><p class="dish-desc">King prawns, cherry tomatoes, basil and pine nuts.</p></li>
+            <li class="dish" data-dish="hummus"><div class="dish-head"><span class="dish-name">Hummus</span><span class="dish-dots"></span><span class="dish-price">13&nbsp;€</span></div><p class="dish-desc">Cooked chickpeas, tahini paste and olive oil.</p></li>
+            <li class="dish" data-dish="hummus-bil-pesto"><div class="dish-head"><span class="dish-name">Hummus bil Pesto</span><span class="dish-dots"></span><span class="dish-price">16&nbsp;€</span></div><p class="dish-desc">Cooked chickpeas, tahini paste and pistachio pesto.</p></li>
+            <li class="dish" data-dish="moutabal"><div class="dish-head"><span class="dish-name">Moutabal</span><span class="dish-dots"></span><span class="dish-price">12&nbsp;€</span></div><p class="dish-desc">Roasted eggplant, tahini, olive oil and pomegranate seeds.</p></li>
+            <li class="dish" data-dish="warak-enab"><div class="dish-head"><span class="dish-name">Warak Enab</span><span class="dish-dots"></span><span class="dish-price">14&nbsp;€</span></div><p class="dish-desc">Vine leaves stuffed with rice and minced meat.</p></li>
+            <li class="dish" data-dish="muhammara"><div class="dish-head"><span class="dish-name">Muhammara</span><span class="dish-dots"></span><span class="dish-price">14&nbsp;€</span></div><p class="dish-desc">Red pepper, onion, tomato, tahini, breadcrumbs, cumin, pomegranate molasses, olive oil and walnuts.</p></li>
+            <li class="dish" data-dish="ariche-bel-zaatar"><div class="dish-head"><span class="dish-name">Ariche bel Zaatar</span><span class="dish-dots"></span><span class="dish-price">15&nbsp;€</span></div><p class="dish-desc">Ariche cheese, onion, tomato, green pepper, sumac, olive oil and aromatic spices.</p></li>
+            <li class="dish" data-dish="quinoa-shamandar"><div class="dish-head"><span class="dish-name">Quinoa ma al Shamandar</span><span class="dish-dots"></span><span class="dish-price">14&nbsp;€</span></div><p class="dish-desc">Beetroot, quinoa, tahini, walnuts, thyme, basil and olive oil.</p></li>
           </ul>
         </div>
       </div>
@@ -1160,24 +1162,24 @@
           <span class="row-arrow" aria-hidden="true">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
           </span>
-          <img class="row-thumb thumb-l" alt="" aria-hidden="true" src="../design-inspiration/real-fotos/primer-plano-diagonal-MUHAMMARA.jpeg">
+          <img class="row-thumb thumb-l" alt="" aria-hidden="true" src="../fotos/plano-detalle-comida-5.jpeg">
           <img class="row-thumb thumb-r" alt="" aria-hidden="true" src="../design-inspiration/real-fotos/primer-plano-diagonal-OKHTOBUT%20MASHWI.jpeg">
         </button>
         <div id="m-caliente" class="menu-detail pb-10 md:pb-14">
           <ul class="grid md:grid-cols-2 gap-x-12 gap-y-6">
-            <li class="dish"><div class="dish-head"><span class="dish-name">Hummus Lahme</span><span class="dish-dots"></span><span class="dish-price">17&nbsp;€</span></div><p class="dish-desc">Hummus topped with spiced meat and pine nuts.</p></li>
-            <li class="dish"><div class="dish-head"><span class="dish-name">Rass Assfour</span><span class="dish-dots"></span><span class="dish-price">22&nbsp;€</span></div><p class="dish-desc">Beef chunks sautéed with garlic, butter, pine nuts, lemon or pomegranate sauce.</p></li>
-            <li class="dish"><div class="dish-head"><span class="dish-name">Fatteh al Rubyan</span><span class="dish-dots"></span><span class="dish-price">22&nbsp;€</span></div><p class="dish-desc">Fried bread, prawns, yoghurt, garlic, coriander, fried eggplant and pine nuts.</p></li>
-            <li class="dish"><div class="dish-head"><span class="dish-name">Fatteh Djaj</span><span class="dish-dots"></span><span class="dish-price">20&nbsp;€</span></div><p class="dish-desc">Cinnamon rice, yoghurt, grilled chicken, garlic, fried eggplant, pine nuts and coriander.</p></li>
-            <li class="dish"><div class="dish-head"><span class="dish-name">Hallumi</span><span class="dish-dots"></span><span class="dish-price">17&nbsp;€</span></div><p class="dish-desc">Breaded halloumi, fig jam, pomegranate seeds and baby spinach.</p></li>
-            <li class="dish"><div class="dish-head"><span class="dish-name">Kebbeh Sajyeh</span><span class="dish-dots"></span><span class="dish-price">13&nbsp;€</span></div><p class="dish-desc">Kibbeh shells filled with meat and walnuts (4 pieces).</p></li>
-            <li class="dish"><div class="dish-head"><span class="dish-name">Hummus Falafel</span><span class="dish-dots"></span><span class="dish-price">16&nbsp;€</span></div><p class="dish-desc">Falafel with hummus and olive oil.</p></li>
-            <li class="dish"><div class="dish-head"><span class="dish-name">Batata Meklieh</span><span class="dish-dots"></span><span class="dish-price">10&nbsp;€</span></div><p class="dish-desc">French fries.</p></li>
-            <li class="dish"><div class="dish-head"><span class="dish-name">Batata Harrah</span><span class="dish-dots"></span><span class="dish-price">13&nbsp;€</span></div><p class="dish-desc">Potato cubes with coriander, chilli paste and garlic.</p></li>
-            <li class="dish"><div class="dish-head"><span class="dish-name">Jawaneh Dajaj</span><span class="dish-dots"></span><span class="dish-price">17&nbsp;€</span></div><p class="dish-desc">Grilled wings sautéed with garlic, lemon and coriander.</p></li>
-            <li class="dish"><div class="dish-head"><span class="dish-name">Soujok</span><span class="dish-dots"></span><span class="dish-price">18&nbsp;€</span></div><p class="dish-desc">Soujok sausage with onion, pepper, tomato, lemon and cumin.</p></li>
-            <li class="dish"><div class="dish-head"><span class="dish-name">Rakakt Jebneh</span><span class="dish-dots"></span><span class="dish-price">13&nbsp;€</span></div><p class="dish-desc">Four grilled cheese rolls.</p></li>
-            <li class="dish"><div class="dish-head"><span class="dish-name">Okhtobut bil Thoum</span><span class="dish-dots"></span><span class="dish-price">25&nbsp;€</span></div><p class="dish-desc">Seared octopus with garlic, lemon and coriander.</p></li>
+            <li class="dish" data-dish="hummus-lahme"><div class="dish-head"><span class="dish-name">Hummus Lahme</span><span class="dish-dots"></span><span class="dish-price">17&nbsp;€</span></div><p class="dish-desc">Hummus topped with spiced meat and pine nuts.</p></li>
+            <li class="dish" data-dish="rass-assfour"><div class="dish-head"><span class="dish-name">Rass Assfour</span><span class="dish-dots"></span><span class="dish-price">22&nbsp;€</span></div><p class="dish-desc">Beef chunks sautéed with garlic, butter, pine nuts, lemon or pomegranate sauce.</p></li>
+            <li class="dish" data-dish="fatteh-al-rubyan"><div class="dish-head"><span class="dish-name">Fatteh al Rubyan</span><span class="dish-dots"></span><span class="dish-price">22&nbsp;€</span></div><p class="dish-desc">Fried bread, prawns, yoghurt, garlic, coriander, fried eggplant and pine nuts.</p></li>
+            <li class="dish" data-dish="fatteh-djaj"><div class="dish-head"><span class="dish-name">Fatteh Djaj</span><span class="dish-dots"></span><span class="dish-price">20&nbsp;€</span></div><p class="dish-desc">Cinnamon rice, yoghurt, grilled chicken, garlic, fried eggplant, pine nuts and coriander.</p></li>
+            <li class="dish" data-dish="hallumi"><div class="dish-head"><span class="dish-name">Hallumi</span><span class="dish-dots"></span><span class="dish-price">17&nbsp;€</span></div><p class="dish-desc">Breaded halloumi, fig jam, pomegranate seeds and baby spinach.</p></li>
+            <li class="dish" data-dish="kebbeh-sajyeh"><div class="dish-head"><span class="dish-name">Kebbeh Sajyeh</span><span class="dish-dots"></span><span class="dish-price">13&nbsp;€</span></div><p class="dish-desc">Kibbeh shells filled with meat and walnuts (4 pieces).</p></li>
+            <li class="dish" data-dish="hummus-falafel"><div class="dish-head"><span class="dish-name">Hummus Falafel</span><span class="dish-dots"></span><span class="dish-price">16&nbsp;€</span></div><p class="dish-desc">Falafel with hummus and olive oil.</p></li>
+            <li class="dish" data-dish="batata-meklieh"><div class="dish-head"><span class="dish-name">Batata Meklieh</span><span class="dish-dots"></span><span class="dish-price">10&nbsp;€</span></div><p class="dish-desc">French fries.</p></li>
+            <li class="dish" data-dish="batata-harrah"><div class="dish-head"><span class="dish-name">Batata Harrah</span><span class="dish-dots"></span><span class="dish-price">13&nbsp;€</span></div><p class="dish-desc">Potato cubes with coriander, chilli paste and garlic.</p></li>
+            <li class="dish" data-dish="jawaneh-dajaj"><div class="dish-head"><span class="dish-name">Jawaneh Dajaj</span><span class="dish-dots"></span><span class="dish-price">17&nbsp;€</span></div><p class="dish-desc">Grilled wings sautéed with garlic, lemon and coriander.</p></li>
+            <li class="dish" data-dish="soujok"><div class="dish-head"><span class="dish-name">Soujok</span><span class="dish-dots"></span><span class="dish-price">18&nbsp;€</span></div><p class="dish-desc">Soujok sausage with onion, pepper, tomato, lemon and cumin.</p></li>
+            <li class="dish" data-dish="rakakt-jebneh"><div class="dish-head"><span class="dish-name">Rakakt Jebneh</span><span class="dish-dots"></span><span class="dish-price">13&nbsp;€</span></div><p class="dish-desc">Four grilled cheese rolls.</p></li>
+            <li class="dish" data-dish="okhtobut-bil-thoum"><div class="dish-head"><span class="dish-name">Okhtobut bil Thoum</span><span class="dish-dots"></span><span class="dish-price">25&nbsp;€</span></div><p class="dish-desc">Seared octopus with garlic, lemon and coriander.</p></li>
           </ul>
         </div>
       </div>
@@ -1192,19 +1194,19 @@
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
           </span>
           <img class="row-thumb thumb-l" alt="" aria-hidden="true" src="../design-inspiration/real-fotos/cocinando-SAMAK%20MASHWI.jpeg">
-          <img class="row-thumb thumb-r" alt="" aria-hidden="true" src="../design-inspiration/real-fotos/primer-plano-diagonal-plato-5.jpeg">
+          <img class="row-thumb thumb-r" alt="" aria-hidden="true" src="../design-inspiration/real-fotos/camarero-sirviendo-SAMAK%20MASHWI%20%E2%80%94%20lubina%20a%20la%20parrilla.jpeg">
         </button>
         <div id="m-mash" class="menu-detail pb-10 md:pb-14">
           <ul class="grid md:grid-cols-2 gap-x-12 gap-y-6">
-            <li class="dish"><div class="dish-head"><span class="dish-name">Taouk</span><span class="dish-dots"></span><span class="dish-price">23&nbsp;€</span></div><p class="dish-desc">Grilled Taouk chicken cubes, pickles and garlic paste.</p></li>
-            <li class="dish"><div class="dish-head"><span class="dish-name">Farrouj</span><span class="dish-dots"></span><span class="dish-price">26&nbsp;€</span></div><p class="dish-desc">Grilled boneless chicken with pickles and garlic.</p></li>
-            <li class="dish"><div class="dish-head"><span class="dish-name">Lahmeh Mshwieh</span><span class="dish-dots"></span><span class="dish-price">32&nbsp;€</span></div><p class="dish-desc">Grilled beef cubes with fat, roasted onion, tomato and chilli.</p></li>
-            <li class="dish"><div class="dish-head"><span class="dish-name">Kabab</span><span class="dish-dots"></span><span class="dish-price">23&nbsp;€</span></div><p class="dish-desc">Grilled kabab with roasted onion, tomato, chilli and biwaz.</p></li>
-            <li class="dish"><div class="dish-head"><span class="dish-name">Mawzet Kharouf</span><span class="dish-dots"></span><span class="dish-price">35&nbsp;€</span></div><p class="dish-desc">Lamb shank with spiced rice and nuts.</p></li>
-            <li class="dish"><div class="dish-head"><span class="dish-name">Shawarma Lehme</span><span class="dish-dots"></span><span class="dish-price">26&nbsp;€</span></div><p class="dish-desc">Beef shawarma, tomato, biwaz, tarator sauce and pickles.</p></li>
-            <li class="dish"><div class="dish-head"><span class="dish-name">Freekeh Djaj</span><span class="dish-dots"></span><span class="dish-price">27&nbsp;€</span></div><p class="dish-desc">Freekeh cooked with meat, onion and spices, topped with chicken, nuts and gravy.</p></li>
-            <li class="dish"><div class="dish-head"><span class="dish-name">Okhtobut Mashwi</span><span class="dish-dots"></span><span class="dish-price">26&nbsp;€</span></div><p class="dish-desc">Grilled octopus served with herb sauce, lemon and spicy oil.</p></li>
-            <li class="dish"><div class="dish-head"><span class="dish-name">Samak Mashwi</span><span class="dish-dots"></span><span class="dish-price">58&nbsp;€</span></div><p class="dish-desc">Grilled sea bass served with tarator sauce and lemon.</p></li>
+            <li class="dish" data-dish="taouk"><div class="dish-head"><span class="dish-name">Taouk</span><span class="dish-dots"></span><span class="dish-price">23&nbsp;€</span></div><p class="dish-desc">Grilled Taouk chicken cubes, pickles and garlic paste.</p></li>
+            <li class="dish" data-dish="farrouj"><div class="dish-head"><span class="dish-name">Farrouj</span><span class="dish-dots"></span><span class="dish-price">26&nbsp;€</span></div><p class="dish-desc">Grilled boneless chicken with pickles and garlic.</p></li>
+            <li class="dish" data-dish="lahmeh-mshwieh"><div class="dish-head"><span class="dish-name">Lahmeh Mshwieh</span><span class="dish-dots"></span><span class="dish-price">32&nbsp;€</span></div><p class="dish-desc">Grilled beef cubes with fat, roasted onion, tomato and chilli.</p></li>
+            <li class="dish" data-dish="kabab"><div class="dish-head"><span class="dish-name">Kabab</span><span class="dish-dots"></span><span class="dish-price">23&nbsp;€</span></div><p class="dish-desc">Grilled kabab with roasted onion, tomato, chilli and biwaz.</p></li>
+            <li class="dish" data-dish="mawzet-kharouf"><div class="dish-head"><span class="dish-name">Mawzet Kharouf</span><span class="dish-dots"></span><span class="dish-price">35&nbsp;€</span></div><p class="dish-desc">Lamb shank with spiced rice and nuts.</p></li>
+            <li class="dish" data-dish="shawarma-lehme"><div class="dish-head"><span class="dish-name">Shawarma Lehme</span><span class="dish-dots"></span><span class="dish-price">26&nbsp;€</span></div><p class="dish-desc">Beef shawarma, tomato, biwaz, tarator sauce and pickles.</p></li>
+            <li class="dish" data-dish="freekeh-djaj"><div class="dish-head"><span class="dish-name">Freekeh Djaj</span><span class="dish-dots"></span><span class="dish-price">27&nbsp;€</span></div><p class="dish-desc">Freekeh cooked with meat, onion and spices, topped with chicken, nuts and gravy.</p></li>
+            <li class="dish" data-dish="okhtobut-mashwi"><div class="dish-head"><span class="dish-name">Okhtobut Mashwi</span><span class="dish-dots"></span><span class="dish-price">26&nbsp;€</span></div><p class="dish-desc">Grilled octopus served with herb sauce, lemon and spicy oil.</p></li>
+            <li class="dish" data-dish="samak-mashwi"><div class="dish-head"><span class="dish-name">Samak Mashwi</span><span class="dish-dots"></span><span class="dish-price">58&nbsp;€</span></div><p class="dish-desc">Grilled sea bass served with tarator sauce and lemon.</p></li>
           </ul>
         </div>
       </div>
@@ -1223,11 +1225,11 @@
         </button>
         <div id="m-postres" class="menu-detail pb-10 md:pb-14">
           <ul class="grid md:grid-cols-2 gap-x-12 gap-y-6">
-            <li class="dish"><div class="dish-head"><span class="dish-name">Em Ali</span><span class="dish-dots"></span><span class="dish-price">15&nbsp;€</span></div><p class="dish-desc">Layered pastry soaked in Em Ali's special sauce, topped with pistachio, cream, almond and walnut.</p></li>
-            <li class="dish"><div class="dish-head"><span class="dish-name">Mafroukit Ashta</span><span class="dish-dots"></span><span class="dish-price">14&nbsp;€</span></div><p class="dish-desc">Pistachio mafrouki filled with milk cream and sugar syrup.</p></li>
-            <li class="dish"><div class="dish-head"><span class="dish-name">Aish el Saraya</span><span class="dish-dots"></span><span class="dish-price">12&nbsp;€</span></div><p class="dish-desc">Aish el Saraya dough with milk cream and nuts.</p></li>
-            <li class="dish"><div class="dish-head"><span class="dish-name">Knefeh</span><span class="dish-dots"></span><span class="dish-price">14&nbsp;€</span></div><p class="dish-desc">Knefeh dough filled with Lebanese cheese, sugar syrup and pistachio.</p></li>
-            <li class="dish"><div class="dish-head"><span class="dish-name">Mhalabieh</span><span class="dish-dots"></span><span class="dish-price">11&nbsp;€</span></div><p class="dish-desc">Milk dessert served with ghazel sauce and caramel.</p></li>
+            <li class="dish" data-dish="em-ali"><div class="dish-head"><span class="dish-name">Em Ali</span><span class="dish-dots"></span><span class="dish-price">15&nbsp;€</span></div><p class="dish-desc">Layered pastry soaked in Em Ali's special sauce, topped with pistachio, cream, almond and walnut.</p></li>
+            <li class="dish" data-dish="mafroukit-ashta"><div class="dish-head"><span class="dish-name">Mafroukit Ashta</span><span class="dish-dots"></span><span class="dish-price">14&nbsp;€</span></div><p class="dish-desc">Pistachio mafrouki filled with milk cream and sugar syrup.</p></li>
+            <li class="dish" data-dish="aish-el-saraya"><div class="dish-head"><span class="dish-name">Aish el Saraya</span><span class="dish-dots"></span><span class="dish-price">12&nbsp;€</span></div><p class="dish-desc">Aish el Saraya dough with milk cream and nuts.</p></li>
+            <li class="dish" data-dish="knefeh"><div class="dish-head"><span class="dish-name">Knefeh</span><span class="dish-dots"></span><span class="dish-price">14&nbsp;€</span></div><p class="dish-desc">Knefeh dough filled with Lebanese cheese, sugar syrup and pistachio.</p></li>
+            <li class="dish" data-dish="mhalabieh"><div class="dish-head"><span class="dish-name">Mhalabieh</span><span class="dish-dots"></span><span class="dish-price">11&nbsp;€</span></div><p class="dish-desc">Milk dessert served with ghazel sauce and caramel.</p></li>
           </ul>
         </div>
       </div>
@@ -1774,15 +1776,15 @@
 
             <!-- 09 · Montaje 5 -->
             <article class="xc-card">
-              <img src="../design-inspiration/real-fotos/montando-plato-de-%20ZAATAR%20%26%20LABNEH%20MANOUCHEH.jpeg" alt="Hot mezze freshly plated in the kitchen" loading="lazy"/>
+              <img src="../fotos/plano-detalle-comida-5.jpeg" alt="Fatteh Djaj with yoghurt, fried bread and almonds" loading="lazy"/>
               <div class="xc-caption">
                 <span class="xc-caption-eyebrow">09 · Hot mezze</span>
-                <p class="xc-caption-title">Fatteh al Rubyan</p>
+                <p class="xc-caption-title">Fatteh Djaj</p>
               </div>
               <div class="xc-reveal">
-                <div class="xc-reveal-tags"><span class="xc-tag">Hot mezze</span><span class="xc-tag">Seafood</span></div>
-                <p class="xc-reveal-title">Fatteh al Rubyan</p>
-                <p class="xc-reveal-desc">Crisp bread, prawns sautéed with garlic and coriander, yoghurt whipped with tahini and toasted pine nuts. Layer on layer — eaten with a spoon.</p>
+                <div class="xc-reveal-tags"><span class="xc-tag">Hot mezze</span><span class="xc-tag">Chicken</span></div>
+                <p class="xc-reveal-title">Fatteh Djaj</p>
+                <p class="xc-reveal-desc">Cinnamon rice, grilled chicken, garlic yoghurt, fried eggplant and toasted pine nuts. Layer on layer — eaten with a spoon.</p>
               </div>
             </article>
 
@@ -1802,7 +1804,7 @@
 
             <!-- 11 · Primer plano diagonal 2 -->
             <article class="xc-card">
-              <img src="../design-inspiration/real-fotos/primer-plano-diagonal-plato-2.jpeg" alt="Manakish with labneh and olives" loading="lazy"/>
+              <img src="../design-inspiration/real-fotos/montando-plato-de-ZAATAR%20%26%20LABNEH%20MANOUCHEH-1.jpeg" alt="Zaatar manakish with labneh, freshly served" loading="lazy"/>
               <div class="xc-caption">
                 <span class="xc-caption-eyebrow">11 · Oven</span>
                 <p class="xc-caption-title">Zaatar &amp; Labneh</p>
@@ -1816,7 +1818,7 @@
 
             <!-- 12 · Primer plano diagonal 3 -->
             <article class="xc-card">
-              <img src="../design-inspiration/real-fotos/primer-plano-diagonal-plato-2.jpeg" alt="Lebanese salad with fresh vegetables and pita bread" loading="lazy"/>
+              <img src="../fotos/plano-detalle-comida.jpeg" alt="Fattoush with fried bread, tomato and radish" loading="lazy"/>
               <div class="xc-caption">
                 <span class="xc-caption-eyebrow">12 · Cold mezze</span>
                 <p class="xc-caption-title">Fattoush</p>
@@ -3055,84 +3057,42 @@
 
   /* ── Dish-preview popup (hover desktop, tap mobile) ──────────────────── */
   (() => {
-    const PHOTO_BASE = '../design-inspiration/real-fotos/';
+    const PHOTO_BASE = '../';   // las rutas de DISH_PHOTOS ya llevan su carpeta
 
     const DISH_PHOTOS = {
+      /* Fotos PROPIAS, verificadas una a una abriendo la imagen y comparándola con el plato
+         de la carta (julio 2026). Un plato que no aparece aquí NO muestra foto: preferimos
+         el hueco antes que ilustrarlo con el plato equivocado. Los platos pendientes de
+         sesión fotográfica están listados en fotos-stock/CREDITOS.md. */
       // Del horno
-      'kafta':            ['primer-plano-diagonal-plato-1.jpeg', 'montando-plato-de-ZAATAR%20%26%20LABNEH%20MANOUCHEH-1.jpeg'],
-      'lahme-bi':         ['primer-plano-diagonal-plato-1.jpeg', 'cocinando-horno-ZAATAR%20%26%20LABNEH%20MANOUCHEH%20%E2%80%94%20masa%20al%20horno%20con%20zaatar.jpeg'],
-      'manoucheh':        ['cocinando-horno-ZAATAR%20%26%20LABNEH%20MANOUCHEH%20%E2%80%94%20masa%20al%20horno%20con%20zaatar.jpeg', 'primer-plano-diagonal-ZAATAR%20%26%20LABNEH%20MANOUCHEH.jpeg'],
-      'zaatar':           ['primer-plano-diagonal-ZAATAR%20%26%20LABNEH%20MANOUCHEH.jpeg', 'cocinando-horno-ZAATAR%20%26%20LABNEH%20MANOUCHEH%20%E2%80%94%20masa%20al%20horno%20con%20zaatar.jpeg'],
-      // Mezze frío  (dish-exact hummus photos now used; no more generic stand-ins)
-      'hummus-bil-pesto': ['primer-plano-aero-HUMMUS%20BIL%20PESTO.jpeg', 'primer-plano-aero-HUMMUS.jpeg'],
-      'hummus':           ['primer-plano-aero-HUMMUS.jpeg', 'complementos-bonitos-Labneh%20%20Muhammara%20%20Moutabal%20%20tomate.jpeg'],
-      'tabbouleh':        ['primer-plano-diagonal-plato-2.jpeg', 'complementos-bonitos-Labneh%20%20Muhammara%20%20Moutabal%20%20tomate.jpeg'],
-      'fattoush':         ['primer-plano-diagonal-plato-2.jpeg', 'complementos-bonitos-Labneh%20%20Muhammara%20%20Moutabal%20%20tomate.jpeg'],
-      'jarjir':           ['primer-plano-diagonal-plato-2.jpeg', 'complementos-bonitos-Labneh%20%20Muhammara%20%20Moutabal%20%20tomate.jpeg'],
-      'rubyan':           ['primer-plano-diagonal-OKHTOBUT%20MASHWI.jpeg', 'camarero-sirviendo-SAMAK%20MASHWI%20%E2%80%94%20lubina%20a%20la%20parrilla.jpeg'],
-      'moutabal':         ['complementos-bonitos-Labneh%20%20Muhammara%20%20Moutabal%20%20tomate.jpeg', 'primer-plano-diagonal-MUHAMMARA.jpeg'],
-      'muhammara':        ['primer-plano-diagonal-MUHAMMARA.jpeg', 'complementos-bonitos-Labneh%20%20Muhammara%20%20Moutabal%20%20tomate.jpeg'],
-      'warak':            ['complementos-bonitos-Labneh%20%20Muhammara%20%20Moutabal%20%20tomate.jpeg', 'primer-plano-diagonal-plato-2.jpeg'],
-      'ariche':           ['complementos-bonitos-Labneh%20%20Muhammara%20%20Moutabal%20%20tomate.jpeg', 'primer-plano-diagonal-plato-2.jpeg'],
-      'quinoa':           ['complementos-bonitos-Labneh%20%20Muhammara%20%20Moutabal%20%20tomate.jpeg', 'primer-plano-diagonal-MUHAMMARA.jpeg'],
-      // Mezze caliente
-      'hummus-lahme':     ['primer-plano-aero-HUMMUS.jpeg', 'primer-plano-diagonal-plato-1.jpeg'],
-      'kebbeh':           ['primer-plano-diagonal-plato-1.jpeg', 'primer-plano-diagonal-plato-5.jpeg'],
-      'hallumi':          ['complementos-bonitos-Labneh%20%20Muhammara%20%20Moutabal%20%20tomate.jpeg', 'primer-plano-diagonal-plato-2.jpeg'],
-      'fatteh':           ['primer-plano-diagonal-OKHTOBUT%20MASHWI.jpeg', 'complementos-bonitos-Labneh%20%20Muhammara%20%20Moutabal%20%20tomate.jpeg'],
-      'falafel':          ['primer-plano-diagonal-plato-2.jpeg', 'complementos-bonitos-Labneh%20%20Muhammara%20%20Moutabal%20%20tomate.jpeg'],
-      'batata':           ['primer-plano-diagonal-plato-2.jpeg', 'primer-plano-diagonal-MUHAMMARA.jpeg'],
-      'jawaneh':          ['primer-plano-diagonal-plato-5.jpeg', 'primer-plano-diagonal-plato-1.jpeg'],
-      'soujok':           ['primer-plano-diagonal-plato-5.jpeg', 'primer-plano-diagonal-MUHAMMARA.jpeg'],
-      'rakakt':           ['montando-plato-de-ZAATAR%20%26%20LABNEH%20MANOUCHEH-1.jpeg', 'complementos-bonitos-Labneh%20%20Muhammara%20%20Moutabal%20%20tomate.jpeg'],
-      'rass':             ['primer-plano-diagonal-plato-5.jpeg', 'primer-plano-diagonal-plato-1.jpeg'],
-      'okhtobut':         ['primer-plano-diagonal-OKHTOBUT%20MASHWI.jpeg', 'plano-diagonal-probando-OKHTOBUT%20MASHWI%20%E2%80%94%20pulpo%20a%20la%20parrilla.jpeg'],
-      // Masheweh · a la brasa  (grilled-meat plates, no longer the whole-fish photo)
-      'taouk':            ['primer-plano-diagonal-plato-5.jpeg', 'primer-plano-diagonal-plato-1.jpeg'],
-      'farrouj':          ['primer-plano-diagonal-plato-5.jpeg', 'primer-plano-diagonal-plato-1.jpeg'],
-      'lahmeh':           ['primer-plano-diagonal-plato-5.jpeg', 'primer-plano-diagonal-plato-1.jpeg'],
-      'kabab':            ['primer-plano-diagonal-plato-5.jpeg', 'primer-plano-diagonal-plato-1.jpeg'],
-      'mawzet':           ['primer-plano-diagonal-plato-1.jpeg', 'primer-plano-diagonal-plato-5.jpeg'],
-      'shawarma':         ['primer-plano-diagonal-plato-5.jpeg', 'primer-plano-diagonal-plato-1.jpeg'],
-      'freekeh':          ['primer-plano-diagonal-plato-5.jpeg', 'primer-plano-diagonal-plato-1.jpeg'],
-      'samak':            ['camarero-sirviendo-SAMAK%20MASHWI%20%E2%80%94%20lubina%20a%20la%20parrilla.jpeg', 'cocinando-SAMAK%20MASHWI.jpeg'],
+      'zaatar-labneh':    ['design-inspiration/real-fotos/primer-plano-diagonal-ZAATAR%20%26%20LABNEH%20MANOUCHEH.jpeg',
+                           'design-inspiration/real-fotos/cocinando-horno-ZAATAR%20%26%20LABNEH%20MANOUCHEH%20%E2%80%94%20masa%20al%20horno%20con%20zaatar.jpeg'],
+      // Mezze frío
+      'fattoush':         ['fotos/plano-detalle-comida.jpeg', 'fotos/plano-detalle-comida-2.jpeg'],
+      'tabbouleh':        ['design-inspiration/real-fotos/mesa-comida-lujo-abundante.jpeg'],
+      'hummus':           ['design-inspiration/real-fotos/primer-plano-aero-HUMMUS.jpeg',
+                           'design-inspiration/real-fotos/primer-plano-diagonal-plato-2.jpeg'],
+      'hummus-bil-pesto': ['design-inspiration/real-fotos/primer-plano-aero-HUMMUS%20BIL%20PESTO.jpeg',
+                           'design-inspiration/real-fotos/primer-plano-diagonal-plato-1.jpeg'],
+      'muhammara':        ['design-inspiration/real-fotos/primer-plano-diagonal-MUHAMMARA.jpeg',
+                           'fotos/plano-detalle-comida-en-terraza-2.jpeg'],
+      // Mezze caliente — cocina confirma que la fatteh fotografiada es la de pollo
+      'fatteh-djaj':      ['fotos/plano-detalle-comida-5.jpeg'],
+      // A la brasa
+      'okhtobut-mashwi':  ['design-inspiration/real-fotos/primer-plano-diagonal-OKHTOBUT%20MASHWI.jpeg',
+                           'design-inspiration/real-fotos/plano-diagonal-probando-OKHTOBUT%20MASHWI%20%E2%80%94%20pulpo%20a%20la%20parrilla.jpeg'],
+      'samak-mashwi':     ['design-inspiration/real-fotos/camarero-sirviendo-SAMAK%20MASHWI%20%E2%80%94%20lubina%20a%20la%20parrilla.jpeg',
+                           'design-inspiration/real-fotos/cocinando-SAMAK%20MASHWI.jpeg'],
       // Postres
-      'em-ali':           ['primer-plano-aero-postre-AISH%20EL%20SARAYA.jpeg', 'montando-plato-de-MHALABIEH%20%E2%80%94%20postre%20de%20leche.jpeg'],
-      'mafroukit':        ['montando-plato-de-MHALABIEH%20%E2%80%94%20postre%20de%20leche.jpeg', 'montando-plato-de-AISH%20EL%20SARAYA.jpeg'],
-      'aish':             ['montando-plato-de-AISH%20EL%20SARAYA.jpeg', 'primer-plano-aero-postre-AISH%20EL%20SARAYA.jpeg'],
-      'knefeh':           ['primer-plano-aero-postre-AISH%20EL%20SARAYA.jpeg', 'montando-plato-de-AISH%20EL%20SARAYA.jpeg'],
-      'mhalabieh':        ['montando-plato-de-MHALABIEH%20%E2%80%94%20postre%20de%20leche.jpeg', 'montando-plato-de-AISH%20EL%20SARAYA.jpeg'],
-    };
-
-    const CAT_FALLBACK = {
-      horno:    ['cocinando-horno-ZAATAR%20%26%20LABNEH%20MANOUCHEH%20%E2%80%94%20masa%20al%20horno%20con%20zaatar.jpeg',              'primer-plano-diagonal-plato-1.jpeg'],
-      frio:     ['primer-plano-diagonal-plato-2.jpeg', 'complementos-bonitos-Labneh%20%20Muhammara%20%20Moutabal%20%20tomate.jpeg'],
-      caliente: ['primer-plano-diagonal-MUHAMMARA.jpeg', 'primer-plano-diagonal-OKHTOBUT%20MASHWI.jpeg'],
-      mash:     ['primer-plano-diagonal-plato-5.jpeg',   'primer-plano-diagonal-plato-1.jpeg'],
-      postres:  ['primer-plano-aero-postre-AISH%20EL%20SARAYA.jpeg',   'montando-plato-de-AISH%20EL%20SARAYA.jpeg'],
+      'aish-el-saraya':   ['design-inspiration/real-fotos/primer-plano-aero-postre-AISH%20EL%20SARAYA.jpeg',
+                           'design-inspiration/real-fotos/primer-plano-diagonal-plato-5.jpeg'],
+      'mhalabieh':        ['design-inspiration/real-fotos/montando-plato-de-MHALABIEH%20%E2%80%94%20postre%20de%20leche.jpeg'],
     };
 
     const CAT_LABEL = {
       horno: 'Del horno', frio: 'Mezze frío', caliente: 'Mezze caliente',
       mash: 'A la brasa', postres: 'Postres',
     };
-
-    function slugify(s) {
-      return s.toLowerCase()
-        .normalize('NFD').replace(/[̀-ͯ]/g, '')
-        .replace(/[^a-z0-9]+/g, '-')
-        .replace(/^-|-$/g, '');
-    }
-
-    function getPhotos(name, cat) {
-      const s = slugify(name);
-      if (DISH_PHOTOS[s]) return DISH_PHOTOS[s];
-      // Substring fallback (e.g. "hummus-lahme" → matches "hummus")
-      for (const key in DISH_PHOTOS) {
-        if (s.includes(key)) return DISH_PHOTOS[key];
-      }
-      return CAT_FALLBACK[cat] || ['interior-del-restaurante-1.jpeg', 'mesa-comida-lujo-abundante.jpeg'];
-    }
 
     const popup = document.createElement('div');
     popup.id = 'dish-popup';
@@ -3157,6 +3117,7 @@
     const elEyebrow = popup.querySelector('.dp-eyebrow');
     const elDesc    = popup.querySelector('.dp-desc');
     const imgs      = popup.querySelectorAll('.dp-photo img');
+    const elPhotos  = popup.querySelector('.dp-photos');
 
     const PAD = 14;
     const CARD_W = window.innerWidth < 640 ? 300 : 380;
@@ -3195,18 +3156,22 @@
       const name    = nameEl ? nameEl.textContent.trim() : '';
       const price   = priceEl ? priceEl.textContent.trim() : '';
       const desc    = descEl ? descEl.textContent.trim() : '';
-      const dishKey = dish.dataset.dish;
-      const [p1, p2] = (dishKey && DISH_PHOTOS[dishKey]) ? DISH_PHOTOS[dishKey] : getPhotos(name, cat);
+      const photos = DISH_PHOTOS[dish.dataset.dish] || [];
 
       elName.textContent    = name;
       elPrice.textContent   = price;
       elEyebrow.textContent = CAT_LABEL[cat] || '';
       elDesc.textContent    = desc;
-      imgs[0].alt = `${name} — vista 1`;
-      imgs[1].alt = `${name} — vista 2`;
-      imgs[0].src = PHOTO_BASE + p1;
-      imgs[1].src = PHOTO_BASE + p2;
-      imgs.forEach(im => { im.onerror = () => im.style.opacity = '0'; im.style.opacity = '1'; });
+      elPhotos.hidden = photos.length === 0;
+      elPhotos.classList.toggle('is-single', photos.length === 1);
+      imgs.forEach((im, i) => {
+        const p = photos[i];
+        im.parentElement.hidden = !p;
+        if (!p) return;
+        im.alt = `${name} — view ${i + 1}`;
+        im.src = PHOTO_BASE + p;
+        im.onerror = () => { im.parentElement.hidden = true; };
+      });
 
       popup.classList.add('open');
       popup.setAttribute('aria-hidden', 'false');
