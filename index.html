@@ -463,8 +463,17 @@
     mix-blend-mode: difference;
   }
   #cursor-dot { width: 6px; height: 6px; background: #FAF7F0; transform: translate(-3px, -3px); }
-  #cursor-ring { width: 36px; height: 36px; border: 1px solid #FAF7F0; transform: translate(-18px, -18px); transition: transform .28s cubic-bezier(.2,.7,.2,1), width .25s ease, height .25s ease, opacity .25s; }
-  body.cursor-hover #cursor-ring { width: 56px; height: 56px; transform: translate(-28px, -28px); }
+  #cursor-ring { width: 36px; height: 36px; border: 1px solid #FAF7F0; transform: translate(-18px, -18px); transition: transform .28s cubic-bezier(.2,.7,.2,1), width .25s ease, height .25s ease, opacity .25s, background-color .2s ease, border-color .2s ease, border-width .2s ease; }
+  /* Con cursor:none sobre los enlaces, el anillo es la única señal de "esto se
+     pulsa": sobre un interactivo se llena de teal de marca y engorda el borde.
+     mix-blend-mode: difference invertiría ese teal, así que se desactiva solo
+     en este estado, el único donde el color importa. */
+  body.cursor-hover #cursor-ring {
+    width: 56px; height: 56px; transform: translate(-28px, -28px);
+    mix-blend-mode: normal; background: rgba(0,166,206,.22);
+    border-color: var(--teal); border-width: 2px;
+  }
+  body.cursor-hover #cursor-dot { mix-blend-mode: normal; background: var(--teal); }
   body.cursor-press #cursor-ring { width: 28px; height: 28px; transform: translate(-14px, -14px); }
   @media (hover: none), (pointer: coarse) { #cursor-dot, #cursor-ring { display: none; } }
 
@@ -2691,10 +2700,10 @@
     <div class="mt-10 pt-6 border-t border-cream/10 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 text-[12px] text-cream/55">
       <p>© <span id="year">2026</span> du Liban — Lebanese Cuisine. Todos los derechos reservados.</p>
       <div class="flex items-center gap-5">
-        <a href="legal.html#condiciones" class="hover:text-cream transition-colors duration-200">Aviso legal</a>
-        <a href="legal.html#privacidad" class="hover:text-cream transition-colors duration-200">Privacidad</a>
-        <a href="legal.html#cookies" class="hover:text-cream transition-colors duration-200">Cookies</a>
-        <a href="#" data-cookie-prefs class="hover:text-cream transition-colors duration-200">Preferencias de cookies</a>
+        <a href="legal.html#condiciones" class="underline underline-offset-4 decoration-cream/25 hover:decoration-cream hover:text-cream transition-colors duration-200">Aviso legal</a>
+        <a href="legal.html#privacidad" class="underline underline-offset-4 decoration-cream/25 hover:decoration-cream hover:text-cream transition-colors duration-200">Privacidad</a>
+        <a href="legal.html#cookies" class="underline underline-offset-4 decoration-cream/25 hover:decoration-cream hover:text-cream transition-colors duration-200">Cookies</a>
+        <a href="#" data-cookie-prefs class="underline underline-offset-4 decoration-cream/25 hover:decoration-cream hover:text-cream transition-colors duration-200">Preferencias de cookies</a>
       </div>
     </div>
   </div>

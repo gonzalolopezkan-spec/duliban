@@ -177,6 +177,46 @@
   var banner = null;
   var lastFocused = null;
 
+  /* ── Reserve room so the fixed banner never covers page content ─────────
+     The banner is position:fixed at the bottom, so anything at the very end of
+     the document — the footer's legal links — ends up underneath it and is
+     unclickable while it is open. Pad the <footer> rather than <body> so the
+     dark footer background extends into the reserved strip instead of leaving
+     a cream band below it. legal.html has no <footer>, so it falls back to
+     <body>, where the page background is cream anyway. */
+  var spacerEl = null;
+  var spacerBase = 0;
+  var spacerObserver = null;
+
+  function syncSpacing() {
+    if (!banner || banner.hidden) return;
+    if (!spacerEl) {
+      spacerEl = document.querySelector('footer') || document.body;
+      spacerBase = parseFloat(window.getComputedStyle(spacerEl).paddingBottom) || 0;
+    }
+    spacerEl.style.paddingBottom = (spacerBase + banner.offsetHeight + 16) + 'px';
+  }
+
+  /* Both mechanisms on purpose. The resize listener covers the viewport
+     changing; the observer covers the heights that change without a resize —
+     the Customize panel opening, the actions wrapping at the 640px
+     breakpoint, the webfont swapping in. Either firing alone is harmless:
+     syncSpacing is idempotent. */
+  function watchSpacing() {
+    syncSpacing();
+    window.addEventListener('resize', syncSpacing);
+    if (typeof window.ResizeObserver === 'function') {
+      if (!spacerObserver) spacerObserver = new window.ResizeObserver(syncSpacing);
+      spacerObserver.observe(banner);
+    }
+  }
+
+  function clearSpacing() {
+    if (spacerObserver) spacerObserver.disconnect();
+    window.removeEventListener('resize', syncSpacing);
+    if (spacerEl) spacerEl.style.paddingBottom = '';
+  }
+
   /* Escape closes the banner WITHOUT saving — postpones the decision.
      Registered on show, removed on hide. */
   function onEscape(e) {
@@ -241,6 +281,7 @@
       var expanded = customizeBtn.getAttribute('aria-expanded') === 'true';
       customizeBtn.setAttribute('aria-expanded', expanded ? 'false' : 'true');
       panel.hidden = expanded;
+      syncSpacing(); // the panel changes the banner's height
     });
 
     saveBtn.addEventListener('click', function () {
@@ -281,12 +322,15 @@
       el.classList.add('cc-enter');
     }
 
+    watchSpacing();
+
     el.focus({ preventScroll: true });
   }
 
   function hideBanner() {
     if (!banner) return;
     banner.hidden = true;
+    clearSpacing();
     document.removeEventListener('keydown', onEscape);
     // Return focus to the element that opened the banner, if still valid
     if (
