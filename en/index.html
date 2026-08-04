@@ -504,15 +504,31 @@
   /* ── Dish-preview popup ─────────────────────────────────────────────── */
   .dish-name { cursor: pointer; }
   #dish-popup {
+    /* La posición viaja en el transform, no en left/top: left/top no se pueden
+       transicionar aquí, así que al pasar de un plato a otro el popup saltaba de
+       golpe. Con translate3d el mismo transform que hace la entrada hace el
+       desplazamiento, y se desliza. */
     position: fixed; left: 0; top: 0; z-index: 80;
+    --dp-x: 0px; --dp-y: 0px;
     pointer-events: none;
     opacity: 0;
-    transform: translateY(8px) scale(.97);
+    transform: translate3d(var(--dp-x), var(--dp-y), 0) translateY(8px) scale(.97);
     transform-origin: top left;
-    transition: opacity .22s ease, transform .35s cubic-bezier(.2,.7,.2,1);
-    will-change: transform, opacity, left, top;
+    transition: opacity .22s ease, transform .3s cubic-bezier(.22,.68,.2,1);
+    will-change: transform, opacity;
   }
-  #dish-popup.open { opacity: 1; transform: translateY(0) scale(1); pointer-events: auto; }
+  #dish-popup.open {
+    opacity: 1;
+    transform: translate3d(var(--dp-x), var(--dp-y), 0) translateY(0) scale(1);
+    pointer-events: auto;
+  }
+  /* Primera aparición: se coloca sin animar para entrar con un fundido en su sitio,
+     en vez de venir deslizándose desde donde estuviera el plato anterior. */
+  #dish-popup.dp-place { transition: none; }
+
+  @media (prefers-reduced-motion: reduce) {
+    #dish-popup { transition: opacity .15s ease; }
+  }
 
   .dp-card {
     width: 380px;
@@ -3209,7 +3225,8 @@
     const CARD_W = window.innerWidth < 640 ? 300 : 380;
     let activeDish = null;
 
-    function positionPopup(dish) {
+    // instant = colocar sin deslizar (primera aparición); si no, se desliza hasta el plato nuevo.
+    function positionPopup(dish, instant) {
       const r = dish.getBoundingClientRect();
       const cardW = popup.offsetWidth || CARD_W;
       const cardH = popup.offsetHeight || 360;
@@ -3228,12 +3245,18 @@
       if (top < PAD)              top = PAD;
       if (top + cardH > vh - PAD) top = vh - cardH - PAD;
 
-      popup.style.left = left + 'px';
-      popup.style.top  = top + 'px';
+      if (instant) popup.classList.add('dp-place');
+      popup.style.setProperty('--dp-x', left + 'px');
+      popup.style.setProperty('--dp-y', top + 'px');
+      if (instant) {
+        void popup.offsetHeight;          // fija la posición antes de reactivar la transición
+        popup.classList.remove('dp-place');
+      }
     }
 
     function showPopup(dish) {
       if (activeDish === dish && popup.classList.contains('open')) return;
+      const wasOpen = popup.classList.contains('open');
       activeDish = dish;
       const nameEl  = dish.querySelector('.dish-name');
       const priceEl = dish.querySelector('.dish-price');
@@ -3259,9 +3282,15 @@
         im.onerror = () => { im.parentElement.hidden = true; };
       });
 
-      popup.classList.add('open');
       popup.setAttribute('aria-hidden', 'false');
-      requestAnimationFrame(() => positionPopup(dish));
+      if (wasOpen) {
+        // Ya visible sobre otro plato: se desliza hasta el nuevo con el contenido ya cambiado.
+        positionPopup(dish, false);
+      } else {
+        // Se mide y se coloca mientras sigue invisible, y solo después entra el fundido.
+        positionPopup(dish, true);
+        popup.classList.add('open');
+      }
     }
 
     function hidePopup() {
