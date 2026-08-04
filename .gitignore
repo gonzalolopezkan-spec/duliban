@@ -21,5 +21,8 @@ node_modules/
 # Raw photo source folder (normalized copies stored in fotos/)
 fotos nuevas/
 
+# Raw dish PNGs from the client, ~77 MB (the WebP the site serves live in fotos/platos/)
+fotos/comidas Du Liban/
+
 # Working material for the pending photo shoot — not part of the published site.
 fotos-stock/

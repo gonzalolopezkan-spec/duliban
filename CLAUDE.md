@@ -89,6 +89,7 @@ C:\Duliban\
 ├── assets\hero-mezze.mp4
 ├── brand_assets\                                 ← logo + ornamentos del manual de marca
 ├── fotos\                                        ← 38 fotos nuevas normalizadas (galería etc.)
+│   └── platos\                                   ← 37 WebP de plato (una por plato, 900px, ~2,5 MB en total)
 ├── fotos nuevas\                                 ← origen crudo (gitignored, NO tocar)
 └── design-inspiration\
     ├── Du-Liban-Comida-Nueva-Carta.pdf
@@ -108,12 +109,12 @@ https://github.com/gonzalolopezkan-spec/duliban — trabajo actual en rama **`br
 ## Tareas pendientes conocidas (por impacto)
 
 1. **Merge/push de `brand-definitivo`** cuando el usuario lo decida.
-2. **Fotos de platos**: el cliente las está pidiendo a sus dos chefs (aunque no sean profesionales). Al llegar, mapearlas en `DISH_PHOTOS`. De la reunión del 27 jul ya se identificaron fotos de Fatteh Djaj, Fattoush, Manoucheh Jebneh, Hummus bil Pesto y pan caliente.
+2. **Fotos de platos**: ✅ hecho el 4 ago 2026 — el cliente envió 37 fotos (retocadas con IA para casar con la paleta), convertidas a WebP en `fotos/platos/` y mapeadas en `DISH_PHOTOS` de las 3 páginas. Cubren **38 de los 42 platos**. Faltan **Warak Enab, Kebbeh Sajyeh, Soujok y Freekeh Djaj** (muestran hueco, no foto equivocada). Detalle en `fotos-stock/PLATOS-PENDIENTES-DE-FOTO.md`.
 3. **Acceso a SevenRooms** pendiente de que lo dé el cliente. Objetivo: que el email post-visita enlace al formulario de reseña de **Google**. ⚠️ Google NO permite importar reseñas de terceros a su ficha — no prometerlo.
 4. **¿El local de 2008 ya se llamaba du Liban?** Sin confirmar. Por eso `#concepto` dice "La cocina de la Plaza de la Moraleja abrió en septiembre de 2008" y no "du Liban abrió…". Si se confirma, se puede usar la versión fuerte.
 5. **Entidad certificadora del halal**: sigue sin conocerse — no inventarla.
 6. **Validar la URL de SevenRooms** en producción (la pasó el cliente; responde, pero conviene una reserva de prueba).
-7. **Optimizar imágenes**: `.jpeg` → `.webp` + `srcset` (ahora también las 38 de `fotos/`).
+7. **Optimizar imágenes**: `.jpeg` → `.webp` + `srcset` (las 38 de `fotos/` y las de `design-inspiration/real-fotos/`; las de `fotos/platos/` ya van en WebP).
 8. **og:image** con URL absoluta cuando haya dominio definitivo.
 9. Borrar `fotos nuevas/` del disco cuando el cliente valide la selección.
 10. **Ficha de Google Business**: activar el atributo "Admite perros" (la web ya lo dice, pero esas búsquedas se resuelven en Maps).
