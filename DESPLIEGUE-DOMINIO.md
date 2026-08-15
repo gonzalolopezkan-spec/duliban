@@ -1,91 +1,82 @@
-# Conectar `dulibanrestaurante.com` con la web nueva
+# `dulibanrestaurante.com` — registros DNS definitivos
 
-## Estado actual
+## Situación (verificada el 15 ago 2026)
 
-| Cosa | Dónde está |
+El dominio ya **no** está en SiteGround: los nameservers son ahora `ns19.domaincontrol.com` y
+`ns20.domaincontrol.com` (**GoDaddy**). En esa mudanza:
+
+- Se aplicaron los registros de **GitHub Pages** (apex `A 185.199.108.153`, `www` CNAME a
+  `gonzalolopezkan-spec.github.io`) — corresponden a las instrucciones antiguas, ya superadas.
+- **Se perdieron los registros MX, SPF, DKIM y DMARC.** Sin MX, el correo entrante de
+  `reservas@dulibanrestaurante.com` no se entrega. Esto es lo primero que hay que arreglar.
+
+La zona antigua de SiteGround sigue respondiendo, así que los valores originales se han podido
+recuperar íntegros y están abajo.
+
+---
+
+## 1. Correo — RESTAURAR YA (prioridad máxima)
+
+### MX (tres registros, en la raíz `@`)
+
+| Prioridad | Valor |
 |---|---|
-| Código de la web | GitHub: `gonzalolopezkan-spec/duliban`, rama `main` |
-| Web publicada (provisional) | https://gonzalolopezkan-spec.github.io/duliban/ (GitHub Pages) |
-| DNS del dominio | SiteGround (`ns1.siteground.net`, `ns2.siteground.net`) |
-| Dominio apuntando a | `34.175.232.129` — SiteGround, la WordPress vieja (devuelve **403**) |
-| Correo del dominio | SiteGround: MX `mx10/20/30.antispam.mailspamprotection.com` |
+| 10 | `mx10.antispam.mailspamprotection.com` |
+| 20 | `mx20.antispam.mailspamprotection.com` |
+| 30 | `mx30.antispam.mailspamprotection.com` |
 
-Destino elegido por CMS: **Vercel** o **Cloudflare Pages**.
+### TXT — SPF (en la raíz `@`)
 
-## Recomendación: Vercel
+```
+v=spf1 +a +mx include:dulibanrestaurante.com.spf.auto.dnssmarthost.net ~all
+```
 
-El motivo es el correo. `reservas@dulibanrestaurante.com` vive en SiteGround.
+### CNAME — DKIM
 
-- **Vercel** conecta el dominio raíz con un simple registro **A**, dejando los nameservers en SiteGround. El correo no se toca en ningún momento. Riesgo mínimo.
-- **Cloudflare Pages** exige que el dominio entero esté en el DNS de Cloudflare para poder usar el dominio raíz, es decir **cambiar los nameservers**. Cloudflare importa los registros existentes automáticamente, pero si algún MX o TXT (SPF/DKIM) no se copia bien, el correo del restaurante deja de funcionar hasta que se arregle.
+| Nombre | Valor |
+|---|---|
+| `default._domainkey` | `dulibanrestaurante.com.default.dkim.auto.dnssmarthost.net` |
 
-Las dos son gratis para este sitio y las dos despliegan solas en cada push a `main`. Vercel es el camino sin riesgo para el correo.
+### TXT — DMARC
 
----
+| Nombre | Valor |
+|---|---|
+| `_dmarc` | `v=DMARC1; p=none; aspf=r; adkim=r;` |
 
-## Opción A — Vercel (recomendada)
-
-### 1. Crear el proyecto (5 minutos, en el navegador)
-
-1. Entrar en https://vercel.com y **iniciar sesión con GitHub** (la cuenta `gonzalolopezkan-spec`).
-2. *Add New… → Project* → importar el repositorio **`duliban`**.
-3. En la pantalla de configuración:
-   - **Framework Preset:** `Other`
-   - **Build Command:** vacío (desactivar el override)
-   - **Output Directory:** `.` (la raíz)
-   - **Install Command:** vacío
-
-   El archivo `vercel.json` del repo ya deja esto configurado, así que basta con no tocar nada y pulsar **Deploy**.
-4. Al terminar da una URL tipo `duliban.vercel.app`. Ahí ya se puede comprobar que todo se ve bien antes de mover el dominio.
-
-### 2. Añadir el dominio
-
-En el proyecto → *Settings → Domains* → añadir `dulibanrestaurante.com` (Vercel añade `www` automáticamente y crea la redirección).
-
-Vercel mostrará entonces **los valores DNS exactos** que hay que copiar. Normalmente son:
-
-- Raíz `@` → registro **A** apuntando a la IP que indique Vercel (históricamente `76.76.21.21`; **usar siempre la que muestre el panel**, que puede ser distinta por proyecto).
-- `www` → registro **CNAME** al host que indique Vercel (`cname.vercel-dns.com` o una variante propia del proyecto).
-
-### 3. Lo que tiene que hacer Nacho en SiteGround
-
-En el editor de zona DNS de SiteGround:
-
-1. **Borrar** el registro **A** de la raíz (`34.175.232.129`).
-2. **Borrar** el registro **A** de `www` (`34.175.232.129`).
-3. **Crear** el A de la raíz y el CNAME de `www` con los valores que muestre Vercel.
-
-⚠️ **No tocar nada más.** En concreto, dejar intactos:
-- los registros **MX** (`mx10/20/30.antispam.mailspamprotection.com`) → el correo del restaurante,
-- los registros **TXT** (SPF, DKIM, verificaciones),
-- los nameservers.
-
-### 4. Cerrar
-
-Cuando el DNS propague (de minutos a 2–4 h; el TTL actual es ~75 min), Vercel emite el certificado HTTPS solo. Después: apagar GitHub Pages en *Settings → Pages* del repo para no dejar dos sitios publicados.
+> Nota: el buzón sigue alojado en SiteGround. Si el cliente ha cancelado ese hosting, estos
+> registros no bastarán y habrá que decidir dónde vive el correo a partir de ahora.
 
 ---
 
-## Opción B — Cloudflare Pages
+## 2. Web — apuntar a Vercel
 
-Solo si CMS insiste en Cloudflare. Implica mover los nameservers, así que **el correo entra en juego**.
+Sustituir los registros actuales de GitHub Pages por estos dos:
 
-1. Crear cuenta en https://dash.cloudflare.com y *Add a site* → `dulibanrestaurante.com`. Cloudflare escanea el DNS actual de SiteGround e importa los registros.
-2. **Antes de continuar, verificar uno por uno** que los tres MX y todos los TXT (SPF/DKIM) se han importado exactamente igual. Si falta alguno, añadirlo a mano. Este es el paso crítico.
-3. Cloudflare da dos nameservers propios. Nacho los pone en el registrador del dominio, sustituyendo a los de SiteGround.
-4. En Cloudflare → *Workers & Pages → Create → Pages → Connect to Git* → repo `duliban`. Framework `None`, build command vacío, output directory `/`.
-5. En el proyecto de Pages → *Custom domains* → añadir `dulibanrestaurante.com` y `www`. Al estar el DNS ya en Cloudflare, los registros se crean solos.
+| Tipo | Nombre | Valor |
+|---|---|---|
+| A | `@` | `216.198.79.1` |
+| CNAME | `www` | `914390cc79029ae1.vercel-dns-017.com` |
 
-El archivo `vercel.json` es específico de Vercel; en Cloudflare Pages no molesta, pero las cabeceras de caché habría que replicarlas en un archivo `_headers` si se quiere el mismo comportamiento.
+Concretamente:
+
+- **Borrar** el `A` de `@` que apunta a `185.199.108.153` → crear el `A` a `216.198.79.1`.
+- **Borrar** el `CNAME` de `www` que apunta a `gonzalolopezkan-spec.github.io` → crear el `CNAME`
+  a `914390cc79029ae1.vercel-dns-017.com`.
+
+La web vivirá en `dulibanrestaurante.com`; `www` redirige ahí automáticamente (lo gestiona Vercel).
+
+El HTTPS lo emite Vercel solo, sin coste ni instalación, en cuanto el DNS apunte bien. **No hay
+registros CAA** en la zona, así que nada bloquea la emisión del certificado.
 
 ---
 
-## Qué ha cambiado en el repo
+## 3. Cerrar
 
-- Añadido **`vercel.json`** — configura el despliegue estático y las cabeceras de caché.
-- Eliminado el archivo **`CNAME`** — era exclusivo de GitHub Pages y entraría en conflicto.
+Cuando el dominio responda desde Vercel: apagar GitHub Pages en el repo (*Settings → Pages*) y
+poner `og:image` con URL absoluta.
 
-## Pendiente después de conectar el dominio
+## Estado del proyecto
 
-- Actualizar `og:image` a URL absoluta con el dominio definitivo (hoy es una ruta relativa).
-- Añadir `<link rel="canonical">` y hreflang absolutos.
+- Web desplegada en Vercel: proyecto `duliban` → https://duliban.vercel.app (rama `main`, redespliegue
+  automático en cada push).
+- Dominio ya añadido en Vercel; marca "Invalid Configuration" hasta que el DNS apunte.
