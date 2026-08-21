@@ -55,7 +55,7 @@
 
 <!-- Tailwind: precompiled static CSS (built from src/input.css via `npm run build:css`).
      Replaces the render-blocking Play CDN that JIT-compiled in the browser. -->
-<link rel="stylesheet" href="../dist/styles.css?v=2">
+<link rel="stylesheet" href="../dist/styles.css?v=3">
 <style>
   /* Arabic webfont overrides — applied site-wide via :lang(ar) and dir */
   html[lang="ar"] body,
@@ -464,9 +464,14 @@
   /* Hours grid */
   .hours-row { display: grid; grid-template-columns: 1fr auto; gap: 1rem; padding: .85rem 0; border-bottom: 1px solid rgba(60,61,63,.16); font-feature-settings: 'tnum'; }
   .hours-row:last-child { border-bottom: 0; }
-  .hours-card { border-radius: 2px; padding: .95rem 1.15rem .2rem; }
-  .hours-card--dark { color: rgba(250,247,240,.78); }
+  /* El fondo y los colores de la tarjeta oscura van aquí, no solo en utilidades
+     Tailwind: el HTML siempre llega fresco (must-revalidate) y la hoja compilada
+     puede venir de caché de hasta 7 días. */
+  .hours-card { border-radius: 2px; padding: 1.05rem 1.25rem .3rem; }
+  .hours-card--dark { background: #3C3D3F; color: rgba(250,247,240,.8); }
+  .hours-card--dark > p { color: #C9B98C; }
   .hours-card--dark .hours-row { border-color: rgba(250,247,240,.16); }
+  .hours-card--dark .hours-row span:last-child { color: #FAF7F0; font-weight: 500; }
 
   /* Focus rings */
   :focus-visible { outline: 2px solid #0A7390; outline-offset: 3px; border-radius: 2px; }
