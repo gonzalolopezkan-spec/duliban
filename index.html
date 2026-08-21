@@ -3238,19 +3238,24 @@
       const r = dish.getBoundingClientRect();
       const cardW = popup.offsetWidth || CARD_W;
       const cardH = popup.offsetHeight || 360;
-      const vw = window.innerWidth;
-      const vh = window.innerHeight;
+      // Con pinch-zoom la zona visible es el visualViewport (desplazado dentro del
+      // layout viewport, que es donde viven las coordenadas de position:fixed).
+      const vv = window.visualViewport;
+      const ox = vv ? vv.offsetLeft : 0;
+      const oy = vv ? vv.offsetTop  : 0;
+      const vw = ox + (vv ? vv.width  : window.innerWidth);
+      const vh = oy + (vv ? vv.height : window.innerHeight);
 
       // Prefer side with more space; fall back to whichever fits
       let left;
       const spaceRight = vw - r.right - PAD;
-      const spaceLeft  = r.left - PAD;
+      const spaceLeft  = r.left - (ox + PAD);
       if (spaceRight >= cardW)      left = r.right + PAD;
       else if (spaceLeft >= cardW)  left = r.left - cardW - PAD;
-      else                          left = Math.max(PAD, Math.min(vw - cardW - PAD, r.left));
+      else                          left = Math.max(ox + PAD, Math.min(vw - cardW - PAD, r.left));
 
       let top = r.top + r.height / 2 - cardH / 2;
-      if (top < PAD)              top = PAD;
+      if (top < oy + PAD)         top = oy + PAD;
       if (top + cardH > vh - PAD) top = vh - cardH - PAD;
 
       if (instant) popup.classList.add('dp-place');
@@ -3355,8 +3360,26 @@
       hidePopup();
     });
     document.addEventListener('keydown', (e) => { if (e.key === 'Escape') hidePopup(); });
-    window.addEventListener('scroll',  () => hidePopup(), { passive: true });
-    window.addEventListener('resize',  () => hidePopup());
+    // El zoom dispara resize (Ctrl +/-) o visualViewport.resize (pinch) y, si la
+    // página está desplazada, también un scroll por el anclaje. Se distingue del
+    // scroll del usuario por el cambio de devicePixelRatio o visualViewport.scale:
+    // con zoom el popup se recoloca; con scroll del usuario se sigue cerrando.
+    let lastDpr = window.devicePixelRatio;
+    let lastScale = window.visualViewport ? window.visualViewport.scale : 1;
+    function zoomChanged() {
+      const dpr = window.devicePixelRatio;
+      const scale = window.visualViewport ? window.visualViewport.scale : 1;
+      const changed = dpr !== lastDpr || scale !== lastScale;
+      lastDpr = dpr; lastScale = scale;
+      return changed;
+    }
+    const keepInView = () => {
+      if (activeDish && popup.classList.contains('open')) positionPopup(activeDish, true);
+      else hidePopup();
+    };
+    window.addEventListener('scroll', () => { if (zoomChanged()) keepInView(); else hidePopup(); }, { passive: true });
+    window.addEventListener('resize', () => { zoomChanged(); keepInView(); });
+    if (window.visualViewport) window.visualViewport.addEventListener('resize', () => { zoomChanged(); keepInView(); });
   })();
 
   /* ── Footer wordmark gentle parallax (rAF-throttled — no read/write thrash) ── */
