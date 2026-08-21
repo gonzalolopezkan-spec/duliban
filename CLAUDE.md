@@ -109,7 +109,7 @@ https://github.com/gonzalolopezkan-spec/duliban — trabajo actual en rama **`br
 ## Tareas pendientes conocidas (por impacto)
 
 1. **Merge/push de `brand-definitivo`** cuando el usuario lo decida.
-2. **Fotos de platos**: ✅ hecho el 4 ago 2026 — el cliente envió 37 fotos (retocadas con IA para casar con la paleta), convertidas a WebP en `fotos/platos/` y mapeadas en `DISH_PHOTOS` de las 3 páginas. Cubren **38 de los 42 platos**. Faltan **Warak Enab, Kebbeh Sajyeh, Soujok y Freekeh Djaj** (muestran hueco, no foto equivocada). Detalle en `fotos-stock/PLATOS-PENDIENTES-DE-FOTO.md`.
+2. **Fotos de platos**: ✅ cerrado el 21 ago 2026. El cliente envió 37 fotos el 4 ago (retocadas con IA para casar con la paleta) y tres más el 21 ago: **Warak Enab**, **Kebbeh Sajyeh** y el **Manoucheh Jebneh** bueno — la toma que había era en realidad un manoucheh de zaatar, casi idéntica a la de `zaatar-labneh`, así que se sustituyó por `manoucheh-jebneh-v2.webp` (nombre nuevo porque los `.webp` se sirven `immutable` un año; cambiar solo los bytes no habría llegado a nadie). Cubren **40 de los 42 platos**. **Soujok** y **Freekeh Djaj** se quedan sin foto por decisión del cliente: prefiere el hueco. No rellenarlos con stock.
 3. **Acceso a SevenRooms** pendiente de que lo dé el cliente. Objetivo: que el email post-visita enlace al formulario de reseña de **Google**. ⚠️ Google NO permite importar reseñas de terceros a su ficha — no prometerlo.
 4. **¿El local de 2008 ya se llamaba du Liban?** Sin confirmar. Por eso `#concepto` dice "La cocina de la Plaza de la Moraleja abrió en septiembre de 2008" y no "du Liban abrió…". Si se confirma, se puede usar la versión fuerte.
 5. **Entidad certificadora del halal**: sigue sin conocerse — no inventarla.
