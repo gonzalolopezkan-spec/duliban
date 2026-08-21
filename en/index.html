@@ -613,6 +613,54 @@
     #dish-popup { transform-origin: center bottom; }
   }
 
+  /* ── Lightbox de platos en táctil: la foto a pantalla completa.
+     El popup flotante es un patrón de ratón; en móvil se solapaba con la lista. ── */
+  #dish-lightbox {
+    position: fixed; inset: 0; z-index: 120;
+    background: rgba(38,39,41,.96);
+    opacity: 0; pointer-events: none;
+    transition: opacity .25s ease;
+  }
+  #dish-lightbox.open { opacity: 1; pointer-events: auto; }
+  html.dl-lock, html.dl-lock body { overflow: hidden; }
+  .dl-panel {
+    display: flex; flex-direction: column; justify-content: center; height: 100%;
+    padding: max(56px, calc(env(safe-area-inset-top) + 44px)) 0 max(24px, env(safe-area-inset-bottom));
+  }
+  .dl-close {
+    position: absolute; top: max(12px, env(safe-area-inset-top)); inset-inline-end: 12px;
+    width: 44px; height: 44px; display: flex; align-items: center; justify-content: center;
+    color: #FAF7F0; background: rgba(250,247,240,.1); border: 0; border-radius: 999px;
+    cursor: pointer; z-index: 2;
+  }
+  .dl-photos {
+    flex: 1 1 auto; min-height: 0;
+    display: flex; overflow-x: auto; overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .dl-photos::-webkit-scrollbar { display: none; }
+  .dl-photo {
+    flex: 0 0 100%; margin: 0; padding: 0 16px; scroll-snap-align: center;
+    display: flex; align-items: center; justify-content: center; min-width: 0;
+  }
+  .dl-photo img { max-width: 100%; max-height: 100%; object-fit: contain; border-radius: 4px; }
+  .dl-dots { display: flex; justify-content: center; gap: 8px; padding-top: 14px; }
+  .dl-dots:empty { display: none; }
+  .dl-dots span { width: 6px; height: 6px; border-radius: 999px; background: rgba(250,247,240,.35); }
+  .dl-dots span.is-active { background: #C9B98C; }
+  .dl-info { padding: 16px 20px 0; }
+  .dl-eyebrow { font-size: 10px; letter-spacing: .22em; text-transform: uppercase; color: #C9B98C; margin-bottom: 6px; }
+  .dl-header { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+  .dl-name { font-family: 'Jost', sans-serif; font-weight: 500; font-size: 20px; color: #FAF7F0; }
+  .dl-price { color: #C9B98C; font-size: 16px; white-space: nowrap; font-feature-settings: 'tnum'; }
+  .dl-desc { margin-top: 6px; font-size: 13.5px; line-height: 1.55; color: rgba(250,247,240,.75); }
+  .dl-desc:empty { display: none; }
+  #dish-lightbox.dl-no-photo .dl-photos,
+  #dish-lightbox.dl-no-photo .dl-dots { display: none; }
+  @media (prefers-reduced-motion: reduce) { #dish-lightbox { transition: opacity .15s ease; } }
+
   /* ── Scroll-expand video hero ────────────────────────────────────────── */
   .scroll-expand-hero {
     position: relative;
@@ -3334,6 +3382,92 @@
       activeDish = null;
     }
 
+    /* ── Lightbox táctil: sustituye al popup flotante en pantallas sin ratón ── */
+    const lbox = document.createElement('div');
+    lbox.id = 'dish-lightbox';
+    lbox.setAttribute('aria-hidden', 'true');
+    lbox.innerHTML = `
+      <div class="dl-panel" role="dialog" aria-modal="true" aria-label="Dish photo">
+        <button type="button" class="dl-close" aria-label="Close">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
+        </button>
+        <div class="dl-photos"></div>
+        <div class="dl-dots" aria-hidden="true"></div>
+        <div class="dl-info">
+          <p class="dl-eyebrow"></p>
+          <div class="dl-header"><span class="dl-name"></span><span class="dl-price"></span></div>
+          <p class="dl-desc"></p>
+        </div>
+      </div>`;
+    document.body.appendChild(lbox);
+
+    const lbPhotos  = lbox.querySelector('.dl-photos');
+    const lbDots    = lbox.querySelector('.dl-dots');
+    const lbClose   = lbox.querySelector('.dl-close');
+    const lbName    = lbox.querySelector('.dl-name');
+    const lbPrice   = lbox.querySelector('.dl-price');
+    const lbEyebrow = lbox.querySelector('.dl-eyebrow');
+    const lbDesc    = lbox.querySelector('.dl-desc');
+    let lbReturnFocus = null;
+
+    function showLightbox(dish) {
+      const nameEl  = dish.querySelector('.dish-name');
+      const priceEl = dish.querySelector('.dish-price');
+      const descEl  = dish.querySelector('.dish-desc');
+      const cat     = dish.closest('.menu-block')?.dataset.cat || '';
+      const dName   = nameEl ? nameEl.textContent.trim() : '';
+      const photos  = DISH_PHOTOS[dish.dataset.dish] || [];
+
+      lbName.textContent    = dName;
+      lbPrice.textContent   = priceEl ? priceEl.textContent.trim() : '';
+      lbEyebrow.textContent = CAT_LABEL[cat] || '';
+      lbDesc.textContent    = descEl ? descEl.textContent.trim() : '';
+      lbPhotos.innerHTML = '';
+      lbDots.innerHTML = '';
+      photos.forEach((p) => {
+        const fig = document.createElement('figure');
+        fig.className = 'dl-photo';
+        const im = document.createElement('img');
+        im.alt = dName;
+        im.decoding = 'async';
+        im.src = PHOTO_BASE + p;
+        im.onerror = () => fig.remove();
+        fig.appendChild(im);
+        lbPhotos.appendChild(fig);
+        if (photos.length > 1) lbDots.appendChild(document.createElement('span'));
+      });
+      if (lbDots.firstChild) lbDots.firstChild.classList.add('is-active');
+      lbPhotos.scrollTo({ left: 0 });
+      lbox.classList.toggle('dl-no-photo', photos.length === 0);
+      lbox.setAttribute('aria-hidden', 'false');
+      lbox.classList.add('open');
+      document.documentElement.classList.add('dl-lock');
+      lbReturnFocus = nameEl;
+      lbClose.focus();
+    }
+
+    function hideLightbox() {
+      if (!lbox.classList.contains('open')) return;
+      lbox.classList.remove('open');
+      lbox.setAttribute('aria-hidden', 'true');
+      document.documentElement.classList.remove('dl-lock');
+      if (lbReturnFocus) { lbReturnFocus.focus(); lbReturnFocus = null; }
+    }
+
+    lbClose.addEventListener('click', hideLightbox);
+    // Tocar fuera de la foto, los puntos o el texto también cierra.
+    lbox.addEventListener('click', (e) => {
+      if (e.target.closest('img') || e.target.closest('.dl-dots') || e.target.closest('.dl-info')) return;
+      hideLightbox();
+    });
+    lbPhotos.addEventListener('scroll', () => {
+      const dots = lbDots.children;
+      if (!dots.length) return;
+      // En RTL scrollLeft es negativo: el valor absoluto vale para ambos sentidos.
+      const i = Math.min(dots.length - 1, Math.round(Math.abs(lbPhotos.scrollLeft) / Math.max(1, lbPhotos.clientWidth)));
+      for (let k = 0; k < dots.length; k++) dots[k].classList.toggle('is-active', k === i);
+    }, { passive: true });
+
     const hasFinePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
     let hoverTimer = null;
 
@@ -3349,6 +3483,7 @@
       name.addEventListener('keydown', (e) => {
         if (e.key === 'Enter' || e.key === ' ') {
           e.preventDefault();
+          if (!hasFinePointer) { showLightbox(dish); return; }
           if (activeDish === dish && popup.classList.contains('open')) hidePopup();
           else showPopup(dish);
         }
@@ -3367,6 +3502,7 @@
 
       name.addEventListener('click', (e) => {
         e.stopPropagation();
+        if (!hasFinePointer) { showLightbox(dish); return; }
         if (activeDish === dish && popup.classList.contains('open')) hidePopup();
         else showPopup(dish);
       });
@@ -3381,7 +3517,7 @@
       if (e.target.closest('.dish')) return;
       hidePopup();
     });
-    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') hidePopup(); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') { hidePopup(); hideLightbox(); } });
     // El zoom dispara resize (Ctrl +/-) o visualViewport.resize (pinch) y, si la
     // página está desplazada, también un scroll por el anclaje. Se distingue del
     // scroll del usuario por el cambio de devicePixelRatio o visualViewport.scale:
