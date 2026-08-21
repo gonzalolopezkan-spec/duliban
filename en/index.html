@@ -494,14 +494,18 @@
   .tilt { transform-style: preserve-3d; transition: transform .6s cubic-bezier(.2,.7,.2,1); }
   .tilt > * { transform: translateZ(0); }
 
-  /* ── Dish row hover: dotted leader fills, name italicizes left-to-right ── */
+  /* ── Dish row hover: dotted leader fills, name italicizes left-to-right ──
+     Solo con ratón: en táctil iOS el :hover se queda pegado al tocar y el
+     letter-spacing ensanchaba el nombre hasta partirlo en dos líneas. */
   .dish { position: relative; }
   .dish .dish-name { transition: letter-spacing .4s ease, color .3s ease; }
-  .dish:hover .dish-name { letter-spacing: .03em; color: var(--terracotta); }
   .dish .dish-dots { background-image: radial-gradient(circle, rgba(60,61,63,.42) 1px, transparent 1.4px); background-size: 6px 2px; background-repeat: repeat-x; background-position: left center; border: 0; height: 1px; transition: background-image .3s ease; }
-  .dish:hover .dish-dots { background-image: radial-gradient(circle, var(--terracotta) 1.1px, transparent 1.6px); }
   .dish .dish-price { transition: color .3s ease, transform .3s ease; }
-  .dish:hover .dish-price { color: var(--terracotta); transform: translateX(-2px); }
+  @media (hover: hover) and (pointer: fine) {
+    .dish:hover .dish-name { letter-spacing: .03em; color: var(--terracotta); }
+    .dish:hover .dish-dots { background-image: radial-gradient(circle, var(--terracotta) 1.1px, transparent 1.6px); }
+    .dish:hover .dish-price { color: var(--terracotta); transform: translateX(-2px); }
+  }
 
   /* ── Editorial section pad to give the rail room ────────────────────────── */
   .sec { position: relative; }
@@ -646,10 +650,8 @@
     display: flex; align-items: center; justify-content: center; min-width: 0;
   }
   .dl-photo img { max-width: 100%; max-height: 100%; object-fit: contain; border-radius: 4px; }
-  .dl-dots { display: flex; justify-content: center; gap: 8px; padding-top: 14px; }
-  .dl-dots:empty { display: none; }
-  .dl-dots span { width: 6px; height: 6px; border-radius: 999px; background: rgba(250,247,240,.35); }
-  .dl-dots span.is-active { background: #C9B98C; }
+  .dl-count { text-align: center; direction: ltr; padding-top: 14px; font-size: 11px; letter-spacing: .12em; color: rgba(250,247,240,.55); font-feature-settings: 'tnum'; }
+  .dl-count:empty { display: none; }
   .dl-info { padding: 16px 20px 0; }
   .dl-eyebrow { font-size: 10px; letter-spacing: .22em; text-transform: uppercase; color: #C9B98C; margin-bottom: 6px; }
   .dl-header { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
@@ -658,7 +660,7 @@
   .dl-desc { margin-top: 6px; font-size: 13.5px; line-height: 1.55; color: rgba(250,247,240,.75); }
   .dl-desc:empty { display: none; }
   #dish-lightbox.dl-no-photo .dl-photos,
-  #dish-lightbox.dl-no-photo .dl-dots { display: none; }
+  #dish-lightbox.dl-no-photo .dl-count { display: none; }
   @media (prefers-reduced-motion: reduce) { #dish-lightbox { transition: opacity .15s ease; } }
 
   /* ── Scroll-expand video hero ────────────────────────────────────────── */
@@ -3270,8 +3272,8 @@
     };
 
     const CAT_LABEL = {
-      horno: 'Del horno', frio: 'Mezze frío', caliente: 'Mezze caliente',
-      mash: 'A la brasa', postres: 'Postres',
+      horno: 'From the oven', frio: 'Cold mezze', caliente: 'Hot mezze',
+      mash: 'Grill', postres: 'Desserts',
     };
 
     const popup = document.createElement('div');
@@ -3392,7 +3394,7 @@
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
         </button>
         <div class="dl-photos"></div>
-        <div class="dl-dots" aria-hidden="true"></div>
+        <p class="dl-count" aria-hidden="true"></p>
         <div class="dl-info">
           <p class="dl-eyebrow"></p>
           <div class="dl-header"><span class="dl-name"></span><span class="dl-price"></span></div>
@@ -3402,7 +3404,7 @@
     document.body.appendChild(lbox);
 
     const lbPhotos  = lbox.querySelector('.dl-photos');
-    const lbDots    = lbox.querySelector('.dl-dots');
+    const lbCount   = lbox.querySelector('.dl-count');
     const lbClose   = lbox.querySelector('.dl-close');
     const lbName    = lbox.querySelector('.dl-name');
     const lbPrice   = lbox.querySelector('.dl-price');
@@ -3410,39 +3412,77 @@
     const lbDesc    = lbox.querySelector('.dl-desc');
     let lbReturnFocus = null;
 
-    function showLightbox(dish) {
+    // Un solo carril con TODOS los platos con foto, en el orden de la carta:
+    // desde cualquier plato se sigue deslizando al anterior o al siguiente.
+    const lbSlides = [];
+    document.querySelectorAll('.dish').forEach(d => {
+      const nm = d.querySelector('.dish-name');
+      (DISH_PHOTOS[d.dataset.dish] || []).forEach(src => {
+        lbSlides.push({ dish: d, name: nm ? nm.textContent.trim() : '', src: PHOTO_BASE + src });
+      });
+    });
+    let lbIndex = -1;
+
+    function lbFillInfo(dish) {
       const nameEl  = dish.querySelector('.dish-name');
       const priceEl = dish.querySelector('.dish-price');
       const descEl  = dish.querySelector('.dish-desc');
       const cat     = dish.closest('.menu-block')?.dataset.cat || '';
-      const dName   = nameEl ? nameEl.textContent.trim() : '';
-      const photos  = DISH_PHOTOS[dish.dataset.dish] || [];
-
-      lbName.textContent    = dName;
+      lbName.textContent    = nameEl ? nameEl.textContent.trim() : '';
       lbPrice.textContent   = priceEl ? priceEl.textContent.trim() : '';
       lbEyebrow.textContent = CAT_LABEL[cat] || '';
       lbDesc.textContent    = descEl ? descEl.textContent.trim() : '';
-      lbPhotos.innerHTML = '';
-      lbDots.innerHTML = '';
-      photos.forEach((p) => {
+      lbReturnFocus = nameEl;
+    }
+
+    // Solo se cargan la foto visible y sus dos vecinas por lado; el resto espera en data-src.
+    function lbHydrate(i) {
+      for (let k = Math.max(0, i - 2); k <= Math.min(lbSlides.length - 1, i + 2); k++) {
+        const im = lbPhotos.children[k] && lbPhotos.children[k].firstElementChild;
+        if (im && !im.getAttribute('src')) im.src = im.dataset.src;
+      }
+    }
+
+    function lbSetIndex(i) {
+      if (i === lbIndex || !lbSlides[i]) return;
+      lbIndex = i;
+      lbFillInfo(lbSlides[i].dish);
+      lbCount.textContent = (i + 1) + ' / ' + lbSlides.length;
+      lbHydrate(i);
+    }
+
+    function lbBuildRail() {
+      if (lbPhotos.childElementCount) return;
+      lbSlides.forEach(s => {
         const fig = document.createElement('figure');
         fig.className = 'dl-photo';
         const im = document.createElement('img');
-        im.alt = dName;
+        im.alt = s.name;
         im.decoding = 'async';
-        im.src = PHOTO_BASE + p;
-        im.onerror = () => fig.remove();
+        im.dataset.src = s.src;
+        im.onerror = () => { im.style.visibility = 'hidden'; };
         fig.appendChild(im);
         lbPhotos.appendChild(fig);
-        if (photos.length > 1) lbDots.appendChild(document.createElement('span'));
       });
-      if (lbDots.firstChild) lbDots.firstChild.classList.add('is-active');
-      lbPhotos.scrollTo({ left: 0 });
-      lbox.classList.toggle('dl-no-photo', photos.length === 0);
+    }
+
+    function showLightbox(dish) {
+      const start = lbSlides.findIndex(s => s.dish === dish);
+      if (start === -1) {
+        // Plato sin foto (decisión del cliente): la ficha de texto, sin carril.
+        lbFillInfo(dish);
+        lbCount.textContent = '';
+        lbox.classList.add('dl-no-photo');
+      } else {
+        lbBuildRail();
+        lbox.classList.remove('dl-no-photo');
+        lbIndex = -1;
+        lbSetIndex(start);
+        lbPhotos.children[start].scrollIntoView({ behavior: 'instant', block: 'nearest', inline: 'center' });
+      }
       lbox.setAttribute('aria-hidden', 'false');
       lbox.classList.add('open');
       document.documentElement.classList.add('dl-lock');
-      lbReturnFocus = nameEl;
       lbClose.focus();
     }
 
@@ -3451,21 +3491,19 @@
       lbox.classList.remove('open');
       lbox.setAttribute('aria-hidden', 'true');
       document.documentElement.classList.remove('dl-lock');
-      if (lbReturnFocus) { lbReturnFocus.focus(); lbReturnFocus = null; }
+      if (lbReturnFocus) { lbReturnFocus.focus({ preventScroll: true }); lbReturnFocus = null; }
     }
 
     lbClose.addEventListener('click', hideLightbox);
-    // Tocar fuera de la foto, los puntos o el texto también cierra.
+    // Tocar fuera de la foto o del texto también cierra.
     lbox.addEventListener('click', (e) => {
-      if (e.target.closest('img') || e.target.closest('.dl-dots') || e.target.closest('.dl-info')) return;
+      if (e.target.closest('img') || e.target.closest('.dl-info')) return;
       hideLightbox();
     });
     lbPhotos.addEventListener('scroll', () => {
-      const dots = lbDots.children;
-      if (!dots.length) return;
+      if (!lbox.classList.contains('open') || !lbSlides.length) return;
       // En RTL scrollLeft es negativo: el valor absoluto vale para ambos sentidos.
-      const i = Math.min(dots.length - 1, Math.round(Math.abs(lbPhotos.scrollLeft) / Math.max(1, lbPhotos.clientWidth)));
-      for (let k = 0; k < dots.length; k++) dots[k].classList.toggle('is-active', k === i);
+      lbSetIndex(Math.min(lbSlides.length - 1, Math.round(Math.abs(lbPhotos.scrollLeft) / Math.max(1, lbPhotos.clientWidth))));
     }, { passive: true });
 
     const hasFinePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
