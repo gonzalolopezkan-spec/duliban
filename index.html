@@ -427,6 +427,9 @@
   /* Hours grid */
   .hours-row { display: grid; grid-template-columns: 1fr auto; gap: 1rem; padding: .85rem 0; border-bottom: 1px solid rgba(60,61,63,.16); font-feature-settings: 'tnum'; }
   .hours-row:last-child { border-bottom: 0; }
+  .hours-card { border-radius: 2px; padding: .95rem 1.15rem .2rem; }
+  .hours-card--dark { color: rgba(250,247,240,.78); }
+  .hours-card--dark .hours-row { border-color: rgba(250,247,240,.16); }
 
   /* Focus rings */
   :focus-visible { outline: 2px solid #0A7390; outline-offset: 3px; border-radius: 2px; }
@@ -2629,16 +2632,22 @@
 
       <div class="mt-8 hairline-soft"></div>
 
-      <div class="mt-8">
-        <p class="text-[11px] tracking-widest-2 uppercase text-cedar/80 mb-3">Restaurante</p>
-        <div class="hours-row"><span>Martes – Domingo</span><span class="text-cedar">13:00 – 01:00</span></div>
-        <div class="hours-row"><span>Lunes</span><span class="text-cedar/80">Cerrado</span></div>
-        <p class="text-[11px] tracking-widest-2 uppercase text-cedar/80 mt-6 mb-3">Cocina · servicio de comida</p>
-        <div class="hours-row"><span>Comidas</span><span class="text-cedar">13:00 – 16:00</span></div>
-        <div class="hours-row"><span>Cenas</span><span class="text-cedar">20:00 – 23:30</span></div>
-        <p class="text-[11px] tracking-widest-2 uppercase text-cedar/80 mt-6 mb-3">Solo coctelería y shisha</p>
-        <div class="hours-row"><span>Entre comidas y cenas</span><span class="text-cedar">16:00 – 20:00</span></div>
-        <div class="hours-row"><span>Hasta el cierre</span><span class="text-cedar">23:30 – 01:00</span></div>
+      <div class="mt-8 space-y-3">
+        <div class="hours-card bg-cream border border-cedar/10">
+          <p class="text-[11px] tracking-widest-2 uppercase text-cedar/80 mb-1">Restaurante</p>
+          <div class="hours-row"><span>Martes – Domingo</span><span class="text-cedar">13:00 – 01:00</span></div>
+          <div class="hours-row"><span>Lunes</span><span class="text-cedar/80">Cerrado</span></div>
+        </div>
+        <div class="hours-card hours-card--dark bg-cedar">
+          <p class="text-[11px] tracking-widest-2 uppercase text-gold-soft mb-1">Cocina · servicio de comida</p>
+          <div class="hours-row"><span>Comidas</span><span class="text-cream">13:00 – 16:00</span></div>
+          <div class="hours-row"><span>Cenas</span><span class="text-cream">20:00 – 23:30</span></div>
+        </div>
+        <div class="hours-card bg-sand/70 border border-cedar/10">
+          <p class="text-[11px] tracking-widest-2 uppercase text-cedar/80 mb-1">Solo coctelería y shisha</p>
+          <div class="hours-row"><span>Entre comidas y cenas</span><span class="text-cedar">16:00 – 20:00</span></div>
+          <div class="hours-row"><span>Hasta el cierre</span><span class="text-cedar">23:30 – 01:00</span></div>
+        </div>
       </div>
 
       <div class="mt-8 hairline-soft"></div>
