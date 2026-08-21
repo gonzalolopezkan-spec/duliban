@@ -9,7 +9,7 @@ Single-page website para du Liban, restaurante de alta cocina libanesa en La Mor
 - **Teléfono:** +34 917 54 48 38 (lo contesta una IA, no una persona — el copy de la web debería ir también a su base de conocimiento)
 - **WhatsApp:** +34 690 206 459 (`wa.me/34690206459` — solo icono del footer; los botones Reservar ya NO van por WhatsApp)
 - **Email:** reservas@dulibanrestaurante.com (dominio "restaurante" singular — confirmado por el cliente)
-- **Horario:** restaurante Mar–Dom 13:00–01:00 · Lun cerrado. **Cocina:** 13:00–16:30 y 20:00–23:30. Fuera del horario de cocina sigue habiendo coctelería/barra y shishas hasta el cierre (confirmado 27 jul 2026).
+- **Horario:** restaurante Mar–Dom 13:00–01:00 · Lun cerrado. **Cocina:** 13:00–16:00 y 20:00–23:30 (16:00 confirmado por el cliente el 21 ago 2026; antes la web decía 16:30 por error). De 16:00–20:00 y 23:30–01:00, solo coctelería/barra y shishas.
 - **Perros:** admitidos en las dos terrazas · **Terrazas:** dos, una cubierta y otra exterior; se puede fumar shisha en ambas · **Shisha:** tradicional (tabaco y carbón natural), sin variantes de carbón ruso
 - **Cocineros:** ❌ NO destacar a ninguno, ni nombre ni cara (petición expresa del cliente, 27 jul 2026). El jefe de cocina real no quiere aparecer; "Chef Fahed" no es el principal. Revisable más adelante si el chef cambia de opinión.
 - **Platos clave:** *Hummus bil Pesto* (16 €) es el plato por el que la gente vuelve — creación de la casa, pesto **de pistacho** (no de albahaca). *Mawzet Kharouf* (35 €) es el que el cliente querría que se pidiera más.
