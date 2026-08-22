@@ -4,14 +4,23 @@
   "outputDirectory": ".",
   "framework": null,
   "redirects": [
+    { "source": "/galeria/", "destination": "/#espacio", "statusCode": 301 },
     { "source": "/galeria/:path*", "destination": "/#espacio", "statusCode": 301 },
+    { "source": "/nosotros/", "destination": "/#concepto", "statusCode": 301 },
     { "source": "/nosotros/:path*", "destination": "/#concepto", "statusCode": 301 },
+    { "source": "/servicios/", "destination": "/#eventos", "statusCode": 301 },
     { "source": "/servicios/:path*", "destination": "/#eventos", "statusCode": 301 },
+    { "source": "/condiciones-de-uso/", "destination": "/legal.html#condiciones", "statusCode": 301 },
     { "source": "/condiciones-de-uso/:path*", "destination": "/legal.html#condiciones", "statusCode": 301 },
+    { "source": "/carta/", "destination": "/#carta", "statusCode": 301 },
     { "source": "/carta/:path*", "destination": "/#carta", "statusCode": 301 },
+    { "source": "/menu/", "destination": "/#carta", "statusCode": 301 },
     { "source": "/menu/:path*", "destination": "/#carta", "statusCode": 301 },
+    { "source": "/contacto/", "destination": "/#visitanos", "statusCode": 301 },
     { "source": "/contacto/:path*", "destination": "/#visitanos", "statusCode": 301 },
+    { "source": "/reservas/", "destination": "/", "statusCode": 301 },
     { "source": "/reservas/:path*", "destination": "/", "statusCode": 301 },
+    { "source": "/blog/", "destination": "/", "statusCode": 301 },
     { "source": "/blog/:path*", "destination": "/", "statusCode": 301 }
   ],
   "headers": [
