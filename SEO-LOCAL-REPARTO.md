@@ -118,7 +118,7 @@ Aun así van listadas en la presentación, para que no haya sorpresas.
 
 | # | Acción | Nota |
 |---|---|---|
-| E1 | Search Console verificado por DNS + subir sitemap | El DNS ya lo controlamos (`DESPLIEGUE-DOMINIO.md`). Sin cookies, no toca `legal.html` |
+| ~~E1~~ | ~~Search Console + subir sitemap~~ | ✅ **HECHO 22 ago 2026.** Propiedad de prefijo de URL `https://dulibanrestaurante.com/` bajo la cuenta del restaurante (`authuser=7`), verificada por meta tag (`v_t6JymeWuok_…`, en `index.html`). Sitemap enviado: estado *Success*, 3 páginas descubiertas. **Pendiente:** añadir usuarios y, si algún día hay acceso a GoDaddy, montar además la propiedad de dominio |
 | E3 | UTM en el enlace web de la ficha | Cambio interno, invisible para el cliente |
 | E2 | Revisión mensual del rendimiento de la ficha | Trabajo nuestro, recurrente |
 | D7 | Vigilar los temas que Google extrae de las reseñas | Observación |
