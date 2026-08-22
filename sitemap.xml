@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://dulibanrestaurante.com/</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://dulibanrestaurante.com/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://dulibanrestaurante.com/en/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dulibanrestaurante.com/ar/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://dulibanrestaurante.com/"/>
+  </url>
+  <url>
+    <loc>https://dulibanrestaurante.com/en/</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://dulibanrestaurante.com/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://dulibanrestaurante.com/en/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dulibanrestaurante.com/ar/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://dulibanrestaurante.com/"/>
+  </url>
+  <url>
+    <loc>https://dulibanrestaurante.com/ar/</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://dulibanrestaurante.com/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://dulibanrestaurante.com/en/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dulibanrestaurante.com/ar/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://dulibanrestaurante.com/"/>
+  </url>
+</urlset>
