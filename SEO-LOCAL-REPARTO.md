@@ -14,6 +14,68 @@ restaurante antes de tocar nada de la ficha.
 
 ---
 
+## Actualización — respuestas de Noman, 21 ago 2026
+
+### Desbloqueado, pasa al cubo 1
+
+| # | Respuesta | Qué hacemos |
+|---|---|---|
+| A1 | **Delivery SÍ**: Glovo y Uber Eats activos, recogida y entrega | Se queda encendido. Atributos *A domicilio* y *Para llevar* son correctos |
+| A2 | **"There is no 10% Glovo promotion"** | La publicación de hace 4 años es **publicidad falsa**. Borrar sin más discusión |
+| A7d | **Sin gluten SÍ · Menú infantil NO** | Activar solo el de sin gluten |
+| A8 | **"We do not offer valet parking"** | Quitar *Servicio de aparcacoches*, *Muchas plazas libres* y *Con aparcamiento propio*. Dejar los tres de pago |
+| A11 | **Abrió en 2012** | Fecha de apertura = 2012 |
+| A18 | — | Quitar la entrada falsa de `dulibanrestaurante.com` de *Food ordering* (la web no tiene sistema de pedidos) |
+| D6 | **El email post-visita con enlace de reseña de Google ya funciona** | Tarea cerrada. Actualizar también el pendiente nº 3 de `CLAUDE.md` |
+| A21 · B7 | Con aparcamiento (§1.4 del plan), delivery y sin gluten resueltos | El FAQ y las Q&A ya se pueden redactar casi enteros |
+
+### Sigue abierto — preguntas que no contestó
+
+1. **¿Glovo o Uber Eats como proveedor preferente?** Sin esto Google elige por su cuenta.
+   Criterio: el que menos comisión cobre.
+2. **¿Validáis el tique del parking?** No contestó. Por defecto: no lo declaramos.
+
+### Se ha complicado — los dominios (C1 · C2)
+
+Noman dice que **no son suyos** y que no tienen acceso. Pero los datos de registro
+apuntan al **propietario anterior**, el mismo que retiene las credenciales de Facebook,
+Tripadvisor, Yelp y Guía Repsol:
+
+| Dominio | Registrado | Caduca | Último cambio |
+|---|---|---|---|
+| `dulibanrestaurants.com` | **2012-08-03** ← el año que abrió el restaurante | 2027 | **2026-08-04** (hace 18 días) |
+| `dulibangourmet.com` | 2018-09-11 | **2029** | 2025-03-13 |
+
+Los dos están pagados por años por delante y con cambios recientes: alguien los mantiene
+vivos a propósito. **Acción concreta:** cuando Priya contacte con el propietario anterior
+en septiembre, que pida también **los dominios**, no solo las redes sociales. Van en el
+mismo paquete.
+
+Mientras tanto solo cabe mitigar: que nuestra web los supere en la SERP de marca y, si
+`dulibangourmet.com` sigue publicando horarios y teléfonos falsos bajo el nombre du Liban,
+valorar una reclamación por uso de marca.
+
+### Bloqueado hasta septiembre (C3 · C4 · C5 · C6)
+
+Sin credenciales de Facebook, Tripadvisor, Yelp ni Guía Repsol. Priya insiste en
+septiembre. **Mitigación posible sin credenciales:** Tripadvisor, Yelp y Guía Repsol
+admiten "sugerir una edición" desde fuera, y la ficha de Tripadvisor se puede **reclamar**
+con verificación al teléfono del negocio, que sí controlan. Merece la pena intentarlo
+antes de esperar a septiembre.
+
+### ⚠️ Contradicción nueva: 2008 vs 2012
+
+Noman dice que el restaurante **abrió en 2012**. La web dice hoy *"La cocina de la Plaza
+de la Moraleja abrió en septiembre de 2008"* — una frase redactada a propósito para
+hablar del local, no de du Liban, precisamente porque no estaba confirmado (pendiente nº 4
+de `CLAUDE.md`).
+
+Las dos cosas pueden ser ciertas a la vez, pero públicamente van a convivir un "desde
+2008" en la web y un "2012" en Google. Hay que decidir: o se aclara la frase de la web, o
+se confirma con Noman qué pasó en 2008. **Pendiente de decisión.**
+
+---
+
 ## Cubo 1 — Nosotros, ejecutable ya
 
 ### 1.1 Web (no toca nada visible para el cliente)
