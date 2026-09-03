@@ -55,6 +55,40 @@ Mientras tanto solo cabe mitigar: que nuestra web los supere en la SERP de marca
 `dulibangourmet.com` sigue publicando horarios y teléfonos falsos bajo el nombre du Liban,
 valorar una reclamación por uso de marca.
 
+### Actualización 2 — del histórico de WhatsApp, leído el 3 sep 2026
+
+Repasando el grupo entero aparecieron respuestas del 22 de agosto que teníamos por
+pendientes, más contexto nuevo.
+
+**Resueltas:**
+
+| # | Respuesta de Noman (22 ago) |
+|---|---|
+| A18 | **Uber Eats como proveedor preferente**, manteniendo Glovo disponible. "Their commissions are essentially the same" |
+| A11 | **Se queda 2012.** "We don't want to change the restaurant's established history or create confusion for existing customers." Sobre 2008 no sabe a qué se refiere y remite a Priya. **Decisión: la web no toca la frase de 2008**, que habla del local y no de du Liban |
+
+**SEM: rechazado por ahora.** El 22 de agosto Noman declinó la campaña con un argumento
+sólido: agosto es atípico y aun así llevaban **58 reservas del agente de IA y 59 de Google
+Maps** ese mes. Propuso usar agosto como línea base y **revisar en septiembre**. Ya
+estamos en septiembre y ahora además hay datos de Search Console, pero **que lo pida él**:
+hubo roce porque el análisis se hizo de urgencia a petición de Priya y luego se descartó.
+
+**El foco que ha marcado el cliente** (25 ago) es **influencers**, no publicidad pagada.
+
+**Riesgo nuevo — el correo.** Priya preguntó el 22 de agosto por qué no funciona
+`Admin@dulibanrestaurante.com`. Salió que un tal **Luis** paga 32 €/mes de servidor y que
+no quieren seguir pagándole. Los MX del dominio apuntan a `mailspamprotection.com`, que es
+**SiteGround**: el correo sigue alojado donde Luis paga. Si eso se corta, deja de
+funcionar `reservas@dulibanrestaurante.com`, que está publicado en la web y en el JSON-LD.
+**Sin dueño asignado. Conviene tratarlo con Priya, aparte.**
+
+**Coordinación.** Noman está editando la ficha por su cuenta ("hours, categories, photos,
+reviews"). Hay que repartir quién toca qué antes de pisarnos.
+
+**Su auditoría de schema era errónea** (ver `RESPUESTA-NOMAN-SCHEMA.md`): lo que describe
+como ausente lleva publicado desde el 22 de agosto. Todo apunta a que miró
+`dulibangourmet.com`, que sí tiene 1 solo bloque JSON-LD y 1 solo `alt`.
+
 ### Bloqueado hasta septiembre (C3 · C4 · C5 · C6)
 
 Sin credenciales de Facebook, Tripadvisor, Yelp ni Guía Repsol. Priya insiste en
