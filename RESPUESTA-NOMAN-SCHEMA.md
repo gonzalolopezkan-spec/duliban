@@ -45,7 +45,14 @@ What's live right now on dulibanrestaurante.com:
 Please don't take our word for it — you can check in 30 seconds. Paste
 dulibanrestaurante.com into Google's own Rich Results Test:
 https://search.google.com/test/rich-results
-It should come back with "Restaurant" and "Menu" detected.
+You'll see "du Liban" detected as a Restaurant, with the whole menu inside it.
+
+You'll also see a second entry called "du Liban — Cocina" with four warnings about
+optional fields. That one is ours too — we used it to tell Google that the kitchen closes
+between 16:00 and 20:00 while the bar keeps going. It does the job, but it makes the test
+look busier than it should, so we're simplifying it this week. The kitchen hours are
+already set properly in the Business Profile, which is where Google actually reads them
+from.
 
 Same story on the other two points:
 • Image descriptions — 124 per page, in all three languages
