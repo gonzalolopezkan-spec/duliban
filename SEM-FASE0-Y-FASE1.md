@@ -25,16 +25,39 @@ persona. Estos son los pasos exactos.
 
 **Paso 1 — llegar al modo experto**
 
-1. Cierra la pestaña actual sin darle a *Next*.
-2. Entra en `https://ads.google.com/` con la cuenta **dulibanrestaurants12@gmail.com**
-   (es `authuser=7` en tu Chrome).
-3. En la primera pantalla, donde pregunta por el objetivo publicitario, busca abajo del
-   todo el enlace pequeño **"Cambiar al modo experto" / "Switch to Expert Mode"**. Está
-   deliberadamente discreto.
-4. Ya en modo experto, ignora todas las opciones de campaña y pulsa abajo
-   **"Crear una cuenta sin campaña" / "Create an account without a campaign"**.
-5. Comprueba **zona horaria (Madrid)** y **moneda (EUR)** — ⚠️ **no se pueden cambiar
-   después**. Enviar.
+> ⚠️ **Corregido el 7 sep tras comprobarlo en vivo.** El enlace "Cambiar al modo experto"
+> **no existe en este flujo**. Lo verifiqué: `ads.google.com` con esa cuenta cae siempre en
+> `/aw/signup/mobile/business` (la variante nueva y reducida), y ni en el paso del nombre
+> ni al final de la página hay salida al modo experto. Entrar directo por
+> `/aw/campaigns?ocid=…` también rebota al asistente, porque la cuenta shell
+> **428-606-6425** todavía no está aprovisionada. Hay que rodearlo.
+
+**Ruta A — cuenta de administrador (MCC). La recomendada.**
+
+1. Ir a `https://ads.google.com/home/tools/manager-accounts/` → *Crear una cuenta de
+   administrador*, **con vuestro correo de agencia**, no con el del cliente.
+2. Ese flujo **no obliga a crear campaña**: pide nombre, zona horaria y moneda y termina.
+3. Dentro de la MCC: *Cuentas → + → Crear cuenta nueva*. Las cuentas creadas desde una MCC
+   nacen **en modo experto y sin campaña**, que es exactamente lo que queremos.
+4. Ventaja de paso: os quedáis con una estructura reutilizable para futuros clientes, y el
+   acceso ya viene dado sin tener que invitar a nadie.
+
+**Ruta B — terminar el asistente y cambiar después.**
+
+1. En la pantalla actual, elegir **"Your website"** en vez de "Your Business Profile page".
+   *(Ya está seleccionado. Y de paso desaparece la línea de aceptación de términos del
+   Perfil de Empresa, que la otra opción sí exigía.)*
+2. Completar el mínimo del asistente.
+3. Una vez dentro, cambiar la cuenta a modo experto desde el menú de herramientas, y
+   **pausar o eliminar la Smart Campaign** que habrá creado.
+4. Funciona, pero deja la cuenta con un resto que hay que limpiar.
+
+**Ruta C — que lo haga Google por teléfono.** En el propio asistente ofrecen
+**800 000 913** (L–V, 9–18 h), configuración asistida gratuita. Para una primera cuenta no
+es mala idea: se les pide expresamente cuenta en modo experto y sin campaña.
+
+**En cualquiera de las tres:** comprobar **zona horaria (Madrid)** y **moneda (EUR)** antes
+de enviar — ⚠️ **no se pueden cambiar después.**
 
 **Paso 2 — la facturación (esto lo hace Priya, no nosotros)**
 
