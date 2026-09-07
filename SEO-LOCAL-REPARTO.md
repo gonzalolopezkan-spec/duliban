@@ -89,6 +89,41 @@ reviews"). Hay que repartir quién toca qué antes de pisarnos.
 como ausente lleva publicado desde el 22 de agosto. Todo apunta a que miró
 `dulibangourmet.com`, que sí tiene 1 solo bloque JSON-LD y 1 solo `alt`.
 
+### Actualización 3 — respuesta de Noman, 4 sep 2026. **Cambia el reparto**
+
+**Reparto acordado y aceptado por las dos partes:**
+
+> **Noman → Perfil de Empresa** (publicaciones, fotos, carta, respuestas a reseñas)
+> **Nosotros → web** (y ahora SEM, que Priya ha reactivado)
+
+Esto **elimina de nuestra lista** A19, A20 y A12: las lleva él. Confirmado por él mismo:
+última publicación hace 4 días, última foto hace 3. Mi diagnóstico de "cero publicaciones
+en un año" era de datos del 21 de agosto y se quedó viejo.
+
+**Cerradas por decisión suya:**
+
+| # | Decisión |
+|---|---|
+| Schema | Lo verificó él en el Rich Results Test: 4 elementos válidos, 0 errores. Conforme |
+| `department` de cocina | **Se queda.** "It makes sense given that the kitchen and bar hours are different" |
+| Rango 20–60 € | **Se queda.** "It accurately reflects the real menu" |
+| A12 festivos | Se coordina **directamente con Priya** |
+
+**A21 — Preguntas y respuestas: TAREA MUERTA.** Noman tenía razón y lo he verificado:
+Google discontinuó la Q&A API el **3 nov 2025** y empezó a retirar la sección pública el
+**3 dic 2025**. La sustituye *"Ask about this place"*, generada por Gemini a partir de las
+fuentes del perfil. **Implicación estratégica:** lo que antes se sembraba en Q&A ahora hay
+que ponerlo donde la IA lo lee — descripción, atributos, carta y **web**. Es decir, refuerza
+el valor del schema y del FAQ de B7 que ya están hechos, no lo anula.
+
+**⚠️ Seguridad — `srpotatocm@gmail.com` no es de nadie conocido.** Noman confirma que dos
+de las tres cuentas son suyas y que **"Sr. Potato" no la reconoce**. Nosotros tampoco la
+hemos usado nunca. Es un **gestor con permisos de edición sobre una ficha de 1.185
+reseñas**. Recomendación: que la quite.
+
+**Hecho el 7 sep:** los 10 `alt` que señaló, en las tres páginas (commit `be6ee0d`). Eran
+exactamente las 10 miniaturas del acordeón; su auditoría fue completa y correcta.
+
 ### Bloqueado hasta septiembre (C3 · C4 · C5 · C6)
 
 Sin credenciales de Facebook, Tripadvisor, Yelp ni Guía Repsol. Priya insiste en
