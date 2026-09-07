@@ -1,135 +1,124 @@
-# Mensajes para Priya — 7 sep 2026
+# Mensajes para Priya
 
-> Dos mensajes. El primero cierra los tres asuntos operativos pendientes; el segundo
-> arranca el SEM, que Priya ha dado por aprobado. En inglés, como el resto del grupo.
->
-> **Regla que no se negocia:** en ningún caso pedimos ni tocamos los datos de su tarjeta.
-> La cuenta de Google Ads la crea ella con su medio de pago, y nosotros entramos como
-> usuarios. Además de ser lo correcto, es lo que mantiene el crédito de 400 € atado a su
-> negocio y le deja el control del gasto.
+> **v2 — 7 sep 2026.** Priya ya contestó a la primera tanda. Esto es la respuesta a sus
+> respuestas, más la confirmación de la reunión que ella propone para el SEM.
+
+## Lo que contestó, y lo que he verificado
+
+| Su respuesta | Verificado / qué implica |
+|---|---|
+| Agosto abierto salvo lunes · cerrado 25/12, 01/01 y 06/01 · festivos abiertos salvo lunes | Son **solo 3 fechas** de cierre. Se las pasamos a **Noman**, que es quien lleva el perfil |
+| "Nacho ya lo ha pasado a su dominio" | **Cierto: los MX ya no están en SiteGround.** Ahora `mx1/mx2.hostinger.com`, SPF de Hostinger. La dependencia de Luis está rota ✅ |
+| "trabajamos con admin, el otro apenas lo usamos" | ⚠️ Pero `reservas@` es el que publicamos en la web **y en el JSON-LD**. Si no se recreó el buzón en la mudanza, ese correo se pierde en silencio |
+| El anterior propietario "no sabe" y quiere vender los dominios | Sin él, Tripadvisor / Yelp / Repsol **sí** se recuperan. Facebook es el difícil. Los dominios, sin comprarlos, no hay palanca barata |
+
+**El matiz que importa del correo:** que ya no dependa de Luis está bien, pero si la cuenta
+de Hostinger es de Nacho, hemos cambiado una dependencia por otra. Debería estar a nombre
+de du Liban y pagada por ellos, con nosotros como usuarios — el mismo criterio que
+aplicamos con el Perfil de Empresa, Search Console y ahora Google Ads.
 
 ---
 
-## Mensaje 1 — los tres pendientes
+## Mensaje 1 — respuesta a sus tres puntos
 
 ```
-Hi Priya, three things pending from our side.
+Perfect, thank you Priya. Taking them in order.
 
-1️⃣ HOLIDAY CLOSURES
-Noman suggested I check with you directly on this one. Could you send us the closing
-dates for Christmas, August and public holidays? They get loaded into the Google profile
-in advance, so nobody turns up to a closed door — and Google reads it as a sign the
-profile is actively maintained.
+🗓️ HOLIDAYS
+Got it — so the only actual closures are 25/12, 01/01 and 06/01, August is open except
+Mondays, and public holidays are open except Mondays.
 
-2️⃣ THE EMAIL — worth a look
-Admin@dulibanrestaurante.com still isn't working, and there's something behind it that's
-worth knowing. The domain's email is still hosted on the SiteGround server that Luis
-charges €32/month for. The website itself moved to a different host in August and is now
-completely independent of him — but the email didn't move with it.
+One thing to confirm before we load it: on those three dates, are you fully closed all
+day, or open with reduced hours? Google treats "closed" and "special hours" differently
+and I'd rather ask than guess.
 
-So if that subscription stops, reservas@dulibanrestaurante.com stops receiving too. And
-that address is published on the website and in the code Google reads.
+Also — since Noman manages the Business Profile now, I'll pass the dates straight to him
+rather than load them myself, so we don't both touch the same thing.
 
-Nothing is broken today. But it's a single point of failure sitting on someone else's
-payment, which is exactly the situation you said you wanted out of. Whenever you want, we
-can move the email to something you control — it's a couple of hours of work and then
-nobody has to pay Luis anything.
+📧 THE EMAIL — good news, and one question
+I checked the domain records this morning, and Nacho's move has already gone through:
+the email no longer runs through Luis's SiteGround server. So that dependency is broken,
+and nobody has to keep paying him €32/month for it. That's solved.
 
-3️⃣ THE PREVIOUS OWNER
-In August you mentioned following up in September about the Facebook, Tripadvisor, Yelp
-and Guía Repsol credentials. Any progress there?
+The question worth asking is whose account it sits on now. If it's on Nacho's own
+hosting, then technically we've moved the dependency from Luis to us — and if our
+working relationship ever changed, you'd be in the same position again. Our
+recommendation is that it lives on an account in du Liban's name, paid by you, with us
+added as users. That's exactly how we've set up your Google Business Profile and Search
+Console, and how we'll set up Google Ads. You own it, we operate it.
 
-Two things worth adding to that same conversation if it happens:
+And one practical thing: reservas@dulibanrestaurante.com is the address published on your
+website and in the code Google reads. You mentioned you mostly use admin@ — that's fine,
+but we should make sure reservas@ still exists after the move and lands somewhere someone
+actually reads. If that mailbox wasn't recreated, anyone writing to it is disappearing
+into nowhere and you'd never know. Easy to check, worth checking.
 
-· Your old phone number (91 625 00 72) is still published on several of those listings.
-· There are two domains still showing up on Google under your name —
-  dulibangourmet.com and dulibanrestaurants.com. The first one is live and publishing
-  wrong opening hours (10:00–00:00 daily) and a placeholder phone number.
+🔑 THE PREVIOUS OWNER
+Understood, and not a problem — most of it is recoverable without him.
 
-Both were registered by whoever held the business before, and both are paid up for years
-ahead — so they're not abandoned, someone is still maintaining them. Worth asking for
-them in the same conversation as the social accounts.
+· Tripadvisor: yes. There's an ownership-transfer process; you claim the listing with
+  proof of the business (the CIF is enough) and their support handles the change. This
+  is the one that matters most, because that profile shows up when people search your
+  name and it's currently your weakest one.
+· Yelp: same kind of process, verified by a call to your own number.
+· Guía Repsol: easiest of all — it's an editorial guide, not a listing you own. We just
+  write to them and ask for the correction. This is where your old landline is still
+  published.
+· Facebook: this is the hard one. Meta has a page ownership dispute process that needs
+  proof of business ownership, and it's slow. Worth one attempt for the 2,800 followers;
+  if it fails, we build the new page properly and let the old one fade.
+
+On the domains: agreed, don't buy them. He's asking because they have no value to anyone
+but you, and paying would just reward that. Without buying there's no cheap way to take
+them down — but honestly, the practical damage is small: your real website already ranks
+above them for your own name, and your Google profile is correct now. We'll keep an eye
+on it, and if it ever starts causing real confusion there are stronger routes we can
+look at then.
+
+Same with the landline — agreed, not worth taking over. It does make fixing those
+directory listings more valuable though, since that's where the old number still shows.
 ```
 
-## Mensaje 2 — arranque del SEM
+## Mensaje 2 — la reunión
 
 ```
-Separately — Noman mentioned you've given the go-ahead on the Google Ads plan 🙌
+And yes to the meeting — that's a much better format than WhatsApp for this.
 
-There are a few things only you can do before we can start. In order of what blocks
-what:
+Thursday evening would suit us better than Tuesday, if that works for you. It gives us
+two extra days to arrive with the campaign already drafted, so instead of talking about
+it in the abstract you can look at the actual search groups, the actual ad text and the
+actual budget split, and tell us what to change.
 
-TO OPEN THE ACCOUNT
+What we'll bring:
+· The campaign structure, built but not launched — nothing spends until you say so
+· The search groups in priority order, and what each one costs
+· The exact steps to open the Google Ads account, which takes about ten minutes and
+  needs you at the keyboard for the payment part
+· A clear answer on what we can and can't measure, and what the measurement setup costs
 
-1. The Google Ads account needs to be created under du Liban's own Google account, with
-   your payment card entered by you. We never handle card details — and beyond that, it
-   matters that the account is yours: you keep control of the spend, you can pause it at
-   any moment, and the €400 credit Google is offering stays attached to your business
-   rather than to an agency. We'll send you the exact steps, or walk through it on a
-   call if that's easier. It takes about ten minutes.
+What would help if you can have it to hand:
+· Your average ticket per table (not per person) and roughly the margin you keep
+· Which nights or services you'd most like to fill — there's no point buying traffic for
+  Friday dinner if Friday dinner is already full
 
-2. Once it exists, add us as users and we'll build everything from there.
-
-⚠️ One warning about that €400 credit: please don't activate the code yet. The terms are
-that you have to spend €400 of your own money within 60 days of activating it, and the
-credit expires 60 days after it's granted. If it's activated before the campaign is
-actually running, the clock starts on an empty account and it's wasted. We'll tell you
-the right moment.
-
-TWO NUMBERS WE NEED
-
-3. What's your real average ticket per table — not per person — and roughly what margin
-   do you keep on it? We've been assuming around €100 per table. These two numbers decide
-   whether any of this is profitable, and they're what turn our estimates into your
-   actual numbers. Rough figures are completely fine.
-
-TO CONFIRM
-
-4. The plan we sent proposes starting at €300/month for two months as a test, then
-   reviewing with real numbers. Is that the scenario you're approving, or a different
-   one?
-
-5. Which slots would you most like to fill? If Friday and Saturday nights are already
-   full, we'd rather point the budget at weekday lunches or Sunday evenings, where an
-   extra table is pure gain rather than a table you'd have filled anyway.
-
-FOR MEASUREMENT
-
-6. A support request to SevenRooms, from your account, so they can install our
-   measurement container inside the booking page. Without it we can count clicks but not
-   bookings — which means we'd be guessing at exactly the number that matters. We'll
-   draft the exact message for you to send.
-
-7. Approval for the cookie and legal work on the website. Any Google advertising tag
-   legally requires upgrading the consent banner to EU standards and rewriting the legal
-   text so it stays accurate — right now that page says the site has no tracking at all,
-   and that has to remain true. It's roughly 11–17 hours of one-off work. We'd rather
-   quote it now than surprise you with it later.
-
-WHEN YOU HAVE IT
-
-8. A photo of the halal certificate. It strengthens both the ads and the Google listing.
-
-Points 1, 3 and 4 are the ones that actually unblock us. The rest can follow at your
-pace.
+Let me know which day works and we'll send an invite.
 ```
 
 ---
 
 ## Notas internas (no enviar)
 
-- **Los festivos son de Noman, no nuestros.** Él lleva el Perfil de Empresa desde el
-  reparto del 4 de septiembre. Le pedimos las fechas a Priya porque él nos mandó a ella,
-  pero **quien las carga es él**: cuando lleguen, se las pasamos en vez de tocarlas
-  nosotros. Si no, rompemos el reparto que acabamos de acordar.
-- **Punto 7, ojo:** las 11–17 h son de la §6.3 de `SEM-INVESTIGACION.md`. Es la única
-  partida con coste real y conviene que quede por escrito antes de empezar, no después.
-- **La campaña puede arrancar sin esperar a esas 11–17 h.** La capa 1 de medición
-  (conversiones de llamada con número de desvío + informe por canal de SevenRooms) no usa
-  cookies y funciona desde el día 1. El trabajo legal es para llegar a la medición real
-  por reserva, que es la capa 3. No bloquear el lanzamiento con ello.
-- **El crédito de 400 €** aparece en el propio panel del Perfil de Empresa como "Reclama
-  tu crédito". Si alguien del lado del cliente lo activa por su cuenta antes de tiempo, se
-  pierde. De ahí el aviso explícito.
-- Si Priya pregunta por el importe exacto del crédito, verificar los T&C desde el enlace
-  de su propio panel: los términos genéricos y los del cupón europeo difieren.
+- **Las 3 fechas van a Noman**, no las cargamos nosotros. Es lo que mantiene el reparto
+  del 4 de septiembre.
+- **Preguntar a Nacho internamente**, antes de la reunión: ¿de quién es la cuenta de
+  Hostinger donde está ahora el correo? ¿Y se recreó el buzón `reservas@`? Las dos cosas
+  salen en el mensaje y conviene no llegar a la reunión sin saberlo.
+- **Si `reservas@` no existe**, hay dos salidas: recrearlo (preferible, es la dirección
+  publicada) o cambiar web + JSON-LD a `admin@`, que es feo de cara al público. La primera.
+- **Recomiendo jueves 10** sobre martes 8: da margen para que el chat de SEM haga las
+  Fases 0 y 1, y llegar con la campaña construida cambia por completo el tono de la
+  reunión. Se pasa de pedir permiso a enseñar trabajo.
+- **En la reunión no prometer** medición por reserva desde el día 1: eso es la capa 3 y
+  depende del ticket de SevenRooms y de las 11–17 h de legales. Sí prometer conversiones
+  de llamada, que funcionan desde el minuto uno y encajan con que el teléfono lo atienda
+  una IA.

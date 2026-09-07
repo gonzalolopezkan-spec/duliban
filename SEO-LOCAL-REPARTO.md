@@ -271,3 +271,36 @@ Mientras tanto, en paralelo y sin esperar:
 
 **Cifra clave:** de las 48 tareas del plan, **18 no dependen de nadie**. Es casi el 40 %
 del trabajo, y es la parte que arregla los errores visibles hoy en Google.
+
+---
+
+## Actualización 4 — respuestas de Priya, 7 sep 2026
+
+**Festivos, resueltos.** Solo tres cierres: **25/12, 01/01 y 06/01**. Agosto abierto salvo
+lunes; festivos abiertos salvo lunes. Pendiente una confirmación (cierre total o horario
+reducido) y **pasárselas a Noman**, que es quien carga el perfil.
+
+**El correo, resuelto a medias.** Verificado el 7 sep: los MX ya **no** están en
+SiteGround, ahora son `mx1/mx2.hostinger.com` con SPF de Hostinger. Nacho lo movió. La
+dependencia de Luis y sus 32 €/mes está rota. Pero quedan dos cabos:
+
+1. **¿De quién es la cuenta de Hostinger?** Si es de Nacho, hemos cambiado una dependencia
+   por otra. Debería estar a nombre de du Liban y pagada por ellos, con nosotros como
+   usuarios — el mismo criterio que el Perfil de Empresa, Search Console y Google Ads.
+2. **¿Existe todavía el buzón `reservas@`?** Priya dice que usan `admin@` y que "el otro
+   apenas lo usamos", pero `reservas@` es el que publicamos en la web **y en el JSON-LD**.
+   Si no se recreó en la mudanza, ese correo se pierde sin que nadie se entere.
+
+**El propietario anterior no colabora.** Dice que no sabe. Tiene el fijo (no lo quieren) y
+los dos dominios, que **quiere vender** (no los quieren comprar). Sin él:
+
+| Ficha | ¿Recuperable? |
+|---|---|
+| Tripadvisor | **Sí** — proceso de cambio de titularidad con el CIF |
+| Yelp | **Sí** — reclamación verificada por llamada al número del negocio |
+| Guía Repsol | **Sí, trivial** — es guía editorial, se escribe y ya |
+| Facebook | **Difícil** — disputa de titularidad en Meta, lenta. Un intento por los 2.800 seguidores |
+| Los dominios | **No, sin comprarlos.** Daño real bajo: nuestra web ya les gana en la SERP de marca |
+
+**SEM: reunión el jueves.** Priya propone martes o jueves por la tarde para cerrar la
+cuenta de Google Ads y el resto de puntos. Preparación en `REUNION-SEM-PREP.md`.
