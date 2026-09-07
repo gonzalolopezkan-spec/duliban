@@ -35,17 +35,18 @@ and I'd rather ask than guess.
 Also — since Noman manages the Business Profile now, I'll pass the dates straight to him
 rather than load them myself, so we don't both touch the same thing.
 
-📧 THE EMAIL — good news, and one question
-I checked the domain records this morning, and Nacho's move has already gone through:
-the email no longer runs through Luis's SiteGround server. So that dependency is broken,
-and nobody has to keep paying him €32/month for it. That's solved.
+📧 THE EMAIL — solved, with one thing to tidy up
+I checked the domain records and confirmed it with Nacho: the move has gone through. Your
+email no longer runs through Luis's SiteGround server — it's on Hostinger now. So that
+dependency is broken and nobody has to keep paying him €32/month for it.
 
-The question worth asking is whose account it sits on now. If it's on Nacho's own
-hosting, then technically we've moved the dependency from Luis to us — and if our
-working relationship ever changed, you'd be in the same position again. Our
-recommendation is that it lives on an account in du Liban's name, paid by you, with us
-added as users. That's exactly how we've set up your Google Business Profile and Search
-Console, and how we'll set up Google Ads. You own it, we operate it.
+One thing worth tidying while it's fresh. Right now that hosting is on Nacho's account,
+which means technically the dependency moved from Luis to us rather than going away. If
+our working relationship ever changed, you'd be in the same position again. Our
+recommendation is to put it on an account in du Liban's name, paid by you, with us added
+as users — exactly how your Google Business Profile and Search Console are set up, and how
+we'll set up Google Ads. You own it, we operate it. It's a small job and much easier to do
+now than in a hurry later.
 
 And one practical thing: reservas@dulibanrestaurante.com is the address published on your
 website and in the code Google reads. You mentioned you mostly use admin@ — that's fine,
